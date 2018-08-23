@@ -11,10 +11,8 @@ class Machine:
         one = '1' * self.mantissa
         binary = '0b1' + one
         expo = "0b" + ("1"*self.exponent)
-        decimal = int(binary,2)*(2**(int(expo,2)))
-        print(str(decimal))
-        #decimal = "0." + str(int(binary,2)) + "e+" + str(int(expo,2))
-        #print(decimal)
+        decimal = "0." + str(int(binary,2)) + "e+" + str(int(expo,2))
+        print(decimal)
         
     def lowest(self):
         exp = self.mantissa + 1 
