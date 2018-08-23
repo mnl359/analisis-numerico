@@ -12,12 +12,12 @@ class Machine:
         binary = '0b1' + one
         expo = "0b" + ("1"*self.exponent)
         decimal = "0." + str(int(binary,2)) + "e+" + str(int(expo,2))
-        print(decimal)
+        return decimal
         
     def lowest(self):
         exp = self.mantissa + 1 
         decimal = 2**(-exp)
-        print(decimal)
+        return decimal
         
     def positive(self):
         pass
@@ -42,7 +42,7 @@ class Machine:
                 man = self.mantissa - len(binary)
                 binary = binary + ("0"*man)
             final = str(symbol)+"1"+str(binary)+str(length)
-        print(final)
+        return final
 
     def decimalNumber(self):
         pass
