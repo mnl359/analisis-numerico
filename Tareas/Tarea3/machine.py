@@ -5,7 +5,7 @@ class Machine:
     def __init__(self, mantissa, exponent):
         self.mantissa = mantissa
         self. exponent = exponent
-        bits = 16
+        bits = 12
 
     def biggest(self):
         one = '1' * self.mantissa
@@ -20,7 +20,8 @@ class Machine:
         return decimal
         
     def positive(self):
-        pass
+        positive = 2**((int('0b' + ('1'*self.exponent), 2)+1)*-1)
+        return positive
     
     def machineNumber(self, number):
         if number[0] is "-":
@@ -28,8 +29,27 @@ class Machine:
             number.pop(0)
         else:
             symbol = "1"
-        if "," in number:
-            number = number.split(",")
+        if "." in number:
+            number = number.split(".")
+            whole = bin(int(number[0]))[2:]
+            dec = float("0." + number[1])
+            man_length = len(whole)-1
+            bin_dec = ""
+            while man_length < self.mantissa:
+                temp = dec*2
+                if str(temp)[0] is "1":
+                    bin_dec += "1"
+                else:
+                    bin_dec += "0"
+                man_length += 1
+            if number[0] is not "0":
+                exp = bin(len(whole))[2:]
+                if len(exp) < self.exponent:
+                    exp = ("0"*(self.exponent-len(exp))) + exp
+                final = symbol + "1" + exp + whole + bin_dec
+            else:
+                pass
+                    
         else:
             binary = bin(int(number))
             length = bin(len(binary)-2)
@@ -40,19 +60,22 @@ class Machine:
                 length = ("0"*exp) + length
             if len(binary) < self.mantissa:
                 man = self.mantissa - len(binary)
-                binary = binary + ("0"*man)
-            final = str(symbol)+"1"+str(binary)+str(length)
+                binary = binary[1:] + ("0"*man)
+            # La manera de retornar es signo mantisa - signo exp - exponente - mantisa
+            final = str(symbol)+"1"+str(length)+str(binary)
         return final
 
     def decimalNumber(self):
         pass
     
-print("Está máquina trabaja con 16 bits, además cuenta con bit implícito.")
+print("Está máquina trabaja con 12 bits, además cuenta con bit implícito.")
 
 mantissa = input("Número de bits para la mantisa: ")
 exponent = input("Número de bits para el exponente: ")
 
 machine = Machine(int(mantissa), int(exponent))
-machine.biggest()
-machine.lowest()
-machine.machineNumber("24")
+print(machine.biggest())
+print(machine.lowest())
+print(machine.positive())
+print(machine.machineNumber("15.2"))
+machine.decimalNumber()
