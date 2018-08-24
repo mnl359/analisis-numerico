@@ -1,0 +1,25 @@
+<form action="/new" method="POST">
+(??)<<<<<<< HEAD
+    <label>username</label>
+    <input type="text" name="username"></input>
+    <label>password</label>
+    <input type="text" name="password"></input>
+    <label>cuenta seguidores</label>
+    <input type="text" name="cuenta"></input>
+    <label>Delay entre follows</label>
+    <input type="text" name="delay"></input>
+    <input type="submit" value="seguir"></input>
+</form>
+
+{{loginstate}}
+
+(??)
+userdeprueba20172804
+=======
+(??)  <input type="text" name="name"></input>
+(??)  <input type="text" name="description"></input>
+(??)  <input type="submit"></input>
+(??)</form>
+(??)
+(??){{loginstate}}
+(??)>>>>>>> Added celery

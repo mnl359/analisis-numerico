@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        .bs-example{
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+<form action="/new" method="POST">
+    <div id="trabajadores">
+        {% if active_tasks %}
+            {% for tarea in active_tasks %}
+                <div id="trabajador">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="username[]" value="{{ tarea['following_acc'] }}" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="password" name="password[]" value="{{ tarea['pass'] }}" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="cuenta[]" value="{{ tarea['victim_acc'] }}" placeholder="Cuenta seguidores">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" name="delay[]" value="{{ tarea['delay'] }}" placeholder="Delay">
+                    </div>
+                    Status: {{ tarea['task_state'] }}
+
+                </div>
+            {% endfor %}
+        {% else %}
+            <div id="trabajador">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="username[]" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password[]" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="cuenta[]" placeholder="Cuenta seguidores">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" name="delay[]" placeholder="Delay">
+                </div>
+
+            </div>
+        {% endif %}
+        <div class="form-group">
+            <input type="button" value="Nueva cuenta" onClick="addInput('trabajador');">
+            <button type="submit" name="follow" class="btn btn-primary">Follow</button>
+            <button type="submit" name="unfollow" class="btn btn-primary">Unfollow</button>
+
+        </div>
+    </div>
+</form>
+<form action="/stop" method="POST">
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Stop</button>
+    </div>
+</form>
+
+</body>
+
+<script language="Javascript" type="text/javascript">
+    var counter = 1;
+    var limit = 15;
+    function addInput(divName){
+        if (counter == limit)  {
+            alert("Alcanzado limite de " + counter + " inputs");
+        }
+        else {
+            var newdiv = document.createElement('div');
+            newdiv.innerHTML = "Entry " + (counter + 1) + ' <div class="form-group">' +
+                '<input class="form-control" type="text" name="username[]" placeholder="Username">' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<input class="form-control" type="password" name="password[]" placeholder="Password">' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<input class="form-control" type="text" name="cuenta[]" placeholder="Cuenta seguidores">' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<input class="form-control" type="number" name="delay[]" placeholder="Delay">' +
+                '</div>';
+            document.getElementById(divName).appendChild(newdiv);
+            counter++;
+        }
+    }
+</script>
+</html>
+Status:
+{{ state }}
