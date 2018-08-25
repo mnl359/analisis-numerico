@@ -46,13 +46,3 @@ class Machine:
 
     def decimalNumber(self):
         pass
-#
-# print("Está máquina trabaja con 16 bits, además cuenta con bit implícito.")
-#
-# mantissa = input("Número de bits para la mantisa: ")
-# exponent = input("Número de bits para el exponente: ")
-#
-# machine = Machine(int(mantissa), int(exponent))
-# machine.biggest()
-# machine.lowest()
-# machine.machineNumber("24")

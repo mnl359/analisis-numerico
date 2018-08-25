@@ -13,15 +13,41 @@
     </style>
 </head>
 <body>
-Number: {{number}}
-min {{minimum}}
-Max {{maximum}}
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Maximo</th>
+      <th scope="col">Minimo</th>
+      <th scope="col">Número Decimal</th>
+      <th scope="col">Número Máquina</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{maximum}}</td>
+      <td>{{minimum}}</td>
+      <td>{{decimal}}</td>
+      <td>{{binary}}</td>
+    </tr>
+
+  </tbody>
+</table>
+
 <form action="/number" method="POST">
     <div class="form-group">
-        <input class="form-control" type="number" name="number" placeholder="Number">
+        <input class="form-control" type="number" name="number" placeholder="Decimal Number">
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">GO</button>
+        <button type="submit" class="btn btn-primary">Convert to Machine Number</button>
+    </div>
+</form>
+
+<form action="/binary" method="POST">
+    <div class="form-group">
+        <input class="form-control" type="number" name="binary" placeholder="Machine Number">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Convert to Decimal</button>
     </div>
 </form>
 </body>

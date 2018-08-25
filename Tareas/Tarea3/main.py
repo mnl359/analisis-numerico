@@ -31,7 +31,7 @@ def machine():
         maquina = Machine(int(mantissa), int(exponent))
         maximum = maquina.biggest()
         minimum = maquina.lowest()
-        resp = make_response(render_template('machine.html', maximum=maximum, minimum=minimum, number=0))
+        resp = make_response(render_template('machine.html', maximum=maximum, minimum=minimum, binary=0))
         resp.set_cookie('exponent', value=exponent, max_age=90)
         resp.set_cookie('mantissa', value=mantissa, max_age=90)
 
@@ -48,11 +48,19 @@ def number():
     maximum = machine.biggest()
     minimum = machine.lowest()
     binary = machine.machineNumber(number)
-    return render_template('machine.html', maximum=maximum, minimum=minimum, number=binary)
+    return render_template('machine.html', maximum=maximum, minimum=minimum, binary=binary, decimal=number)\
 
-
-
+@app.route('/binary', methods=['POST'])
+def binary():
+    binary = request.form['binary']
+    exponent = request.cookies.get('exponent')
+    mantissa = request.cookies.get('mantissa')
+    machine = Machine(int(mantissa), int(exponent))
+    maximum = machine.biggest()
+    minimum = machine.lowest()
+    decimal = machine.decimalNumber(binary)
+    return render_template('machine.html', maximum=maximum, minimum=minimum, binary=binary, decimal=decimal)
 
 
 if __name__ == "__main__":
-    app.run(host='localhost', debug=True)
+    app.run(host='0.0.0.0', debug=True)
