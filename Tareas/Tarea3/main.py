@@ -49,7 +49,8 @@ def number():
     minimum = machine.lowest()
     epsilon = machine.epsilon()
     binary = machine.machineNumber(number)
-    return render_template('machine.html', maximum=maximum, minimum=minimum, binary=binary, decimal=number, epsilon=epsilon)
+    positive = machine.positive()
+    return render_template('machine.html', maximum=maximum, minimum=minimum, binary=binary, decimal=number, epsilon=epsilon, positive=positive)
 
 @app.route('/binary', methods=['POST'])
 def binary():
@@ -61,7 +62,8 @@ def binary():
     minimum = machine.lowest()
     epsilon = machine.epsilon()
     decimal = machine.decimalNumber(binary)
-    return render_template('machine.html', maximum=maximum, minimum=minimum, binary=binary, decimal=decimal, epsilon=epsilon)
+    positive = machine.positive()
+    return render_template('machine.html', maximum=maximum, minimum=minimum, binary=binary, decimal=decimal, epsilon=epsilon, positive=positive)
 
 
 if __name__ == "__main__":
