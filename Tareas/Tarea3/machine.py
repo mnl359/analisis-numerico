@@ -21,7 +21,10 @@ class Machine:
         
     def positive(self):
         pass
-    
+
+    def epsilon(self):
+        pass
+
     def machineNumber(self, number):
         if number[0] is "-":
             symbol = "0"
