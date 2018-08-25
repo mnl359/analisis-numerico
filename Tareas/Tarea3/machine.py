@@ -8,7 +8,7 @@ class Machine:
     def __init__(self, mantissa, exponent):
         self.mantissa = mantissa
         self. exponent = exponent
-        bits = 12
+        self.bits = 12
 
     def biggest(self):
         one = '1' * self.mantissa
@@ -82,18 +82,16 @@ class Machine:
 
     def decimalNumber(self, number):
         j = 0
-        while j < 12:
+        while j < self.bits:
             if number[j] != "0" and number[j] != "1":
                 print("Error")
-            # Capturar excepción y romper
-                break
+                exit(-1)
+                #break
             j+=1
 
         aux = self.exponent + 2
         expo = number[2:aux]
-        print("Expo" + str(expo))
         mant = '1' + number[aux:]
-        print("Mant " + str(mant))
 
         sigExp = ''
         sigMant = ''
@@ -106,10 +104,9 @@ class Machine:
         if number[0] == '0':
             sigMant = '-'
         else:
-            sigExp = '+'
+            sigMant = '+'
 
         decExpo = int(expo, 2)
-        print("Decimal exponente " + str(decExpo))
 
         if sigExp == '+':
             aux1 = decExpo - len(mant)
@@ -123,18 +120,19 @@ class Machine:
                 decPart = mant[decExpo:]
 
                 count = 0
-                i = 1
+                i = 0
 
-                while i <= len(decPart):
+                while i < len(decPart):
                     if decPart[i] == '1':
-                        count += 2 **(-i)
+                        count += 2 **(-(i+1))
+                    i += 1
 
                 decMant = newMant + count
 
         else:
-            newMant = (0 * decExpo) + mant
+            newMant = str((0 * decExpo)) + mant
 
-            decMant = (newMant, 2)
+            decMant = '0,' + str(int(newMant, 2))
         return sigMant + str(decMant)
 
 
@@ -142,7 +140,7 @@ def main(argv):
     mantissa = 5
     exponent = 5
     machine = Machine(int(mantissa), int(exponent))
-    print(machine.decimalNumber("110101000010"))
+    print(machine.decimalNumber("000011001010"))
     print(machine.machine_number("544"))
 
 
