@@ -1,5 +1,8 @@
 #!/bin/python3
 
+from numpy import negative
+from sys import argv
+
 class Machine:
 
     def __init__(self, mantissa, exponent):
@@ -23,59 +26,126 @@ class Machine:
         positive = 2**((int('0b' + ('1'*self.exponent), 2)+1)*-1)
         return positive
     
-    def machineNumber(self, number):
+    def machine_number(self, number):
         if number[0] is "-":
             symbol = "0"
-            number.pop(0)
+            number = number[1:]
         else:
             symbol = "1"
         if "." in number:
             number = number.split(".")
-            whole = bin(int(number[0]))[2:]
-            dec = float("0." + number[1])
-            man_length = len(whole)-1
+            ent = bin(int(number[0]))[2:]
+            dec = int(number[1])
             bin_dec = ""
-            while man_length < self.mantissa:
-                temp = dec*2
+            man_length = 0
+            temp = dec
+            while man_length < (self.mantissa):
                 if str(temp)[0] is "1":
                     bin_dec += "1"
+                    dec = str(temp)
+                    dec = float("0" + dec[1:])
                 else:
                     bin_dec += "0"
+                    dec = temp
                 man_length += 1
-            if number[0] is not "0":
-                exp = bin(len(whole))[2:]
-                if len(exp) < self.exponent:
-                    exp = ("0"*(self.exponent-len(exp))) + exp
-                final = symbol + "1" + exp + whole + bin_dec
+                temp = dec * 2
+            mantissa = ent + bin_dec
+            exp = len(ent)
+            while mantissa[0] == "0":
+                mantissa = mantissa[1:]
+                exp -= 1
+            if negative(exp):
+                symbol_exp = "0"
+                exp = str(exp)[1:]
             else:
-                pass
-                    
+                symbol_exp="1"
+            exp = (bin(int(exp)))[2:]
+
         else:
-            binary = bin(int(number))
-            length = bin(len(binary)-2)
-            binary = binary[2:]
-            length = length[2:]
-            if len(length) < self.exponent:
-                exp = self.exponent - len(length)
-                length = ("0"*exp) + length
-            if len(binary) < self.mantissa:
-                man = self.mantissa - len(binary)
-                binary = binary[1:] + ("0"*man)
-            # La manera de retornar es signo mantisa - signo exp - exponente - mantisa
-            final = str(symbol)+"1"+str(length)+str(binary)
-        return final
+            mantissa = bin(int(number))[2:]
+            exp = len(mantissa)
+            while mantissa[0] == "0":
+                mantissa = mantissa[1:]
+                exp -= 1
+            if negative(exp):
+                symbol_exp = "0"
+            else:
+                symbol_exp="1"
+            exp = bin(exp)[2:]
+        if len(mantissa) <= self.mantissa:
+            mantissa = mantissa[1:] + ("0" * (self.mantissa - (len(mantissa)-1)))
+        if len(exp) <= self.exponent:
+            exp = ("0" * (self.exponent - len(exp))) + exp
+        print(exp)
+        machine = symbol + symbol_exp + exp[:self.exponent] + mantissa[:self.mantissa]
+        return machine
 
-    def decimalNumber(self):
-        pass
-    
-print("Está máquina trabaja con 12 bits, además cuenta con bit implícito.")
+    def decimalNumber(self, number):
+        j = 0
+        while j < 12:
+            if number[j] != "0" and number[j] != "1":
+                print("Error")
+            # Capturar excepción y romper
+                break
+            j+=1
 
-mantissa = input("Número de bits para la mantisa: ")
-exponent = input("Número de bits para el exponente: ")
+        aux = self.exponent + 2
+        expo = number[2:aux]
+        print("Expo" + str(expo))
+        mant = '1' + number[aux:]
+        print("Mant " + str(mant))
 
-machine = Machine(int(mantissa), int(exponent))
-print(machine.biggest())
-print(machine.lowest())
-print(machine.positive())
-print(machine.machineNumber("15.2"))
-machine.decimalNumber()
+        sigExp = ''
+        sigMant = ''
+
+        if number[1] == '0':
+            sigExp = '-'
+        else:
+            sigExp = '+'
+
+        if number[0] == '0':
+            sigMant = '-'
+        else:
+            sigExp = '+'
+
+        decExpo = int(expo, 2)
+        print("Decimal exponente " + str(decExpo))
+
+        if sigExp == '+':
+            aux1 = decExpo - len(mant)
+
+            if len(mant) <= decExpo:
+                newMant = mant + ("0" * aux1)
+                decMant = int(newMant, 2)
+            else:
+                newMant = int(mant[:decExpo], 2)
+
+                decPart = mant[decExpo:]
+
+                count = 0
+                i = 1
+
+                while i <= len(decPart):
+                    if decPart[i] == '1':
+                        count += 2 **(-i)
+
+                decMant = newMant + count
+
+        else:
+            newMant = (0 * decExpo) + mant
+
+            decMant = (newMant, 2)
+        return sigMant + str(decMant)
+
+
+def main(argv):
+    mantissa = 5
+    exponent = 5
+    machine = Machine(int(mantissa), int(exponent))
+    print(machine.decimalNumber("110101000010"))
+    print(machine.machine_number("544"))
+
+
+if __name__ == '__main__':
+    main(argv)
+
