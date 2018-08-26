@@ -25,6 +25,9 @@ class Machine:
     def positive(self):
         positive = 2**((int('0b' + ('1'*self.exponent), 2)+1)*-1)
         return positive
+      
+    def epsilon(self):
+        pass
     
     def machine_number(self, number):
         if number[0] is "-":

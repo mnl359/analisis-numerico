@@ -1,0 +1,30 @@
+<form action="/new" method="POST">
+<<<<<<< HEAD
+(??)
+=======
+>>>>>>> Funciona! arreglar int
+    <label>username</label>
+    <input type="text" name="username"></input>
+    <label>password</label>
+    <input type="text" name="password"></input>
+    <label>cuenta seguidores</label>
+    <input type="text" name="cuenta"></input>
+    <label>Delay entre follows</label>
+    <input type="text" name="delay"></input>
+    <input type="submit" value="seguir"></input>
+</form>
+
+{{loginstate}}
+
+<<<<<<< HEAD
+(??)
+userdeprueba20172804
+=======
+(??)
+=======
+<<<<<<< HEAD
+userdeprueba20172804
+=======
+userdeprueba20172804
+>>>>>>> Funciona! arreglar int
+>>>>>>> Funciona! arreglar int
