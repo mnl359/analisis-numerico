@@ -26,12 +26,13 @@ def machine():
         mantissa = request.cookies.get('mantissa')
         exponent = request.cookies.get('exponent')
 
-    if int(mantissa) + int(exponent) == 15:
+    if int(mantissa) + int(exponent) == 10:
 
-        maquina = Machine(int(mantissa), int(exponent))
-        maximum = maquina.biggest()
-        minimum = maquina.lowest()
-        resp = make_response(render_template('machine.html', maximum=maximum, minimum=minimum, binary=0))
+        machine = Machine(int(mantissa), int(exponent))
+        maximum = machine.biggest()
+        minimum = machine.lowest()
+        positive = machine.positive()
+        resp = make_response(render_template('machine.html', maximum=maximum, minimum=minimum, binary=0, positive=positive))
         resp.set_cookie('exponent', value=exponent, max_age=90)
         resp.set_cookie('mantissa', value=mantissa, max_age=90)
 
@@ -48,7 +49,7 @@ def number():
     maximum = machine.biggest()
     minimum = machine.lowest()
     epsilon = machine.epsilon()
-    binary = machine.machineNumber(number)
+    binary = machine.machine_number(number)
     positive = machine.positive()
     return render_template('machine.html', maximum=maximum, minimum=minimum, binary=binary, decimal=number, epsilon=epsilon, positive=positive)
 

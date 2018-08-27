@@ -39,7 +39,7 @@
 
 <form action="/number" method="POST">
     <div class="form-group">
-        <input class="form-control" type="number" name="number" placeholder="Decimal Number">
+        <input class="form-control" type="number" name="number" placeholder="Decimal Number" value="{{ decimal }}">
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Convert to Machine Number</button>
@@ -48,7 +48,7 @@
 
 <form action="/binary" method="POST">
     <div class="form-group">
-        <input class="form-control" type="number" name="binary" placeholder="Machine Number">
+        <input class="form-control" type="number" name="binary" placeholder="Machine Number" value="{{ binary }}">
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Convert to Decimal</button>

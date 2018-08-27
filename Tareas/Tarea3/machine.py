@@ -79,7 +79,7 @@ class Machine:
             mantissa = mantissa[1:] + ("0" * (self.mantissa - (len(mantissa)-1)))
         if len(exp) <= self.exponent:
             exp = ("0" * (self.exponent - len(exp))) + exp
-        print(exp)
+        print("exponent: "+exp)
         machine = symbol + symbol_exp + exp[:self.exponent] + mantissa[:self.mantissa]
         return machine
 
@@ -141,10 +141,11 @@ class Machine:
 
 def main(argv):
     mantissa = 5
-    exponent = 5
+    exponent = 6
     machine = Machine(int(mantissa), int(exponent))
-    print(machine.decimalNumber("000011001010"))
     print(machine.machine_number("544"))
+    print(machine.decimalNumber("1000101010001"))
+
 
 
 if __name__ == '__main__':
