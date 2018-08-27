@@ -1,6 +1,5 @@
 #!/bin/python3
 
-from numpy import negative
 from sys import argv
 
 class Machine:
@@ -25,9 +24,6 @@ class Machine:
     def positive(self):
         positive = 2**((int('0b' + ('1'*self.exponent), 2)+1)*-1)
         return positive
-      
-    def epsilon(self):
-        pass
     
     def machine_number(self, number):
         if number[0] is "-":
@@ -42,7 +38,7 @@ class Machine:
             bin_dec = ""
             man_length = 0
             temp = dec
-            while man_length < (self.mantissa):
+            while man_length < self.mantissa:
                 if str(temp)[0] is "1":
                     bin_dec += "1"
                     dec = str(temp)
@@ -57,7 +53,7 @@ class Machine:
             while mantissa[0] == "0":
                 mantissa = mantissa[1:]
                 exp -= 1
-            if negative(exp):
+            if exp < 0:
                 symbol_exp = "0"
                 exp = str(exp)[1:]
             else:
@@ -70,7 +66,7 @@ class Machine:
             while mantissa[0] == "0":
                 mantissa = mantissa[1:]
                 exp -= 1
-            if negative(exp):
+            if exp < 0:
                 symbol_exp = "0"
             else:
                 symbol_exp="1"
@@ -79,7 +75,6 @@ class Machine:
             mantissa = mantissa[1:] + ("0" * (self.mantissa - (len(mantissa)-1)))
         if len(exp) <= self.exponent:
             exp = ("0" * (self.exponent - len(exp))) + exp
-        print("exponent: "+exp)
         machine = symbol + symbol_exp + exp[:self.exponent] + mantissa[:self.mantissa]
         return machine
 
@@ -140,11 +135,10 @@ class Machine:
 
 
 def main(argv):
-    mantissa = 5
-    exponent = 6
+    mantissa = 6
+    exponent = 4
     machine = Machine(int(mantissa), int(exponent))
-    print(machine.machine_number("544"))
-    print(machine.decimalNumber("1000101010001"))
+    print(machine.machine_number("21"))
 
 
 
