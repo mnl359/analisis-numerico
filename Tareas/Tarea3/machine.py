@@ -117,28 +117,39 @@ class Machine:
 
                 decPart = mant[decExpo:]
 
-                count = 0
+                """ count = 0
                 i = 0
 
                 while i < len(decPart):
                     if decPart[i] == '1':
-                        count += 2 **(-(i+1))
-                    i += 1
-
-                decMant = newMant + count
+                        count += 2**(-(i+1))
+                    i += 1 """
+                helperMant = self.helper(decPart)
+                decMant = newMant + helperMant
 
         else:
-            newMant = str((0 * decExpo)) + mant
-
-            decMant = '0,' + str(int(newMant, 2))
+            newMant = str(('0' * decExpo)) + mant
+            helperMant = self.helper(newMant)
+            decMant = str(helperMant)
         return sigMant + str(decMant)
+
+    def helper(self, toConvert):
+        count = 0
+        i = 0
+        while i < len(toConvert):
+            if toConvert[i] == '1':
+                count += 2**(-(i+1))
+            i += 1
+        
+        return count
 
 
 def main(argv):
-    mantissa = 6
-    exponent = 4
+    mantissa = 5
+    exponent = 5
     machine = Machine(int(mantissa), int(exponent))
     print(machine.machine_number("21"))
+    print(machine.decimalNumber("110001100100"))
 
 
 
