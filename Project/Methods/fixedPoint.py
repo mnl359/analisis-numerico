@@ -6,11 +6,13 @@ from decimal import Decimal
 def f(number):
     #fx = (number**3) + (4*(number**2)) - 10
     fx = (number*(math.exp(number))) - (number**2) - (5*number) -3
+    #fx = math.exp(number) - number - 2
     return fx
 
 def g(number):
     #gx = math.sqrt(10/(number+4))
     gx = ((number*(math.exp(number))) - (number**2) -3)/5
+    #gx = math.log10(number+2)
     return gx
 
 def fixedPoint(xa, tolerance, iterations):
@@ -32,4 +34,4 @@ def fixedPoint(xa, tolerance, iterations):
     return root
 
 
-print(fixedPoint(-0.5, 5e-05, 20))
+print(fixedPoint(-0.5, 5e-05, 15))

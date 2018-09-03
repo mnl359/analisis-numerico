@@ -3,9 +3,10 @@ import math, sympy
 from decimal import Decimal
 
 def f(number):
-    fx = (number**3) + (4*(number**2)) - 10
-    dfx = (3*(number**2)) + (8*number)
-    #dfx = sympy.Derivative(fx, number).doit()
+    #fx = math.exp(number) - number - 2
+    #dfx = math.exp(number) - 1
+    fx = (number*(math.exp(number))) - (number**2) - (5*number) -3
+    dfx = number*(math.exp(number)) + math.exp(number) -2*number - 5 
     return (fx, dfx)
 
 def newton(x0, tolerance, iterations):
@@ -30,6 +31,6 @@ def newton(x0, tolerance, iterations):
         root = None
     return root
 
-print(newton(1.5, 0.5e-08, 100))
+print(newton(-0.5, 5e-05, 15))
 
 

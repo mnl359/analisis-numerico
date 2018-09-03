@@ -7,7 +7,8 @@ from decimal import Decimal
 def f(number):
     #fx = math.exp((3*number)-12) + (number * math.cos(3*number)) - (number**2) + 4
     #fx = (2 * (number**2)) + (3 * number) - 3
-    fx = (number**3) + (4*(number**2)) - 10
+    #fx = math.exp(number) - number - 2
+    fx = (number*(math.exp(number))) - (number**2) - (5*number) -3
     return fx
 
 
@@ -15,7 +16,6 @@ def bisection(xi, xs, tolerance, iterations):
     fxi = f(xi)
     fxs = f(xs)
     root = 0
-    print(fxi * fxs)
     if fxi == 0:
         root = xi
     elif fxs == 0:
@@ -48,4 +48,4 @@ def bisection(xi, xs, tolerance, iterations):
     return root
 
 
-print(bisection(1, 2, 0.0001, 20))
+print(bisection(-1, 0, 5e-05, 15))
