@@ -6,15 +6,17 @@ from decimal import Decimal
 
 def f(number):
     # fx = math.exp((3*number)-12) + (number * math.cos(3*number)) - (number**2) + 4
-    fx = math.exp((-(number)**2)+1)-(4*(number**3)) + 25
+    # fx = math.exp((-(number)**2)+1)-(4*(number**3)) + 25
+    # fx = (2 * (number**2)) + (3 * number) - 3
+    fx = (number**3) + (4*(number**2)) - 10
     return fx
 
 
 def falseRule(xi, xs, tolerance, iterations):
     fxi = f(xi)
     fxs = f(xs)
-    si = xs - xi
-    helper = fxs - fxi
+    si = xi - xs
+    helper = fxi - fxs
     root = 0
     if fxi == 0:
         root = xi
@@ -34,15 +36,14 @@ def falseRule(xi, xs, tolerance, iterations):
                     xi = xm
                     fxi = fxm
                 aux = xm
-                print(xm)
+                si = xi - xs
+                helper = fxi - fxs
                 if helper == 0:
                     break
                 xm = xi - ((fxi*si)/helper)
                 fxm = f(xm)
                 error = abs(xm-aux)
                 cont += 1
-                si = xs - xi
-                helper = fxs - fxi
             if fxm == 0:
                 root = xm
             elif error < tolerance:
@@ -56,4 +57,4 @@ def falseRule(xi, xs, tolerance, iterations):
     return root
 
 
-print(falseRule(1, 2, 0.001, 100))
+print(falseRule(1, 2, 0.0001, 20))
