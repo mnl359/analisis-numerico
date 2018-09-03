@@ -1,24 +1,26 @@
 #!/bin/python3
+import math
 
 
-def function(number):
-    return (number**2)-1
+def f(number):
+    fx = math.exp((3*number)-12) + (number * math.cos(3*number)) - (number**2) + 4
+    return fx
 
 
 def incremental_searches(x0, delta, iterations):
-    fx = function(x0)
+    fx = f(x0)
     root = 0
     if fx == 0:
         root = x0
     else:
         x1 = x0 + delta
         cont = 1
-        fx1 = function(x1)
+        fx1 = f(x1)
         while fx * fx1 > 0 and cont < iterations:
             x0 = x1
             fx = fx1
             x1 = x0 + delta
-            fx1 = function(x1)
+            fx1 = f(x1)
             cont += 1
 
         if fx1 == 0:
@@ -27,7 +29,7 @@ def incremental_searches(x0, delta, iterations):
             root = (x0,x1)
         else:
             root = None
-        return root
+    return root
 
 
-print(incremental_searches(0, 0.1, 100))
+print(incremental_searches(-10, 1, 20))
