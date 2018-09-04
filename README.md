@@ -27,7 +27,3 @@ g++ <code>.cpp -o <executable>
 * Manuela Carrasco Pinzón
 * Simón Gómez Uribe
 * Johan Danilo Vásquez Rincón
-
-## License
-
-MIT © Richard McRichface
