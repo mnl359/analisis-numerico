@@ -8,15 +8,20 @@ def f(number):
     #dfx = math.exp(number) - 1
     #fx = (number*(math.exp(number))) - (number**2) - (5*number) -3
     #dfx = number*(math.exp(number)) + math.exp(number) -2*number - 5 
-    fx = (number**3) + (4*(number**2)) - 10
-    dfx = (3*(number**2)) + (8*number)
-    return (fx, dfx)
+    sympy.init_printing(use_unicode=True)
+    x = sympy.symbols('x')
+    fx = sympy.exp((-(x)**2)+1) - (4*(x**3)) + 25
+    function = math.exp((-(number)**2)+1) - (4*(number**3)) + 25
+    dfx = sympy.Derivative(fx, x).doit()
+    derivative = dfx.evalf(subs={x:number})
+    # dfx = (3*(number**2)) + (8*number)
+    return (function, derivative)
 
 def newton(x0, tolerance, iterations):
     table = PrettyTable(['Iteration','Xn','f(Xn)', 'df(Xn)','Error'])
     fx = f(x0)[0]
     dfx = f(x0)[1]
-    cont = 1
+    cont = 0
     error = tolerance + 1
     table.add_row([cont, x0, fx, dfx, 'Doesnt exist'])
     while error > tolerance and fx != 0 and dfx != 0 and cont < iterations:
@@ -38,6 +43,6 @@ def newton(x0, tolerance, iterations):
     print(table)
     return root
 
-print(newton(1.5, 0.5e-08, 20))
+print(newton(1.5, 1e-08, 20))
 
 
