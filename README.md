@@ -17,7 +17,7 @@ python3 <code>.py
 For C++ implmentations(Linux):
 
 ```
-g++ -o <executable> <code>.cpp
+g++ <code>.cpp -o <executable>
 ./<executable>
 ```
 
