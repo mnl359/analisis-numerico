@@ -39,4 +39,4 @@ def incremental_searches(x0, delta, iterations):
     return roots
 
 
-print(incremental_searches(-3, 1, 6))
+print(incremental_searches(-3, 0.1, 1000))
