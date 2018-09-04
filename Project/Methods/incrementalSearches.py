@@ -6,7 +6,8 @@ def f(number):
     #fx = math.exp((3*number)-12) + (number * math.cos(3*number)) - (number**2) + 4
     #fx = (2 * (number**2)) + (3 * number) - 3
     #fx = (number*(math.exp(number))) - (number**2) - (5*number) -3
-    fx = (math.exp(-number)) - math.cos(4*number)
+    fx = (number**3) + (4*(number**2)) - 9.4
+    #(math.exp(-number)) - math.cos(4*number)
     return fx
 
 
@@ -38,4 +39,4 @@ def incremental_searches(x0, delta, iterations):
     return roots
 
 
-print(incremental_searches(-6, 1, 9))
+print(incremental_searches(-3, 1, 6))

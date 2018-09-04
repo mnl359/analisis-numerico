@@ -10,8 +10,10 @@ def f(number):
     #dfx = number*(math.exp(number)) + math.exp(number) -2*number - 5 
     sympy.init_printing(use_unicode=True)
     x = sympy.symbols('x')
-    fx = sympy.exp((-(x)**2)+1) - (4*(x**3)) + 25
-    function = math.exp((-(number)**2)+1) - (4*(number**3)) + 25
+    fx = sympy.exp(-x) - sympy.log(x)
+    #sympy.exp((-(x)**2)+1) - (4*(x**3)) + 25
+    function = fx.evalf(subs={x:number})
+    #math.exp((-(number)**2)+1) - (4*(number**3)) + 25
     dfx = sympy.Derivative(fx, x).doit()
     derivative = dfx.evalf(subs={x:number})
     # dfx = (3*(number**2)) + (8*number)
@@ -43,6 +45,6 @@ def newton(x0, tolerance, iterations):
     print(table)
     return root
 
-print(newton(1.5, 1e-08, 20))
+print(newton(0.14, 5e-05, 20))
 
 
