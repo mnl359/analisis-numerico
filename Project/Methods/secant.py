@@ -11,7 +11,8 @@ def f(number):
     #fx = (number*(math.exp(number))) - (number**2) - (5*number) -3
     #fx = (math.exp(-number)) - math.cos(4*number)
     #fx = math.exp((-(number)**2)+1) - (4*(number**3)) + 25
-    fx = (number**3)+(4*(number**2))-10
+    #fx = (number**3)+(4*(number**2))-10
+    fx = math.exp(number) - (5 * number) + 2
     return fx
 
 
@@ -52,4 +53,4 @@ def secant(x0, x1, tolerance, iterations):
     return root
 
 
-print(secant(1.3, 1.4, 0.5E-04, 10))
+print(secant(0.5, 1, 0.5E-05, 10))
