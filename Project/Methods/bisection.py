@@ -10,7 +10,8 @@ def f(number):
     #fx = math.exp(number) - number - 2
     #fx = (number*(math.exp(number))) - (number**2) - (5*number) -3
     #fx = (math.exp(-number)) - math.cos(4*number)
-    fx = math.exp((-(number)**2)+1) - (4*(number**3)) + 25
+    #fx = math.exp((-(number)**2)+1) - (4*(number**3)) + 25
+    fx = (number**3)+(4*(number**2))-10
     return fx
 
 
@@ -54,4 +55,4 @@ def bisection(xi, xs, tolerance, iterations):
     return root
 
 
-print(bisection(1, 2, 0.001, 100))
+print(bisection(1, 2, 1e-07, 100))
