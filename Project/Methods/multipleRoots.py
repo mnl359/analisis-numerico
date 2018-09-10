@@ -13,7 +13,8 @@ def f(number):
     #fx = sympy.exp(-x) - sympy.log(x)
     #fx = 3*(x**3) + 10*(x**2) - x + 20
     #fx = sympy.cos(x) 
-    fx = (x**4) - (18*(x**2)) + 81
+    #fx = (x**4) - (18*(x**2)) + 81
+    fx = (x**3) - (x**2) - x + 1 + (sympy.sin(x-1) * sympy.sin(x-1))
     #fx = (x**3)+(4*(x**2))-10
     #sympy.exp((-(x)**2)+1) - (4*(x**3)) + 25
     function = fx.evalf(subs={x:number})
@@ -56,6 +57,6 @@ def multipleRoots(x0, tolerance, iterations):
     print(table)
     return root
 
-print(multipleRoots(-2.5, 0.5e-07, 20))
+print(multipleRoots(0.5, 1e-05, 20))
 
 
