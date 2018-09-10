@@ -12,7 +12,7 @@ def f(number):
     x = sympy.symbols('x')
     #fx = sympy.exp(-x) - sympy.log(x)
     #fx = 3*(x**3) + 10*(x**2) - x + 20
-    fx = sympy.cos(x) + 2*x + 3
+    fx = sympy.cos(x) 
     #fx = (x**3)+(4*(x**2))-10
     #sympy.exp((-(x)**2)+1) - (4*(x**3)) + 25
     function = fx.evalf(subs={x:number})
@@ -48,6 +48,6 @@ def newton(x0, tolerance, iterations):
     print(table)
     return root
 
-print(newton(-1.537, 0.5e-05, 20))
+print(newton(-15, 1e-100, 100))
 
 

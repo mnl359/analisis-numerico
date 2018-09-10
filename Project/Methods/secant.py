@@ -11,8 +11,8 @@ def f(number):
     #fx = (number*(math.exp(number))) - (number**2) - (5*number) -3
     #fx = (math.exp(-number)) - math.cos(4*number)
     #fx = math.exp((-(number)**2)+1) - (4*(number**3)) + 25
-    #fx = (number**3)+(4*(number**2))-10
-    fx = math.exp(number) - (5 * number) + 2
+    fx = (number**3)+(4*(number**2))-10
+    #fx = math.exp(number) - (5 * number) + 2
     return fx
 
 
@@ -26,12 +26,11 @@ def secant(x0, x1, tolerance, iterations):
         fx1 = f(x1)
         cont = -1
         error = tolerance + 1
-        print(error)
         den = fx1 - fx0
         table.add_row([cont, x0, '%.2E' % Decimal(str(fx0)), 'Doesnt exist'])
         cont += 1
         table.add_row([cont , x1, '%.2E' % Decimal(str(fx1)), 'Doesnt exist'])
-        while error > tolerance and fx1 != 0 and den != 0 and cont < iterations:
+        while fx1 != 0 and den != 0 and cont < iterations:
             cont += 1
             x2 = x1 - ((fx1 * (x1 - x0)) / den)
             error = abs((x2-x1)/x2)
@@ -40,6 +39,8 @@ def secant(x0, x1, tolerance, iterations):
             x1 = x2 
             fx1 = f(x1)
             den = fx1 - fx0
+            if error < tolerance:
+                break
             table.add_row([cont, x1, '%.2E' % Decimal(str(fx1)), '%.2E' % Decimal(str(error))])
         if fx1 == 0:
             root = x1
@@ -53,4 +54,4 @@ def secant(x0, x1, tolerance, iterations):
     return root
 
 
-print(secant(0.5, 1, 0.5E-05, 10))
+print(secant(1.3, 1.4, 0.5E-08, 10))
