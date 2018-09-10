@@ -1,14 +1,15 @@
 #!/bin/python3
 
-import math
+import math, sympy
 from decimal import Decimal
 from prettytable import PrettyTable
 
 def f(number):
     # fx = math.exp((3*number)-12) + (number * math.cos(3*number)) - (number**2) + 4
     # fx = math.exp((-(number)**2)+1)-(4*(number**3)) + 25
-    # fx = (2 * (number**2)) + (3 * number) - 3
-    fx = math.exp(number) - number - 2
+    fx = (2 * (number**2)) + (3 * number) - 3
+    #fx = math.exp(number) - number - 2
+    #fx = sympy.cos(number) + 2*number + 3
     return fx
 
 
@@ -61,4 +62,4 @@ def falseRule(xi, xs, tolerance, iterations):
     return root
 
 
-print(falseRule(1, 2, 0.0001, 20))
+print(falseRule(0.65, 0.7, 0.5e-5, 100))

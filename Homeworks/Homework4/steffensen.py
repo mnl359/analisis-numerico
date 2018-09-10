@@ -9,7 +9,8 @@ def f(number):
     x = sympy.symbols('x')
     #function = sympy.exp(-x) - sympy.log(x)
     #function = 3*(x**3) + 10*(x**2) - x + 20
-    function = sympy.cos(x) + 2*x + 3
+    #function = (x**3) - (x**2) - x + 1 + (sympy.sin(x-1) * sympy.sin(x-1))
+    function = (x*(sympy.exp(x))) - (x**2) - (5*x) -3
     #fx = (x**3)+(4*(x**2))-10
     #sympy.exp((-(x)**2)+1) - (4*(x**3)) + 25
     fx = function.evalf(subs={x:number})
@@ -47,4 +48,4 @@ def steffensen(x0, tolerance, iterations):
     return root
 
 
-print(steffensen(-1.6, 0.5e-05, 100))
+print(steffensen(-0.5, 5e-05, 100))
