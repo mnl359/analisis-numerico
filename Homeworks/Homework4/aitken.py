@@ -28,6 +28,7 @@ def aitken(x0, tolerance, iterations):
             aux = x0-(num/den)
             if aux == 0:
                 break
+            aux = x0 - (numerator/denominator)
             error = abs((aux - x0)/aux) # Error relativo
             cont += 1
             table.add_row([cont, aux, '%.2E' % Decimal(str(error))])
