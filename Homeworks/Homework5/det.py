@@ -1,18 +1,35 @@
 #!/bin/python3
 
 from numpy.linalg import det
+from copy import deepcopy
+from random import randint
+
+
+def aleatory(m ,n):
+    matrix = []
+    x = 0
+    y = 0
+    while x != m:
+        aux = []
+        while y != n:
+            aux1 = randint(0,100)
+            aux.append(aux1)
+            y += 1
+        x += 1
+        y = 0
+        matrix.append(aux)
+    return matrix
 
 
 def cofactors(matrix, row, column):
-    cof = matrix
+    cof = deepcopy(matrix)
     cof.pop(row)
-    for x in range(len(matrix)):
+    for x in range(len(cof)):
         cof[x].pop(column)
     return cof
         
 
 def determinant(matrix):
-    print("len matrix: " + str(len(matrix)))
     if len(matrix) != len(matrix[0]):
         print("The matrix must be an square")
         exit(1)
@@ -29,8 +46,7 @@ def determinant(matrix):
         return det
 
 
-a = [[1,0,2],[3,0,0],[2,1,4]]
-#a = [[3,0],[2,1]]
+a = aleatory(10, 10)
 
 print(determinant(a))
 print("-----")
