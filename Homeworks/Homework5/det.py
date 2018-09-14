@@ -3,6 +3,7 @@
 from numpy.linalg import det
 from copy import deepcopy
 from random import randint
+from sys import stdout
 
 
 def aleatory(m ,n):
@@ -41,13 +42,21 @@ def determinant(matrix):
         det = 0
         sign = 1
         for x in range(len(matrix[0])):
-            det += sign * matrix[0][x]*determinant(cofactors(matrix, 0, x)) # El error está al pasar el determinante sigue sacando cofactores
+            det += sign * matrix[0][x]*determinant(cofactors(matrix, 0, x))
             sign = -sign
         return det
 
-
-a = aleatory(10, 10)
-
-print(determinant(a))
-print("-----")
-print(det(a))
+matrix_rows = int(input("Enter number of rows in the matrix: "))
+matrix_columns = int(input("Enter number of columns in the matrix: "))
+matrix = []
+print("Enter the %s x %s matrix: "% (matrix_rows, matrix_columns))
+print("Separe each number with a space and to change the row press ENTER")
+for j in range(matrix_rows):
+        matrix.append(list(map(int, input().rstrip().split())))
+print("You will find the result in result_determinant.txt")
+with open("result_determinant.txt", "w") as result:
+    print("The matrix is:", file=result)
+    for x in matrix:
+        print(*x, sep=" ", file=result)
+    print("\n", file=result)
+    print("The determinant is: %s" % str(determinant(matrix)), file=result)
