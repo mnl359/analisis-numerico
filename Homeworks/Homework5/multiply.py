@@ -19,8 +19,7 @@ def multiply(m, n):
             aux.append(pos)
             column += 1
         result.append(aux)
-    for x in result:
-            print(*x, sep=" ")
+    return result
 
 first_rows = int(input("Enter number of rows in the first matrix: "))
 first_columns = int(input("Enter number of columns in the first matrix: "))
@@ -36,5 +35,10 @@ print("Enter the %s x %s matrix: "% (second_rows, second_columns))
 print("Separe each number with a space and to change the row press ENTER")
 for j in range(second_rows):
         second_matrix.append(list(map(int, input().rstrip().split())))
-print("The result matrix is:")
 m = multiply(first_matrix, second_matrix)
+
+print("You will find the result in result_multiply.txt")
+with open("result_multiply.txt", "w") as result:
+    print("The result matrix is:", file=result)
+    for x in m:
+        print(*x, sep=" ", file=result)
