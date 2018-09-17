@@ -1,9 +1,9 @@
 #!/bin/python3
 
-from numpy.linalg import det
 from copy import deepcopy
 from random import randint
 from sys import stdout
+from pandas import DataFrame
 
 
 def aleatory(m ,n):
@@ -56,7 +56,6 @@ for j in range(matrix_rows):
 print("You will find the result in result_determinant.txt")
 with open("result_determinant.txt", "w") as result:
     print("The matrix is:", file=result)
-    for x in matrix:
-        print(*x, sep=" ", file=result)
+    print(DataFrame(matrix), file=result)
     print("\n", file=result)
     print("The determinant is: %s" % str(determinant(matrix)), file=result)
