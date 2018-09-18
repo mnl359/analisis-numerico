@@ -1,6 +1,6 @@
 #!/bin/python3
 
-from copy import deepcopy
+from copy import deepcopy, copy
 from pandas import DataFrame
 
 def stepped(A, b):
@@ -82,6 +82,6 @@ with open(name + ".txt", "w") as result:
     for x in A:
         print("x" + str(num) + " = " + str(x), file=result)
         num += 1
-    print("\n")
+    print("\n", file=result)
     print("The matrix was:" , file=result)
     print(DataFrame(aumMatrix(matrix, vector)), file=result)
