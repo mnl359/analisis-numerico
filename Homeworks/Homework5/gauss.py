@@ -1,5 +1,7 @@
 #!/bin/python3
 
+from pandas import DataFrame
+
 def stepped(A, b):
     Ab = aumMatrix(A, b)
     n = len(Ab) 
@@ -41,26 +43,40 @@ def aumMatrix(A, b):
         cont += 1
     return A
 
-def clear(stepMat):
-    n = len(stepMat)
-    x = stepMat[]
+def clear(stepMat, n):
+    vector = []
+    for x in range(n):
+        vector.append(0)
+    vector[n-1]=stepMat[n-1][n]/stepMat[n-1][n-1]
+    i = n-2
+    while i >= 0:
+        result = 0
+        p = len(vector)-1
+        while p >= 0:
+            result += (stepMat[i][p]*vector[p])
+            p -= 1
+        vector[i] = (stepMat[i][n]-result)/stepMat[i][i]
+        i -= 1
+    return vector
 
 
 name = input("Enter the name of the file you want the answer to be saved. It's going to have '.txt' extension: ")
 matrix_rows = int(input("As this has to be a square matrix, the number of rows is going to be the same number of columns. \
                 \nEnter number of rows in the matrix: "))
 matrix = []
+vector = []
 print("Enter the %s x %s matrix: "% (matrix_rows, matrix_rows))
 print("Separe each number with a space and to change the row press ENTER")
 for j in range(matrix_rows):
         matrix.append(list(map(int, input().rstrip().split())))
+print("Enter de vector. Separe each number with a space")
+vector.append(list(map(int, input().rstrip().split())))
 print("You will find the result in " + name + ".txt")
 with open(name + ".txt", "w") as result:
     print("The matrix is:", file=result)
     for x in matrix:
         print(*x, sep=" ", file=result)
-    A = stepped(matrix)
-    for n in A:
-        print(*n, sep=" ", file=result)
-    print("The stepped matrix is: %s" % str(stepped(matrix)), file=result)
-
+    A = clear(stepped(matrix, vector), len(matrix))
+    for x in A:
+        print("x%s es %s" %(str(),str()), file=result)
+    print("The matrix was: %s" % str(aumMatrix(matrix, vector)), file=result)
