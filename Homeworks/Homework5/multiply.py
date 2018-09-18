@@ -1,6 +1,6 @@
 #!/bin/python3
 
-from pprint import PrettyPrinter, pprint
+from pandas import DataFrame
         
 def multiply(m, n):
     if len(m[0]) != len(n):
@@ -40,5 +40,4 @@ m = multiply(first_matrix, second_matrix)
 print("You will find the result in result_multiply.txt")
 with open("result_multiply.txt", "w") as result:
     print("The result matrix is:", file=result)
-    for x in m:
-        print(*x, sep=" ", file=result)
+    print(DataFrame(m), file=result)
