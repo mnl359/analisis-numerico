@@ -4,6 +4,7 @@ import math, sympy
 from decimal import Decimal
 from prettytable import PrettyTable
 
+
 def f(number):
     #fx = math.exp((3*number)-12) + (number * math.cos(3*number)) - (number**2) + 4
     #fx = (2 * (number**2)) + (3 * number) - 3

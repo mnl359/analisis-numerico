@@ -14,7 +14,7 @@ def home():
     machine = Machine(8, 8)
     maximo = machine.biggest()
     minimo = machine.lowest()
-    return render_template('home.html', maximo=maximo, minimo=minimo)
+    return render_template('index.html', maximo=maximo, minimo=minimo)
 
 @app.route('/machine', methods=['POST'])
 def machine():

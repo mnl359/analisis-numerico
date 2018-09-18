@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        .bs-example{
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th scope="col">Maximum</th>
+        <th scope="col">Minimum</th>
+        <th scope="col">Minimum positive</th>
+        <th scope="col">Decimal Number</th>
+        <th scope="col">Machine Number</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{maximum}}</td>
+        <td>{{minimum}}</td>
+        <td>{{positive}}</td>
+        <td>{{decimal}}</td>
+        <td>{{binary}}</td>
+    </tr>
+
+    </tbody>
+</table>
+
+<form action="/number" method="POST">
+    <div class="form-group">
+        <input class="form-control" type="number" name="number" placeholder="Decimal Number" value="{{ decimal }}">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Convert to Machine Number</button>
+    </div>
+</form>
+
+<form action="/binary" method="POST">
+    <div class="form-group">
+        <input class="form-control" type="number" name="binary" placeholder="Machine Number" value="{{ binary }}">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Convert to Decimal</button>
+    </div>
+</form>
+</body>
+</html>
