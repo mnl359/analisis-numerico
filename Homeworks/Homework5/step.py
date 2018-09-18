@@ -1,4 +1,5 @@
 #!/bin/python3
+from pandas import DataFrame
 
 def stepped(A):
     n = len(A) 
@@ -25,7 +26,7 @@ def stepped(A):
                 
                 helper = A[i][i]
                 if helper != 1: 
-                    if helper == 0 and i == n - 1:
+                    if helper == 0:
                         print("WARNING! It's not possible to step the matrix. Error in row", i)
                         exit(1)
                     row = A[i]             
@@ -51,13 +52,9 @@ def swapping(A, column, i):
             break
 
 
-B = [[0, 1, 3, 4], [2, 0, 4, 5], [3, 3, 5, 7], [8, 3, 4, 2]]
-#print(stepped(B))
-
 name = input("Enter the name of the file you want the answer to be saved. It's going to have '.txt' extension: ")
-matrix_rows = int(input("Enter number of rows in the matrix: \
-                \nAs this has to be a square matrix, the number of rows is going to be the same number of columns. "))
-#matrix_columns = int(input("Enter number of columns in the matrix: "))
+matrix_rows = int(input("As this has to be a square matrix, the number of rows is going to be the same number of columns. \
+                \nEnter number of rows in the matrix: "))
 matrix = []
 print("Enter the %s x %s matrix: "% (matrix_rows, matrix_rows))
 print("Separe each number with a space and to change the row press ENTER")
@@ -69,8 +66,7 @@ with open(name + ".txt", "w") as result:
     for x in matrix:
         print(*x, sep=" ", file=result)
     print("\n", file=result)
+    print("The stepped matrix is:", file=result)
     A = stepped(matrix)
-    for n in A:
-        print(*n, sep=" ", file=result)
-    print("The stepped matrix is: %s" % str(stepped(matrix)), file=result)
+    print(DataFrame(A), file=result)
 
