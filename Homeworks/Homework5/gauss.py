@@ -1,5 +1,6 @@
 #!/bin/python3
 
+from copy import deepcopy
 from pandas import DataFrame
 
 def stepped(A, b):
@@ -71,12 +72,16 @@ for j in range(matrix_rows):
         matrix.append(list(map(int, input().rstrip().split())))
 print("Enter de vector. Separe each number with a space")
 vector.append(list(map(int, input().rstrip().split())))
+vector = vector[0]
 print("You will find the result in " + name + ".txt")
+matrix_aux = deepcopy(matrix)
+vector_aux = copy(vector)
 with open(name + ".txt", "w") as result:
-    print("The matrix is:", file=result)
-    for x in matrix:
-        print(*x, sep=" ", file=result)
-    A = clear(stepped(matrix, vector), len(matrix))
+    A = clear(stepped(matrix_aux, vector_aux), len(matrix))
+    num = 1
     for x in A:
-        print("x%s es %s" %(str(),str()), file=result)
-    print("The matrix was: %s" % str(aumMatrix(matrix, vector)), file=result)
+        print("x" + str(num) + " = " + str(x), file=result)
+        num += 1
+    print("\n")
+    print("The matrix was:" , file=result)
+    print(DataFrame(aumMatrix(matrix, vector)), file=result)
