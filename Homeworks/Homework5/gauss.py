@@ -69,9 +69,9 @@ vector = []
 print("Enter the %s x %s matrix: "% (matrix_rows, matrix_rows))
 print("Separe each number with a space and to change the row press ENTER")
 for j in range(matrix_rows):
-        matrix.append(list(map(int, input().rstrip().split())))
+        matrix.append(list(map(float, input().rstrip().split())))
 print("Enter de vector. Separe each number with a space")
-vector.append(list(map(int, input().rstrip().split())))
+vector.append(list(map(float, input().rstrip().split())))
 vector = vector[0]
 print("You will find the result in " + name + ".txt")
 matrix_aux = deepcopy(matrix)
