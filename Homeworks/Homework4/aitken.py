@@ -5,7 +5,8 @@ from decimal import Decimal
 from prettytable import PrettyTable
 
 def f(x):
-    fx = -(math.exp(x))
+    #fx = -(math.exp(x))
+    fx = math.sqrt((2*x)) + 3
     return fx
 
 def aitken(x0, tolerance, iterations):
@@ -28,7 +29,7 @@ def aitken(x0, tolerance, iterations):
             aux = x0-(num/den)
             if aux == 0:
                 break
-            aux = x0 - (numerator/denominator)
+            aux = x0 - (num/den)
             error = abs((aux - x0)/aux) # Error relativo
             cont += 1
             table.add_row([cont, aux, '%.2E' % Decimal(str(error))])
@@ -41,5 +42,6 @@ def aitken(x0, tolerance, iterations):
         print(table)
     return root
 
-print(aitken(0.5, 1e-07, 100))
+#print(aitken(0.5, 1e-07, 100))
+print(aitken(4, 1e-03, 100))
 
