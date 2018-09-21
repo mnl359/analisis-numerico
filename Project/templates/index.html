@@ -41,7 +41,7 @@
             <div class="row">
                 <div class="col-sm-12 text-center">
                     <a href="index.html">
-                        <img class="logo logo-dark" alt="Logo" src={{ url_for('static', filename="img/logotype_dark.png") }}>
+                        <img class="logo logo-dark" alt="Logo" src={{ url_for('static', filename="img/download.jpeg") }}>
                     </a>
                 </div>
             </div>
@@ -98,6 +98,58 @@
         <a class="btn btn-primary" href="#bisection" data-toggle="collapse" role="button">Bisection</a>
         <div  id="bisection" class="collapse">
             <form action="/bisection" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="function" placeholder="f(x)" >
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" name="xi" step="0.00001" placeholder="xi" >
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" name="xs" step="0.00001" placeholder="xs">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="tolerance"step="0.00000000000000001" placeholder="tolerance" >
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-secondary">Go</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="bis_ait" class="container">
+        <a class="btn btn-primary" href="#aitken_bisection" data-toggle="collapse" role="button">Aitken Bisection</a>
+        <div  id="aitken_bisection" class="collapse">
+            <form action="/aitken_bisection" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="function" placeholder="f(x)" >
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" name="xi" step="0.00001" placeholder="xi" >
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" name="xs" step="0.00001" placeholder="xs">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="tolerance"step="0.00000000000000001" placeholder="tolerance" >
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-secondary">Go</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+     <div id="mul" class="container">
+        <a class="btn btn-primary" href="#muller" data-toggle="collapse" role="button">Muller</a>
+        <div  id="muller" class="collapse">
+            <form action="/muller" method="POST">
                 <div class="form-group">
                     <input class="form-control" type="text" name="function" placeholder="f(x)" >
                 </div>
@@ -180,7 +232,7 @@
                     <input class="form-control" type="text" name="gunction" placeholder="g(x)" >
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="number" name="xa" step="0.00001" placeholder="xa" >
+                    <input class="form-control" type="number" name="xa" step="0.00001" placeholder="x0" >
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
@@ -199,6 +251,29 @@
         <a class="btn btn-primary" href="#multiple" data-toggle="collapse" role="button">Multiple Roots</a>
         <div  id="multiple" class="collapse">
             <form action="/multiple" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="function" placeholder="f(x)" >
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" name="x0" step="0.00001" placeholder="x0" >
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="tolerance" step="0.00001" placeholder="tolerance">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-secondary">Go</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <a class="btn btn-primary" href="#aitken" data-toggle="collapse" role="button">Aitken</a>
+        <div  id="aitken" class="collapse">
+            <form action="/aitken" method="POST">
                 <div class="form-group">
                     <input class="form-control" type="text" name="function" placeholder="f(x)" >
                 </div>
