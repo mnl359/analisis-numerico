@@ -198,3 +198,157 @@ class Methods:
             root = None
         print(table)
         return (root, table)
+
+    def aitken(self, x0, tolerance, iterations):
+        table = [['Iteration', 'Xn', 'Error Absoluto']]
+        fx0 = self.f(x0)[0]
+        root = 0
+        if fx0 == 0:
+            root = x0
+        else:
+            cont = 0
+            error = tolerance + 1
+            table.append([cont, x0, 'Doesnt exist'])
+            prev = x0
+
+            while cont < iterations and error > tolerance:
+                x1 = self.f(x0)[0]
+                x2 = self.f(x1)[0]
+
+                if (x2 - x1) - (x1 - x0) == 0:
+                    break
+                aux = x2 - (((x2 - x1) ** 2) / ((x2 - x1) - (x1 - x0)))
+                if aux == 0:
+                    break
+                error = abs((aux - prev))  # Error absoluto
+                cont += 1
+                table.append([cont, aux, '%.2E' % Decimal(str(error))])
+                x0 = x1
+                prev = aux
+
+            if error < tolerance:
+                root = (aux, '%.2E' % Decimal(str(error)))
+            else:
+                root = (None, cont)
+
+            print(table)
+        return (root, table)
+
+    def bis(self, a, b):
+        fa = self.f(a)[0]
+        x = (a + b) / 2.0
+        fx = self.f(x)[0]
+        if (fa * fx) < 0:
+            b = x
+        else:
+            a = x
+        x = (a + b) / 2.0
+        return a, b, x
+
+    def aitken_bis(self, a, b, tolerance, iterations):
+        table = [['Iteration', 'Xn', 'Error Absoluto']]
+        x0 = (a + b) / 2.0
+        fa = self.f(a)[0]
+        fb = self.f(b)[0]
+        fx0 = self.f(x0)[0]
+        root = 0
+        if fx0 == 0:
+            root = x0
+        elif fa == 0:
+            root = a
+        elif fb == 0:
+            root = b
+        else:
+            cont = 0
+            error = tolerance + 1
+            table.append([cont, x0, 'Doesnt exist'])
+            prev = x0
+
+            while cont < iterations and (error > tolerance or error == 0):
+                a1, b1, x1 = self.bis(a, b)
+                a2, b2, x2 = self.bis(a1, b1)
+                den = (x2 - x1) - (x1 - x0)
+                if den == 0:
+                    print("The denominator became 0.")
+                    break
+                xn = x2 - (((x2 - x1) ** 2) / den)
+                if xn == prev:
+                    a, b, x0 = a1, b1, x1
+                    prev = xn
+                    continue
+                error = abs(xn - prev)  # Error absoluto
+                cont += 1
+                table.append([cont, xn, '%.2E' % Decimal(str(error))])
+                a, b, x0 = a1, b1, x1
+                prev = xn
+
+            if error < tolerance:
+                root = (xn, '%.2E' % Decimal(str(error)))
+            else:
+                print (error)
+                root = (None, cont)
+
+            print(table)
+        return (root, table)
+
+    def muller(self, x0, x1, tolerance, iterations):
+        table = [['Iteration', 'X1', 'X2', 'X3', 'Error Absoluto']]
+        x2 = (x1 - x0) / 2.0  # We get the third value using bisection
+        fx0 = self.f(x0)[0]
+        fx1 = self.f(x1)[0]
+        fx2 = self.f(x2)[0]
+        root = 0
+        if fx0 == 0:
+            root = x0
+        elif fx1 == 0:
+            root = x1
+        if fx2 == 0:
+            root = x2
+        else:
+            cont = 0
+            error = tolerance + 1
+            table.append([cont, x0, x1, x2, 'Doesnt exist'])
+
+            while cont < iterations and error > tolerance:
+                h0 = x1 - x0
+                h1 = x2 - x1
+                if (h0 == 0) | (h1 == 0):
+                    print ("h0 or h1 became 0.")
+                    break
+                delta0 = (fx1 - fx0) / h0
+                delta1 = (fx2 - fx1) / h1
+                if h1 - h0 == 0:
+                    print ("h1 - h0 became 0.")
+                    break
+                a = (delta1 - delta0) / (h1 - h0)
+                b = a * h1 + delta1
+                c = fx2
+                # Solving the quadratic equation
+                den = 1
+                if b < 0:
+                    den = b - sqrt(b ** 2 - 4 * a * c)
+                else:
+                    den = b + sqrt(b ** 2 - 4 * a * c)
+                x3 = x2 + (-2 * c) / den
+
+                error = abs(x3 - x2)  # Abs error
+                cont += 1
+                table.append([cont, x1, x2, x3, '%.2E' % Decimal(str(error))])
+                x0 = x1
+                x1 = x2
+                x2 = x3
+                fx0 = fx1
+                fx1 = fx2
+                fx2 = self.f(x3)[0]
+
+            if error < tolerance:
+                root = (x3, '%.2E' % Decimal(str(error)))
+            else:
+                if (cont == iterations):
+                    print ("The method failed.")
+                    root = (None, cont)
+                else:
+                    root = (x3, '%.2E' % Decimal(str(error)))
+
+            print(table)
+        return (root, table)

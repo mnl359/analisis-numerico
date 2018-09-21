@@ -67,7 +67,7 @@ def incremental():
     methods = Methods(func)
     table = methods.incremental_searches(x0, delta,iterations)
 
-    return render_template('resultsTable.html', results=table[1])
+    return render_template('resultsTable.html', results=table)
 
 @app.route('/multiple', methods=['POST'])
 def multiple():
@@ -82,6 +82,46 @@ def multiple():
 
     return render_template('resultsTable.html', results=table[1])
 
+@app.route('/aitken', methods=['POST'])
+def aitken():
+
+    func = request.form['function']
+    x0 = float(request.form['x0'])
+    tolerance = float(request.form['tolerance'])
+    iterations = float(request.form['iterations'])
+
+    methods = Methods(func)
+    table = methods.aitken(x0, tolerance,iterations)
+
+    return render_template('resultsTable.html', results=table[1])
+
+@app.route('/aitken_bisection', methods=['POST'])
+def aitken_bisection():
+
+    func = request.form['function']
+    xi = float(request.form['xi'])
+    xs = float(request.form['xs'])
+    iterations = float(request.form['iterations'])
+    tolerance = float(request.form['tolerance'])
+
+    methods = Methods(func)
+    table = methods.aitken_bis(xi, xs, tolerance,iterations)
+
+    return render_template('resultsTable.html', results=table[1])
+
+@app.route('/muller', methods=['POST'])
+def muller():
+
+    func = request.form['function']
+    xi = float(request.form['xi'])
+    xs = float(request.form['xs'])
+    iterations = float(request.form['iterations'])
+    tolerance = float(request.form['tolerance'])
+
+    methods = Methods(func)
+    table = methods.muller(xi, xs, tolerance,iterations)
+
+    return render_template('resultsTable.html', results=table[1])
 
 
 if __name__ == "__main__":
