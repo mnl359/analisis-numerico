@@ -1,7 +1,7 @@
 import os
 from flask import Flask, redirect, url_for, request, render_template, make_response
-from machine import Machine
-from 'Methods/bisection.py' import
+# from machine import Machine
+from methods import Methods
 app = Flask(__name__)
 
 
@@ -12,60 +12,76 @@ state = None
 
 @app.route('/')
 def home():
-    machine = Machine(8, 8)
-    maximo = machine.biggest()
-    minimo = machine.lowest()
-    return render_template('index.html', maximo=maximo, minimo=minimo)
+    return render_template('index.html')
 
-@app.route('/machine', methods=['POST'])
-def machine():
+@app.route('/bisection', methods=['POST'])
+def bisection():
 
-    if request.form['mantissa'] != '' and request.form['exponent'] != '':
-        mantissa = request.form['mantissa']
-        exponent = request.form['exponent']
-    else:
-        mantissa = request.cookies.get('mantissa')
-        exponent = request.cookies.get('exponent')
+    func = request.form['function']
+    xi = float(request.form['xi'])
+    xs = float(request.form['xs'])
+    iterations = float(request.form['iterations'])
+    tolerance = float(request.form['tolerance'])
 
-    if int(mantissa) + int(exponent) == 10:
+    methods = Methods(func)
+    table = methods.bisection(xi, xs, tolerance,iterations)
 
-        machine = Machine(int(mantissa), int(exponent))
-        maximum = machine.biggest()
-        minimum = machine.lowest()
-        positive = machine.positive()
-        resp = make_response(render_template('machine.html', maximum=maximum, minimum=minimum, binary=0, positive=positive))
-        resp.set_cookie('exponent', value=exponent, max_age=90)
-        resp.set_cookie('mantissa', value=mantissa, max_age=90)
+    return render_template('resultsTable.html', results=table[1])
 
-        return resp
-    else:
-        return mantissa+exponent
+@app.route('/fixed', methods=['POST'])
+def fixed():
 
-@app.route('/number', methods=['POST'])
-def number():
-    number = request.form['number']
-    exponent = request.cookies.get('exponent')
-    mantissa = request.cookies.get('mantissa')
-    machine = Machine(int(mantissa), int(exponent))
-    maximum = machine.biggest()
-    minimum = machine.lowest()
-    epsilon = machine.epsilon()
-    binary = machine.machine_number(number)
-    positive = machine.positive()
-    return render_template('machine.html', maximum=maximum, minimum=minimum, binary=binary, decimal=number, epsilon=epsilon, positive=positive)
+    func = request.form['function']
+    gunc = request.form['gunction']
+    xa = float(request.form['xa'])
+    iterations = float(request.form['iterations'])
+    tolerance = float(request.form['tolerance'])
 
-@app.route('/binary', methods=['POST'])
-def binary():
-    binary = request.form['binary']
-    exponent = request.cookies.get('exponent')
-    mantissa = request.cookies.get('mantissa')
-    machine = Machine(int(mantissa), int(exponent))
-    maximum = machine.biggest()
-    minimum = machine.lowest()
-    epsilon = machine.epsilon()
-    decimal = machine.decimalNumber(binary)
-    positive = machine.positive()
-    return render_template('machine.html', maximum=maximum, minimum=minimum, binary=binary, decimal=decimal, epsilon=epsilon, positive=positive)
+    methods = Methods(func, gunc)
+    table = methods.fixedPoint(xa, tolerance,iterations)
+
+    return render_template('resultsTable.html', results=table[1])
+
+@app.route('/falseRule', methods=['POST'])
+def falseRule():
+
+    func = request.form['function']
+    xi = float(request.form['xi'])
+    xs = float(request.form['xs'])
+    iterations = float(request.form['iterations'])
+    tolerance = float(request.form['tolerance'])
+
+    methods = Methods(func)
+    table = methods.falseRule(xi, xs, tolerance,iterations)
+
+    return render_template('resultsTable.html', results=table[1])
+
+@app.route('/incremental', methods=['POST'])
+def incremental():
+
+    func = request.form['function']
+    x0 = float(request.form['x0'])
+    delta = float(request.form['delta'])
+    iterations = float(request.form['iterations'])
+
+    methods = Methods(func)
+    table = methods.incremental_searches(x0, delta,iterations)
+
+    return render_template('resultsTable.html', results=table[1])
+
+@app.route('/multiple', methods=['POST'])
+def multiple():
+
+    func = request.form['function']
+    x0 = float(request.form['x0'])
+    tolerance = float(request.form['tolerance'])
+    iterations = float(request.form['iterations'])
+
+    methods = Methods(func)
+    table = methods.multipleRoots(x0, tolerance,iterations)
+
+    return render_template('resultsTable.html', results=table[1])
+
 
 
 if __name__ == "__main__":
