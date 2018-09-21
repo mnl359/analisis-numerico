@@ -126,7 +126,7 @@ class Methods:
         while fx != 0 and error > tolerance and cont < iterations:
             xn = self.g(xa)
             fx = self.f(xn)[0]
-            error = abs((xn - xa) / xn)
+            error = abs(xn - xa)
             xa = xn
             cont += 1
             table.append([cont, xn, fx, '%.2E' % Decimal(str(error))])
@@ -182,7 +182,7 @@ class Methods:
             fx = self.f(x1)[0]
             dfx = self.f(x1)[1]
             dfx2 = self.f(x1)[2]
-            error = abs((x1 - x0) / x1)
+            error = abs(x1 - x0)
             x0 = x1
             cont += 1
             table.append([cont, x1, '%.2E' % Decimal(str(fx)), '%.2E' % Decimal(str(dfx)), '%.2E' % Decimal(str(dfx2)),
