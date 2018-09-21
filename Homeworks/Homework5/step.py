@@ -63,8 +63,7 @@ for j in range(matrix_rows):
 print("You will find the result in " + name + ".txt")
 with open(name + ".txt", "w") as result:
     print("The matrix is:", file=result)
-    for x in matrix:
-        print(*x, sep=" ", file=result)
+    print(DataFrame(matrix), file=result)
     print("\n", file=result)
     print("The stepped matrix is:", file=result)
     A = stepped(matrix)
