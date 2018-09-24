@@ -4,7 +4,7 @@ import math
 from decimal import Decimal
 from prettytable import PrettyTable
 
-def f(number):
+def f(x):
     #fx = math.exp((3*number)-12) + (number * math.cos(3*number)) - (number**2) + 4
     #fx = (2 * (number**2)) + (3 * number) - 3
     #fx = math.exp(number) - number - 2
@@ -12,7 +12,8 @@ def f(number):
     #fx = (math.exp(-number)) - math.cos(4*number)
     #fx = math.exp((-(number)**2)+1) - (4*(number**3)) + 25
     #fx = (number**3)+(4*(number**2))-10
-    fx = math.exp(-number) + (math.sqrt(number)*math.log((number**2) + 1)) - (number**2)
+    fx = math.log((math.sin(x)*math.sin(x)) + 1) - 1/2
+    #fx = math.exp(-number) + (math.sqrt(number)*math.log((number**2) + 1)) - (number**2)
     #fx = math.exp(number) - (5 * number) + 2
     return fx
 
@@ -53,4 +54,4 @@ def secant(x0, x1, tolerance, iterations):
     return root
 
 
-print(secant(1, 1.2, 1E-03, 10))
+print(secant(0.5, 0.7, 1E-07, 10))

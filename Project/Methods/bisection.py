@@ -5,7 +5,7 @@ from decimal import Decimal
 from prettytable import PrettyTable
 
 
-def f(number):
+def f(x):
     #fx = math.exp((3*number)-12) + (number * math.cos(3*number)) - (number**2) + 4
     #fx = (2 * (number**2)) + (3 * number) - 3
     #fx = math.exp(number) - number - 2
@@ -13,7 +13,7 @@ def f(number):
     #fx = (math.exp(-number)) - math.cos(4*number)
     #fx = math.exp((-(number)**2)+1) - (4*(number**3)) + 25
     #fx = (number**3)+(4*(number**2))-10
-    fx = sympy.cos(number) + 2*number + 3
+    fx = (x**3) - x - math.exp(-x) - 1
     return fx
 
 
@@ -57,4 +57,4 @@ def bisection(xi, xs, tolerance, iterations):
     return root
 
 
-print(bisection(-1.6, -1.5, 0.5e-05, 100))
+print(bisection(1, 2, 1e-04, 100))

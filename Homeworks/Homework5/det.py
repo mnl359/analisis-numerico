@@ -52,7 +52,7 @@ matrix = []
 print("Enter the %s x %s matrix: "% (matrix_rows, matrix_columns))
 print("Separe each number with a space and to change the row press ENTER")
 for j in range(matrix_rows):
-        matrix.append(list(map(int, input().rstrip().split())))
+        matrix.append(list(map(float, input().rstrip().split())))
 print("You will find the result in result_determinant.txt")
 with open("result_determinant.txt", "w") as result:
     print("The matrix is:", file=result)

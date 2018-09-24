@@ -48,7 +48,7 @@ def stephensen(xn, exp, tolerance, iterations):
         print(table)
     return root
 
-print(stephensen(-1.1, "log(x+2)",0.5e-7, 100))
+print(stephensen(-0.5, "log((sin(x)*sin(x)) + 1) - 1/2 - x",1e-7, 100))
 
 #print(stephensen(6.5, "(2*x)**(1/2)+3-x",0.5e-11, 20))
 #print(stephensen(0.5, "exp(-1*x)-x",0.5e-11, 20))
