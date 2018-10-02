@@ -3,6 +3,63 @@
 from copy import deepcopy, copy
 from pandas import DataFrame
 
+def partial_pivot(A, k) 
+    biggest = abs(A[k][k])
+    biggest_row = k 
+    n = len(A)
+    for i in range(k+1, n):
+        if abs(A[i][k]) > biggest:
+            biggest = a[i][k]
+            biggest_row = i
+
+    if biggest == 0:
+        print("No unique solution")
+    elif not biggest_row == k:
+        swap_rows(A, biggest_row, k)
+    return A
+
+def total_pivot(A, k):
+    biggest = 0
+    biggest_row = k
+    biggest_column = k
+    n = len(A)
+    marks = []
+
+    for i in range(0, n):
+        marks[i] = i+1
+
+    for i in range(k, n):
+        for j in range(k, n):
+            if abs(A[i][j]) > biggest:
+                biggest = abs(A[i][j])
+                biggest_row = i
+                biggest_column = j
+
+    if biggest == 0:
+        print("No unique solution")
+    else:
+        if not biggest_row == k:
+            A = swap_cols(A, biggest_row, k)
+            tmp = marks[biggest_column]
+            marks[biggest_column] = marks[k]
+            marks[k] = tmp
+    return A    
+
+def swap_rows(A, rowa, rowb):
+    tmp = A[rowa]
+    A[rowa] = A[rowb]
+    A[rowb] = tmp
+    return A
+
+def swap_cols(A, cola, colb):
+    for i in range(0, len(A)):
+        tmp = A[i][cola]
+        A[i][cola] = A[i][colb]
+        A[i][colb] = tmp
+    return A
+
+
+
 def stepped(A, b):
     Ab = aumMatrix(A, b)
     n = len(Ab) 
