@@ -3,66 +3,71 @@
 from copy import deepcopy, copy
 from pandas import DataFrame
 
+
 def stepped(A, b):
     aux = deepcopy(A)
     Ab = aumMatrix(A, b)
     n = len(Ab)
     marks = []
+    cont = 0
     for x in range(len(aux[0])):
         marks.append(x)
-    for i in range(n):
-        biggest = biggestNumber(aux)
-        mult = Ab[biggest[0]][biggest[1]]
+    for i in range(1, n):
+        biggest = biggestNumber(Ab, cont, cont)
+        mult = abs(Ab[biggest[0]][biggest[1]])
         if biggest[0] != 0:
-            Ab = changeRows(Ab, biggest[0], 0)
+            Ab = changeRows(Ab, biggest[0], cont)
         if biggest[1] != 0:
-            Ab = changeColumns(Ab, biggest[1], 0)
-            marks = changeMarks(marks, biggest[1], 0)
+            Ab = changeColumns(Ab, biggest[1], cont)
+            marks = changeMarks(marks, biggest[1], i)
         Ab = multiply(Ab, mult, i)
         aux = deepcopy(Ab)
         k = len(aux)
-        for m in aux:
-            m.pop(k)
-        if len(aux) > 1:
+        if len(aux)-1 > i:
+            for m in aux:
+                m.pop(k)
             for x in range(i):
                 aux.pop(x)
             for y in aux:
                 for w in range(i):
                     y.pop(w)
-        print(DataFrame(aux))
-        print(DataFrame(Ab))
+        cont += 1
+    return Ab
 
 
-def biggestNumber(A):
+def biggestNumber(A, row_min, col_min):
     biggest = 0
     biggest_row = 0
     biggest_col = 0
-    for i in range(len(A)):
-        for j in range(len(A)):
-            if A[i][j] > biggest:
-                biggest = A[i][j]
+    for i in range(row_min, len(A)):
+        for j in range(col_min, len(A[0])-1):
+            if abs(A[i][j]) > biggest:
+                biggest = abs(A[i][j])
                 biggest_col = j
                 biggest_row = i
-    print("i ", i, " j ", j)
-    return (biggest_row, biggest_col)
+    return biggest_row, biggest_col
 
-def multiply(Ab, mult, i):
-    for j in range(i + 1, len(Ab)):
+
+def multiply(Ab, multi, i):
+    i -= 1
+    for j in range(i+1, len(Ab)):
         helper = Ab[j][i]
-        print("helper ", helper, " Ab[i][i] ", Ab[i][i])
-        mult = helper / Ab[i][i]
+        mult = helper / multi
         row1 = Ab[i]
         row2 = Ab[j]
         for k in range(0, len(row2)):
-            row2[k] -= (mult*row1[k])
+            aux = round(mult * row1[k], 9)
+            row2[k] = round(row2[k], 9) - aux
         Ab[j] = row2
     return Ab
+
 
 def changeRows(Ab, biggest_row, i):
     aux = Ab[biggest_row]
     Ab[biggest_row] = Ab[i]
     Ab[i] = aux
     return Ab
+
 
 def changeColumns(Ab, biggest_col, i):
     for x in Ab:
@@ -71,11 +76,13 @@ def changeColumns(Ab, biggest_col, i):
         x[biggest_col] = aux
     return Ab
 
+
 def changeMarks(marks, biggest_col, i):
     aux = marks[i]
     marks[i] = marks[biggest_col]
     marks[biggest_col] = aux
     return marks
+
 
 def aumMatrix(A, b):
     cont = 0
@@ -83,6 +90,7 @@ def aumMatrix(A, b):
         i.append(b[cont])
         cont += 1
     return A
+
 
 def clear(stepMat):
     vector = []
@@ -101,6 +109,11 @@ def clear(stepMat):
         i -= 1
     return vector
 
+
 m = [[-7, 2, -3, 4],[5, -1, 14, -1], [1, 9, -7, 13], [-12, 13, -8, -4]]
 b = [-12, 13, 31, -32]
-print(stepped(m, b))
+matrix = stepped(m, b)
+print(DataFrame(matrix))
+vector = clear(matrix)
+print("Las variables están en el vector de esta manera: x4, x3, x2, x1")
+print(vector)
