@@ -3,14 +3,16 @@
 from copy import deepcopy, copy
 from pandas import DataFrame
 
+marks = []
 
 def stepped(A, b):
+    global marks
     aux = deepcopy(A)
     Ab = aumMatrix(A, b)
     n = len(Ab)
     marks = []
     cont = 0
-    for x in range(len(aux[0])):
+    for x in range(1,len(aux[0])+1):
         marks.append(x)
     for i in range(1, n):
         biggest = biggestNumber(Ab, cont, cont)
@@ -19,7 +21,7 @@ def stepped(A, b):
             Ab = changeRows(Ab, biggest[0], cont)
         if biggest[1] != 0:
             Ab = changeColumns(Ab, biggest[1], cont)
-            marks = changeMarks(marks, biggest[1], i)
+            marks = changeMarks(marks, biggest[1], cont)
         Ab = multiply(Ab, mult, i)
         aux = deepcopy(Ab)
         k = len(aux)
@@ -78,6 +80,7 @@ def changeColumns(Ab, biggest_col, i):
 
 
 def changeMarks(marks, biggest_col, i):
+    print(marks)
     aux = marks[i]
     marks[i] = marks[biggest_col]
     marks[biggest_col] = aux
@@ -97,7 +100,7 @@ def clear(stepMat):
     n = len(stepMat)
     for x in range(n):
         vector.append(0)
-    vector[n-1]=stepMat[n-1][n]/stepMat[n-1][n-1]
+    vector[n-1] = stepMat[n-1][n]/stepMat[n-1][n-1]
     i = n-2
     while i >= 0:
         result = 0
@@ -110,10 +113,14 @@ def clear(stepMat):
     return vector
 
 
-m = [[-7, 2, -3, 4],[5, -1, 14, -1], [1, 9, -7, 13], [-12, 13, -8, -4]]
-b = [-12, 13, 31, -32]
+#m = [[1, 2.3, 4],[0.5, 2, 1], [4,5,6]]
+#b = [1,1,1,1]
+m = [[-7,2,-3,4], [5,-1,14,-1], [1,9,-7,13], [-12,13,-8,-4]]
+b = [-12,13,31,-32]
 matrix = stepped(m, b)
 print(DataFrame(matrix))
+print("\nMarcas:")
+print(marks)
 vector = clear(matrix)
-print("Las variables están en el vector de esta manera: x4, x3, x2, x1")
+print("Las variables están en el vector de manera decendente: x4, x3, x2, x1 a menos que el vector de marcas halla cambiado\n")
 print(vector)
