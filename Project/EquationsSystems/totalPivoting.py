@@ -37,8 +37,8 @@ def biggestNumber(A):
     biggest = 0
     biggest_row = 0
     biggest_col = 0
-    for i in range(len(A)):
-        for j in range(len(A)):
+    for i in range(0, len(A)):
+        for j in range(0, len(A)):
             if A[i][j] > biggest:
                 biggest = A[i][j]
                 biggest_col = j
