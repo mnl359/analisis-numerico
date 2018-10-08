@@ -33,6 +33,7 @@ def stepped(A, b):
                     row2[k] -= (mult*row1[k])
                 Ab[j] = row2
     
+    print(DataFrame(Ab))
     return Ab  
 
 def aumMatrix(A, b):
