@@ -1,5 +1,7 @@
 #!/bin/python3
 
+from pandas import DataFrame
+
 def upper_triangular(A):
     n = len(A) 
     if n != len(A[0]):
@@ -57,7 +59,18 @@ def progresive_substitution(stepMat, n):
     vector = []
     for x in range(n):
         vector.append(0)
-    vector[0] = stepMat
+    print(stepMat[0][0])
+    vector[0] = stepMat[0][n]/stepMat[0][0]
+    i = 1
+    while i <= n-1:
+        result = 0
+        p = 0
+        while p <= len(vector)-1:
+            result += (stepMat[i][p]*vector[p])
+            p += 1
+        vector[i] = stepMat[i][n]-result/stepMat[i][i]
+        i += 1
+    return vector
 
 def regressive_substitution(stepMat, n):
     vector = []
