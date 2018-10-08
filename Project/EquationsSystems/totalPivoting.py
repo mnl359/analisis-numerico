@@ -95,7 +95,7 @@ def aumMatrix(A, b):
     return A
 
 
-def clear(stepMat):
+def clear(stepMat, marks):
     vector = []
     n = len(stepMat)
     for x in range(n):
@@ -113,14 +113,14 @@ def clear(stepMat):
     return vector
 
 
-#m = [[1, 2.3, 4],[0.5, 2, 1], [4,5,6]]
-#b = [1,1,1,1]
-m = [[0, 2, 3], [7, -1, 20], [1, -14, 8]]
-b = [4, -2, 8]
+m = [[1, 2.3, 4],[0.5, 2, 1], [4,5,6]]
+b = [1,1,1,1]
+#m = [[-7,2,-3,4], [5,-1,14,-1], [1,9,-7,13], [-12,13,-8,-4]]
+#b = [-12,13,31,-32]
 matrix = stepped(m, b)
 print(DataFrame(matrix))
 print("\nMarcas:")
 print(marks)
-vector = clear(matrix)
+vector = clear(matrix, marks)
 print("Las variables están en el vector de manera decendente: x4, x3, x2, x1 a menos que el vector de marcas halla cambiado\n")
 print(vector)
