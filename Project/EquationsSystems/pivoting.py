@@ -22,7 +22,7 @@ def stepped(A, b):
                 Ab[cont] = aux                
 
                 if Ab[i][i] == 0:
-                    print("WARNING! It's not possible to step the matrix. Error in row", i)
+                    print("WARNING! It's not possible to step the matrix. Error in row ", i)
                     exit(1)
                    
             else:

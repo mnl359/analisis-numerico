@@ -131,7 +131,7 @@ def aumMatrix(A, b):
         cont += 1
     return A
 
-def lu_pivoting(A, vector):
+def lu_gauss(A, vector):
     u_matrix = upper_triangular(A)
     print(DataFrame(u_matrix), "\n")
     l_matrix = mults
@@ -142,7 +142,8 @@ def lu_pivoting(A, vector):
     result = regressive_substitution(Ux)
     return result
 
-A = [[2, -3, 4, 1], [-4, 2, 1, -2], [1, 3, -5, 3], [-3, -1, 1, -1]]
-b = [10, -10, 32, -21]
-
-print(lu_pivoting(A, b))
+#A = [[2, -3, 4, 1], [-4, 2, 1, -2], [1, 3, -5, 3], [-3, -1, 1, -1]]
+#b = [10, -10, 32, -21]
+A = [[-7, 2, -3, 4], [5, -1, 14, -1], [1, 9, -7, 5], [-12, 13, -8, -4]]
+b = [-12, 13, 31, -32]
+print(lu_gauss(A, b))
