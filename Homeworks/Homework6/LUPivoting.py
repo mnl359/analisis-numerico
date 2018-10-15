@@ -5,7 +5,6 @@ from pandas import DataFrame
 
 mults = []
 marks = []
-aux_matrix =[]
 
 def create_matrix(arr, lenMatrix):
     arr = [[0 for x in range(lenMatrix)] for y in range(lenMatrix)]
@@ -47,12 +46,10 @@ def multiply(m, n):
 def upper_triangular(A):
     global mults
     global marks
-    global aux_matrix
-    
+        
     n = len(A) 
     mults = create_matrix(mults, n)
-    marks = create_matrix(marks, n)
-    aux_matrix = deepcopy(A)
+    marks = create_matrix(marks, n)  
     
     for i in range(n):
         marks[i][i] = 1
@@ -60,7 +57,7 @@ def upper_triangular(A):
     for i in range (n):
         for j in range (i, n):            
             if i == j:
-                mults[i][i] = 1
+                #mults[i][i] = 1
                 column = [row[i] for row in A]
                 lenColumn = len(column)
                 helper = abs(A[i][i])
@@ -70,8 +67,8 @@ def upper_triangular(A):
                         helper = abs(column[k])
                         cont = k
                 A = exchange_rows(i, cont, A)
-                marks = exchange_rows(i, cont, marks)  
-                aux_matrix = exchange_rows(i, cont, aux_matrix)
+                marks = exchange_rows(i, cont, marks)
+                mults = exchange_rows(i, cont, mults)  
 
                 if A[i][i] == 0:
                     print("WARNING! It's not possible to step the matrix. Error in row ", i)
@@ -87,9 +84,10 @@ def upper_triangular(A):
                     row2[k] -= (mult*row1[k])
                     row2[k] = round(row2[k], 10)
                 A[j] = row2
-                aux_matrix[j] = row2
-                aux_matrix[j][i] = round(mult, 15)
-    print(DataFrame(aux_matrix), "\n")
+
+    for i in range(n):
+        mults[i][i] = 1
+
     return A 
 
 def progressive_substitution(stepMat):
@@ -127,25 +125,52 @@ def regressive_substitution(stepMat):
     return vector
 
 
-def lu_pivoting(A, vector):
+def lu_pivoting(A, vector, toPrint):
     u_matrix = upper_triangular(A)
-    print(DataFrame(u_matrix), "\n")
+    print("The U matrix is:", "\n", DataFrame(u_matrix), "\n", file=toPrint)
     l_matrix = mults
-    print(DataFrame(l_matrix), "\n")
+    print("The L matrix is:", "\n", DataFrame(l_matrix), "\n", file=toPrint)
     aux = multiply(marks, vector)
     helper = [aux[i][0] for i in range(len(aux))]
-    print(helper, "\n")
+    #print(helper, "\n")
     Lz = aumMatrix(l_matrix, helper)
     vector_z = progressive_substitution(Lz)
-    print(vector_z, "\n")
+    #print(vector_z, "\n")
     Ux = aumMatrix(u_matrix, vector_z)
     result = regressive_substitution(Ux)
     return result
 
-A = [[-7, 2, -3, 4], [5, -1, 14, -1], [1, 9, -7, 5], [-12, 13, -8, -4]]
-b = [-12, 13, 31, -32]
+#A = [[-7, 2, -3, 4], [5, -1, 14, -1], [1, 9, -7, 5], [-12, 13, -8, -4]]
+#b = [-12, 13, 31, -32]
 
 #A = [[2, -3, 4, 1], [-4, 2, 1, -2], [1, 3, -5, 3], [-3, -1, 1, -1]]
 #b = [10, -10, 32, -21]
 
-print(lu_pivoting(A, b))
+#print(lu_pivoting(A, b))
+
+name = input("Enter the name of the file you want the answer to be saved. It's going to have '.txt' extension: ")
+matrix_rows = int(input("As this has to be a square matrix, the number of rows is going to be the same number of columns. \
+                \nEnter number of rows in the matrix: "))
+matrix = []
+vector = []
+print("Enter the %s x %s matrix: "% (matrix_rows, matrix_rows))
+print("Separe each number with a space and to change the row press ENTER")
+for j in range(matrix_rows):
+        matrix.append(list(map(float, input().rstrip().split())))
+print("Enter de vector. Separe each number with a space")
+vector.append(list(map(float, input().rstrip().split())))
+vector = vector[0]
+print("You will find the result in " + name + ".txt")
+matrix_aux = deepcopy(matrix)
+vector_aux = copy(vector)
+with open(name + ".txt", "w") as result:
+    print("The augmented matrix is:" , file=result)
+    print(DataFrame(aumMatrix(matrix, vector)), file=result)
+    print("\n", file=result)
+    A = lu_pivoting(matrix_aux, vector_aux, result)
+    print("The result of each variable is: ", file=result)
+    num = 1
+    for x in A:
+        print("x" + str(num) + " = " + str(x), file=result)
+        num += 1
+    
