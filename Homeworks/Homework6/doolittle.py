@@ -1,6 +1,6 @@
 from math import sqrt
 import numpy as np
-from pprint import pprint
+from pandas import DataFrame
 
 def doolittle(A):
   L = np.zeros_like(A).tolist()
@@ -26,16 +26,9 @@ def doolittle(A):
         L[k][i] = (A[k][i] - sum) / U[i][i]
   return U, L
 
-A = [[2, -1, -2], [-4, 6, 3], [-4, -2, 8]]
-
-A = [[-4, 1,0, 2], [3, 1, 2, -8], [14, 2, -4, 6], [-7, 0, 5, 7]]
-
-
-
+A = [[-4, 1, 0, 2], [3, 1, 2, -8], [14, 2, -4, 6], [-7, 0, 5, 7]]
 U = doolittle(A)[0]
 L = doolittle(A)[1]
 
-print("U matrix")
-pprint(U)
-print("L matrix")
-pprint(L)
+print(DataFrame(U))
+print(DataFrame(L))
