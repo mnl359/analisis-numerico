@@ -4,17 +4,14 @@ from decimal import Decimal
 from prettytable import PrettyTable
 
 def f(number):
-    #fx = math.exp(number) - number - 2
-    #dfx = math.exp(number) - 1
-    #fx = (number*(math.exp(number))) - (number**2) - (5*number) -3
-    #dfx = number*(math.exp(number)) + math.exp(number) -2*number - 5 
     sympy.init_printing(use_unicode=True)
     x = sympy.symbols('x')
     #fx = sympy.exp(-x) - sympy.log(x)
     #fx = 3*(x**3) + 10*(x**2) - x + 20
     #fx = sympy.cos(x) 
     #fx = (x**4) - (18*(x**2)) + 81
-    fx = (x**3) - (x**2) - x + 1 + (sympy.sin(x-1) * sympy.sin(x-1))
+    #fx = (x**3) - (x**2) - x + 1 + (sympy.sin(x-1) * sympy.sin(x-1))
+    fx = sympy.exp(x-2) - sympy.ln(x-1) - (x**2) + (4*x) - 5
     #fx = (x**3)+(4*(x**2))-10
     #sympy.exp((-(x)**2)+1) - (4*(x**3)) + 25
     function = fx.evalf(subs={x:number})
@@ -41,7 +38,7 @@ def multipleRoots(x0, tolerance, iterations):
         fx = f(x1)[0]
         dfx = f(x1)[1]
         dfx2 = f(x1)[2]
-        error = abs((x1-x0) / x1)
+        error = abs((x1-x0))
         x0 = x1
         cont += 1
         table.add_row([cont, x1, '%.2E' % Decimal(str(fx)), '%.2E' % Decimal(str(dfx)), '%.2E' % Decimal(str(dfx2)), '%.2E' % Decimal(str(error))])
@@ -57,6 +54,6 @@ def multipleRoots(x0, tolerance, iterations):
     print(table)
     return root
 
-print(multipleRoots(0.5, 1e-05, 20))
+print(multipleRoots(1.6, 1e-04, 100))
 
 
