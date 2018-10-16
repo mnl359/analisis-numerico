@@ -27,8 +27,15 @@ def doolittle(A):
   return U, L
 
 A = [[2, -1, -2], [-4, 6, 3], [-4, -2, 8]]
+
+A = [[-4, 1,0, 2], [3, 1, 2, -8], [14, 2, -4, 6], [-7, 0, 5, 7]]
+
+
+
 U = doolittle(A)[0]
 L = doolittle(A)[1]
 
+print("U matrix")
 pprint(U)
+print("L matrix")
 pprint(L)
