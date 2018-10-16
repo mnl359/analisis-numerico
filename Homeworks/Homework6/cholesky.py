@@ -1,6 +1,6 @@
 from math import sqrt
 import numpy as np
-from pprint import pprint
+from pandas import DataFrame
 
 def cholesky(A):
   L = np.zeros_like(A).tolist()
@@ -17,6 +17,9 @@ def cholesky(A):
           L[i][j] = (1.0 / L[j][j] * (A[i][j] - s)) #No diagonales
         else:
           print("Division por 0")
+  Lmat = np.array(L)
+  Ltrans = Lmat.transpose()
+  print(DataFrame(Ltrans))
   return L
   
 
@@ -26,6 +29,6 @@ m1 = [[25, 15, -5],
  
 A = [[-4, 1,0, 2], [3, 1, 2, -8], [14, 2, -4, 6], [-7, 0, 5, 7]]
 
-pprint(cholesky(A), width=120)
+print("\n", DataFrame(cholesky(A)))
 
  
