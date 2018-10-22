@@ -2,6 +2,7 @@ import os
 from flask import Flask, redirect, url_for, request, render_template, make_response
 # from machine import Machine
 from methods import Methods
+import json
 app = Flask(__name__)
 
 
@@ -26,7 +27,19 @@ def bisection():
     methods = Methods(func)
     table = methods.bisection(xi, xs, tolerance,iterations)
 
-    return render_template('resultsTable.html', results=table[1])
+    aproximacionesx = []
+    aproximacionesy = []
+    for row in table[1]:
+        aproximacionesx.append(row[3])
+        aproximacionesy.append(row[4])
+    aproximacionesx.pop(0)
+    aproximacionesy.pop(0)
+
+    print(json.dumps(aproximacionesx))
+
+
+
+    return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"), aprox=aproximacionesx, aproy=aproximacionesy)
 
 @app.route('/fixed', methods=['POST'])
 def fixed():
@@ -40,7 +53,7 @@ def fixed():
     methods = Methods(func, gunc)
     table = methods.fixedPoint(xa, tolerance,iterations)
 
-    return render_template('resultsTable.html', results=table[1])
+    return render_template('resultsTable.html', results=table[1], func=func)
 
 @app.route('/falseRule', methods=['POST'])
 def falseRule():
@@ -54,7 +67,7 @@ def falseRule():
     methods = Methods(func)
     table = methods.falseRule(xi, xs, tolerance,iterations)
 
-    return render_template('resultsTable.html', results=table[1])
+    return render_template('resultsTable.html', results=table[1], func=func)
 
 @app.route('/incremental', methods=['POST'])
 def incremental():
@@ -67,7 +80,7 @@ def incremental():
     methods = Methods(func)
     table = methods.incremental_searches(x0, delta,iterations)
 
-    return render_template('resultsTable.html', results=table)
+    return render_template('resultsTable.html', results=table, func=func)
 
 @app.route('/multiple', methods=['POST'])
 def multiple():
@@ -80,7 +93,7 @@ def multiple():
     methods = Methods(func)
     table = methods.multipleRoots(x0, tolerance,iterations)
 
-    return render_template('resultsTable.html', results=table[1])
+    return render_template('resultsTable.html', results=table[1], func=func)
 
 @app.route('/aitken', methods=['POST'])
 def aitken():
@@ -93,7 +106,7 @@ def aitken():
     methods = Methods(func)
     table = methods.aitken(x0, tolerance,iterations)
 
-    return render_template('resultsTable.html', results=table[1])
+    return render_template('resultsTable.html', results=table[1], func=func)
 
 @app.route('/aitken_bisection', methods=['POST'])
 def aitken_bisection():
@@ -107,7 +120,7 @@ def aitken_bisection():
     methods = Methods(func)
     table = methods.aitken_bis(xi, xs, tolerance,iterations)
 
-    return render_template('resultsTable.html', results=table[1])
+    return render_template('resultsTable.html', results=table[1], func=func)
 
 @app.route('/muller', methods=['POST'])
 def muller():
@@ -121,7 +134,7 @@ def muller():
     methods = Methods(func)
     table = methods.muller(xi, xs, tolerance,iterations)
 
-    return render_template('resultsTable.html', results=table[1])
+    return render_template('resultsTable.html', results=table[1], func=func)
 
 
 if __name__ == "__main__":

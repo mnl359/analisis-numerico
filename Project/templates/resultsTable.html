@@ -7,7 +7,7 @@
 <html class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <title>Application Template</title>
+    <title>Numeric Analysis</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,6 +25,13 @@
     <script src={{ url_for('static', filename="js/modernizr-2.6.2-respond-1.1.0.min.js") }}></script>
     <link href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic" rel="stylesheet" type="text/css">
     <link href={{ url_for('static', filename="css/font-helvetica.css") }} rel="stylesheet" type="text/css">
+
+    <script src="https://unpkg.com/mathjs@5.2.1/dist/math.min.js"></script>
+
+    <script src="https://cdn.plot.ly/plotly-1.35.2.min.js"></script>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
 </head>
 
 <body>
@@ -64,58 +71,100 @@
         </div>
         <div class="bottom-border"></div>
     </nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 
-<div class="main-container d-flex justify-content-center table-responsive">
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-            <tr>
-                {% for column in results[0] %}
-                    <th scope="col">{{ column }}</th>
+<div class="main-container d-flex justify-content-center">
+    <div>
+        <a class="btn btn-primary" href="#results" data-toggle="collapse" role="button">Table</a>
+        <div class="table-responsive collapse" id="results">
+            <table class="table">
+                <thead>
+                <tr>
+                    {% for column in results[0] %}
+                        <th scope="col">{{ column }}</th>
+                    {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for row in results %}
+                    {% if loop.index >1 %}
+                        <tr>
+                            {% for col in row %}
+                                <td>{{ col }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endif %}
                 {% endfor %}
-            </tr>
-            </thead>
-            <tbody>
-            {% for row in results %}
-                {% if loop.index >1 %}
-                    <tr>
-                        {% for col in row %}
-                            <td>{{ col }}</td>
-                        {% endfor %}
-                    </tr>
-                {% endif %}
-            {% endfor %}
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div>
+        <a class="btn btn-primary" href="#graph" data-toggle="collapse" role="button">Plot</a>
+        <div id="graph" class="collapse">
+            <form id="form">
+                <label for="eq">Enter plot domain:</label>
+                <div>
+                    <input type="number" step="0.01" id="ll" placeholder="lower limit" />
+                    <input type="number" step="0.01" id="ul" placeholder="upper limit" />
+                </div>
+                <input type="hidden" id="eq" value="{{ func }}" />
+                <input type="submit" value="Draw" class="btn btn-secondary" style="width: 10px; color: #2F2933; border-color: #2F2933" />
+            </form>
+
+            <div id="plot"></div>
+
+            <script>
+                function draw() {
+                    try {
+                        // compile the expression once
+                        const expression = document.getElementById('eq').value
+                        const expr = math.compile(expression)
+                        const llimit = document.getElementById('ll').value
+                        const ulimit = document.getElementById('ul').value
+                        // evaluate the expression repeatedly for different values of x
+                        const xValues = math.range(llimit ? llimit : -5,ulimit ? ulimit : 5 , 0.5).toArray()
+                        const yValues = xValues.map(function (x) {
+                            return expr.eval({x: x})
+                        })
+
+                        // render the plot using plotly
+                        const func = {
+                            x: xValues,
+                            y: yValues,
+                            type: 'scatter',
+                            name: 'Function'
+                        }
+
+                        const xaprox = {{ aprox }}
+                        const yaprox = {{ aproy }}
+                        const aprox = {
+                            x: xaprox,
+                            y: yaprox,
+                            mode: 'markers',
+                            type: 'scatter',
+                            name: 'Approximations'
+                        }
+                        const data = [func, aprox]
+                        Plotly.newPlot('plot', data)
+                    }
+                    catch (err) {
+                        console.error(err)
+                        alert(err)
+                    }
+                }
+
+                document.getElementById('form').onsubmit = function (event) {
+                    event.preventDefault()
+                    draw()
+                }
+            </script>
+        </div>
     </div>
 </div>
+
+
 
 <script src="https://www.youtube.com/iframe_api"></script>
 <script src={{ url_for('static', filename="js/jquery.min.js") }}></script>
