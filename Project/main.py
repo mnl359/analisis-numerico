@@ -35,11 +35,20 @@ def bisection():
     aproximacionesx.pop(0)
     aproximacionesy.pop(0)
 
-    print(json.dumps(aproximacionesx))
-
-
-
     return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"), aprox=aproximacionesx, aproy=aproximacionesy)
+
+@app.route('/stephensen', methods=['POST'])
+def stephensen():
+
+    func = request.form['function']
+    xn = float(request.form['xn'])
+    iterations = float(request.form['iterations'])
+    tolerance = float(request.form['tolerance'])
+
+    methods = Methods(func)
+    table = methods.stephensen(xn, tolerance,iterations)
+
+    return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"))
 
 @app.route('/fixed', methods=['POST'])
 def fixed():
@@ -53,7 +62,15 @@ def fixed():
     methods = Methods(func, gunc)
     table = methods.fixedPoint(xa, tolerance,iterations)
 
-    return render_template('resultsTable.html', results=table[1], func=func)
+    aproximacionesx = []
+    aproximacionesy = []
+    for row in table[1]:
+        aproximacionesx.append(row[1])
+        aproximacionesy.append(row[2])
+    aproximacionesx.pop(0)
+    aproximacionesy.pop(0)
+
+    return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"), aprox=aproximacionesx, aproy=aproximacionesy)
 
 @app.route('/falseRule', methods=['POST'])
 def falseRule():
@@ -67,8 +84,18 @@ def falseRule():
     methods = Methods(func)
     table = methods.falseRule(xi, xs, tolerance,iterations)
 
-    return render_template('resultsTable.html', results=table[1], func=func)
+    aproximacionesx = []
+    aproximacionesy = []
+    for row in table[1]:
+        aproximacionesx.append(row[3])
+        aproximacionesy.append(row[4])
+    aproximacionesx.pop(0)
+    aproximacionesy.pop(0)
 
+    return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"), aprox=aproximacionesx, aproy=aproximacionesy)
+
+
+### ESTO HAY QUE ARREGLARLO
 @app.route('/incremental', methods=['POST'])
 def incremental():
 
@@ -80,7 +107,8 @@ def incremental():
     methods = Methods(func)
     table = methods.incremental_searches(x0, delta,iterations)
 
-    return render_template('resultsTable.html', results=table, func=func)
+
+    return render_template('resultsTable.html', results=table, func=func.replace("**", "^"))
 
 @app.route('/multiple', methods=['POST'])
 def multiple():
@@ -93,8 +121,18 @@ def multiple():
     methods = Methods(func)
     table = methods.multipleRoots(x0, tolerance,iterations)
 
-    return render_template('resultsTable.html', results=table[1], func=func)
+    aproximacionesx = []
+    aproximacionesy = []
+    for row in table[1]:
+        aproximacionesx.append(row[1])
+        aproximacionesy.append(row[2])
+    aproximacionesx.pop(0)
+    aproximacionesy.pop(0)
 
+    return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"), aprox=aproximacionesx, aproy=aproximacionesy)
+
+
+## X, Y??????
 @app.route('/aitken', methods=['POST'])
 def aitken():
 
@@ -106,8 +144,10 @@ def aitken():
     methods = Methods(func)
     table = methods.aitken(x0, tolerance,iterations)
 
-    return render_template('resultsTable.html', results=table[1], func=func)
 
+    return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"))
+
+### X, Y???
 @app.route('/aitken_bisection', methods=['POST'])
 def aitken_bisection():
 
@@ -120,7 +160,8 @@ def aitken_bisection():
     methods = Methods(func)
     table = methods.aitken_bis(xi, xs, tolerance,iterations)
 
-    return render_template('resultsTable.html', results=table[1], func=func)
+
+    return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"))
 
 @app.route('/muller', methods=['POST'])
 def muller():
@@ -134,7 +175,29 @@ def muller():
     methods = Methods(func)
     table = methods.muller(xi, xs, tolerance,iterations)
 
-    return render_template('resultsTable.html', results=table[1], func=func)
+    return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"))
+
+@app.route('/secant', methods=['POST'])
+def secant():
+
+    func = request.form['function']
+    xi = float(request.form['xi'])
+    xs = float(request.form['xs'])
+    iterations = float(request.form['iterations'])
+    tolerance = float(request.form['tolerance'])
+
+    methods = Methods(func)
+    table = methods.secant(xi, xs, tolerance,iterations)
+
+    aproximacionesx = []
+    aproximacionesy = []
+    for row in table[1]:
+        aproximacionesx.append(row[1])
+        aproximacionesy.append(row[2])
+    aproximacionesx.pop(0)
+    aproximacionesy.pop(0)
+
+    return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"), aprox=aproximacionesx, aproy=aproximacionesy)
 
 
 if __name__ == "__main__":

@@ -23,6 +23,76 @@ class Methods:
         gx = eval(self.gunction)
         return gx
 
+    def stephensen(self, xn, tolerance, iterations):
+        table = [['Iteration', 'Xn', 'Error Absoluto']]
+        fxn = self.f(xn)[0]
+        root = 0
+        if fxn == 0:
+            root = xn
+        else:
+            cont = 0
+            error = tolerance + 1
+            table.append([cont, xn, 'Doesnt exist'])
+
+            while cont < iterations and error > tolerance:
+
+                fxn = self.f(xn)[0]
+                den = self.f(xn + fxn)[0] - fxn  # Denominator
+                if den == 0:
+                    print ("The denominator became 0.")
+                    break
+                xn1 = xn - (fxn ** 2) / den
+
+                error = abs((xn1 - xn))  # Abs error
+                cont += 1
+                table.append([cont, xn1, '%.2E' % Decimal(str(error))])
+                xn = xn1
+                # prev = aux
+
+            if error < tolerance:
+                root = (xn1, '%.2E' % Decimal(str(error)))
+            else:
+                if (cont == iterations):
+                    print ("The method failed.")
+                    root = (None, cont)
+                else:
+                    root = (xn1, '%.2E' % Decimal(str(error)))
+        return (root, table)
+
+    def secant(self, x0, x1, tolerance, iterations):
+        # table = PrettyTable(['Iteration', 'Xn', 'f(Xn)', 'Relative Error'])
+        fx0 = self.f(x0)[0]
+        root = 0
+        if fx0 == 0:
+            root = x0
+        else:
+            fx1 = self.f(x1)[0]
+            cont = 0
+            error = tolerance + 1
+            den = fx1 - fx0
+            table = [[cont, x0, '%.2E' % Decimal(str(fx0)), 'Doesnt exist']]
+            cont += 1
+            table.append([cont, x1, '%.2E' % Decimal(str(fx1)), 'Doesnt exist'])
+            while error > tolerance and fx1 != 0 and den != 0 and cont < iterations:
+                cont += 1
+                x2 = x1 - ((fx1 * (x1 - x0)) / den)
+                error = abs((x2 - x1))
+                x0 = x1
+                fx0 = fx1
+                x1 = x2
+                fx1 = self.f(x1)[0]
+                den = fx1 - fx0
+                table.append([cont, x1, '%.2E' % Decimal(str(fx1)), '%.2E' % Decimal(str(error))])
+            if fx1 == 0:
+                root = x1
+            elif error < tolerance:
+                root = (x1, '%.2E' % Decimal(str(error)))
+            elif den == 0:
+                root = (x1, "Multiple root")
+            else:
+                root = None
+        return (root, table)
+
     def bisection(self, xi, xs, tolerance, iterations):
     #     table = PrettyTable(['Iteration', 'Xinf', 'Xsup', 'Xmi', 'f(Xmi)', 'Error'])
         fxi = self.f(xi)[0]
