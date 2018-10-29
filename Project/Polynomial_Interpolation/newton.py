@@ -43,6 +43,6 @@ def newton(value, matrix):
     print("El resultado de p(%s) es igual a %s" % (value, result))
     return pol
 
-m = [[2, -4.610943901069350],[2.2, -4.174986500565880],[2.4, -3.376823619358400],[2.6, -2.136261964998310],[2.8, -0.355353228902949]]
+m = [[0, 0],[1, 1],[2, 1],[3, 0]]
 value = 1
 newton(value, m)
