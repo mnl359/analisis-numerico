@@ -274,6 +274,32 @@
             </form>
         </div>
     </div>
+
+    <div id="sec" class="container">
+        <a class="btn btn-primary" href="#secant" data-toggle="collapse" role="button">Secant</a>
+        <div  id="secant" class="collapse">
+            <form action="/secant" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="function" placeholder="f(x)" >
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" name="xi" step="0.00001" placeholder="xi" >
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" name="xs" step="0.00001" placeholder="xs">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="tolerance"step="0.00000000000000001" placeholder="tolerance" >
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-secondary">Go</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <script src="https://www.youtube.com/iframe_api"></script>

@@ -44,5 +44,5 @@ def newton(value, matrix):
     return pol
 
 m = [[0, 0],[1, 1],[2, 1],[3, 0]]
-value = 1
+value = 0.5
 newton(value, m)

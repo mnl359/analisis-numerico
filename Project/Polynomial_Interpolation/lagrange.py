@@ -33,6 +33,6 @@ def lagrange(x, matrix):
     print(pol1)
     return pol
 
-m = [[2, -4.610943901069350],[2.2, -4.174986500565880],[2.4, -3.376823619358400],[2.6, -2.136261964998310],[2.8, -0.355353228902949]]
-value = 2.5
+m = [[0, 0],[1, 1],[2, 1],[3, 0]]
+value = 1
 print("El resultado de p(%s) es igual a %s" % (value, lagrange(value, m)))
