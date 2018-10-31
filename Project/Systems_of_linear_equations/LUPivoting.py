@@ -148,6 +148,8 @@ class LU_pivoting:
 
 #print(lu_pivoting(A, b))
 
+lupivot = LU_pivoting()
+
 name = input("Enter the name of the file you want the answer to be saved. It's going to have '.txt' extension: ")
 matrix_rows = int(input("As this has to be a square matrix, the number of rows is going to be the same number of columns. \
                 \nEnter number of rows in the matrix: "))
@@ -165,9 +167,9 @@ matrix_aux = deepcopy(matrix)
 vector_aux = copy(vector)
 with open(name + ".txt", "w") as result:
     print("The augmented matrix is:" , file=result)
-    print(DataFrame(aumMatrix(matrix, vector)), file=result)
+    print(DataFrame(lupivot.aumMatrix(matrix, vector)), file=result)
     print("\n", file=result)
-    A = lu_pivoting(matrix_aux, vector_aux, result)
+    A = lupivot.lu_pivoting(matrix_aux, vector_aux, result)
     print("The result of each variable is: ", file=result)
     num = 1
     for x in A:

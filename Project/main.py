@@ -15,9 +15,22 @@ state = None
 def home():
     return render_template('index.html')
 
+@app.route('/lineardimension')
+def lineardimension():
+    return render_template('lineardimension.html')
+
+@app.route('/linear', methods=['POST'])
+def linear():
+    n = int(request.form['n'])
+    narray = [None]*n
+    return render_template('linear.html', dimension=narray)
+
+@app.route('/nonlinear')
+def nonlinear():
+    return render_template('index.html')
+
 @app.route('/bisection', methods=['POST'])
 def bisection():
-
     func = request.form['function']
     xi = float(request.form['xi'])
     xs = float(request.form['xs'])
@@ -39,7 +52,6 @@ def bisection():
 
 @app.route('/stephensen', methods=['POST'])
 def stephensen():
-
     func = request.form['function']
     xn = float(request.form['xn'])
     iterations = float(request.form['iterations'])
