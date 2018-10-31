@@ -51,9 +51,9 @@
 
                 <div class="col-sm-12 columns text-center">
                     <ul class="menu">
-                        <a></a><li><a href="index.html" target="_self">Home</a></li>
-                        <li><a href="features.html" target="_self">Features</a></li>
-                        <li><a href="testimonials.html" target="_self">Testimonials</a></li>
+                        <a></a><li><a href="{{ url_for("home") }}" target="_self">Home</a></li>
+                        <li><a href="{{ url_for("nonlinear") }}" target="_self">Non Linear Equation Systems</a></li>
+                        <li><a href="{{ url_for("lineardimension") }}" target="_self">Linear Equation Systems</a></li>
                         <li><a href="blog.html" target="_self">Blog</a></li>
                         <li><a href="contact.html" target="_self">Contact</a></li>
 
@@ -267,6 +267,32 @@
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-secondary">Go</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="sec" class="container">
+        <a class="btn btn-primary" href="#secant" data-toggle="collapse" role="button">Secant</a>
+        <div  id="secant" class="collapse">
+            <form action="/secant" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="function" placeholder="f(x)" >
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" name="xi" step="0.00001" placeholder="xi" >
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" name="xs" step="0.00001" placeholder="xs">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="tolerance"step="0.00000000000000001" placeholder="tolerance" >
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-secondary">Go</button>

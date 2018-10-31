@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>Numeric Analysis</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href={{ url_for('static', filename='css/flexslider.min.css') }} rel="stylesheet" type="text/css" media="all"/>
+    <link href={{ url_for('static', filename="css/line-icons.min.css") }} rel="stylesheet" type="text/css" media="all"/>
+    <link href={{ url_for('static', filename="css/elegant-icons.min.css") }} rel="stylesheet" type="text/css" media="all"/>
+    <link href={{ url_for('static', filename="css/lightbox.min.css") }} rel="stylesheet" type="text/css" media="all"/>
+    <link href={{ url_for('static', filename="css/bootstrap.min.css") }} rel="stylesheet" type="text/css" media="all"/>
+    <link href={{ url_for('static', filename="css/theme-1.css") }} rel="stylesheet" type="text/css" media="all"/>
+    <link href={{ url_for('static', filename="css/custom.css") }} rel="stylesheet" type="text/css" media="all"/>
+    <!--[if gte IE 9]>
+        	<link rel="stylesheet" type="text/css" href="css/ie9.css" />
+	<!--[endif]-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700%7CRaleway:700' rel='stylesheet' type='text/css'>
+    <script src={{ url_for('static', filename="js/modernizr-2.6.2-respond-1.1.0.min.js") }}></script>
+    <link href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic" rel="stylesheet" type="text/css">
+    <link href={{ url_for('static', filename="css/font-helvetica.css") }} rel="stylesheet" type="text/css">
+
+    <script src="https://unpkg.com/mathjs@5.2.1/dist/math.min.js"></script>
+
+    <script src="https://cdn.plot.ly/plotly-1.35.2.min.js"></script>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+</head>
+
+<body>
+{#<div class="loader">#}
+{#    <div class="spinner">#}
+{#        <div class="double-bounce1"></div>#}
+{#        <div class="double-bounce2"></div>#}
+{#    </div>#}
+{#</div>#}
+
+<div class="nav-container">
+    <nav class="centered-logo top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <a href="index.html">
+                        <img class="logo logo-dark" alt="Logo" src={{ url_for('static', filename="img/download.jpeg") }}>
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="row nav-menu">
+
+                <div class="col-sm-12 columns text-center">
+                    <ul class="menu">
+                        <a></a><li><a href="index.html" target="_self">Home</a></li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div class="mobile-toggle">
+                <i class="icon icon_menu"></i>
+            </div>
+
+        </div>
+        <div class="bottom-border"></div>
+    </nav>
+</div>
+
+<div class="main-container d-flex justify-content-center">
+    <div id="lowertriangular">
+        <a class="btn btn-primary" href="#results" data-toggle="collapse" role="button">Lower Triangular matrix</a>
+        <div class="table-responsive collapse" id="lresults">
+            <table class="table" id="lower">
+                <tbody>
+                {% for row in results_l %}
+                    <tr>
+                        {% for col in row %}
+                            <td>{{ col }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="uppertriangular">
+        <a class="btn btn-primary" href="#results" data-toggle="collapse" role="button">Upper Triangular matrix</a>
+        <div class="table-responsive collapse" id="uresults">
+            <table class="table" id="lower">
+                <tbody>
+                {% for row in results_u %}
+                    <tr>
+                        {% for col in row %}
+                            <td>{{ col }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src={{ url_for('static', filename="js/jquery.min.js") }}></script>
+<script src={{ url_for('static', filename="js/jquery.plugin.min.js") }}></script>
+<script src={{ url_for('static', filename="js/bootstrap.min.js") }}></script>
+<script src={{ url_for('static', filename="js/jquery.flexslider-min.js") }}></script>
+<script src={{ url_for('static', filename="js/smooth-scroll.min.js") }}></script>
+<script src={{ url_for('static', filename="js/skrollr.min.js") }}></script>
+<script src={{ url_for('static', filename="js/spectragram.min.js") }}></script>
+<script src={{ url_for('static', filename="js/scrollReveal.min.js") }}></script>
+<script src={{ url_for('static', filename="js/isotope.min.js") }}></script>
+<script src={{ url_for('static', filename="js/twitterFetcher_v10_min.js") }}></script>
+<script src={{ url_for('static', filename="js/lightbox.min.js") }}></script>
+<script src={{ url_for('static', filename="js/jquery.countdown.min.js") }}></script>
+<script src={{ url_for('static', filename="js/scripts.js") }}></script>
+</body>
+</html>
+				
