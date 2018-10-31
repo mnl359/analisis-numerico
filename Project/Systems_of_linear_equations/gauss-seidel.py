@@ -46,8 +46,6 @@ def gaussSeidel(tolerance, x0, iterations, matrix, b):
         x0 = copy(x1)
     print(table)
 
-#m = [[13, -4, -5],[3, -7, 2],[-4, 5, -16]]
-#b = [-23, 5 ,34]
-m = [[5, 2], [1,-4]]
-b = [1, 0]
+m = [[13, -4, -5],[3, -7, 2],[-4, 5, -16]]
+b = [-23, 5 ,34]
 gaussSeidel(5e-06, [1, 2], 20, m, b)
