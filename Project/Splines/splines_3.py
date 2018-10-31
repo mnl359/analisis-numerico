@@ -13,7 +13,7 @@ def spline3(X, Y):
     A = introByFstDerivativeSmoothness(A, X, n)
     A = introBySecDerivativeSmoothness(A, X, n)
     A = frontier(A, X, n)
-    printMatrix("spli3", A)
+    printMatrix("spli3_result", A)
     A = gaussJordan(A)
     coef = clear(A, len(A))
     return orderCoef(coef)
@@ -85,11 +85,10 @@ def frontier(A, X, n):
     row[0] = 6 * X[0]
     row[1] = 2
     rown = list(np.zeros(n))
-    rown[n-6] = 6 * X[len(X)-1]
-    rown[n-5] = 2
+    rown[n-5] = 6 * X[len(X)-1]
+    rown[n-4] = 2
     A.append(row)
     A.append(rown)
-    print(rown)
     return A
 
 def gaussJordan(Ab):
@@ -123,7 +122,6 @@ def gaussJordan(Ab):
     return Ab
 
 def clear(stepMat, n):
-    print(n)
     vector = []
     for x in range(n):
         vector.append(0)
@@ -151,20 +149,25 @@ def printMatrix(name, A):
     with open(name + ".txt", "w") as result:
         
         num = 1
-        for x in A:
-            print("x" + str(num) + " = " + str(x), file=result)
+        frow = []
+        for i in range(int((len(A[0])-1)/4)):
+            frow.append('A' + str(num))
+            frow.append('B' + str(num))
+            frow.append('C' + str(num))
+            frow.append('D' + str(num))
             num += 1
-        print("\n", file=result)
-        print("The matrix was:" , file=result)
-#        print(DataFrame(A), file=result)
-        print(np.array(A), file=result)
+        frow.append("V")
+        table = PrettyTable(frow)
+        for x in A:
+            table.add_row(x)
+        print(table, file=result)
 
-X = [1, 3, 4, 5]
-Y = [3, 1, 3.5, 2]
-X = [1, 3, 4, 5, 7]
-Y = [4.31, 1.5, 3.2, 2.6, 1.8]
-#X = [1.0000, 2.0000, 3.0000, 4.0000, 5.0000, 6.0000, 7.0000, 8.0000, 9.0000, 10.0000]
-#Y = [0.5949, 0.2622, 0.6028, 0.7112, 0.2217, 0.1174, 0.2967, 0.3188, 0.4242, 0.5079]
+#X = [1, 3, 4, 5]
+#Y = [3, 1, 3.5, 2]
+#X = [1, 3, 4, 5, 7]
+#Y = [4.31, 1.5, 3.2, 2.6, 1.8]
+X = [1.0000, 2.0000, 3.0000, 4.0000, 5.0000, 6.0000, 7.0000, 8.0000, 9.0000, 10.0000]
+Y = [0.5949, 0.2622, 0.6028, 0.7112, 0.2217, 0.1174, 0.2967, 0.3188, 0.4242, 0.5079]
 
 
 print(spline3(X, Y))
