@@ -138,7 +138,7 @@ class LU_pivoting:
         # print(vector_z, "\n")
         Ux = self.aumMatrix(u_matrix, vector_z)
         result = self.regressive_substitution(Ux)
-        return result
+        return l_matrix, u_matrix, result
 
 #A = [[-7, 2, -3, 4], [5, -1, 14, -1], [1, 9, -7, 5], [-12, 13, -8, -4]]
 #b = [-12, 13, 31, -32]
@@ -148,30 +148,30 @@ class LU_pivoting:
 
 #print(lu_pivoting(A, b))
 
-lupivot = LU_pivoting()
-
-name = input("Enter the name of the file you want the answer to be saved. It's going to have '.txt' extension: ")
-matrix_rows = int(input("As this has to be a square matrix, the number of rows is going to be the same number of columns. \
-                \nEnter number of rows in the matrix: "))
-matrix = []
-vector = []
-print("Enter the %s x %s matrix: "% (matrix_rows, matrix_rows))
-print("Separe each number with a space and to change the row press ENTER")
-for j in range(matrix_rows):
-        matrix.append(list(map(float, input().rstrip().split())))
-print("Enter de vector. Separe each number with a space")
-vector.append(list(map(float, input().rstrip().split())))
-vector = vector[0]
-print("You will find the result in " + name + ".txt")
-matrix_aux = deepcopy(matrix)
-vector_aux = copy(vector)
-with open(name + ".txt", "w") as result:
-    print("The augmented matrix is:" , file=result)
-    print(DataFrame(lupivot.aumMatrix(matrix, vector)), file=result)
-    print("\n", file=result)
-    A = lupivot.lu_pivoting(matrix_aux, vector_aux, result)
-    print("The result of each variable is: ", file=result)
-    num = 1
-    for x in A:
-        print("x" + str(num) + " = " + str(x), file=result)
-        num += 1
+# lupivot = LU_pivoting()
+#
+# name = input("Enter the name of the file you want the answer to be saved. It's going to have '.txt' extension: ")
+# matrix_rows = int(input("As this has to be a square matrix, the number of rows is going to be the same number of columns. \
+#                 \nEnter number of rows in the matrix: "))
+# matrix = []
+# vector = []
+# print("Enter the %s x %s matrix: "% (matrix_rows, matrix_rows))
+# print("Separe each number with a space and to change the row press ENTER")
+# for j in range(matrix_rows):
+#         matrix.append(list(map(float, input().rstrip().split())))
+# print("Enter de vector. Separe each number with a space")
+# vector.append(list(map(float, input().rstrip().split())))
+# vector = vector[0]
+# print("You will find the result in " + name + ".txt")
+# matrix_aux = deepcopy(matrix)
+# vector_aux = copy(vector)
+# with open(name + ".txt", "w") as result:
+#     print("The augmented matrix is:" , file=result)
+#     print(DataFrame(lupivot.aumMatrix(matrix, vector)), file=result)
+#     print("\n", file=result)
+#     A = lupivot.lu_pivoting(matrix_aux, vector_aux, result)
+#     print("The result of each variable is: ", file=result)
+#     num = 1
+#     for x in A:
+#         print("x" + str(num) + " = " + str(x), file=result)
+#         num += 1
