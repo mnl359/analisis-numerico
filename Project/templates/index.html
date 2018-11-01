@@ -76,228 +76,257 @@
 </div>
 
 <div class="main-container">
-    <div id="bis" class="container">
-        <a class="btn btn-primary" href="#bisection" data-toggle="collapse" role="button">Bisection</a>
-        <div  id="bisection" class="collapse">
-            <form action="/bisection" method="POST">
-                <div class="form-group">
-                    <input class="form-control" type="text" name="function" placeholder="f(x)" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" name="xi" step="0.00001" placeholder="xi" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" name="xs" step="0.00001" placeholder="xs">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" name="tolerance"step="0.00000000000000001" placeholder="tolerance" >
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-secondary">Go</button>
-                </div>
-            </form>
-        </div>
-    </div>
+    <div class="panel-group" id="accordion1">
+        <div id="bis" class="panel panel-default">
+            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#bisection">
+                <h4 class="panel-title">Bisection</h4>
 
-    <div id="bis_ait" class="container">
-        <a class="btn btn-primary" href="#aitken_bisection" data-toggle="collapse" role="button">Aitken Bisection</a>
-        <div  id="aitken_bisection" class="collapse">
-            <form action="/aitken_bisection" method="POST">
-                <div class="form-group">
-                    <input class="form-control" type="text" name="function" placeholder="f(x)" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" name="xi" step="0.00001" placeholder="xi" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" name="xs" step="0.00001" placeholder="xs">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" name="tolerance"step="0.00000000000000001" placeholder="tolerance" >
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-secondary">Go</button>
-                </div>
-            </form>
+            </div>
+            <div  id="bisection" class="panel-collapse collapse">
+                <form action="/bisection" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="function" placeholder="f(x)" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" name="xi" step="0.00001" placeholder="xi" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" name="xs" step="0.00001" placeholder="xs">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="tolerance"step="0.00000000000000001" placeholder="tolerance" >
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-secondary">Go</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <div id="mul" class="container">
-        <a class="btn btn-primary" href="#muller" data-toggle="collapse" role="button">Muller</a>
-        <div  id="muller" class="collapse">
-            <form action="/muller" method="POST">
-                <div class="form-group">
-                    <input class="form-control" type="text" name="function" placeholder="f(x)" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" name="xi" step="0.00001" placeholder="xi" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" name="xs" step="0.00001" placeholder="xs">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" name="tolerance"step="0.00000000000000001" placeholder="tolerance" >
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-secondary">Go</button>
-                </div>
-            </form>
+        <div id="bis_ait" class="panel panel-default">
+            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#aitken_bisection">
+                <h4 class="panel-title">Aitken Bisection</h4>
+
+            </div>
+            <div  id="aitken_bisection" class="panel-collapse collapse">
+                <form action="/aitken_bisection" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="function" placeholder="f(x)" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" name="xi" step="0.00001" placeholder="xi" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" name="xs" step="0.00001" placeholder="xs">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="tolerance"step="0.00000000000000001" placeholder="tolerance" >
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-secondary">Go</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <div id="incremental_search" class="container">
-        <a class="btn btn-primary" href="#incremental" data-toggle="collapse" role="button">Incremental Search</a>
-        <div  id="incremental" class="collapse">
-            <form action="/incremental" method="POST">
-                <div class="form-group">
-                    <input class="form-control" type="text" name="function" placeholder="f(x)" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" name="x0" step="0.00001" placeholder="x0" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" name="delta" step="0.00001" placeholder="delta">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-secondary">Go</button>
-                </div>
-            </form>
+        <div id="mul" class="panel panel-default">
+            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#muller">
+                <h4 class="panel-title">Muller</h4>
+
+            </div>
+            <div  id="muller" class="panel-collapse collapse">
+                <form action="/muller" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="function" placeholder="f(x)" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" name="xi" step="0.00001" placeholder="xi" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" name="xs" step="0.00001" placeholder="xs">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="tolerance"step="0.00000000000000001" placeholder="tolerance" >
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-secondary">Go</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <div id="false" class="container">
-        <a class="btn btn-primary" href="#falseRule" data-toggle="collapse" role="button">False Rule</a>
-        <div  id="falseRule" class="collapse">
-            <form action="/falseRule" method="POST">
-                <div class="form-group">
-                    <input class="form-control" type="text" name="function" placeholder="f(x)" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" name="xi" step="0.00001" placeholder="xi" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" name="xs" step="0.00001" placeholder="xs">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" name="tolerance"step="0.00000000000000001" placeholder="tolerance" >
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-secondary">Go</button>
-                </div>
-            </form>
+        <div id="incremental_search" class="panel panel-default">
+            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#incremental">
+                <h4 class="panel-title">Incremental Search</h4>
+
+            </div>
+            <div  id="incremental" class="panel-collapse collapse">
+                <form action="/incremental" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="function" placeholder="f(x)" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" name="x0" step="0.00001" placeholder="x0" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" name="delta" step="0.00001" placeholder="delta">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-secondary">Go</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <div id="fixed" class="container">
-        <a class="btn btn-primary" href="#fixedPoint" data-toggle="collapse" role="button">Fixed Point</a>
-        <div  id="fixedPoint" class="collapse">
-            <form action="/fixed" method="POST">
-                <div class="form-group">
-                    <input class="form-control" type="text" name="function" placeholder="f(x)" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" name="gunction" placeholder="g(x)" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" name="xa" step="0.00001" placeholder="x0" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" name="tolerance" placeholder="tolerance" >
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-secondary">Go</button>
-                </div>
-            </form>
+        <div id="false" class="panel panel-default">
+            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#falseRule">
+                <h4 class="panel-title">False Rule</h4>
+
+            </div>
+            <div  id="falseRule" class="panel-collapse collapse">
+                <form action="/falseRule" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="function" placeholder="f(x)" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" name="xi" step="0.00001" placeholder="xi" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" name="xs" step="0.00001" placeholder="xs">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="tolerance"step="0.00000000000000001" placeholder="tolerance" >
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-secondary">Go</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <div id="multiple_roots" class="container">
-        <a class="btn btn-primary" href="#multiple" data-toggle="collapse" role="button">Multiple Roots</a>
-        <div  id="multiple" class="collapse">
-            <form action="/multiple" method="POST">
-                <div class="form-group">
-                    <input class="form-control" type="text" name="function" placeholder="f(x)" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" name="x0" step="0.00001" placeholder="x0" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" name="tolerance" step="0.00001" placeholder="tolerance">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-secondary">Go</button>
-                </div>
-            </form>
+        <div id="fixed" class="panel panel-default">
+            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#fixedPoint">
+                <h4 class="panel-title">Fixed Point</h4>
+
+            </div>
+            <div  id="fixedPoint" class="panel-collapse collapse">
+                <form action="/fixed" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="function" placeholder="f(x)" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="gunction" placeholder="g(x)" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" name="xa" step="0.00001" placeholder="x0" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="tolerance" placeholder="tolerance" >
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-secondary">Go</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <div class="container">
-        <a class="btn btn-primary" href="#aitken" data-toggle="collapse" role="button">Aitken</a>
-        <div  id="aitken" class="collapse">
-            <form action="/aitken" method="POST">
-                <div class="form-group">
-                    <input class="form-control" type="text" name="function" placeholder="f(x)" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" name="x0" step="0.00001" placeholder="x0" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" name="tolerance" step="0.00001" placeholder="tolerance">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-secondary">Go</button>
-                </div>
-            </form>
+        <div id="multiple_roots" class="panel panel-default">
+            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#multiple">
+                <h4 class="panel-title">Multiple Roots</h4>
+
+            </div>
+            <div  id="multiple" class="panel-collapse collapse">
+                <form action="/multiple" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="function" placeholder="f(x)" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" name="x0" step="0.00001" placeholder="x0" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="tolerance" step="0.00001" placeholder="tolerance">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-secondary">Go</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <div id="sec" class="container">
-        <a class="btn btn-primary" href="#secant" data-toggle="collapse" role="button">Secant</a>
-        <div  id="secant" class="collapse">
-            <form action="/secant" method="POST">
-                <div class="form-group">
-                    <input class="form-control" type="text" name="function" placeholder="f(x)" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" name="xi" step="0.00001" placeholder="xi" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" name="xs" step="0.00001" placeholder="xs">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" name="tolerance"step="0.00000000000000001" placeholder="tolerance" >
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-secondary">Go</button>
-                </div>
-            </form>
+        <div id="aitken_bis" class="panel panel-default">
+            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#aitken">
+                <h4 class="panel-title">Aitken</h4>
+
+            </div>
+            <div  id="aitken" class="panel-collapse collapse">
+                <form action="/aitken" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="function" placeholder="f(x)" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" name="x0" step="0.00001" placeholder="x0" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="tolerance" step="0.00001" placeholder="tolerance">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-secondary">Go</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="sec" class="panel panel-default">
+            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#secant">
+                <h4 class="panel-title">Secant</h4>
+
+            </div>
+            <div  id="secant" class="panel-collapse collapse">
+                <form action="/secant" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="function" placeholder="f(x)" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" name="xi" step="0.00001" placeholder="xi" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" name="xs" step="0.00001" placeholder="xs">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="tolerance"step="0.00000000000000001" placeholder="tolerance" >
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-secondary">Go</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
