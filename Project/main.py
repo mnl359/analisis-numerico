@@ -3,6 +3,9 @@ from flask import Flask, redirect, url_for, request, render_template, make_respo
 # from machine import Machine
 from methods import Methods
 from Systems_of_linear_equations.gauss import Gauss
+from Systems_of_linear_equations.pivoting import Pivoting
+from Systems_of_linear_equations.totalPivoting import Total_pivoting
+from Systems_of_linear_equations import jacobi, jacobiSOR
 import json
 app = Flask(__name__)
 
@@ -229,13 +232,97 @@ def gauss():
         for j in range(int(request.form['dimension'])):
             aux.append(float(arstr[j]))
         A.append(aux)
-    print(g.stepped(A, v))
     results = g.clear(g.stepped(A, v), len(A))
-
-
-
-
     return render_template('resultsGauss.html', results=results, matrix=A)
+
+@app.route('/pivoting', methods=['POST'])
+def pivoting():
+
+    g = Pivoting()
+    A = []
+    v = []
+    vstr = request.form.getlist('v')
+    # Llenas V
+    for item in vstr:
+        v.append(float(item))
+    # Llenar A
+    for i in range(int(request.form['dimension'])):
+        aux = []
+        arstr = request.form.getlist('n' + str(i))
+        for j in range(int(request.form['dimension'])):
+            aux.append(float(arstr[j]))
+        A.append(aux)
+    results = g.clear(g.stepped(A, v), len(A))
+    return render_template('resultsGauss.html', results=results, matrix=A)
+
+@app.route('/totalpivoting', methods=['POST'])
+def totalpivoting():
+
+    g = Total_pivoting()
+    A = []
+    v = []
+    vstr = request.form.getlist('v')
+    # Llenas V
+    for item in vstr:
+        v.append(float(item))
+    # Llenar A
+    for i in range(int(request.form['dimension'])):
+        aux = []
+        arstr = request.form.getlist('n' + str(i))
+        for j in range(int(request.form['dimension'])):
+            aux.append(float(arstr[j]))
+        A.append(aux)
+    results = g.clear(g.stepped(A, v), [])
+    return render_template('resultsGauss.html', results=results, matrix=A)
+
+@app.route('/jacobi', methods=['POST'])
+def jaco():
+    tolerance = float(request.form['tolerance'])
+    x0 = float(request.form['x0'])
+    iterations = float(request.form['iterations'])
+    A = []
+    v = []
+    vstr = request.form.getlist('v')
+    # Llenas V
+    for item in vstr:
+        v.append(float(item))
+    # Llenar A
+    for i in range(int(request.form['dimension'])):
+        aux = []
+        arstr = request.form.getlist('n' + str(i))
+        for j in range(int(request.form['dimension'])):
+            aux.append(float(arstr[j]))
+        A.append(aux)
+
+    results = jacobi.jacobi(tolerance, x0, iterations, A, v)
+    return render_template('resultsTable.html', results=results)
+
+@app.route('/jacobiSOR', methods=['POST'])
+def jacoSOR():
+    tolerance = float(request.form['tolerance'])
+    w = float(request.form['w'])
+    iterations = float(request.form['iterations'])
+    A = []
+    v = []
+    x = []
+    vstr = request.form.getlist('v')
+    xstr = request.form.getlist('x')
+    # Llenas V
+    for item in vstr:
+        v.append(float(item))
+    # Llenas X
+    for item in xstr:
+        x.append(float(item))
+    # Llenar A
+    for i in range(int(request.form['dimension'])):
+        aux = []
+        arstr = request.form.getlist('n' + str(i))
+        for j in range(int(request.form['dimension'])):
+            aux.append(float(arstr[j]))
+        A.append(aux)
+
+    results = jacobiSOR.jacobi_SOR(A, v, x, w, iterations, tolerance)
+    return render_template('resultsTable.html', results=results)
 
 
 

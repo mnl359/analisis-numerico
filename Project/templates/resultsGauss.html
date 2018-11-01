@@ -74,9 +74,12 @@
 </div>
 
 <div class="main-container d-flex justify-content-center">
-    <div id="matrix">
-        <a class="btn btn-primary" href="#matrix" data-toggle="collapse" role="button">Final Matrix</a>
-        <div class="table-responsive collapse" id="matrix">
+    <div id="mat" class="panel panel-default">
+        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#matrix">
+            <h4 class="panel-title">Final Matrix</h4>
+
+        </div>
+        <div class="table-responsive panel-collapse collapse" id="matrix">
             <table class="table" id="results">
                 <tbody>
                 {% for row in matrix %}
@@ -91,15 +94,18 @@
         </div>
     </div>
 
-    <div id="uppertriangular">
-        <a class="btn btn-primary" href="#uresults" data-toggle="collapse" role="button">Upper Triangular matrix</a>
-        <div class="table-responsive collapse" id="uresults">
+    <div id="res" class="panel panel-default">
+        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#uresults">
+            <h4 class="panel-title">Results</h4>
+
+        </div>
+        <div class="table-responsive collapse panel-collapse" id="uresults">
             <table class="table" id="uresult">
                 <tbody>
                 {% for row in results %}
                     <tr>
-                            <th>{{ loop.index0 }}</th>
-                            <td>{{ row }}</td>
+                        <th>X{{ loop.index0 }}</th>
+                        <td>{{ row }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>

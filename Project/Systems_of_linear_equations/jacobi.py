@@ -34,17 +34,21 @@ def jacobi(tolerance, x0, iterations, matrix, b):
         aux += 1
     title.append("Error")
     table = PrettyTable(title)
+    result = [title]
     table.add_row([cont] + x0 + ["Doesn't exist"])
+    result.append([cont] + x0 + ["Doesn't exist"])
     error = tolerance + 1
     while error > tolerance and cont < iterations:
         x1 = newJacobi(x0, matrix, b)
         error = norma(x0, x1)
         cont += 1
         table.add_row([cont] + x1 + [error])
+        result.append([cont] + x1 + [error])
         x0 = copy(x1)
     print(table)
-
-m = [[13, -4, -5],[3, -7, 2],[-4, 5, -16]]
-b = [-23, 5 ,34]
-jacobi(5e-06, [0,0,0], 20, m, b)
+    return result
+#
+# m = [[13, -4, -5],[3, -7, 2],[-4, 5, -16]]
+# b = [-23, 5 ,34]
+# jacobi(5e-06, [0,0,0], 20, m, b)
     
