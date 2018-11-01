@@ -108,14 +108,14 @@ class Total_pivoting:
 
 totalpiv = Total_pivoting()
 
-m = [[1, 2.3, 4],[0.5, 2, 1], [4,5,6]]
-b = [1,1,1,1]
-#m = [[-7,2,-3,4], [5,-1,14,-1], [1,9,-7,13], [-12,13,-8,-4]]
-#b = [-12,13,31,-32]
-matrix = totalpiv.stepped(m, b)
-print(DataFrame(matrix))
-print("\nMarcas:")
-print(marks)
-vector = totalpiv.clear(matrix, marks)
-print("Las variables están en el vector de manera decendente: x4, x3, x2, x1 a menos que el vector de marcas haya cambiado\n")
-print(vector)
+# m = [[1, 2.3, 4],[0.5, 2, 1], [4,5,6]]
+# b = [1,1,1,1]
+# #m = [[-7,2,-3,4], [5,-1,14,-1], [1,9,-7,13], [-12,13,-8,-4]]
+# #b = [-12,13,31,-32]
+# matrix = totalpiv.stepped(m, b)
+# print(DataFrame(matrix))
+# print("\nMarcas:")
+# print(marks)
+# vector = totalpiv.clear(matrix, marks)
+# print("Las variables están en el vector de manera decendente: x4, x3, x2, x1 a menos que el vector de marcas haya cambiado\n")
+# print(vector)

@@ -100,68 +100,70 @@
         </div>
     </div>
 
-    <div>
-        <a class="btn btn-primary" href="#graph" data-toggle="collapse" role="button">Plot</a>
-        <div id="graph" class="collapse">
-            <form id="form">
-                <label for="eq">Enter plot domain:</label>
-                <div>
-                    <input type="number" step="0.01" id="ll" placeholder="lower limit" />
-                    <input type="number" step="0.01" id="ul" placeholder="upper limit" />
-                </div>
-                <input type="hidden" id="eq" value="{{ func }}" />
-                <input type="submit" value="Draw" class="btn btn-secondary" style="width: 10px; color: #2F2933; border-color: #2F2933" />
-            </form>
+    {% if func is defined %}
+        <div>
+            <a class="btn btn-primary" href="#graph" data-toggle="collapse" role="button">Plot</a>
+            <div id="graph" class="collapse">
+                <form id="form">
+                    <label for="eq">Enter plot domain:</label>
+                    <div>
+                        <input type="number" step="0.01" id="ll" placeholder="lower limit" />
+                        <input type="number" step="0.01" id="ul" placeholder="upper limit" />
+                    </div>
+                    <input type="hidden" id="eq" value="{{ func }}" />
+                    <input type="submit" value="Draw" class="btn btn-secondary" style="width: 10px; color: #2F2933; border-color: #2F2933" />
+                </form>
 
-            <div id="plot"></div>
+                <div id="plot"></div>
 
-            <script>
-                function draw() {
-                    try {
-                        // compile the expression once
-                        const expression = document.getElementById('eq').value
-                        const expr = math.compile(expression)
-                        const llimit = document.getElementById('ll').value
-                        const ulimit = document.getElementById('ul').value
-                        // evaluate the expression repeatedly for different values of x
-                        const xValues = math.range(llimit ? llimit : -5,ulimit ? ulimit : 5 , 0.5).toArray()
-                        const yValues = xValues.map(function (x) {
-                            return expr.eval({x: x})
-                        })
+                <script>
+                    function draw() {
+                        try {
+                            // compile the expression once
+                            const expression = document.getElementById('eq').value
+                            const expr = math.compile(expression)
+                            const llimit = document.getElementById('ll').value
+                            const ulimit = document.getElementById('ul').value
+                            // evaluate the expression repeatedly for different values of x
+                            const xValues = math.range(llimit ? llimit : -5,ulimit ? ulimit : 5 , 0.5).toArray()
+                            const yValues = xValues.map(function (x) {
+                                return expr.eval({x: x})
+                            })
 
-                        // render the plot using plotly
-                        const func = {
-                            x: xValues,
-                            y: yValues,
-                            type: 'scatter',
-                            name: 'Function'
+                            // render the plot using plotly
+                            const func = {
+                                x: xValues,
+                                y: yValues,
+                                type: 'scatter',
+                                name: 'Function'
+                            }
+
+                            const xaprox = {{ aprox }}
+                            const yaprox = {{ aproy }}
+                            const aprox = {
+                                x: xaprox,
+                                y: yaprox,
+                                mode: 'markers',
+                                type: 'scatter',
+                                name: 'Approximations'
+                            }
+                            const data = [func, aprox]
+                            Plotly.newPlot('plot', data)
                         }
-
-                        const xaprox = {{ aprox }}
-                        const yaprox = {{ aproy }}
-                        const aprox = {
-                            x: xaprox,
-                            y: yaprox,
-                            mode: 'markers',
-                            type: 'scatter',
-                            name: 'Approximations'
+                        catch (err) {
+                            console.error(err)
+                            alert(err)
                         }
-                        const data = [func, aprox]
-                        Plotly.newPlot('plot', data)
                     }
-                    catch (err) {
-                        console.error(err)
-                        alert(err)
-                    }
-                }
 
-                document.getElementById('form').onsubmit = function (event) {
-                    event.preventDefault()
-                    draw()
-                }
-            </script>
+                    document.getElementById('form').onsubmit = function (event) {
+                        event.preventDefault()
+                        draw()
+                    }
+                </script>
+            </div>
         </div>
-    </div>
+    {% endif %}
 </div>
 
 

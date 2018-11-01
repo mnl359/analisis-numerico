@@ -74,12 +74,15 @@
 </div>
 
 <div class="main-container d-flex justify-content-center">
-    <div id="lowertriangular">
-        <a class="btn btn-primary" href="#results" data-toggle="collapse" role="button">Lower Triangular matrix</a>
-        <div class="table-responsive collapse" id="lresults">
-            <table class="table" id="lower">
+    <div id="mat" class="panel panel-default">
+        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#matrix">
+            <h4 class="panel-title">Final Matrix</h4>
+
+        </div>
+        <div class="table-responsive panel-collapse collapse" id="matrix">
+            <table class="table" id="results">
                 <tbody>
-                {% for row in results_l %}
+                {% for row in matrix %}
                     <tr>
                         {% for col in row %}
                             <td>{{ col }}</td>
@@ -91,16 +94,18 @@
         </div>
     </div>
 
-    <div id="uppertriangular">
-        <a class="btn btn-primary" href="#results" data-toggle="collapse" role="button">Upper Triangular matrix</a>
-        <div class="table-responsive collapse" id="uresults">
-            <table class="table" id="lower">
+    <div id="res" class="panel panel-default">
+        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#uresults">
+            <h4 class="panel-title">Results</h4>
+
+        </div>
+        <div class="table-responsive collapse panel-collapse" id="uresults">
+            <table class="table" id="uresult">
                 <tbody>
-                {% for row in results_u %}
+                {% for row in results %}
                     <tr>
-                        {% for col in row %}
-                            <td>{{ col }}</td>
-                        {% endfor %}
+                        <th>X{{ loop.index0 }}</th>
+                        <td>{{ row }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
