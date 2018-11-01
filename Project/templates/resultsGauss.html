@@ -74,12 +74,12 @@
 </div>
 
 <div class="main-container d-flex justify-content-center">
-    <div id="lowertriangular">
-        <a class="btn btn-primary" href="#results" data-toggle="collapse" role="button">Lower Triangular matrix</a>
-        <div class="table-responsive collapse" id="lresults">
-            <table class="table" id="lower">
+    <div id="matrix">
+        <a class="btn btn-primary" href="#matrix" data-toggle="collapse" role="button">Final Matrix</a>
+        <div class="table-responsive collapse" id="matrix">
+            <table class="table" id="results">
                 <tbody>
-                {% for row in results_l %}
+                {% for row in matrix %}
                     <tr>
                         {% for col in row %}
                             <td>{{ col }}</td>
@@ -92,15 +92,14 @@
     </div>
 
     <div id="uppertriangular">
-        <a class="btn btn-primary" href="#results" data-toggle="collapse" role="button">Upper Triangular matrix</a>
+        <a class="btn btn-primary" href="#uresults" data-toggle="collapse" role="button">Upper Triangular matrix</a>
         <div class="table-responsive collapse" id="uresults">
-            <table class="table" id="lower">
+            <table class="table" id="uresult">
                 <tbody>
-                {% for row in results_u %}
+                {% for row in results %}
                     <tr>
-                        {% for col in row %}
-                            <td>{{ col }}</td>
-                        {% endfor %}
+                            <th>{{ loop.index0 }}</th>
+                            <td>{{ row }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>

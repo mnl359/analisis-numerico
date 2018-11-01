@@ -2,6 +2,7 @@ import os
 from flask import Flask, redirect, url_for, request, render_template, make_response
 # from machine import Machine
 from methods import Methods
+from Systems_of_linear_equations.gauss import Gauss
 import json
 app = Flask(__name__)
 
@@ -210,6 +211,32 @@ def secant():
     aproximacionesy.pop(0)
 
     return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"), aprox=aproximacionesx, aproy=aproximacionesy)
+
+@app.route('/gauss', methods=['POST'])
+def gauss():
+
+    g = Gauss()
+    A = []
+    v = []
+    vstr = request.form.getlist('v')
+    # Llenas V
+    for item in vstr:
+        v.append(float(item))
+    # Llenar A
+    for i in range(int(request.form['dimension'])):
+        aux = []
+        arstr = request.form.getlist('n' + str(i))
+        for j in range(int(request.form['dimension'])):
+            aux.append(float(arstr[j]))
+        A.append(aux)
+    print(g.stepped(A, v))
+    results = g.clear(g.stepped(A, v), len(A))
+
+
+
+
+    return render_template('resultsGauss.html', results=results, matrix=A)
+
 
 
 if __name__ == "__main__":
