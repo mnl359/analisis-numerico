@@ -42,7 +42,7 @@ def gaussSeidel(tolerance, x0, iterations, matrix, b):
         cont += 1
         table.add_row([cont] + x1 + [error])
         x0 = copy(x1)
-    print(table)
+    return table
 
 A = [
     [9.1622,    0.4505,    0.1067,    0.4314,    0.8530,    0.4173,    0.7803,    0.2348,    0.5470,    0.5470],
