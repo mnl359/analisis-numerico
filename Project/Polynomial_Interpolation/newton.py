@@ -41,8 +41,8 @@ def newton(value, matrix):
     print("El polinomio resultante es:\n %s" % pol)
     result = pol.evalf(subs={x:value})
     print("El resultado de p(%s) es igual a %s" % (value, result))
-    return pol
+    return result, pol
 
 m = [[0, 0],[1, 1],[2, 1],[3, 0]]
 value = 0.5
-newton(value, m)
+newton(value, m)[1]

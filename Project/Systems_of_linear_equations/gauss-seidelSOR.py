@@ -25,8 +25,7 @@ def norma(x0, x1):
     den = 0
     for x in range(len(x0)):
         sum += (x1[x]-x0[x])**2
-        den += (x1[x])**2
-    error = (sqrt(sum))
+    error = sqrt(sum)
     return error
 
 def gaussSeidel(tolerance, x0, iterations, matrix, b, rel):

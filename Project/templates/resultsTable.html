@@ -58,7 +58,10 @@
 
                 <div class="col-sm-12 columns text-center">
                     <ul class="menu">
-                        <a></a><li><a href="index.html" target="_self">Home</a></li>
+                        <a></a><li><a href="{{ url_for("home") }}" target="_self">Home</a></li>
+                        <li><a href="{{ url_for("nonlinear") }}" target="_self">Non Linear Equation Systems</a></li>
+                        <li><a href="{{ url_for("lineardimension") }}" target="_self">Linear Equation Systems</a></li>
+                        <li><a href="{{ url_for("polynomialdim") }}" target="_self">Polynomial Interpolation</a></li>
                     </ul>
 
                 </div>

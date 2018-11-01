@@ -7,7 +7,7 @@
 <html class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
-    <title>Analisis numerico</title>
+    <title>Numeric Analysis</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,6 +25,13 @@
     <script src={{ url_for('static', filename="js/modernizr-2.6.2-respond-1.1.0.min.js") }}></script>
     <link href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic" rel="stylesheet" type="text/css">
     <link href={{ url_for('static', filename="css/font-helvetica.css") }} rel="stylesheet" type="text/css">
+
+    <script src="https://unpkg.com/mathjs@5.2.1/dist/math.min.js"></script>
+
+    <script src="https://cdn.plot.ly/plotly-1.35.2.min.js"></script>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
 </head>
 
 <body>
@@ -67,16 +74,25 @@
         </div>
         <div class="bottom-border"></div>
     </nav>
-
 </div>
 
-<div class="main-container">
-    Enter matrix dimension (nxn)
-    <form action="/{{ section }}" method="POST">
-        <input class="form-control" type="number" name="n" placeholder="n" >
-        <button type="submit" class="btn btn-secondary">Go</button>
-    </form>
+<div class="main-container d-flex justify-content-center">
+    <div id="mat" class="panel panel-default">
+
+        <table>
+            <tbody>
+            <tr>
+                <th>Polinomio resultante</th> <td>{{ poli }}</td>
+            </tr>
+            <tr>
+                <th>P({{ x }})</th> <td>{{ result }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
+
+
 
 <script src="https://www.youtube.com/iframe_api"></script>
 <script src={{ url_for('static', filename="js/jquery.min.js") }}></script>

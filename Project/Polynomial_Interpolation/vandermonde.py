@@ -167,35 +167,35 @@ def reverse_matrix(A):
     return N
 
 
-name = input("Enter the name of the file you want the answer to be saved. It's going to have '.txt' extension: ")
-matrix_rows = int(input("Please, enter the amount of points you want to use to create the polynomial: "))
-matrix = []
-print("Enter the %s x %s matrix: "% (matrix_rows, 2))
-print("Separe each number with a space and press ENTER to change the row ")
-for j in range(matrix_rows):
-        matrix.append(list(map(float, input().rstrip().split())))
-print("You will find the result in " + name + ".txt")
-with open(name + ".txt", "w") as result:
-    print("The matrix you entered is:", file=result)
-    print(DataFrame(matrix), file=result)
-    print("\n", file=result)
-    A = vandermonde(matrix, result)
-    print("\n", file=result)
-    print("The resulting matrix after Gaussian elimination is: \n",file=result)
-    print(DataFrame(A), file=result)
-    vector = clear(A, len(A))
-    cont = len(vector) - 1
-    str_res = "p(x) = "
-    for i in range(len(vector)):
-        if cont == 0:
-            if vector[i] > 0:
-                str_res += "+" + str(vector[i])
-            else:
-                str_res += str(vector[i])
-        elif vector[i] > 0:
-            str_res += "+" + str(vector[i]) + "x^" + str(cont) + " "
-        else:
-            str_res += str(vector[i]) + "x^" + str(cont) + " "
-        cont -= 1
-        
-    print("\n", str_res, "\n", file=result)
+# name = input("Enter the name of the file you want the answer to be saved. It's going to have '.txt' extension: ")
+# matrix_rows = int(input("Please, enter the amount of points you want to use to create the polynomial: "))
+# matrix = []
+# print("Enter the %s x %s matrix: "% (matrix_rows, 2))
+# print("Separe each number with a space and press ENTER to change the row ")
+# for j in range(matrix_rows):
+#         matrix.append(list(map(float, input().rstrip().split())))
+# print("You will find the result in " + name + ".txt")
+# with open(name + ".txt", "w") as result:
+#     print("The matrix you entered is:", file=result)
+#     print(DataFrame(matrix), file=result)
+#     print("\n", file=result)
+#     A = vandermonde(matrix, result)
+#     print("\n", file=result)
+#     print("The resulting matrix after Gaussian elimination is: \n",file=result)
+#     print(DataFrame(A), file=result)
+#     vector = clear(A, len(A))
+#     cont = len(vector) - 1
+#     str_res = "p(x) = "
+#     for i in range(len(vector)):
+#         if cont == 0:
+#             if vector[i] > 0:
+#                 str_res += "+" + str(vector[i])
+#             else:
+#                 str_res += str(vector[i])
+#         elif vector[i] > 0:
+#             str_res += "+" + str(vector[i]) + "x^" + str(cont) + " "
+#         else:
+#             str_res += str(vector[i]) + "x^" + str(cont) + " "
+#         cont -= 1
+#
+#     print("\n", str_res, "\n", file=result)

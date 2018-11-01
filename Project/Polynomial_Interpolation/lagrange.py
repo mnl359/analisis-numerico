@@ -31,8 +31,8 @@ def lagrange(x, matrix):
         pol1 += ln[0]*matrix[i][1]
     print("El polinomio resultante es:")
     print(pol1)
-    return pol
+    return pol, pol1
 
 m = [[0, 0],[1, 1],[2, 1],[3, 0]]
 value = 1
-print("El resultado de p(%s) es igual a %s" % (value, lagrange(value, m)))
+print("El resultado de p(%s) es igual a %s" % (value, lagrange(value, m)[0]))

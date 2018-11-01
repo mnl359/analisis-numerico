@@ -132,7 +132,7 @@ class LU_gauss:
             cont += 1
         return A
 
-    def lu_gauss(self, A, vector, toPrint):
+    def lu_gauss(self, A, vector):
         u_matrix = self.upper_triangular(A)
         print("The U matrix is: ", "\n", DataFrame(u_matrix), "\n", file=toPrint)
         l_matrix = mults
@@ -141,7 +141,7 @@ class LU_gauss:
         vector_z = self.progressive_substitution(Lz)
         Ux = self.aumMatrix(u_matrix, vector_z)
         result = self.regressive_substitution(Ux)
-        return result
+        return l_matrix, u_matrix, result
 
 #A = [[2, -3, 4, 1], [-4, 2, 1, -2], [1, 3, -5, 3], [-3, -1, 1, -1]]
 #b = [10, -10, 32, -21]
@@ -149,31 +149,31 @@ class LU_gauss:
 #b = [-12, 13, 31, -32]
 #print(lu_gauss(A, b))
 
-lugauss = LU_gauss()
-
-name = input("Enter the name of the file you want the answer to be saved. It's going to have '.txt' extension: ")
-matrix_rows = int(input("As this has to be a square matrix, the number of rows is going to be the same number of columns. \
-                \nEnter number of rows in the matrix: "))
-matrix = []
-vector = []
-print("Enter the %s x %s matrix: "% (matrix_rows, matrix_rows))
-print("Separe each number with a space and to change the row press ENTER")
-for j in range(matrix_rows):
-        matrix.append(list(map(float, input().rstrip().split())))
-print("Enter de vector. Separe each number with a space")
-vector.append(list(map(float, input().rstrip().split())))
-vector = vector[0]
-print("You will find the result in " + name + ".txt")
-matrix_aux = deepcopy(matrix)
-vector_aux = copy(vector)
-with open(name + ".txt", "w") as result:
-    print("The augmented matrix is:" , file=result)
-    print(DataFrame(lugauss.aumMatrix(matrix, vector)), file=result)
-    print("\n", file=result)
-    A = lugauss.lu_gauss(matrix_aux, vector_aux, result)
-    print("The result of each variable is: ", file=result)
-    num = 1
-    for x in A:
-        print("x" + str(num) + " = " + str(x), file=result)
-        num += 1
+# lugauss = LU_gauss()
+#
+# name = input("Enter the name of the file you want the answer to be saved. It's going to have '.txt' extension: ")
+# matrix_rows = int(input("As this has to be a square matrix, the number of rows is going to be the same number of columns. \
+#                 \nEnter number of rows in the matrix: "))
+# matrix = []
+# vector = []
+# print("Enter the %s x %s matrix: "% (matrix_rows, matrix_rows))
+# print("Separe each number with a space and to change the row press ENTER")
+# for j in range(matrix_rows):
+#         matrix.append(list(map(float, input().rstrip().split())))
+# print("Enter de vector. Separe each number with a space")
+# vector.append(list(map(float, input().rstrip().split())))
+# vector = vector[0]
+# print("You will find the result in " + name + ".txt")
+# matrix_aux = deepcopy(matrix)
+# vector_aux = copy(vector)
+# with open(name + ".txt", "w") as result:
+#     print("The augmented matrix is:" , file=result)
+#     print(DataFrame(lugauss.aumMatrix(matrix, vector)), file=result)
+#     print("\n", file=result)
+#     A = lugauss.lu_gauss(matrix_aux, vector_aux, result)[2]
+#     print("The result of each variable is: ", file=result)
+#     num = 1
+#     for x in A:
+#         print("x" + str(num) + " = " + str(x), file=result)
+#         num += 1
     

@@ -54,12 +54,7 @@
                         <a></a><li><a href="{{ url_for("home") }}" target="_self">Home</a></li>
                         <li><a href="{{ url_for("nonlinear") }}" target="_self">Non Linear Equation Systems</a></li>
                         <li><a href="{{ url_for("lineardimension") }}" target="_self">Linear Equation Systems</a></li>
-                        <li><a href="blog.html" target="_self">Blog</a></li>
-                        <li><a href="contact.html" target="_self">Contact</a></li>
-
-
-
-
+                        <li><a href="{{ url_for("polynomialdim") }}" target="_self">Polynomial Interpolation</a></li>
                     </ul>
 
                 </div>
@@ -76,7 +71,7 @@
 </div>
 
 <div class="main-container">
-    <div class="panel-group" id="accordion1">
+    <div class="panel-group col-sm-6 col-sm-offset-3" id="accordion1">
         <div id="bis" class="panel panel-default">
             <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#bisection">
                 <h4 class="panel-title">Bisection</h4>

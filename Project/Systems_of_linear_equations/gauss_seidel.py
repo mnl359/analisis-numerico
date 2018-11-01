@@ -34,14 +34,25 @@ def gaussSeidel(tolerance, x0, iterations, matrix, b):
         aux += 1
     title.append("Error")
     table = PrettyTable(title)
+    result = [title]
     table.add_row([cont] + x0 + ["Doesn't exist"])
+    result.append([cont] + x0 + ["Doesn't exist"])
     error = tolerance + 1
     while error > tolerance and cont < iterations:
         x1 = newGaussSeidel(x0, matrix, b)
         error = norma(x0, x1)
         cont += 1
         table.add_row([cont] + x1 + [error])
+        result.append([cont] + x0 + ["Doesn't exist"])
         x0 = copy(x1)
+<<<<<<< HEAD:Project/Systems_of_linear_equations/gauss_seidel.py
+    print(table)
+    return result
+
+# m = [[13, -4, -5],[3, -7, 2],[-4, 5, -16]]
+# b = [-23, 5 ,34]
+# gaussSeidel(5e-06, [1, 2], 20, m, b)
+=======
     return table
 
 A = [
@@ -67,3 +78,4 @@ fileToPrint = "gauss-seidel.txt"
 with open(fileToPrint, "w") as result:
     print(gaussSeidel(tol, X0, 100, A, b), file=result)
     
+>>>>>>> e218a9a34417353e258fd7319ebcd36e72003d73:Project/Systems_of_linear_equations/gauss-seidel.py

@@ -18,11 +18,9 @@ def newJacobi(x0, matrix, b):
 
 def norma(x0, x1):
     sum = 0
-    den = 0
     for x in range(len(x0)):
         sum += (x1[x]-x0[x])**2
-        den += (x1[x])**2
-    error = (sqrt(sum))
+    error = sqrt(sum)
     return error
 
 def jacobi(tolerance, x0, iterations, matrix, b):

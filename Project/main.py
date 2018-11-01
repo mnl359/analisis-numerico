@@ -5,7 +5,10 @@ from methods import Methods
 from Systems_of_linear_equations.gauss import Gauss
 from Systems_of_linear_equations.pivoting import Pivoting
 from Systems_of_linear_equations.totalPivoting import Total_pivoting
-from Systems_of_linear_equations import jacobi, jacobiSOR
+from Systems_of_linear_equations.LUGauss import LU_gauss
+from Systems_of_linear_equations.LUPivoting import LU_pivoting
+from Systems_of_linear_equations import jacobi, jacobiSOR, cholesky, doolittle, crout, gauss_seidel
+from Polynomial_Interpolation import lagrange, newton, vandermonde
 import json
 app = Flask(__name__)
 
@@ -21,7 +24,7 @@ def home():
 
 @app.route('/lineardimension')
 def lineardimension():
-    return render_template('lineardimension.html')
+    return render_template('lineardimension.html', section="linear")
 
 @app.route('/linear', methods=['POST'])
 def linear():
@@ -32,6 +35,16 @@ def linear():
 @app.route('/nonlinear')
 def nonlinear():
     return render_template('index.html')
+
+@app.route('/polynomialdim')
+def polynomialdim():
+    return render_template('lineardimension.html', section="polynomial")
+
+@app.route('/polynomial', methods=['POST'])
+def polynomial():
+    n = int(request.form['n'])
+    narray = [None]*n
+    return render_template('polynomial.html', dimension=narray)
 
 @app.route('/bisection', methods=['POST'])
 def bisection():
@@ -255,6 +268,103 @@ def pivoting():
     results = g.clear(g.stepped(A, v), len(A))
     return render_template('resultsGauss.html', results=results, matrix=A)
 
+@app.route('/lugauss', methods=['POST'])
+def lugauss():
+
+    g = LU_gauss()
+    A = []
+    v = []
+    vstr = request.form.getlist('v')
+    # Llenas V
+    for item in vstr:
+        v.append(float(item))
+    # Llenar A
+    for i in range(int(request.form['dimension'])):
+        aux = []
+        arstr = request.form.getlist('n' + str(i))
+        for j in range(int(request.form['dimension'])):
+            aux.append(float(arstr[j]))
+        A.append(aux)
+    results = g.lu_gauss(A, v)
+    return render_template('resultsLU.html', results=results[2], l_matrix=results[0], u_matrix=results[1])
+
+@app.route('/lupivoting', methods=['POST'])
+def lupivoting():
+
+    g = LU_pivoting()
+    A = []
+    v = []
+    vstr = request.form.getlist('v')
+    # Llenas V
+    for item in vstr:
+        v.append(float(item))
+    # Llenar A
+    for i in range(int(request.form['dimension'])):
+        aux = []
+        arstr = request.form.getlist('n' + str(i))
+        for j in range(int(request.form['dimension'])):
+            aux.append(float(arstr[j]))
+        A.append(aux)
+    results = g.lu_pivoting(A, v)
+    return render_template('resultsLU.html', results=results[2], l_matrix=results[0], u_matrix=results[1])
+
+@app.route('/cholesky', methods=['POST'])
+def cholesky():
+
+    A = []
+    v = []
+    vstr = request.form.getlist('v')
+    # Llenas V
+    for item in vstr:
+        v.append(float(item))
+    # Llenar A
+    for i in range(int(request.form['dimension'])):
+        aux = []
+        arstr = request.form.getlist('n' + str(i))
+        for j in range(int(request.form['dimension'])):
+            aux.append(float(arstr[j]))
+        A.append(aux)
+    results = cholesky.cholesky(A)
+    return render_template('resultsLU.html', l_matrix=results[0], u_matrix=results[1])
+
+@app.route('/doolittle', methods=['POST'])
+def doolittle():
+
+    A = []
+    v = []
+    vstr = request.form.getlist('v')
+    # Llenas V
+    for item in vstr:
+        v.append(float(item))
+    # Llenar A
+    for i in range(int(request.form['dimension'])):
+        aux = []
+        arstr = request.form.getlist('n' + str(i))
+        for j in range(int(request.form['dimension'])):
+            aux.append(float(arstr[j]))
+        A.append(aux)
+    results = doolittle.doolittle(A)
+    return render_template('resultsLU.html', l_matrix=results[0], u_matrix=results[1])
+
+@app.route('/crout', methods=['POST'])
+def crout():
+
+    A = []
+    v = []
+    vstr = request.form.getlist('v')
+    # Llenas V
+    for item in vstr:
+        v.append(float(item))
+    # Llenar A
+    for i in range(int(request.form['dimension'])):
+        aux = []
+        arstr = request.form.getlist('n' + str(i))
+        for j in range(int(request.form['dimension'])):
+            aux.append(float(arstr[j]))
+        A.append(aux)
+    results = crout.crout(A)
+    return render_template('resultsLU.html', l_matrix=results[0], u_matrix=results[1])
+
 @app.route('/totalpivoting', methods=['POST'])
 def totalpivoting():
 
@@ -297,6 +407,36 @@ def jaco():
     results = jacobi.jacobi(tolerance, x0, iterations, A, v)
     return render_template('resultsTable.html', results=results)
 
+@app.route('/lagrange', methods=['POST'])
+def lag():
+    x = float(request.form['x'])
+    A = []
+    # Llenar A
+    for i in range(int(request.form['dimension'])):
+        aux = []
+        arstr = request.form.getlist('n' + str(i))
+        for j in range(2):
+            aux.append(float(arstr[j]))
+        A.append(aux)
+
+    results = lagrange.lagrange(x, A)
+    return render_template('resultsPoly.html', result=results[0], poli=results[1], x=x)
+
+@app.route('/newton', methods=['POST'])
+def newt():
+    x = float(request.form['x'])
+    A = []
+    # Llenar A
+    for i in range(int(request.form['dimension'])):
+        aux = []
+        arstr = request.form.getlist('n' + str(i))
+        for j in range(2):
+            aux.append(float(arstr[j]))
+        A.append(aux)
+
+    results = newton.newton(x, A)
+    return render_template('resultsPoly.html', result=results[0], poli=results[1], x=x)
+
 @app.route('/jacobiSOR', methods=['POST'])
 def jacoSOR():
     tolerance = float(request.form['tolerance'])
@@ -322,6 +462,28 @@ def jacoSOR():
         A.append(aux)
 
     results = jacobiSOR.jacobi_SOR(A, v, x, w, iterations, tolerance)
+    return render_template('resultsTable.html', results=results)
+
+@app.route('/gaussseidel', methods=['POST'])
+def gaussseidel():
+    tolerance = float(request.form['tolerance'])
+    x0 = float(request.form['x0'])
+    iterations = float(request.form['iterations'])
+    A = []
+    v = []
+    vstr = request.form.getlist('v')
+    # Llenas V
+    for item in vstr:
+        v.append(float(item))
+    # Llenar A
+    for i in range(int(request.form['dimension'])):
+        aux = []
+        arstr = request.form.getlist('n' + str(i))
+        for j in range(int(request.form['dimension'])):
+            aux.append(float(arstr[j]))
+        A.append(aux)
+
+    results = gauss_seidel.gaussSeidel(tolerance, x0, iterations, A, v)
     return render_template('resultsTable.html', results=results)
 
 

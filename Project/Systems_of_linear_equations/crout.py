@@ -38,20 +38,20 @@ def crout(matrix):
     
     return l, u
 
-name = input("Enter the name of the file you want the answer to be saved. It's going to have '.txt' extension: ")
-matrix_rows = int(input("As this has to be a square matrix, the number of rows is going to be the same number of columns. \
-                \nEnter number of rows in the matrix: "))
-matrix = []
-print("Enter the %s x %s matrix: "% (matrix_rows, matrix_rows))
-print("Separe each number with a space and to change the row press ENTER")
-for j in range(matrix_rows):
-        matrix.append(list(map(float, input().rstrip().split())))
-matrix_aux = deepcopy(matrix)
-with open(name + ".txt", "w") as result:
-    mat = crout(matrix)
-    print("The L matrix is:" , file=result)
-    print(DataFrame(mat[0]), file=result)
-    print("\n", file=result)
-    print("The U matrix is:" , file=result)
-    print(DataFrame(mat[1]), file=result)
-    print("\n", file=result)
+# name = input("Enter the name of the file you want the answer to be saved. It's going to have '.txt' extension: ")
+# matrix_rows = int(input("As this has to be a square matrix, the number of rows is going to be the same number of columns. \
+#                 \nEnter number of rows in the matrix: "))
+# matrix = []
+# print("Enter the %s x %s matrix: "% (matrix_rows, matrix_rows))
+# print("Separe each number with a space and to change the row press ENTER")
+# for j in range(matrix_rows):
+#         matrix.append(list(map(float, input().rstrip().split())))
+# matrix_aux = deepcopy(matrix)
+# with open(name + ".txt", "w") as result:
+#     mat = crout(matrix)
+#     print("The L matrix is:" , file=result)
+#     print(DataFrame(mat[0]), file=result)
+#     print("\n", file=result)
+#     print("The U matrix is:" , file=result)
+#     print(DataFrame(mat[1]), file=result)
+#     print("\n", file=result)
