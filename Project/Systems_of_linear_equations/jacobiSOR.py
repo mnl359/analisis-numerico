@@ -1,18 +1,10 @@
 #!/bin/python3
 
-from copy import deepcopy, copy
 from pandas import DataFrame
-from numpy import linalg
-from numpy import diag
-from numpy import tril
-from numpy import triu
-from numpy import transpose
-from numpy import matrix
-from numpy import asarray
-from numpy import matmul
+from numpy import linalg, diag, tril, triu, transpose, matrix, asarray, matmul
 from scipy import linalg as LA
-import texttable as tt
 from decimal import Decimal
+from prettytable import PrettyTable
 
 def aumMatrix(A, b):
     cont = 0
@@ -21,10 +13,15 @@ def aumMatrix(A, b):
         cont += 1
     return A
 
-def jacobi_SOR(A, b, x, w, iter, tol):
-    table = tt.Texttable()
-    headers = ['Iteration', 'Error']
-    table.header(headers)
+def jacobi_SOR(A, b, x, w, iter, tol, toPrint):
+    title = ['Iteration']
+    aux = 0
+    while aux < len(x):
+        title.append("x"+str(aux))
+        aux += 1
+        
+    title.append("Error")
+    table = PrettyTable(title)
 
     n = len(A)
     det = linalg.det(A)
@@ -58,53 +55,40 @@ def jacobi_SOR(A, b, x, w, iter, tol):
     if a == 2:
         RE = max(abs(LA.eigvals(t_matrix)))
         if RE > 1:
-            print("The spectral radio is larger than 1 (" + str(RE) + "). Method won't converge")
+            print("The spectral radio is larger than 1 (" + str(RE) + "). Method won't converge", file=toPrint)
             a = 2
         else:
-            print("The method converges and its spectral radio is " + str(RE))
+            print("The method converges and its spectral radio is " + str(RE), file=toPrint)
             a = 1
     
     if a == 1:
         cont = 0
-        tolerance = tol + 1
+        table.add_row([cont] + x + ["Doesn't exist"])
         x = transpose(x)
-        error_vector = []
+        tolerance = tol + 1
         while cont < iter and tolerance > tol:
             xi = (matmul(t_matrix, x)) + c_matrix
             tolerance = linalg.norm(xi - x)
             cont += 1
+            table.add_row([cont] + xi.tolist() + ['%.2E' % Decimal(str(tolerance))])
             x = xi
-            error_vector.append(tolerance)
         
-        print("The aproximation to X vector with %s iterations is" %cont)
+        print("The aproximation to X vector with %s iterations is" %cont, file=toPrint)
         for i in range(n):
-            print("x" + str(i) + " = ", x[i])
+            print("x" + str(i) + " = ", x[i], file=toPrint)
             #print(i, x[i])
-        print("\n")
+        print("\n", file=toPrint)
         
         R = matmul(A, x)
-        print("The best aproximation you can get of vector 'b' is")
+        print("The best aproximation you can get of vector 'b' is", file=toPrint)
         for i in range(n):
-            print("b" + str(i) + " = ", R[i])
+            print("b" + str(i) + " = ", R[i], file=toPrint)
         
-        print("\n")
-        error_vector = transpose(error_vector)
-        lenError = len(error_vector)
-        print("Iteration Error")
-        for i in range(lenError):
-            m = '%.2E' % Decimal(str(error_vector[i]))
-            table.add_row([i, m])
     elif a == 2:
-        print("The method does not converge because the matrix is not dominant on its diagonal")
-    s = table.draw()
-    print(s)
-    print("The error in the last iteration (%s) is " %cont, error_vector[lenError - 1])
-    return x
+        print("The method does not converge because the matrix is not dominant on its diagonal", file=toPrint)
+    
+    return table
 
-#A = [[3, -1, 1], [-1, 3, -1], [1, -1, 3]]
-#b = [-1, 7, -7]
-#w = 1.25
-#x = [0, 0, 0]
 
 A = [
     [9.1622,    0.4505,    0.1067,    0.4314,    0.8530,    0.4173,    0.7803,    0.2348,    0.5470,    0.5470],
@@ -124,6 +108,7 @@ b = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 tol=1e-07 
 w=1.4000
 X0 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-
-print(jacobi_SOR(A, b, X0, w, 100000, tol))
+fileToPrint = "jacobiSOR.txt"
+with open(fileToPrint, "w") as result:
+    print(jacobi_SOR(A, b, X0, w, 1000, tol, result), file=result)
 
