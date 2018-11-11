@@ -65,14 +65,14 @@ def bisection():
     aproximacionesx.pop(0)
     aproximacionesy.pop(0)
     if request.method == 'POST':
-        return json.dumps([[0], [1], [2], [3]])
+        return json.dumps(table)
     else:
         return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"),
                                aprox=aproximacionesx, aproy=aproximacionesy)
 
 
 
-@app.route('/stephensen', methods=['POST'])
+@app.route('/stephensen', methods=['POST', 'GET'])
 def stephensen():
     func = request.form['function']
     xn = float(request.form['xn'])
@@ -81,10 +81,11 @@ def stephensen():
 
     methods = Methods(func)
     table = methods.stephensen(xn, tolerance,iterations)
-
+    if request.method == 'POST':
+        return json.dumps(table)
     return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"))
 
-@app.route('/fixed', methods=['POST'])
+@app.route('/fixed', methods=['POST', 'GET'])
 def fixed():
 
     func = request.form['function']
@@ -104,9 +105,11 @@ def fixed():
     aproximacionesx.pop(0)
     aproximacionesy.pop(0)
 
+    if request.method == 'POST':
+        return json.dumps(table)
     return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"), aprox=aproximacionesx, aproy=aproximacionesy)
 
-@app.route('/falseRule', methods=['POST'])
+@app.route('/falseRule', methods=['POST', 'GET'])
 def falseRule():
 
     func = request.form['function']
@@ -126,11 +129,13 @@ def falseRule():
     aproximacionesx.pop(0)
     aproximacionesy.pop(0)
 
+    if request.method == 'POST':
+        return json.dumps(table)
     return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"), aprox=aproximacionesx, aproy=aproximacionesy)
 
 
 ### ESTO HAY QUE ARREGLARLO
-@app.route('/incremental', methods=['POST'])
+@app.route('/incremental', methods=['POST', 'GET'])
 def incremental():
 
     func = request.form['function']
@@ -141,10 +146,11 @@ def incremental():
     methods = Methods(func)
     table = methods.incremental_searches(x0, delta,iterations)
 
-
+    if request.method == 'POST':
+        return json.dumps(table)
     return render_template('resultsTable.html', results=table, func=func.replace("**", "^"))
 
-@app.route('/multiple', methods=['POST'])
+@app.route('/multiple', methods=['POST', 'GET'])
 def multiple():
 
     func = request.form['function']
@@ -163,11 +169,13 @@ def multiple():
     aproximacionesx.pop(0)
     aproximacionesy.pop(0)
 
+    if request.method == 'POST':
+        return json.dumps(table)
     return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"), aprox=aproximacionesx, aproy=aproximacionesy)
 
 
 ## X, Y??????
-@app.route('/aitken', methods=['POST'])
+@app.route('/aitken', methods=['POST', 'GET'])
 def aitken():
 
     func = request.form['function']
@@ -182,7 +190,7 @@ def aitken():
     return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"))
 
 ### X, Y???
-@app.route('/aitken_bisection', methods=['POST'])
+@app.route('/aitken_bisection', methods=['POST', 'GET'])
 def aitken_bisection():
 
     func = request.form['function']
@@ -194,10 +202,11 @@ def aitken_bisection():
     methods = Methods(func)
     table = methods.aitken_bis(xi, xs, tolerance,iterations)
 
-
+    if request.method == 'POST':
+        return json.dumps(table)
     return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"))
 
-@app.route('/muller', methods=['POST'])
+@app.route('/muller', methods=['POST', 'GET'])
 def muller():
 
     func = request.form['function']
@@ -209,9 +218,11 @@ def muller():
     methods = Methods(func)
     table = methods.muller(xi, xs, tolerance,iterations)
 
+    if request.method == 'POST':
+        return json.dumps(table)
     return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"))
 
-@app.route('/secant', methods=['POST'])
+@app.route('/secant', methods=['POST', 'GET'])
 def secant():
 
     func = request.form['function']
@@ -231,9 +242,14 @@ def secant():
     aproximacionesx.pop(0)
     aproximacionesy.pop(0)
 
+    if request.method == 'POST':
+        return json.dumps(table)
     return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"), aprox=aproximacionesx, aproy=aproximacionesy)
 
-@app.route('/gauss', methods=['POST'])
+
+##################LINEAAAAAAAAAAAR######################
+
+@app.route('/gauss', methods=['POST', 'GET'])
 def gauss():
 
     g = Gauss()
@@ -253,7 +269,7 @@ def gauss():
     results = g.clear(g.stepped(A, v), len(A))
     return render_template('resultsGauss.html', results=results, matrix=A)
 
-@app.route('/pivoting', methods=['POST'])
+@app.route('/pivoting', methods=['POST', 'GET'])
 def pivoting():
 
     g = Pivoting()
@@ -273,7 +289,7 @@ def pivoting():
     results = g.clear(g.stepped(A, v), len(A))
     return render_template('resultsGauss.html', results=results, matrix=A)
 
-@app.route('/lugauss', methods=['POST'])
+@app.route('/lugauss', methods=['POST', 'GET'])
 def lugauss():
 
     g = LU_gauss()
@@ -293,7 +309,7 @@ def lugauss():
     results = g.lu_gauss(A, v)
     return render_template('resultsLU.html', results=results[2], l_matrix=results[0], u_matrix=results[1])
 
-@app.route('/lupivoting', methods=['POST'])
+@app.route('/lupivoting', methods=['POST', 'GET'])
 def lupivoting():
 
     g = LU_pivoting()
@@ -313,7 +329,7 @@ def lupivoting():
     results = g.lu_pivoting(A, v)
     return render_template('resultsLU.html', results=results[2], l_matrix=results[0], u_matrix=results[1])
 
-@app.route('/cholesky', methods=['POST'])
+@app.route('/cholesky', methods=['POST', 'GET'])
 def cholesky():
 
     A = []
@@ -332,7 +348,7 @@ def cholesky():
     results = cholesky.cholesky(A)
     return render_template('resultsLU.html', l_matrix=results[0], u_matrix=results[1])
 
-@app.route('/doolittle', methods=['POST'])
+@app.route('/doolittle', methods=['POST', 'GET'])
 def doolittle():
 
     A = []
@@ -351,7 +367,7 @@ def doolittle():
     results = doolittle.doolittle(A)
     return render_template('resultsLU.html', l_matrix=results[0], u_matrix=results[1])
 
-@app.route('/crout', methods=['POST'])
+@app.route('/crout', methods=['POST', 'GET'])
 def crout():
 
     A = []
@@ -370,7 +386,7 @@ def crout():
     results = crout.crout(A)
     return render_template('resultsLU.html', l_matrix=results[0], u_matrix=results[1])
 
-@app.route('/totalpivoting', methods=['POST'])
+@app.route('/totalpivoting', methods=['POST', 'GET'])
 def totalpivoting():
 
     g = Total_pivoting()
@@ -390,7 +406,7 @@ def totalpivoting():
     results = g.clear(g.stepped(A, v), [])
     return render_template('resultsGauss.html', results=results, matrix=A)
 
-@app.route('/jacobi', methods=['POST'])
+@app.route('/jacobi', methods=['POST', 'GET'])
 def jaco():
     tolerance = float(request.form['tolerance'])
     x0 = float(request.form['x0'])
@@ -412,7 +428,7 @@ def jaco():
     results = jacobi.jacobi(tolerance, x0, iterations, A, v)
     return render_template('resultsTable.html', results=results)
 
-@app.route('/lagrange', methods=['POST'])
+@app.route('/lagrange', methods=['POST', 'GET'])
 def lag():
     x = float(request.form['x'])
     A = []
@@ -427,7 +443,7 @@ def lag():
     results = lagrange.lagrange(x, A)
     return render_template('resultsPoly.html', result=results[0], poli=results[1], x=x)
 
-@app.route('/newton', methods=['POST'])
+@app.route('/newton', methods=['POST', 'GET'])
 def newt():
     x = float(request.form['x'])
     A = []
@@ -442,7 +458,7 @@ def newt():
     results = newton.newton(x, A)
     return render_template('resultsPoly.html', result=results[0], poli=results[1], x=x)
 
-@app.route('/jacobiSOR', methods=['POST'])
+@app.route('/jacobiSOR', methods=['POST', 'GET'])
 def jacoSOR():
     tolerance = float(request.form['tolerance'])
     w = float(request.form['w'])
@@ -469,7 +485,7 @@ def jacoSOR():
     results = jacobiSOR.jacobi_SOR(A, v, x, w, iterations, tolerance)
     return render_template('resultsTable.html', results=results)
 
-@app.route('/gaussseidel', methods=['POST'])
+@app.route('/gaussseidel', methods=['POST', 'GET'])
 def gaussseidel():
     tolerance = float(request.form['tolerance'])
     x0 = float(request.form['x0'])
