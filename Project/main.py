@@ -46,7 +46,7 @@ def polynomial():
     narray = [None]*n
     return render_template('polynomial.html', dimension=narray)
 
-@app.route('/bisection', methods=['POST'])
+@app.route('/bisection', methods=['POST', 'GET'])
 def bisection():
     func = request.form['function']
     xi = float(request.form['xi'])
@@ -55,7 +55,7 @@ def bisection():
     tolerance = float(request.form['tolerance'])
 
     methods = Methods(func)
-    table = methods.bisection(xi, xs, tolerance,iterations)
+    table = methods.bisection(xi, xs, tolerance, iterations)
 
     aproximacionesx = []
     aproximacionesy = []
@@ -64,8 +64,13 @@ def bisection():
         aproximacionesy.append(row[4])
     aproximacionesx.pop(0)
     aproximacionesy.pop(0)
+    if request.method == 'POST':
+        return json.dumps([[0], [1], [2], [3]])
+    else:
+        return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"),
+                               aprox=aproximacionesx, aproy=aproximacionesy)
 
-    return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"), aprox=aproximacionesx, aproy=aproximacionesy)
+
 
 @app.route('/stephensen', methods=['POST'])
 def stephensen():
