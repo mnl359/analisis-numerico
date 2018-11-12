@@ -5,7 +5,7 @@ from numpy import vander
 from pandas import DataFrame
 
 # El método principal es main
-# Devuelve la matriz de Vandermonde, la matriz final después de 
+# Devuelve 0 (exitoso), la matriz de Vandermonde, la matriz final después de 
 # toda la eliminación gaussiana y por último el vector que tiene
 # los coeficientes del polinomio
 
@@ -161,7 +161,7 @@ def main(A):
     resMatrix = vandermonde(A)[0]
     vector = clear(resMatrix, len(resMatrix))
 
-    return augMatrix, resMatrix, vector   
+    return 0, augMatrix, resMatrix, vector   
 
 
 
