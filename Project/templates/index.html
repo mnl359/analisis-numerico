@@ -25,82 +25,26 @@
     <script src={{ url_for('static', filename="js/modernizr-2.6.2-respond-1.1.0.min.js") }}></script>
     <link href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic" rel="stylesheet" type="text/css">
     <link href={{ url_for('static', filename="css/font-helvetica.css") }} rel="stylesheet" type="text/css">
-
-
-    <script src="https://www.youtube.com/iframe_api"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src={{ url_for('static', filename="js/jquery.min.js") }}></script>
     <script src={{ url_for('static', filename="js/jquery.plugin.min.js") }}></script>
-    <script src={{ url_for('static', filename="js/bootstrap.min.js") }}></script>
-    <script src={{ url_for('static', filename="js/jquery.flexslider-min.js") }}></script>
-    <script src={{ url_for('static', filename="js/smooth-scroll.min.js") }}></script>
-    <script src={{ url_for('static', filename="js/skrollr.min.js") }}></script>
-    <script src={{ url_for('static', filename="js/spectragram.min.js") }}></script>
-    <script src={{ url_for('static', filename="js/scrollReveal.min.js") }}></script>
-    <script src={{ url_for('static', filename="js/isotope.min.js") }}></script>
-    <script src={{ url_for('static', filename="js/twitterFetcher_v10_min.js") }}></script>
-    <script src={{ url_for('static', filename="js/lightbox.min.js") }}></script>
-    <script src={{ url_for('static', filename="js/jquery.countdown.min.js") }}></script>
-    <script src={{ url_for('static', filename="js/scripts.js") }}></script>
-
     <script src="http://malsup.github.com/jquery.form.js"></script>
 </head>
 
-{% macro onsubmit(formname, divname, subname) -%}
-    <script>
-        $(function() { //shorthand document.ready function
-            var i=false;
-            $('#{{ formname }}').submit(function() {
-                if(!i){
-                    // submit the form
-                    $(this).ajaxSubmit({
-                        type: 'POST',
-                        data: {prueba: 'true'},
-                        success: function (data) {
-                            var res = JSON.parse(data)
-                            var status = res[0]
-                            if (status>0) { // OCURRIO UN ERROR, MANEJARLO
-                                console.log("sad")
-                                var message = res[1]
-                                alert(message)
-                            } else { // REQUEST EXITOSA, MOSTRAR RESULTADOS
-                                var resultado = res[1]
-                                var iteraciones = res[3]
-                                i=true;
-
-                                var resstring =
-                                    "<div class='col-xs-6'>" +
-                                    "<div>Resultado: "+resultado+"</div>" +
-                                    "<div>En "+iteraciones+" iteraciones</div>"+
-                                    "</div>"
-
-                                $('#{{ divname }}').append(resstring);
-                                $('#{{ subname }}').html('Details')
-                            }
-                        }
-                    });
-                    // return false to prevent normal browser submit and page navigation
-
-                    return false;
-                } else{
-                    return true;
-                }
-
-            });
-        });
-
-
-    </script>
-{%- endmacro %}
-
-
 <body>
+
+{#<div class="loader">#}
+{#    <div class="spinner">#}
+{#        <div class="double-bounce1"></div>#}
+{#        <div class="double-bounce2"></div>#}
+{#    </div>#}
+{#</div>#}
 
 <div class="nav-container">
     <nav class="centered-logo top-bar">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 text-center">
-                    <a href="index.html">
+                    <a href="nonlinear.html">
                         <img class="logo logo-dark" alt="Logo" src={{ url_for('static', filename="img/download.jpeg") }}>
                     </a>
                 </div>
@@ -111,11 +55,11 @@
 
                 <div class="col-sm-12 columns text-center">
                     <ul class="menu">
-                        <a></a><li><a href="{{ url_for("home") }}" target="_self">Home</a></li>
+                        <li><a href="{{ url_for("home") }}" target="_self">Home</a></li>
                         <li><a href="{{ url_for("nonlinear") }}" target="_self">Non Linear Equation Systems</a></li>
                         <li><a href="{{ url_for("lineardimension") }}" target="_self">Linear Equation Systems</a></li>
-                        <li><a href="{{ url_for("polynomialdim") }}" target="_self">Polynomial Interpolation</a></li>
                         <li><a href="{{ url_for("splinesdimension") }}" target="_self">Splines</a></li>
+
                     </ul>
 
                 </div>
@@ -131,289 +75,22 @@
 
 </div>
 
-<div class="main-container">
-    <div class="panel-group col-sm-6 col-sm-offset-3" id="accordion1">
-        <div id="bis" class="panel panel-default">
-            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#bisection">
-                <h4 class="panel-title">Bisection</h4>
-
-            </div>
-            <div  id="bisection" class="panel-collapse collapse">
-                <form action="/bisection" method="POST" id="bisectionform">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="function" placeholder="f(x)" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="xi" step="0.00001" placeholder="xi" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="xs" step="0.00001" placeholder="xs">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="tolerance"step="0.00000000000000001" placeholder="tolerance" >
-                    </div>
-                    <div class="form-group row" id="divbis">
-                        <div class="col-xs-3">
-                            <button id="subbis" type="submit" class="btn btn-secondary" style="min-width: 70px">Go</button>
-                        </div>
-                    </div>
-                </form>
-                {{ onsubmit("bisectionform", "divbis", "subbis") }}
-            </div>
-        </div>
-
-        <div id="bis_ait" class="panel panel-default">
-            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#aitken_bisection">
-                <h4 class="panel-title">Aitken Bisection</h4>
-
-            </div>
-            <div  id="aitken_bisection" class="panel-collapse collapse">
-                <form action="/aitken_bisection" method="POST" id="aitbisform">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="function" placeholder="f(x)" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="xi" step="0.00001" placeholder="xi" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="xs" step="0.00001" placeholder="xs">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="tolerance"step="0.00000000000000001" placeholder="tolerance" >
-                    </div>
-                    <div class="form-group row" id="divaitbis">
-                        <div class="col-xs-3">
-                            <button id="subaitbis" type="submit" class="btn btn-secondary" style="min-width: 70px">Go</button>
-                        </div>
-                    </div>
-                </form>
-                {{ onsubmit("aitbisform", "divaitbis", "subaitbis") }}
-            </div>
-        </div>
-
-        <div id="mul" class="panel panel-default">
-            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#muller">
-                <h4 class="panel-title">Muller</h4>
-
-            </div>
-            <div  id="muller" class="panel-collapse collapse">
-                <form action="/muller" method="POST" id="mullerform">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="function" placeholder="f(x)" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="xi" step="0.00001" placeholder="xi" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="xs" step="0.00001" placeholder="xs">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="tolerance"step="0.00000000000000001" placeholder="tolerance" >
-                    </div>
-                    <div class="form-group row" id="divmul">
-                        <div class="col-xs-3">
-                            <button id="submul" type="submit" class="btn btn-secondary" style="min-width: 70px">Go</button>
-                        </div>
-                    </div>
-                </form>
-                {{ onsubmit("mullerform", "divmul", "submul") }}
-            </div>
-        </div>
-
-        <div id="incremental_search" class="panel panel-default">
-            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#incremental">
-                <h4 class="panel-title">Incremental Search</h4>
-
-            </div>
-            <div  id="incremental" class="panel-collapse collapse">
-                <form action="/incremental" method="POST" id="incrementalform">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="function" placeholder="f(x)" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="x0" step="0.00001" placeholder="x0" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="delta" step="0.00001" placeholder="delta">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
-                    </div>
-                    <div class="form-group row" id="divinc">
-                        <div class="col-xs-3">
-                            <button id="subinc" type="submit" class="btn btn-secondary" style="min-width: 70px">Go</button>
-                        </div>
-                    </div>
-                </form>
-                {{ onsubmit("incrementalform", "divinc", "subinc") }}
-            </div>
-        </div>
-
-        <div id="false" class="panel panel-default">
-            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#falseRule">
-                <h4 class="panel-title">False Rule</h4>
-
-            </div>
-            <div  id="falseRule" class="panel-collapse collapse">
-                <form action="/falseRule" method="POST" id="falseruleform">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="function" placeholder="f(x)" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="xi" step="0.00001" placeholder="xi" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="xs" step="0.00001" placeholder="xs">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="tolerance"step="0.00000000000000001" placeholder="tolerance" >
-                    </div>
-                    <div class="form-group row" id="divfal">
-                        <div class="col-xs-3">
-                            <button id="subfal" type="submit" class="btn btn-secondary" style="min-width: 70px">Go</button>
-                        </div>
-                    </div>
-                </form>
-                {{ onsubmit("falseruleform", "divfal", "subfal") }}
-            </div>
-        </div>
-
-        <div id="fixed" class="panel panel-default">
-            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#fixedPoint">
-                <h4 class="panel-title">Fixed Point</h4>
-
-            </div>
-            <div  id="fixedPoint" class="panel-collapse collapse">
-                <form action="/fixed" method="POST" id="fixedform">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="function" placeholder="f(x)" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="gunction" placeholder="g(x)" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="xa" step="0.00001" placeholder="x0" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="tolerance" placeholder="tolerance" >
-                    </div>
-                    <div class="form-group row" id="divfix">
-                        <div class="col-xs-3">
-                            <button id="subfix" type="submit" class="btn btn-secondary" style="min-width: 70px">Go</button>
-                        </div>
-                    </div>
-                </form>
-                {{ onsubmit("fixedform", "divfix", "subfix") }}
-            </div>
-        </div>
-
-        <div id="multiple_roots" class="panel panel-default">
-            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#multiple">
-                <h4 class="panel-title">Multiple Roots</h4>
-
-            </div>
-            <div  id="multiple" class="panel-collapse collapse">
-                <form action="/multiple" method="POST" id="multipleform">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="function" placeholder="f(x)" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="x0" step="0.00001" placeholder="x0" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="tolerance" step="0.00001" placeholder="tolerance">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
-                    </div>
-                    <div class="form-group row" id="divmult">
-                        <div class="col-xs-3">
-                            <button id="submult" type="submit" class="btn btn-secondary" style="min-width: 70px">Go</button>
-                        </div>
-                    </div>
-                </form>
-                {{ onsubmit("multipleform", "divmult", "submult") }}
-            </div>
-        </div>
-
-        <div id="aitk" class="panel panel-default">
-            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#aitken">
-                <h4 class="panel-title">Aitken</h4>
-
-            </div>
-            <div  id="aitken" class="panel-collapse collapse">
-                <form action="/aitken" method="POST" id="aitkenform">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="function" placeholder="f(x)" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="x0" step="0.00001" placeholder="x0" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="tolerance" step="0.00001" placeholder="tolerance">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
-                    </div>
-                    <div class="form-group row" id="divaitk">
-                        <div class="col-xs-3">
-                            <button id="subaitk" type="submit" class="btn btn-secondary" style="min-width: 70px">Go</button>
-                        </div>
-                    </div>
-                </form>
-                {{ onsubmit("aitkenform", "divaitk", "subaitk") }}
-            </div>
-        </div>
-
-        <div id="sec" class="panel panel-default">
-            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#secant">
-                <h4 class="panel-title">Secant</h4>
-
-            </div>
-            <div  id="secant" class="panel-collapse collapse">
-                <form action="/secant" method="POST" id="secantform">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="function" placeholder="f(x)" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="xi" step="0.00001" placeholder="xi" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="xs" step="0.00001" placeholder="xs">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="tolerance"step="0.00000000000000001" placeholder="tolerance" >
-                    </div>
-                    <div class="form-group row" id="divsec">
-                        <div class="col-xs-3">
-                            <button id="subsec" type="submit" class="btn btn-secondary" style="min-width: 70px">Go</button>
-                        </div>
-                    </div>
-                </form>
-                {{ onsubmit("secantform", "divsec", "subsec") }}
-            </div>
-        </div>
-    </div>
+<div class="main-container d-flex justify-content-center" >
+    HOMEEEEEEEEEEEEEEE
 </div>
 
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src={{ url_for('static', filename="js/bootstrap.min.js") }}></script>
+<script src={{ url_for('static', filename="js/jquery.flexslider-min.js") }}></script>
+<script src={{ url_for('static', filename="js/smooth-scroll.min.js") }}></script>
+<script src={{ url_for('static', filename="js/skrollr.min.js") }}></script>
+<script src={{ url_for('static', filename="js/spectragram.min.js") }}></script>
+<script src={{ url_for('static', filename="js/scrollReveal.min.js") }}></script>
+<script src={{ url_for('static', filename="js/isotope.min.js") }}></script>
+<script src={{ url_for('static', filename="js/twitterFetcher_v10_min.js") }}></script>
+<script src={{ url_for('static', filename="js/lightbox.min.js") }}></script>
+<script src={{ url_for('static', filename="js/jquery.countdown.min.js") }}></script>
+<script src={{ url_for('static', filename="js/scripts.js") }}></script>
 </body>
 </html>
 				

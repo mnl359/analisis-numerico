@@ -25,7 +25,57 @@
     <script src={{ url_for('static', filename="js/modernizr-2.6.2-respond-1.1.0.min.js") }}></script>
     <link href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic" rel="stylesheet" type="text/css">
     <link href={{ url_for('static', filename="css/font-helvetica.css") }} rel="stylesheet" type="text/css">
+    <script src={{ url_for('static', filename="js/jquery.min.js") }}></script>
+    <script src={{ url_for('static', filename="js/jquery.plugin.min.js") }}></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
 </head>
+
+{% macro onsubmit(formname, divname, subname) -%}
+    <script>
+        $(function() { //shorthand document.ready function
+            var i=false;
+            $('#{{ formname }}').submit(function() {
+                if(!i){
+                    // submit the form
+                    $(this).ajaxSubmit({
+                        type: 'POST',
+                        data: {prueba: 'true'},
+                        success: function (data) {
+                            var res = JSON.parse(data)
+                            var status = res[0]
+                            if (status>0) { // OCURRIO UN ERROR, MANEJARLO
+                                console.log("sad")
+                                var message = res[1]
+                                alert(message)
+                            } else { // REQUEST EXITOSA, MOSTRAR RESULTADOS
+                                var poli = res[1]
+                                var result = res[2]
+                                i=true;
+
+                                var resstring =
+                                    "<div class='col-xs-6'>" +
+                                    "<div>Polinomy: "+poli+"</div>" +
+                                    "<div>P(x)= "+result+"</div>"+
+                                    "</div>"
+
+                                $('#{{ divname }}').append(resstring);
+                                $('#{{ subname }}').html('Details')
+                            }
+                        }
+                    });
+                    // return false to prevent normal browser submit and page navigation
+
+                    return false;
+                } else{
+                    return true;
+                }
+
+            });
+        });
+
+
+    </script>
+{%- endmacro %}
 
 <body>
 {#<div class="loader">#}
@@ -40,7 +90,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 text-center">
-                    <a href="index.html">
+                    <a href="nonlinear.html">
                         <img class="logo logo-dark" alt="Logo" src={{ url_for('static', filename="img/download.jpeg") }}>
                     </a>
                 </div>
@@ -55,6 +105,7 @@
                         <li><a href="{{ url_for("nonlinear") }}" target="_self">Non Linear Equation Systems</a></li>
                         <li><a href="{{ url_for("lineardimension") }}" target="_self">Linear Equation Systems</a></li>
                         <li><a href="{{ url_for("polynomialdim") }}" target="_self">Polynomial Interpolation</a></li>
+                        <li><a href="{{ url_for("splinesdimension") }}" target="_self">Splines</a></li>
                     </ul>
 
                 </div>
@@ -78,17 +129,15 @@
 
             </div>
             <div class="table-responsive panel-collapse collapse" id="lagrange">
-                <form action="/lagrange" method="POST">
+                <form action="/lagrange" method="POST" id="lagrangeform">
                     Points:
                     <input type="hidden" name="dimension" value="{{ dimension|length }}">
                     <table class="table">
                         <tbody>
                         {% for row in dimension %}
-                            {% set outer_loop = loop %}
                             <tr>
-                                {% for col in dimension[:2] %}
-                                    <td><input class="form-control" type="text" name="n{{ outer_loop.index0 }}"  ></td>
-                                {% endfor %}
+                                <td><input class="form-control" type="text" name="n{{ loop.index0 }}"  placeholder="X{{ loop.index }}"></td>
+                                <td><input class="form-control" type="text" name="n{{ loop.index0 }}"  placeholder="Y{{ loop.index }}"></td>
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -96,8 +145,13 @@
 
                     x:
                     <input class="form-control" type="number" name="x" step="0.00001" placeholder="X" >
-                    <button type="submit" class="btn btn-secondary">Go</button>
+                    <div class="form-group row" id="divlag">
+                        <div class="col-xs-3">
+                            <button id="sublag" type="submit" class="btn btn-secondary" style="min-width: 70px">Go</button>
+                        </div>
+                    </div>
                 </form>
+                {{ onsubmit("lagrangeform", "divlag", "sublag") }}
             </div>
         </div>
 
@@ -107,7 +161,7 @@
 
             </div>
             <div class="table-responsive panel-collapse collapse" id="newton">
-                <form action="/newton" method="POST">
+                <form action="/newton" method="POST" id="newtonform">
                     Points:
                     <input type="hidden" name="dimension" value="{{ dimension|length }}">
                     <table class="table">
@@ -115,9 +169,8 @@
                         {% for row in dimension %}
                             {% set outer_loop = loop %}
                             <tr>
-                                {% for col in dimension[:2] %}
-                                    <td><input class="form-control" type="text" name="n{{ outer_loop.index0 }}"  ></td>
-                                {% endfor %}
+                                <td><input class="form-control" type="text" name="n{{ loop.index0 }}"  placeholder="X{{ loop.index }}"></td>
+                                <td><input class="form-control" type="text" name="n{{ loop.index0 }}"  placeholder="Y{{ loop.index }}"></td>
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -125,8 +178,13 @@
 
                     x:
                     <input class="form-control" type="number" name="x" step="0.00001" placeholder="x" >
-                    <button type="submit" class="btn btn-secondary">Go</button>
+                    <div class="form-group row" id="divnew">
+                        <div class="col-xs-3">
+                            <button id="subnew" type="submit" class="btn btn-secondary" style="min-width: 70px">Go</button>
+                        </div>
+                    </div>
                 </form>
+                {{ onsubmit("newtonform", "divnew", "subnew") }}
             </div>
         </div>
 
@@ -136,7 +194,7 @@
 
             </div>
             <div class="table-responsive panel-collapse collapse" id="vandermonde">
-                <form action="/vandermonde" method="POST">
+                <form action="/vandermonde" method="POST" id="vandermondeform">
                     Points:
                     <input type="hidden" name="dimension" value="{{ dimension|length }}">
                     <table class="table">
@@ -144,23 +202,26 @@
                         {% for row in dimension %}
                             {% set outer_loop = loop %}
                             <tr>
-                                {% for col in dimension[:2] %}
-                                    <td><input class="form-control" type="text" name="n{{ outer_loop.index0 }}"  ></td>
-                                {% endfor %}
+                                <td><input class="form-control" type="text" name="n{{ loop.index0 }}"  placeholder="X{{ loop.index }}"></td>
+                                <td><input class="form-control" type="text" name="n{{ loop.index0 }}"  placeholder="Y{{ loop.index }}"></td>
                             </tr>
                         {% endfor %}
                         </tbody>
                     </table>
-                    <button type="submit" class="btn btn-secondary">Go</button>
+                    <div class="form-group row" id="divvan">
+                        <div class="col-xs-3">
+                            <button id="subvan" type="submit" class="btn btn-secondary" style="min-width: 70px">Go</button>
+                        </div>
+                    </div>
                 </form>
+                {{ onsubmit("vandermondeform", "divvan", "subvan") }}
             </div>
         </div>
     </div>
 </div>
 
 <script src="https://www.youtube.com/iframe_api"></script>
-<script src={{ url_for('static', filename="js/jquery.min.js") }}></script>
-<script src={{ url_for('static', filename="js/jquery.plugin.min.js") }}></script>
+
 <script src={{ url_for('static', filename="js/bootstrap.min.js") }}></script>
 <script src={{ url_for('static', filename="js/jquery.flexslider-min.js") }}></script>
 <script src={{ url_for('static', filename="js/smooth-scroll.min.js") }}></script>

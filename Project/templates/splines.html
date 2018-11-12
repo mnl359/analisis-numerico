@@ -40,7 +40,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 text-center">
-                    <a href="index.html">
+                    <a href="nonlinear.html">
                         <img class="logo logo-dark" alt="Logo" src={{ url_for('static', filename="img/download.jpeg") }}>
                     </a>
                 </div>
@@ -55,6 +55,7 @@
                         <li><a href="{{ url_for("nonlinear") }}" target="_self">Non Linear Equation Systems</a></li>
                         <li><a href="{{ url_for("lineardimension") }}" target="_self">Linear Equation Systems</a></li>
                         <li><a href="{{ url_for("polynomialdim") }}" target="_self">Polynomial Interpolation</a></li>
+                        <li><a href="{{ url_for("splinesdimension") }}" target="_self">Splines</a></li>
                     </ul>
 
                 </div>
@@ -86,9 +87,8 @@
                         {% for row in dimension %}
                             {% set outer_loop = loop %}
                             <tr>
-                                {% for col in dimension[:2] %}
-                                    <td><input class="form-control" type="text" name="n{{ outer_loop.index0 }}"  ></td>
-                                {% endfor %}
+                                <td><input class="form-control" type="text" name="n{{ loop.index0 }}"  placeholder="X{{ loop.index }}"></td>
+                                <td><input class="form-control" type="text" name="n{{ loop.index0 }}"  placeholder="Y{{ loop.index }}"></td>
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -113,9 +113,8 @@
                         {% for row in dimension %}
                             {% set outer_loop = loop %}
                             <tr>
-                                {% for col in dimension[:2] %}
-                                    <td><input class="form-control" type="text" name="n{{ outer_loop.index0 }}"  ></td>
-                                {% endfor %}
+                                <td><input class="form-control" type="text" name="n{{ loop.index0 }}"  placeholder="X{{ loop.index }}"></td>
+                                <td><input class="form-control" type="text" name="n{{ loop.index0 }}"  placeholder="Y{{ loop.index }}"></td>
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -139,9 +138,8 @@
                         {% for row in dimension %}
                             {% set outer_loop = loop %}
                             <tr>
-                                {% for col in dimension[:2] %}
-                                    <td><input class="form-control" type="text" name="n{{ outer_loop.index0 }}"  ></td>
-                                {% endfor %}
+                                <td><input class="form-control" type="text" name="n{{ loop.index0 }}"  placeholder="X{{ loop.index }}"></td>
+                                <td><input class="form-control" type="text" name="n{{ loop.index0 }}"  placeholder="Y{{ loop.index }}"></td>
                             </tr>
                         {% endfor %}
                         </tbody>

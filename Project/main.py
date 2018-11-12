@@ -9,6 +9,7 @@ from Systems_of_linear_equations.LUGauss import LU_gauss
 from Systems_of_linear_equations.LUPivoting import LU_pivoting
 from Systems_of_linear_equations import jacobi, jacobiSOR, cholesky, doolittle, crout, gauss_seidel, bandMatrix
 from Polynomial_Interpolation import lagrange, newton, vandermonde
+from Splines import splines_1, splines_2, splines_3
 import json, decimal, sympy
 app = Flask(__name__)
 
@@ -20,7 +21,7 @@ state = None
 
 def decimal_default(obj):
     if isinstance(obj, tuple(sympy.core.all_classes)):
-        return float(obj)
+        return str(obj)
     raise TypeError
 
 
@@ -40,7 +41,7 @@ def linear():
 
 @app.route('/nonlinear')
 def nonlinear():
-    return render_template('index.html')
+    return render_template('nonlinear.html')
 
 @app.route('/polynomialdim')
 def polynomialdim():
@@ -576,6 +577,53 @@ def newt():
         return json.dumps(results, default=decimal_default)
     return render_template('resultsPoly.html', result=results[0], poli=results[1], x=x)
 
+@app.route('/spline1', methods=['POST', 'GET'])
+def spline1():
+    A = []
+    # Llenar A
+    for i in range(int(request.form['dimension'])):
+        aux = []
+        arstr = request.form.getlist('n' + str(i))
+        for j in range(2):
+            aux.append(float(arstr[j]))
+        A.append(aux)
+
+    results = splines_1.spline1(A)
+    if request.form.get('prueba', None):
+        return json.dumps(results, default=decimal_default)
+    return render_template('resultsTable.html', result=results[1])
+
+@app.route('/spline2', methods=['POST', 'GET'])
+def spline2():
+    A = []
+    # Llenar A
+    for i in range(int(request.form['dimension'])):
+        aux = []
+        arstr = request.form.getlist('n' + str(i))
+        for j in range(2):
+            aux.append(float(arstr[j]))
+        A.append(aux)
+
+    results = splines_2.spline2(A)
+    if request.form.get('prueba', None):
+        return json.dumps(results, default=decimal_default)
+    return render_template('resultsTable.html', result=results[1])
+
+@app.route('/spline3', methods=['POST', 'GET'])
+def spline3():
+    A = []
+    # Llenar A
+    for i in range(int(request.form['dimension'])):
+        aux = []
+        arstr = request.form.getlist('n' + str(i))
+        for j in range(2):
+            aux.append(float(arstr[j]))
+        A.append(aux)
+
+    results = splines_3.spline3(A)
+    if request.form.get('prueba', None):
+        return json.dumps(results, default=decimal_default)
+    return render_template('resultsTable.html', result=results[1])
 
 
 if __name__ == "__main__":
