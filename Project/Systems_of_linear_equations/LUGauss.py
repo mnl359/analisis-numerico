@@ -3,59 +3,16 @@
 from pandas import DataFrame
 from copy import deepcopy, copy
 
+# El método principal es lu_pivoting.
+# Retorna 0 (exitoso), la matriz L, la matriz U, el vector resultado y los pasos
+# Los pasos son: matriz Lz, vector Z y matriz Ux (de la cual sale el vector resultado)
+
 class LU_gauss:
     mults = []
 
     def create_matrix_L(self, lenMatrix):
         global mults
         mults = [[0 for x in range(lenMatrix)] for y in range(lenMatrix)]
-
-    def lower_triangular(self, A):
-        n = len(A)
-        if n != len(A[0]):
-            print("The matrix has to be squared")
-            exit(-1)
-        for i in range(n - 1, -1, -1):
-            for j in range(i, -1, -1):
-                if i == j:
-                    column = [row[i] for row in A]
-                    if A[i][i] == 0:
-                        for k in range(i - 1, -1, -1):
-                            if 1 in column:
-                                self.swapping_lower(A, column, i)
-                                break
-                            elif column[k] != 0:
-                                aux = A[k]
-                                A[k] = A[i]
-                                A[i] = aux
-                                break
-
-                    helper = A[i][i]
-                    if helper != 1:
-                        if helper == 0:
-                            print("WARNING! It's not possible to step the matrix. Error in row", i)
-                            exit(1)
-                        row = A[i]
-                        for k in range(0, len(row)):
-                            row[k] = row[k] / helper
-                        A[i] = row
-                else:
-                    helper = A[j][i]
-                    if helper != 0:
-                        row1 = A[i]
-                        row2 = A[j]
-                        for k in range(0, len(row2)):
-                            row2[k] += ((-1 * helper) * row1[k])
-                        A[j] = row2
-        return A
-
-    def swapping_lower(self, A, column, i):
-        for k in range(0, i):
-            if column[k] == 1:
-                aux = A[k]
-                A[k] = A[i]
-                A[i] = aux
-                break
 
     def upper_triangular(self, A):
         global mults
@@ -125,7 +82,7 @@ class LU_gauss:
             i -= 1
         return vector
 
-    def aumMatrix(A, b):
+    def aumMatrix(self, A, b):
         cont = 0
         for i in A:
             i.append(b[cont])
@@ -134,14 +91,12 @@ class LU_gauss:
 
     def lu_gauss(self, A, vector):
         u_matrix = self.upper_triangular(A)
-        print("The U matrix is: ", "\n", DataFrame(u_matrix), "\n", file=toPrint)
         l_matrix = mults
-        print("The L matrix is: ", "\n", DataFrame(l_matrix), "\n", file=toPrint)
         Lz = self.aumMatrix(l_matrix, vector)
         vector_z = self.progressive_substitution(Lz)
         Ux = self.aumMatrix(u_matrix, vector_z)
         result = self.regressive_substitution(Ux)
-        return l_matrix, u_matrix, result
+        return 0, l_matrix, u_matrix, result, Lz, vector_z, Ux
 
 #A = [[2, -3, 4, 1], [-4, 2, 1, -2], [1, 3, -5, 3], [-3, -1, 1, -1]]
 #b = [10, -10, 32, -21]

@@ -32,11 +32,10 @@ def crout(matrix):
             for k in range(j):
                 sum = sum + l[j][k] * u[k][i]
             if l[j][j] == 0:
-                print("Divided by 0")
-                exit(1)
+                return(1, "Divided by 0")
             u[j][i] = (matrix[j][i] - sum)/ l[j][j]
     
-    return l, u
+    return 0, l, u
 
 # name = input("Enter the name of the file you want the answer to be saved. It's going to have '.txt' extension: ")
 # matrix_rows = int(input("As this has to be a square matrix, the number of rows is going to be the same number of columns. \

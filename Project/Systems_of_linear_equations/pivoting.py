@@ -3,6 +3,9 @@
 from copy import deepcopy, copy
 from pandas import DataFrame
 
+# La función principal es main
+# Esta función retorna 0 (exitoso), la matriz escalonada y el vector resultado
+
 class Pivoting:
     def stepped(self, A, b):
         Ab = self.aumMatrix(A, b)
@@ -23,8 +26,7 @@ class Pivoting:
                     Ab[cont] = aux
 
                     if Ab[i][i] == 0:
-                        print("WARNING! It's not possible to step the matrix. Error in row ", i)
-                        exit(1)
+                        return(1, "WARNING! It's not possible to step the matrix. Error in row " + str(i))
 
                 else:
                     helper = Ab[j][i]
@@ -35,7 +37,7 @@ class Pivoting:
                         row2[k] -= (mult * row1[k])
                     Ab[j] = row2
 
-        print(DataFrame(Ab))
+        #print(DataFrame(Ab))
         return Ab
 
     def aumMatrix(self, A, b):
@@ -60,6 +62,11 @@ class Pivoting:
             vector[i] = (stepMat[i][n] - result) / stepMat[i][i]
             i -= 1
         return vector
+
+    def main(self, A, b):
+        matrix = self.stepped(A, b)
+        vector = self.clear(matrix, len(matrix))
+        return 0, matrix, vector
 
 
 # pivoting = Pivoting()

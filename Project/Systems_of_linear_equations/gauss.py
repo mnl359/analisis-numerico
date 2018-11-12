@@ -3,6 +3,9 @@
 from copy import deepcopy, copy
 from pandas import DataFrame
 
+# Retorna 0 (exitoso), matriz escalonada y vector resultado. 
+# El metodo que retorna lo anterior es 'main'
+
 class Gauss:
     def stepped(self, A, b):
         Ab = self.aumMatrix(A, b)
@@ -22,8 +25,8 @@ class Gauss:
 
                     helper = Ab[i][i]
                     if helper == 0:
-                        print("WARNING! It's not possible to step the matrix. Error in row", i)
-                        exit(1)
+                        return(1, "WARNING! It's not possible to step the matrix. \
+                               Error in row" + str(i))
 
                 else:
                     helper = Ab[j][i]
@@ -33,8 +36,6 @@ class Gauss:
                     for k in range(0, len(row2)):
                         row2[k] -= (mult * row1[k])
                     Ab[j] = row2
-
-        print(DataFrame(Ab))
         return Ab
 
     def aumMatrix(self, A, b):
@@ -59,6 +60,12 @@ class Gauss:
             vector[i] = (stepMat[i][n] - result) / stepMat[i][i]
             i -= 1
         return vector
+
+    def main(self, A, b):
+        matrix = self.stepped(A, b)
+        n = len(matrix)
+        vector = self.clear(matrix, n)
+        return 0, matrix, vector
 
 # gauss = Gauss()
 # name = input("Enter the name of the file you want the answer to be saved. It's going to have '.txt' extension: ")
