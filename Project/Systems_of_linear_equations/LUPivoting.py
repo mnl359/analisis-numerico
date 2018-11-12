@@ -3,6 +3,10 @@
 from copy import deepcopy, copy
 from pandas import DataFrame
 
+# El método principal es lu_pivoting.
+# Retorna 0 (exitoso), la matriz L, la matriz U, el vector de marcas, el vector resultado y los pasos
+# Los pasos son: matriz Lz, vector Z y matriz Ux (de la cual sale el vector resultado)
+
 class LU_pivoting:
     mults = []
     marks = []
@@ -26,8 +30,7 @@ class LU_pivoting:
 
     def multiply(self, m, n):
         if len(m[0]) != len(n):
-            print("Dimensions are not compatible")
-            exit(1)
+            return(1, "Dimensions are not compatible")
         result = []
         for col in range(len(m)):
             aux = []
@@ -72,8 +75,7 @@ class LU_pivoting:
                     mults = self.exchange_rows(i, cont, mults)
 
                     if A[i][i] == 0:
-                        print("WARNING! It's not possible to step the matrix. Error in row ", i)
-                        exit(1)
+                        return(1, "WARNING! It's not possible to step the matrix. Error in row " + str(i))
 
                 else:
                     helper = A[j][i]
@@ -132,13 +134,11 @@ class LU_pivoting:
         print("The L matrix is:", "\n", DataFrame(l_matrix), "\n", file=toPrint)
         aux = self.multiply(marks, vector)
         helper = [aux[i][0] for i in range(len(aux))]
-        # print(helper, "\n")
         Lz = self.aumMatrix(l_matrix, helper)
         vector_z = self.progressive_substitution(Lz)
-        # print(vector_z, "\n")
         Ux = self.aumMatrix(u_matrix, vector_z)
         result = self.regressive_substitution(Ux)
-        return l_matrix, u_matrix, result
+        return 0, l_matrix, u_matrix, marks, result, Lz, vector_z, Ux
 
 #A = [[-7, 2, -3, 4], [5, -1, 14, -1], [1, 9, -7, 5], [-12, 13, -8, -4]]
 #b = [-12, 13, 31, -32]

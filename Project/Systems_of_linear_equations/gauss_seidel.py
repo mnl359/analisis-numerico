@@ -4,8 +4,12 @@ from prettytable import PrettyTable
 from sympy import symbols, init_printing
 from math import sqrt
 from copy import copy
+from numpy import linalg
 
 def newGaussSeidel(x0, matrix, b):
+    if len(x0) != len(matrix[0]) or len(matrix[0]) != len(b) or len(x0) != len(b):
+        return(1, "Length of matrix, initial vector or vector b are different\n \
+        Please check and try again")
     aux = []
     newX0 = copy(x0)
     for i in range(len(matrix)):
@@ -26,6 +30,10 @@ def norma(x0, x1):
     return error
 
 def gaussSeidel(tolerance, x0, iterations, matrix, b):
+    det = linalg.det(matrix)
+    if det == 0:
+        return(1, "The system does not have an unique solution. Determinant is ZERO")
+    
     title = ['n']
     aux = 0
     cont = 0
@@ -45,9 +53,9 @@ def gaussSeidel(tolerance, x0, iterations, matrix, b):
         table.add_row([cont] + x1 + [error])
         result.append([cont] + x0 + ["Doesn't exist"])
         x0 = copy(x1)
-    print(table)
-    return result
+    #print(table)
+    return 0, result, table, cont
 
-# m = [[13, -4, -5],[3, -7, 2],[-4, 5, -16]]
-# b = [-23, 5 ,34]
-# gaussSeidel(5e-06, [1, 2], 20, m, b)
+m = [[13, -4, -5],[3, -7, 2],[-4, 5, -16]]
+b = [-23, 5 ,34]
+gaussSeidel(5e-06, [0, 0, 0], 20, m, b)

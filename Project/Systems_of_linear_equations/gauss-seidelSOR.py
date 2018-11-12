@@ -5,6 +5,11 @@ from sympy import symbols, init_printing
 from math import sqrt
 from copy import copy
 from decimal import Decimal
+from numpy import linalg, diag, tril, triu, asarray, matmul
+from scipy import linalg as LA
+
+# Retorna 0 (exito), vector resultado, tabla de iteraciones, número de iteraciones, pasos
+# Pasos: matriz de transición, radio espectral
 
 def newGaussSeidel(x0, matrix, b, rel):
     aux = []
@@ -22,13 +27,46 @@ def newGaussSeidel(x0, matrix, b, rel):
 
 def norma(x0, x1):
     sum = 0
-    den = 0
     for x in range(len(x0)):
         sum += (x1[x]-x0[x])**2
     error = sqrt(sum)
     return error
 
 def gaussSeidel(tolerance, x0, iterations, matrix, b, rel):
+    n = len(matrix)
+    det = linalg.det(matrix)
+    if det == 0:
+        return(1, "The system does not have an unique solution. Determinant is ZERO")
+
+    diagonal_matrix = diag(diag(matrix))
+    l_matrix = diagonal_matrix - tril(matrix)
+    u_matrix = diagonal_matrix - triu(matrix)
+    helper = diagonal_matrix - (rel * l_matrix)
+    helper2 = ((1- rel) * diagonal_matrix) + (rel * u_matrix)
+
+    power = linalg.matrix_power(helper, -1)
+    t_matrix = matmul(power, helper2)
+
+    Z = [[abs(matrix[i][j]) for i in range(n)] for j in range(n)]
+    helper3 = asarray(Z)
+    suma = helper3.sum(axis=1)
+    a = 0
+    
+    for i in range(n):      
+        aux2 = (2*(Z[i][i]))
+        if all(aux2 > suma):
+            a = 1 
+        else:
+            a = 2
+    
+    RE = 0
+    if a == 2:
+        RE = max(abs(LA.eigvals(t_matrix)))
+        if RE > 1:
+            return (1, "The spectral radio is larger than 1 (" + str(RE) + "). Method won't converge\n \
+                    The matrix is not dominant on its diagonal")
+
+    
     title = ['n']
     aux = 0
     cont = 0
@@ -45,8 +83,9 @@ def gaussSeidel(tolerance, x0, iterations, matrix, b, rel):
         cont += 1
         table.add_row([cont] + x1 + ['%.2E' % Decimal(str(error))])
         x0 = copy(x1)
-    print(table)
+    
+    return 0, x0, table, cont, t_matrix, RE
 
-m = [[5,3,1],[3,4,-1],[1,-1,4]]
-b = [24,30,-24]
-gaussSeidel(6e-06, [0,0,0], 40, m, b, 1)
+#m = [[5,3,1],[3,4,-1],[1,-1,4]]
+#b = [24,30,-24]
+#print(gaussSeidel(6e-06, [0,0,0], 40, m, b, 1))

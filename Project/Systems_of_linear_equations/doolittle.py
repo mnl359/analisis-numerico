@@ -24,11 +24,11 @@ def doolittle(A):
         for j in range(i):
           sum = sum + (L[k][j] * U[j][i])
         L[k][i] = (A[k][i] - sum) / U[i][i]
-  return L, U
+  return 0, L, U
 
-A = [[-4,1,0,2],[3,1,2,-8],[14,2,-4,6],[-7,0,5,7]]
-L = doolittle(A)[0]
-U = doolittle(A)[1]
-
-print(DataFrame(U))
-print(DataFrame(L))
+#A = [[-4,1,0,2],[3,1,2,-8],[14,2,-4,6],[-7,0,5,7]]
+#L = doolittle(A)[0]
+#U = doolittle(A)[1]
+#
+#print(DataFrame(U))
+#print(DataFrame(L))
