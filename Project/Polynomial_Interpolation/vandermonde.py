@@ -4,6 +4,11 @@ from numpy import polynomial
 from numpy import vander
 from pandas import DataFrame
 
+# El método principal es main
+# Devuelve la matriz de Vandermonde, la matriz final después de 
+# toda la eliminación gaussiana y por último el vector que tiene
+# los coeficientes del polinomio
+
 def create_array(arr, length):
     arr = [0 for x in range(length)]
     return arr
@@ -123,8 +128,10 @@ def clear(stepMat, n):
     return vector
 
 
-def vandermonde(A, toPrint):
-    #confirm_points(A)
+def vandermonde(A):
+    for i in range(len(A)):
+        if len(A[i]) != 2:
+            return(1, "Error, you have not given points to create the polynomial")
     #V = polynomial.polynomial.polyvander(A, deg)
     rows = len(A)
     columns = len(A[0])
@@ -142,29 +149,20 @@ def vandermonde(A, toPrint):
 
     V = vander(x_points)
     V = V.tolist()
-    print("The Vandermonde matrix is: \n", DataFrame(V), "\n", file=toPrint)
     
     augmented = aumMatrix(V, y_points)
-    print("The augmented matrix (Vandermonde matrix and points in y axis) is: \n", DataFrame(augmented), file=toPrint)
     res = upper_triangular(augmented)
     res = lower_triangular(res)
 
-    return res
+    return res, augmented
+    
+def main(A):
+    augMatrix = vandermonde(A)[1]
+    resMatrix = vandermonde(A)[0]
+    vector = clear(resMatrix, len(resMatrix))
 
+    return augMatrix, resMatrix, vector   
 
-def confirm_points(A):
-    for i in range(len(A)):
-        if len(A[i]) != 2:
-            print("Error, you have not given points to create the polynomial")
-            exit(-1)
-
-def reverse_matrix(A):
-    x = len(A)
-    N = [[0 for w in range(x)] for y in range(x)]
-    for i in range(len(A)):
-        for j in range(x - 1, -1, -1):
-            N[i][j] = A[i][x - j - 1]
-    return N
 
 
 # name = input("Enter the name of the file you want the answer to be saved. It's going to have '.txt' extension: ")
