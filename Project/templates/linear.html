@@ -442,6 +442,33 @@
                 </form>
             </div>
         </div>
+
+        <div id="bandm" class="panel panel-default">
+            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#bandmatrix">
+                <h4 class="panel-title">Band Matrix</h4>
+
+            </div>
+            <div class="table-responsive panel-collapse collapse" id="bandmatrix">
+                <form action="/bandmatrix" method="POST">
+                    <input type="hidden" name="dimension" value="{{ dimension|length }}">
+                    <table class="table">
+                        <tbody>
+                        {% for row in range(4) %}
+                            {% set outer_loop = loop %}
+                            <tr>
+                            <th>Vector {{ loop.index }}</th>
+                                {% for col in dimension %}
+
+                                    <td><input class="form-control" type="text" name="n{{ outer_loop.index0 }}"  ></td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <button type="submit" class="btn btn-secondary">Go</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 
