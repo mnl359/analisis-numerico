@@ -6,8 +6,9 @@ from pandas import DataFrame
 
 # El método principal es main
 # Devuelve 0 (exitoso), la matriz de Vandermonde, la matriz final después de 
-# toda la eliminación gaussiana y por último el vector que tiene
-# los coeficientes del polinomio
+# toda la eliminación gaussiana, el STRING CON LOS COEFICIENTES DEL POLINOMIO 
+# y la x que debe acompañarle y por último el resultado del polinomio
+# evaluado en determinado número
 
 def create_array(arr, length):
     arr = [0 for x in range(length)]
@@ -132,7 +133,6 @@ def vandermonde(A):
     for i in range(len(A)):
         if len(A[i]) != 2:
             return(1, "Error, you have not given points to create the polynomial")
-    #V = polynomial.polynomial.polyvander(A, deg)
     rows = len(A)
     columns = len(A[0])
     x_points = []
@@ -156,13 +156,29 @@ def vandermonde(A):
 
     return res, augmented
     
-def main(A):
+def main(A, value):
     augMatrix = vandermonde(A)[1]
     resMatrix = vandermonde(A)[0]
     vector = clear(resMatrix, len(resMatrix))
-
-    return 0, augMatrix, resMatrix, vector   
-
+    cont = len(vector) - 1
+    str_res = "p(x) = "
+    pol = 0
+    for i in range(len(vector)):
+        if cont == 0:
+            if vector[i] > 0:
+                str_res += "+" + str(vector[i])
+                pol += vector[i]
+            else:
+                str_res += str(vector[i])
+                pol += vector[i]
+        elif vector[i] > 0:
+            str_res += "+" + str(vector[i]) + "x**" + str(cont) + " "
+            pol += (vector[i] * (value**cont))
+        else:
+            str_res += str(vector[i]) + "x**" + str(cont) + " "
+            pol += (vector[i] * (value**cont))
+        cont -= 1
+    return 0, augMatrix, resMatrix, str_res, pol 
 
 
 # name = input("Enter the name of the file you want the answer to be saved. It's going to have '.txt' extension: ")
