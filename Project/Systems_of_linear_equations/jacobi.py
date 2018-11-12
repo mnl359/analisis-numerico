@@ -7,6 +7,9 @@ from copy import copy
 from numpy import linalg
 
 def newJacobi(x0, matrix, b):
+    if len(x0) != len(matrix[0]) or len(matrix[0]) != len(b) or len(x0) != len(b):
+        return(1, "Length of matrix, initial vector or vector b are different\n \
+        Please check and try again")
     aux = []
     for i in range(len(matrix)):
         suma = 0
@@ -37,18 +40,18 @@ def jacobi(tolerance, x0, iterations, matrix, b):
         aux += 1
     title.append("Error")
     table = PrettyTable(title)
-    #result = [title]
+    result = [title]
     table.add_row([cont] + x0 + ["Doesn't exist"])
-    #result.append([cont] + x0 + ["Doesn't exist"])
+    result.append([cont] + x0 + ["Doesn't exist"])
     error = tolerance + 1
     while error > tolerance and cont < iterations:
         x1 = newJacobi(x0, matrix, b)
         error = norma(x0, x1)
         cont += 1
         table.add_row([cont] + x1 + [error])
-        #result.append([cont] + x1 + [error])
+        result.append([cont] + x1 + [error])
         x0 = copy(x1)
-    return 0, x0, table, cont
+    return 0, x0, result, cont
 
 #A = [
 #    [9.1622,    0.4505,    0.1067,    0.4314,    0.8530,    0.4173,    0.7803,    0.2348,    0.5470,    0.5470],

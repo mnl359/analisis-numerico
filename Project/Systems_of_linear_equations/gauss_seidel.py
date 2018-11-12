@@ -51,11 +51,11 @@ def gaussSeidel(tolerance, x0, iterations, matrix, b):
         error = norma(x0, x1)
         cont += 1
         table.add_row([cont] + x1 + [error])
-        result.append([cont] + x0 + ["Doesn't exist"])
+        result.append([cont] + x0 + [error])
         x0 = copy(x1)
     #print(table)
-    return 0, result, table, cont
+    return 0, x0, result, cont
 
-m = [[13, -4, -5],[3, -7, 2],[-4, 5, -16]]
-b = [-23, 5 ,34]
-gaussSeidel(5e-06, [0, 0, 0], 20, m, b)
+#m = [[13, -4, -5],[3, -7, 2],[-4, 5, -16]]
+#b = [-23, 5 ,34]
+#gaussSeidel(5e-06, [0, 0, 0], 20, m, b)
