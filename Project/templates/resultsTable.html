@@ -77,9 +77,12 @@
 </div>
 
 <div class="main-container d-flex justify-content-center">
-    <div>
-        <a class="btn btn-primary" href="#results" data-toggle="collapse" role="button">Table</a>
-        <div class="table-responsive collapse" id="results">
+    <div class="panel panel-default">
+        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#results">
+            <h4 class="panel-title">Table</h4>
+
+        </div>
+        <div class="table-responsive panel-collapse collapse" id="results">
             <table class="table">
                 <thead>
                 <tr>
@@ -104,9 +107,12 @@
     </div>
 
     {% if func is defined %}
-        <div>
-            <a class="btn btn-primary" href="#graph" data-toggle="collapse" role="button">Plot</a>
-            <div id="graph" class="collapse">
+        <div class="panel panel-default">
+            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#graph">
+                <h4 class="panel-title">Plot</h4>
+
+            </div>
+            <div id="graph" class="panel-collapse collapse">
                 <form id="form">
                     <label for="eq">Enter plot domain:</label>
                     <div>

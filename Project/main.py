@@ -9,7 +9,7 @@ from Systems_of_linear_equations.LUGauss import LU_gauss
 from Systems_of_linear_equations.LUPivoting import LU_pivoting
 from Systems_of_linear_equations import jacobi, jacobiSOR, cholesky, doolittle, crout, gauss_seidel, bandMatrix
 from Polynomial_Interpolation import lagrange, newton, vandermonde
-import json
+import json, decimal, sympy
 app = Flask(__name__)
 
 
@@ -17,6 +17,12 @@ user = "userdeprueba20172804"
 passw = "contrasena"
 
 state = None
+
+def decimal_default(obj):
+    if isinstance(obj, tuple(sympy.core.all_classes)):
+        return float(obj)
+    raise TypeError
+
 
 @app.route('/')
 def home():
@@ -50,6 +56,12 @@ def polynomial():
 def splinesdimension():
     return render_template('lineardimension.html', section="splines")
 
+@app.route('/splines', methods=['POST'])
+def splines():
+    n = int(request.form['n'])
+    narray = [None]*n
+    return render_template('splines.html', dimension=narray)
+
 @app.route('/bisection', methods=['POST', 'GET'])
 def bisection():
     func = request.form['function']
@@ -60,6 +72,7 @@ def bisection():
 
     methods = Methods(func)
     table = methods.bisection(xi, xs, tolerance, iterations)
+    print(list(table))
 
     aproximacionesx = []
     aproximacionesy = []
@@ -68,8 +81,8 @@ def bisection():
         aproximacionesy.append(row[4])
     aproximacionesx.pop(0)
     aproximacionesy.pop(0)
-    if request.method == 'POST':
-        return json.dumps(table)
+    if request.form.get('prueba', None):
+        return json.dumps(table, default=decimal_default)
     else:
         return render_template('resultsTable.html', results=table[2], func=func.replace("**", "^"),
                                aprox=aproximacionesx, aproy=aproximacionesy)
@@ -85,8 +98,8 @@ def stephensen():
 
     methods = Methods(func)
     table = methods.stephensen(xn, tolerance,iterations)
-    if request.method == 'POST':
-        return json.dumps(table)
+    if request.form.get('prueba', None):
+        return json.dumps(table, default=decimal_default)
     return render_template('resultsTable.html', results=table[2], func=func.replace("**", "^"))
 
 @app.route('/fixed', methods=['POST', 'GET'])
@@ -109,8 +122,8 @@ def fixed():
     aproximacionesx.pop(0)
     aproximacionesy.pop(0)
 
-    if request.method == 'POST':
-        return json.dumps(table)
+    if request.form.get('prueba', None):
+        return json.dumps(table, default=decimal_default)
     return render_template('resultsTable.html', results=table[2], func=func.replace("**", "^"), aprox=aproximacionesx, aproy=aproximacionesy)
 
 @app.route('/falseRule', methods=['POST', 'GET'])
@@ -133,8 +146,8 @@ def falseRule():
     aproximacionesx.pop(0)
     aproximacionesy.pop(0)
 
-    if request.method == 'POST':
-        return json.dumps(table)
+    if request.form.get('prueba', None):
+        return json.dumps(table, default=decimal_default)
     return render_template('resultsTable.html', results=table[2], func=func.replace("**", "^"), aprox=aproximacionesx, aproy=aproximacionesy)
 
 
@@ -149,8 +162,8 @@ def incremental():
     methods = Methods(func)
     table = methods.incremental_searches(x0, delta,iterations)
 
-    if request.method == 'POST':
-        return json.dumps(table)
+    if request.form.get('prueba', None):
+        return json.dumps(table, default=decimal_default)
     return render_template('resultsTable.html', results=table, func=func.replace("**", "^"))
 
 @app.route('/multiple', methods=['POST', 'GET'])
@@ -172,8 +185,8 @@ def multiple():
     aproximacionesx.pop(0)
     aproximacionesy.pop(0)
 
-    if request.method == 'POST':
-        return json.dumps(table)
+    if request.form.get('prueba', None):
+        return json.dumps(table, default=decimal_default)
     return render_template('resultsTable.html', results=table[2], func=func.replace("**", "^"), aprox=aproximacionesx, aproy=aproximacionesy)
 
 
@@ -204,8 +217,8 @@ def aitken_bisection():
     methods = Methods(func)
     table = methods.aitken_bis(xi, xs, tolerance,iterations)
 
-    if request.method == 'POST':
-        return json.dumps(table)
+    if request.form.get('prueba', None):
+        return json.dumps(table, default=decimal_default)
     return render_template('resultsTable.html', results=table[2], func=func.replace("**", "^"), aprox=[], aproy=[])
 
 @app.route('/muller', methods=['POST', 'GET'])
@@ -220,8 +233,8 @@ def muller():
     methods = Methods(func)
     table = methods.muller(xi, xs, tolerance,iterations)
 
-    if request.method == 'POST':
-        return json.dumps(table)
+    if request.form.get('prueba', None):
+        return json.dumps(table, default=decimal_default)
     return render_template('resultsTable.html', results=table[2], func=func.replace("**", "^"),  aprox=[], aproy=[])
 
 @app.route('/secant', methods=['POST', 'GET'])
@@ -244,8 +257,8 @@ def secant():
     aproximacionesx.pop(0)
     aproximacionesy.pop(0)
 
-    if request.method == 'POST':
-        return json.dumps(table)
+    if request.form.get('prueba', None):
+        return json.dumps(table, default=decimal_default)
     return render_template('resultsTable.html', results=table[2], func=func.replace("**", "^"), aprox=aproximacionesx, aproy=aproximacionesy)
 
 
@@ -272,6 +285,8 @@ def bandmat():
     for item in dstr:
         d.append(float(item))
     results = bandMatrix.main(a, b, c, d)
+    if request.form.get('prueba', None):
+        return json.dumps(results, default=decimal_default)
     return render_template('resultsGauss.html',  results=results[1])
 
 
@@ -293,6 +308,8 @@ def gauss():
             aux.append(float(arstr[j]))
         A.append(aux)
     results = g.main(A, v)
+    if request.form.get('prueba', None):
+        return json.dumps(results, default=decimal_default)
     return render_template('resultsGauss.html', results=results[2], matrix=A)
 
 @app.route('/pivoting', methods=['POST', 'GET'])
@@ -313,6 +330,8 @@ def pivoting():
             aux.append(float(arstr[j]))
         A.append(aux)
     results = g.main(A, v)
+    if request.form.get('prueba', None):
+        return json.dumps(results)
     return render_template('resultsGauss.html', results=results[2], matrix=A)
 
 @app.route('/lugauss', methods=['POST', 'GET'])
@@ -333,6 +352,8 @@ def lugauss():
             aux.append(float(arstr[j]))
         A.append(aux)
     results = g.lu_gauss(A, v)
+    if request.form.get('prueba', None):
+        return json.dumps(results, default=decimal_default)
     return render_template('resultsLU.html', results=results[3], l_matrix=results[1], u_matrix=results[2])
 
 @app.route('/lupivoting', methods=['POST', 'GET'])
@@ -353,6 +374,8 @@ def lupivoting():
             aux.append(float(arstr[j]))
         A.append(aux)
     results = g.lu_pivoting(A, v)
+    if request.form.get('prueba', None):
+        return json.dumps(results, default=decimal_default)
     return render_template('resultsLU.html', results=results[3], l_matrix=results[1], u_matrix=results[2])
 
 @app.route('/cholesky', methods=['POST', 'GET'])
@@ -372,6 +395,8 @@ def cholesky():
             aux.append(float(arstr[j]))
         A.append(aux)
     results = cholesky.cholesky(A)
+    if request.form.get('prueba', None):
+        return json.dumps(results, default=decimal_default)
     return render_template('resultsLU.html', l_matrix=results[1], u_matrix=results[2])
 
 @app.route('/doolittle', methods=['POST', 'GET'])
@@ -391,6 +416,8 @@ def doolittle():
             aux.append(float(arstr[j]))
         A.append(aux)
     results = doolittle.doolittle(A)
+    if request.form.get('prueba', None):
+        return json.dumps(results, default=decimal_default)
     return render_template('resultsLU.html', l_matrix=results[1], u_matrix=results[2])
 
 @app.route('/crout', methods=['POST', 'GET'])
@@ -410,6 +437,8 @@ def crout():
             aux.append(float(arstr[j]))
         A.append(aux)
     results = crout.crout(A)
+    if request.form.get('prueba', None):
+        return json.dumps(results, default=decimal_default)
     return render_template('resultsLU.html', l_matrix=results[1], u_matrix=results[2])
 
 @app.route('/totalpivoting', methods=['POST', 'GET'])
@@ -430,6 +459,8 @@ def totalpivoting():
             aux.append(float(arstr[j]))
         A.append(aux)
     results = g.main(A, v, [])
+    if request.form.get('prueba', None):
+        return json.dumps(results, default=decimal_default)
     return render_template('resultsGauss.html', results=results[2], matrix=results[1])
 
 @app.route('/jacobi', methods=['POST', 'GET'])
@@ -452,37 +483,9 @@ def jaco():
         A.append(aux)
 
     results = jacobi.jacobi(tolerance, x0, iterations, A, v)
-    return render_template('resultsTable.html', results=results)
-
-@app.route('/lagrange', methods=['POST', 'GET'])
-def lag():
-    x = float(request.form['x'])
-    A = []
-    # Llenar A
-    for i in range(int(request.form['dimension'])):
-        aux = []
-        arstr = request.form.getlist('n' + str(i))
-        for j in range(2):
-            aux.append(float(arstr[j]))
-        A.append(aux)
-
-    results = lagrange.lagrange(x, A)
-    return render_template('resultsPoly.html', result=results[0], poli=results[1], x=x)
-
-@app.route('/newton', methods=['POST', 'GET'])
-def newt():
-    x = float(request.form['x'])
-    A = []
-    # Llenar A
-    for i in range(int(request.form['dimension'])):
-        aux = []
-        arstr = request.form.getlist('n' + str(i))
-        for j in range(2):
-            aux.append(float(arstr[j]))
-        A.append(aux)
-
-    results = newton.newton(x, A)
-    return render_template('resultsPoly.html', result=results[0], poli=results[1], x=x)
+    if request.form.get('prueba', None):
+        return json.dumps(results, default=decimal_default)
+    return render_template('resultsTable.html', results=results[2])
 
 @app.route('/jacobiSOR', methods=['POST', 'GET'])
 def jacoSOR():
@@ -509,7 +512,9 @@ def jacoSOR():
         A.append(aux)
 
     results = jacobiSOR.jacobi_SOR(A, v, x, w, iterations, tolerance)
-    return render_template('resultsTable.html', results=results)
+    if request.form.get('prueba', None):
+        return json.dumps(results, default=decimal_default)
+    return render_template('resultsTable.html', results=results[2])
 
 @app.route('/gaussseidel', methods=['POST', 'GET'])
 def gaussseidel():
@@ -531,7 +536,45 @@ def gaussseidel():
         A.append(aux)
 
     results = gauss_seidel.gaussSeidel(tolerance, x0, iterations, A, v)
-    return render_template('resultsTable.html', results=results)
+    if request.form.get('prueba', None):
+        return json.dumps(results, default=decimal_default)
+    return render_template('resultsTable.html', results=results[2])
+
+############POLYNOMIAL INTERPOLATION#################
+
+@app.route('/lagrange', methods=['POST', 'GET'])
+def lag():
+    x = float(request.form['x'])
+    A = []
+    # Llenar A
+    for i in range(int(request.form['dimension'])):
+        aux = []
+        arstr = request.form.getlist('n' + str(i))
+        for j in range(2):
+            aux.append(float(arstr[j]))
+        A.append(aux)
+
+    results = lagrange.lagrange(x, A)
+    if request.form.get('prueba', None):
+        return json.dumps(results, default=decimal_default)
+    return render_template('resultsPoly.html', result=results[0], poli=results[1], x=x)
+
+@app.route('/newton', methods=['POST', 'GET'])
+def newt():
+    x = float(request.form['x'])
+    A = []
+    # Llenar A
+    for i in range(int(request.form['dimension'])):
+        aux = []
+        arstr = request.form.getlist('n' + str(i))
+        for j in range(2):
+            aux.append(float(arstr[j]))
+        A.append(aux)
+
+    results = newton.newton(x, A)
+    if request.form.get('prueba', None):
+        return json.dumps(results, default=decimal_default)
+    return render_template('resultsPoly.html', result=results[0], poli=results[1], x=x)
 
 
 

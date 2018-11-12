@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e682d5b1-bbd4-4a94-8eea-84a67adb4ce8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Project/templates/splines.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Project/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project/templates/linear.html" beforeDir="false" afterPath="$PROJECT_DIR$/Project/templates/linear.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/templates/polynomial.html" beforeDir="false" afterPath="$PROJECT_DIR$/Project/templates/polynomial.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/templates/resultsGauss.html" beforeDir="false" afterPath="$PROJECT_DIR$/Project/templates/resultsGauss.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/templates/resultsLU.html" beforeDir="false" afterPath="$PROJECT_DIR$/Project/templates/resultsLU.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/templates/resultsTable.html" beforeDir="false" afterPath="$PROJECT_DIR$/Project/templates/resultsTable.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,28 +27,28 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="25" />
-          <entry key="py" value="50" />
+          <entry key="html" value="29" />
+          <entry key="py" value="57" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="25" />
-          <entry key="Python" value="50" />
+          <entry key="HTML" value="29" />
+          <entry key="Python" value="57" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="1" />
-          <entry key="html" value="3762" />
-          <entry key="py" value="2535" />
+          <entry key="html" value="4871" />
+          <entry key="py" value="2828" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="3762" />
+          <entry key="HTML" value="4871" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="2535" />
+          <entry key="Python" value="2828" />
         </counts>
       </usages-collector>
     </session>
@@ -62,78 +58,106 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Project/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="116" column="59" selection-start-line="116" selection-start-column="59" selection-end-line="116" selection-end-column="59" />
+            <state relative-caret-position="517">
+              <caret line="117" column="94" selection-start-line="117" selection-start-column="94" selection-end-line="117" selection-end-column="94" />
+              <folding>
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#5;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#5;n#form#0;n#div#1;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#5;n#form#0;n#div#1;n#div#2;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#4;n#form#0;n#div#1;n#div#3;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#5;n#form#0;n#div#1;n#div#4;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#5;n#form#0;n#div#1;n#div#5;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#4;n#form#0;n#div#1;n#div#6;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#4;n#form#0;n#div#1;n#div#7;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Project/main.py">
+        <entry file="file://$PROJECT_DIR$/Project/templates/splines.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="431" column="30" lean-forward="true" selection-start-line="431" selection-start-column="30" selection-end-line="431" selection-end-column="30" />
+            <state relative-caret-position="-34">
+              <caret line="95" selection-start-line="95" selection-end-line="95" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Project/templates/linear.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6518">
+              <caret line="487" column="56" selection-start-line="487" selection-start-column="56" selection-end-line="487" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Project/Systems_of_non-linear_equations/bisection.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="211">
+              <caret line="15" column="23" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="23" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
-                <marker date="1541991745290" expanded="true" signature="8751:8768" ph="..." />
+                <element signature="e#16#34#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project/Systems_of_linear_equations/totalPivoting.py">
+        <entry file="file://$PROJECT_DIR$/Project/templates/resultsLU.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="123" column="8" selection-start-line="123" selection-start-column="8" selection-end-line="123" selection-end-column="8" />
+            <state relative-caret-position="235">
+              <caret line="135" column="45" selection-start-line="135" selection-start-column="18" selection-end-line="135" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project/Systems_of_linear_equations/cholesky.py">
+        <entry file="file://$PROJECT_DIR$/Project/templates/resultsTable.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="275">
+              <caret line="109" column="40" selection-start-line="109" selection-start-column="40" selection-end-line="109" selection-end-column="40" />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Project/Systems_of_non-linear_equations/muller.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-663" />
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Project/Systems_of_linear_equations/LUGauss.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
+            <state relative-caret-position="306">
               <caret line="91" column="8" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project/Systems_of_linear_equations/bandMatrix.py">
+        <entry file="file://$PROJECT_DIR$/Project/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="493">
+              <caret line="62" column="56" selection-start-line="62" selection-start-column="56" selection-end-line="62" selection-end-column="56" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project/Systems_of_linear_equations/pivoting.py">
+        <entry file="file://$PROJECT_DIR$/Project/methods.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-493">
-              <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project/Systems_of_linear_equations/gauss.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
+            <state relative-caret-position="78">
+              <caret line="93" column="8" selection-start-line="93" selection-start-column="8" selection-end-line="93" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -150,17 +174,28 @@
       <find>print</find>
       <find>marks</find>
       <find>x0</find>
-      <find>gauss</find>
       <find>w:</find>
       <find>newton</find>
-      <find>bisection</find>
       <find>jquery</find>
       <find>number</find>
       <find>json</find>
       <find>table[1]</find>
-      <find>POST</find>
       <find>splinesd</find>
+      <find>pivot</find>
+      <find>gauss</find>
+      <find>lugauss</find>
+      <find>bisection</find>
+      <find>POST</find>
+      <find>dimension</find>
+      <find>json.dumps</find>
+      <find>GET</find>
+      <find>if request.method == 'POST':</find>
+      <find>method=&quot;GET&quot;</find>
     </findStrings>
+    <replaceStrings>
+      <replace>if request.form.get('prueba', None):</replace>
+      <replace>method=&quot;POST&quot;</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -181,17 +216,17 @@
         <option value="$PROJECT_DIR$/Project/Systems_of_linear_equations/crout.py" />
         <option value="$PROJECT_DIR$/Project/Polynomial_Interpolation/newton.py" />
         <option value="$PROJECT_DIR$/Project/templates/lineardimension.html" />
-        <option value="$PROJECT_DIR$/Project/templates/resultsTable.html" />
         <option value="$PROJECT_DIR$/Project/Polynomial_Interpolation/lagrange.py" />
         <option value="$PROJECT_DIR$/Project/Polynomial_Interpolation/vandermonde.py" />
         <option value="$PROJECT_DIR$/Project/templates/resultsPoly.html" />
         <option value="$PROJECT_DIR$/Project/templates/resultsLU.html" />
-        <option value="$PROJECT_DIR$/Project/templates/index.html" />
         <option value="$PROJECT_DIR$/Project/templates/polynomial.html" />
         <option value="$PROJECT_DIR$/Project/templates/splines.html" />
-        <option value="$PROJECT_DIR$/Project/templates/linear.html" />
         <option value="$PROJECT_DIR$/Project/templates/resultsGauss.html" />
         <option value="$PROJECT_DIR$/Project/Systems_of_linear_equations/bandMatrix.py" />
+        <option value="$PROJECT_DIR$/Project/templates/linear.html" />
+        <option value="$PROJECT_DIR$/Project/templates/resultsTable.html" />
+        <option value="$PROJECT_DIR$/Project/templates/index.html" />
         <option value="$PROJECT_DIR$/Project/main.py" />
       </list>
     </option>
@@ -253,6 +288,12 @@
               <item name="analisis-numerico" type="b2602c69:ProjectViewProjectNode" />
               <item name="analisis-numerico" type="462c0819:PsiDirectoryNode" />
               <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="Systems_of_non-linear_equations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="analisis-numerico" type="b2602c69:ProjectViewProjectNode" />
+              <item name="analisis-numerico" type="462c0819:PsiDirectoryNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -308,7 +349,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32884097" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -342,20 +383,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Project/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Project/Systems_of_linear_equations/jacobi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="49" lean-forward="true" selection-start-line="49" selection-start-column="1" selection-end-line="52" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Project/Systems_of_linear_equations/jacobiSOR.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="25" column="36" lean-forward="true" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Project/Systems_of_linear_equations/LUPivoting.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -409,20 +436,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Project/Systems_of_linear_equations/gauss_seidel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Project/templates/resultsLU.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="178" column="45" lean-forward="true" selection-start-line="178" selection-start-column="45" selection-end-line="178" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Project/templates/splinesdimension.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-816" />
@@ -445,44 +458,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Project/templates/splines.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-221">
-          <caret line="95" selection-start-line="95" selection-end-line="95" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Project/templates/polynomial.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="156" column="14" lean-forward="true" selection-start-line="132" selection-start-column="8" selection-end-line="156" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Project/templates/linear.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="451" column="57" selection-start-line="451" selection-start-column="57" selection-end-line="451" selection-end-column="57" />
-          <folding>
-            <element signature="n#div#9;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Project/methods.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-432">
-          <caret line="271" column="8" selection-start-line="271" selection-start-column="8" selection-end-line="271" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Project/templates/resultsTable.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="142" lean-forward="true" selection-start-line="142" selection-end-line="142" />
         </state>
       </provider>
     </entry>
@@ -521,20 +500,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Project/Systems_of_linear_equations/LUGauss.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="91" column="8" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Project/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="116" column="59" selection-start-line="116" selection-start-column="59" selection-end-line="116" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Project/Systems_of_linear_equations/cholesky.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
@@ -552,14 +517,111 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Project/Systems_of_linear_equations/jacobiSOR.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-92">
+          <caret line="71" column="10" lean-forward="true" selection-start-line="71" selection-start-column="10" selection-end-line="71" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/Systems_of_linear_equations/jacobi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/Systems_of_linear_equations/gauss_seidel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/Systems_of_non-linear_equations/muller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-663" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/methods.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="93" column="8" selection-start-line="93" selection-start-column="8" selection-end-line="93" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/Systems_of_non-linear_equations/bisection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="23" />
+          <folding>
+            <element signature="e#16#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/templates/linear.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6518">
+          <caret line="487" column="56" selection-start-line="487" selection-start-column="56" selection-end-line="487" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/Systems_of_linear_equations/LUGauss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="91" column="8" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/templates/resultsLU.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="135" column="45" selection-start-line="135" selection-start-column="18" selection-end-line="135" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/templates/resultsTable.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="109" column="40" selection-start-line="109" selection-start-column="40" selection-end-line="109" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="517">
+          <caret line="117" column="94" selection-start-line="117" selection-start-column="94" selection-end-line="117" selection-end-column="94" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#5;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#5;n#form#0;n#div#1;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#5;n#form#0;n#div#1;n#div#2;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#4;n#form#0;n#div#1;n#div#3;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#5;n#form#0;n#div#1;n#div#4;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#5;n#form#0;n#div#1;n#div#5;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#4;n#form#0;n#div#1;n#div#6;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#4;n#form#0;n#div#1;n#div#7;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Project/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="431" column="30" lean-forward="true" selection-start-line="431" selection-start-column="30" selection-end-line="431" selection-end-column="30" />
+        <state relative-caret-position="493">
+          <caret line="62" column="56" selection-start-line="62" selection-start-column="56" selection-end-line="62" selection-end-column="56" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <marker date="1541991745290" expanded="true" signature="8751:8768" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/templates/splines.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-34">
+          <caret line="95" selection-start-line="95" selection-end-line="95" />
         </state>
       </provider>
     </entry>

@@ -25,9 +25,45 @@
     <script src={{ url_for('static', filename="js/modernizr-2.6.2-respond-1.1.0.min.js") }}></script>
     <link href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic" rel="stylesheet" type="text/css">
     <link href={{ url_for('static', filename="css/font-helvetica.css") }} rel="stylesheet" type="text/css">
+    <script src={{ url_for('static', filename="js/jquery.min.js") }}></script>
+    <script src={{ url_for('static', filename="js/jquery.plugin.min.js") }}></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
 </head>
 
 <body>
+<script>
+
+    var i=false;
+    $(function() { //shorthand document.ready function
+
+        $("form").submit(function(e) {
+            if(!i) {
+                $(this).ajaxSubmit({
+                    type: 'POST',
+                    data: {prueba: 'true'},
+                    success: function (data) {
+                        var res = JSON.parse(data);
+                        var status = res[0];
+                        if (status != 0) { // OCURRIO UN ERROR, MANEJARLO
+                            var message = res[1]
+                            i = false
+                            alert(message)
+                        } else {
+                            i = true
+                        }
+                    }})
+                console.log(i)
+                return false
+            } else{
+                return true
+            }
+
+
+        });
+    });
+
+
+</script>
 {#<div class="loader">#}
 {#    <div class="spinner">#}
 {#        <div class="double-bounce1"></div>#}
@@ -151,7 +187,7 @@
                 <h4 class="panel-title">LU Pivoting</h4>
 
             </div>
-            <div class="table-responsive panel-collapse collapse" id="lugauss">
+            <div class="table-responsive panel-collapse collapse" id="lupivoting">
                 <form action="/lupivoting" method="POST">
                     A:
                     <input type="hidden" name="dimension" value="{{ dimension|length }}">
@@ -456,7 +492,7 @@
                         {% for row in range(4) %}
                             {% set outer_loop = loop %}
                             <tr>
-                            <th>Vector {{ loop.index }}</th>
+                                <th>Vector {{ loop.index }}</th>
                                 {% for col in dimension %}
 
                                     <td><input class="form-control" type="text" name="n{{ outer_loop.index0 }}"  ></td>
@@ -473,8 +509,6 @@
 </div>
 
 <script src="https://www.youtube.com/iframe_api"></script>
-<script src={{ url_for('static', filename="js/jquery.min.js") }}></script>
-<script src={{ url_for('static', filename="js/jquery.plugin.min.js") }}></script>
 <script src={{ url_for('static', filename="js/bootstrap.min.js") }}></script>
 <script src={{ url_for('static', filename="js/jquery.flexslider-min.js") }}></script>
 <script src={{ url_for('static', filename="js/smooth-scroll.min.js") }}></script>

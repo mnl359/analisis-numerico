@@ -54,6 +54,7 @@
                     // submit the form
                     $(this).ajaxSubmit({
                         type: 'POST',
+                        data: {prueba: 'true'},
                         success: function (data) {
                             var res = JSON.parse(data)
                             var status = res[0]
@@ -70,7 +71,7 @@
                                     "<div class='col-xs-6'>" +
                                     "<div>Resultado: "+resultado+"</div>" +
                                     "<div>En "+iteraciones+" iteraciones</div>"+
-                                "</div>"
+                                    "</div>"
 
                                 $('#{{ divname }}').append(resstring);
                                 $('#{{ subname }}').html('Details')
@@ -114,7 +115,7 @@
                         <li><a href="{{ url_for("nonlinear") }}" target="_self">Non Linear Equation Systems</a></li>
                         <li><a href="{{ url_for("lineardimension") }}" target="_self">Linear Equation Systems</a></li>
                         <li><a href="{{ url_for("polynomialdim") }}" target="_self">Polynomial Interpolation</a></li>
-                        <li><a href="{{ url_for("splinesdim") }}" target="_self">Polynomial Interpolation</a></li>
+                        <li><a href="{{ url_for("splinesdimension") }}" target="_self">Splines</a></li>
                     </ul>
 
                 </div>
@@ -138,7 +139,7 @@
 
             </div>
             <div  id="bisection" class="panel-collapse collapse">
-                <form action="/bisection" method="GET" id="bisectionform">
+                <form action="/bisection" method="POST" id="bisectionform">
                     <div class="form-group">
                         <input class="form-control" type="text" name="function" placeholder="f(x)" >
                     </div>
@@ -170,7 +171,7 @@
 
             </div>
             <div  id="aitken_bisection" class="panel-collapse collapse">
-                <form action="/aitken_bisection" method="GET" id="aitbisform">
+                <form action="/aitken_bisection" method="POST" id="aitbisform">
                     <div class="form-group">
                         <input class="form-control" type="text" name="function" placeholder="f(x)" >
                     </div>
@@ -202,7 +203,7 @@
 
             </div>
             <div  id="muller" class="panel-collapse collapse">
-                <form action="/muller" method="GET" id="mullerform">
+                <form action="/muller" method="POST" id="mullerform">
                     <div class="form-group">
                         <input class="form-control" type="text" name="function" placeholder="f(x)" >
                     </div>
@@ -234,7 +235,7 @@
 
             </div>
             <div  id="incremental" class="panel-collapse collapse">
-                <form action="/incremental" method="GET" id="incrementalform">
+                <form action="/incremental" method="POST" id="incrementalform">
                     <div class="form-group">
                         <input class="form-control" type="text" name="function" placeholder="f(x)" >
                     </div>
@@ -263,7 +264,7 @@
 
             </div>
             <div  id="falseRule" class="panel-collapse collapse">
-                <form action="/falseRule" method="GET" id="falseruleform">
+                <form action="/falseRule" method="POST" id="falseruleform">
                     <div class="form-group">
                         <input class="form-control" type="text" name="function" placeholder="f(x)" >
                     </div>
@@ -295,7 +296,7 @@
 
             </div>
             <div  id="fixedPoint" class="panel-collapse collapse">
-                <form action="/fixed" method="GET" id="fixedform">
+                <form action="/fixed" method="POST" id="fixedform">
                     <div class="form-group">
                         <input class="form-control" type="text" name="function" placeholder="f(x)" >
                     </div>
@@ -327,7 +328,7 @@
 
             </div>
             <div  id="multiple" class="panel-collapse collapse">
-                <form action="/multiple" method="GET" id="multipleform">
+                <form action="/multiple" method="POST" id="multipleform">
                     <div class="form-group">
                         <input class="form-control" type="text" name="function" placeholder="f(x)" >
                     </div>
@@ -356,7 +357,7 @@
 
             </div>
             <div  id="aitken" class="panel-collapse collapse">
-                <form action="/aitken" method="GET" id="aitkenform">
+                <form action="/aitken" method="POST" id="aitkenform">
                     <div class="form-group">
                         <input class="form-control" type="text" name="function" placeholder="f(x)" >
                     </div>
@@ -385,7 +386,7 @@
 
             </div>
             <div  id="secant" class="panel-collapse collapse">
-                <form action="/secant" method="GET" id="secantform">
+                <form action="/secant" method="POST" id="secantform">
                     <div class="form-group">
                         <input class="form-control" type="text" name="function" placeholder="f(x)" >
                     </div>
