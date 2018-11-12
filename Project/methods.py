@@ -53,14 +53,12 @@ class Methods:
                 root = (xn1, '%.2E' % Decimal(str(error)))
             else:
                 if (cont == iterations):
-                    print ("The method failed.")
-                    root = (None, cont)
+                    return(1, "Method failed in %d iterations" %cont)
                 else:
                     root = (xn1, '%.2E' % Decimal(str(error)))
-        return (root, table)
+        return 0, root, table, cont
 
     def secant(self, x0, x1, tolerance, iterations):
-        # table = PrettyTable(['Iteration', 'Xn', 'f(Xn)', 'Relative Error'])
         fx0 = self.f(x0)[0]
         root = 0
         if fx0 == 0:
@@ -88,13 +86,12 @@ class Methods:
             elif error < tolerance:
                 root = (x1, '%.2E' % Decimal(str(error)))
             elif den == 0:
-                root = (x1, "Multiple root")
+                return(1, "Multiple roots")
             else:
-                root = None
-        return (root, table)
+                return(1, "Method failed in %d iterations" %cont)
+        return (0, root, table, cont)
 
     def bisection(self, xi, xs, tolerance, iterations):
-    #     table = PrettyTable(['Iteration', 'Xinf', 'Xsup', 'Xmi', 'f(Xmi)', 'Error'])
         fxi = self.f(xi)[0]
         fxs = self.f(xs)[0]
         root = 0
@@ -109,7 +106,6 @@ class Methods:
             cont = 1
             error = tolerance + 1
             row = [cont, xi, xs, xm, fxm, 'Doesnt exist']
-            # table.add_row(row)
             rows.append(row)
             while error > tolerance and fxm != 0 and cont < iterations:
                 if fxi * fxm < 0:
@@ -124,21 +120,18 @@ class Methods:
                 error = abs(xm - aux)
                 cont += 1
                 row = [cont, xi, xs, xm, fxm, '%.2E' % Decimal(str(error))]
-                # table.add_row(row)
                 rows.append(row)
             if fxm == 0:
                 root = xm
             elif error < tolerance:
                 root = (xm, '%.2E' % Decimal(str(error)))
             else:
-                root = (None, iterations)
-            # print(table)
+                return(1, "Method failed in %d iterations" %cont)
         else:
-            root = None
-        return (root, rows)
+            return(1, "There is no change in this interval")
+        return (0, root, rows, cont)
 
     def falseRule(self, xi, xs, tolerance, iterations):
-        # table = PrettyTable(['Iteration', 'Xinf', 'Xsup', 'Xmi', 'f(Xmi)', 'Error'])
         fxi = self.f(xi)[0]
         fxs = self.f(xs)[0]
         si = xi - xs
@@ -155,7 +148,6 @@ class Methods:
                 fxm = self.f(xm)[0]
                 cont = 1
                 error = tolerance + 1
-                # table.add_row([cont, xi, xs, xm, fxm, 'Doesnt exist'])
                 rows.append([cont, xi, xs, xm, fxm, 'Doesnt exist'])
                 while error > tolerance and fxm != 0 and cont < iterations:
                     if fxi * fxm < 0:
@@ -179,13 +171,13 @@ class Methods:
                 elif error < tolerance:
                     root = (xm, '%.2E' % Decimal(str(error)))
                 else:
-                    root = (None, iterations)
-                print(rows)
+                    return(1, "Method failed in %d iterations" %cont)
+                #print(rows)
             else:
-                root = False
+                root = False #NO RECUERDO LO QUE SIGNIFICA ESTO
         else:
-            root = None
-        return (root, rows)
+            return(1, "There is no change in this interval")
+        return (0, root, rows, cont)
 
     def fixedPoint(self, xa, tolerance, iterations):
         table = [['Iteration', 'Xn', 'f(Xn)', 'Error']]
@@ -205,10 +197,11 @@ class Methods:
         elif error < tolerance:
             root = (xa, '%.2E' % Decimal(str(error)))
         else:
-            root = (None, iterations)
-        print(table)
-        return (root, table)
+            return(1, "Method failed in %d iterations" %cont)
+        return (0, root, table, cont)
 
+    # Este método no retorna tabla. 
+    # Retorna 0 (exitoso), 
     def incremental_searches(self, x0, delta, iterations):
         fx = self.f(x0)[0]
         root = 0
@@ -234,7 +227,7 @@ class Methods:
                 x1 = x0 + delta
                 fx1 = self.f(x1)[0]
                 cont += 1
-        return roots
+        return 0, roots, cont
 
     def multipleRoots(self, x0, tolerance, iterations):
         table = [['Iteration', 'Xn', 'f(Xn)', 'df(Xn)', 'd(2)f(Xn)', 'Error']]
@@ -265,12 +258,12 @@ class Methods:
         elif dfx == 0 and fx == 0 and dfx2 != 0:
             root = x1
         else:
-            root = None
-        print(table)
-        return (root, table)
+            return(1, "Method failed in %d iterations" %cont)
+        #print(table)
+        return (0, root, table, cont)
 
     def aitken(self, x0, tolerance, iterations):
-        table = [['Iteration', 'Xn', 'Error Absoluto']]
+        table = [['Iteration', 'Xn', 'Absolute Error']]
         fx0 = self.f(x0)[0]
         root = 0
         if fx0 == 0:
@@ -299,10 +292,10 @@ class Methods:
             if error < tolerance:
                 root = (aux, '%.2E' % Decimal(str(error)))
             else:
-                root = (None, cont)
+                return(1, "Method failed in %d iterations" %cont)
 
-            print(table)
-        return (root, table)
+            #print(table)
+        return (0, root, table, cont)
 
     def bis(self, a, b):
         fa = self.f(a)[0]
@@ -316,7 +309,7 @@ class Methods:
         return a, b, x
 
     def aitken_bis(self, a, b, tolerance, iterations):
-        table = [['Iteration', 'Xn', 'Error Absoluto']]
+        table = [['Iteration', 'Xn', 'Absolute Error']]
         x0 = (a + b) / 2.0
         fa = self.f(a)[0]
         fb = self.f(b)[0]
@@ -355,14 +348,14 @@ class Methods:
             if error < tolerance:
                 root = (xn, '%.2E' % Decimal(str(error)))
             else:
-                print (error)
-                root = (None, cont)
+                #print (error)
+                return(1, "Method failed in %d iterations" %cont)
 
-            print(table)
-        return (root, table)
+            #print(table)
+        return (0, root, table, cont)
 
     def muller(self, x0, x1, tolerance, iterations):
-        table = [['Iteration', 'X1', 'X2', 'X3', 'Error Absoluto']]
+        table = [['Iteration', 'X1', 'X2', 'X3', 'Absolute Error']]
         x2 = (x1 - x0) / 2.0  # We get the third value using bisection
         fx0 = self.f(x0)[0]
         fx1 = self.f(x1)[0]
@@ -415,10 +408,10 @@ class Methods:
                 root = (x3, '%.2E' % Decimal(str(error)))
             else:
                 if (cont == iterations):
-                    print ("The method failed.")
-                    root = (None, cont)
+                    #print ("The method failed.")
+                    return(1, "Method failed in %d iterations" %cont)
                 else:
                     root = (x3, '%.2E' % Decimal(str(error)))
 
-            print(table)
-        return (root, table)
+            #print(table)
+        return (0, root, table, cont)

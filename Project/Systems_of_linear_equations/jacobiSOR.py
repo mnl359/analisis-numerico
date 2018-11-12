@@ -16,7 +16,7 @@ def aumMatrix(A, b):
         cont += 1
     return A
 
-def jacobi_SOR(A, b, x, w, iter, tol, toPrint):
+def jacobi_SOR(A, b, x, w, iter, tol):
     title = ['Iteration']
     aux = 0
     while aux < len(x):
@@ -25,6 +25,7 @@ def jacobi_SOR(A, b, x, w, iter, tol, toPrint):
         
     title.append("Error")
     table = PrettyTable(title)
+    result = [title]
 
     n = len(A)
     det = linalg.det(A)
@@ -68,6 +69,7 @@ def jacobi_SOR(A, b, x, w, iter, tol, toPrint):
     if a == 1:
         cont = 0
         table.add_row([cont] + x + ["Doesn't exist"])
+        result.append([cont] + x + ["Doesn't exist"])
         x = transpose(x)
         tolerance = tol + 1
         while cont < iter and tolerance > tol:
@@ -75,6 +77,7 @@ def jacobi_SOR(A, b, x, w, iter, tol, toPrint):
             tolerance = linalg.norm(xi - x)
             cont += 1
             table.add_row([cont] + xi.tolist() + ['%.2E' % Decimal(str(tolerance))])
+            result.append([cont] + xi.tolist() + ['%.2E' % Decimal(str(tolerance))])
             x = xi
         
         #print("The aproximation to X vector with %s iterations is" %cont, file=toPrint)
@@ -90,8 +93,7 @@ def jacobi_SOR(A, b, x, w, iter, tol, toPrint):
         
     #elif a == 2:
     #    print("The method does not converge because the matrix is not dominant on its diagonal", file=toPrint)
-    
-    return 0, x, table, cont, t_matrix, RE
+    return 0, x.tolist(), result, cont, t_matrix, RE
 
 
 #A = [

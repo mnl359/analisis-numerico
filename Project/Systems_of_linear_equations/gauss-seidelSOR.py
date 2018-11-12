@@ -75,16 +75,19 @@ def gaussSeidel(tolerance, x0, iterations, matrix, b, rel):
         aux += 1
     title.append("Error")
     table = PrettyTable(title)
+    result = [title]
     table.add_row([cont] + x0 + ["Doesn't exist"])
+    result.append([cont] + x0 + ["Doesn't exist"])
     error = tolerance + 1
     while error > tolerance and cont < iterations:
         x1 = newGaussSeidel(x0, matrix, b, rel)
         error = norma(x0, x1)
         cont += 1
         table.add_row([cont] + x1 + ['%.2E' % Decimal(str(error))])
+        result.append([cont] + x1 + ['%.2E' % Decimal(str(error))])
         x0 = copy(x1)
     
-    return 0, x0, table, cont, t_matrix, RE
+    return 0, x0, result, cont, t_matrix, RE
 
 #m = [[5,3,1],[3,4,-1],[1,-1,4]]
 #b = [24,30,-24]
