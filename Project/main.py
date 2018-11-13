@@ -193,7 +193,7 @@ def incremental():
     methods = Methods(func)
     results = methods.incremental_searches(x0, delta,iterations)
     table = []
-    for row in results:
+    for row in results[1]:
         table.append([row])
 
     if request.form.get('prueba', None):
