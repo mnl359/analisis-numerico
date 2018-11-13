@@ -484,7 +484,6 @@ def totalpivoting():
 @app.route('/jacobi', methods=['POST', 'GET'])
 def jaco():
     tolerance = float(request.form['tolerance'])
-    x0 = float(request.form['x0'])
     iterations = float(request.form['iterations'])
     A = []
     v = []
@@ -500,6 +499,14 @@ def jaco():
             aux.append(float(arstr[j]))
         A.append(aux)
 
+    x0=[]
+    # Llenar A
+    for i in range(int(request.form['x0'])):
+        aux = []
+        arstr = request.form.getlist('x' + str(i))
+        for j in range(int(request.form['x0'])):
+            aux.append(float(arstr[j]))
+        x0.append(aux)
     results = jacobi.newJacobi(tolerance, x0, iterations, A, v)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
