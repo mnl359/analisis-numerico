@@ -65,11 +65,14 @@ def muller(x0, x1, exp, tolerance, iterations):
             if (cont == iterations):
                 print ("The method failed.")
                 root = (None, cont)
+                return(2, "The method could not find a root with the required precision after the selected number of iterations."
+                        + " You may want to choose a different starting value or a bigger number of iterations. You may also be finding"
+                        + " a multiple root.")
             else:
                 root = (x3, '%.2E' % Decimal(str(error)))
 
         print(table)
-    return root
+    return(0, table)
 
 #print(muller(0.0, 1.0, "log(x+2)",0.5e-7, 100))
 
