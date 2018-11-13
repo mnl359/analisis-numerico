@@ -191,14 +191,11 @@ def incremental():
     iterations = int(request.form['iterations'])
 
     methods = Methods(func)
-    results = methods.incremental_searches(x0, delta,iterations)
-    table = []
-    for row in results[1]:
-        table.append([row])
+    table = methods.incremental_searches(x0, delta,iterations)
 
     if request.form.get('prueba', None):
-        return json.dumps(results, default=decimal_default)
-    return render_template('resultsTable.html', results=table, func=func.replace("**", "^"), aprox=[], aproy=[])
+        return json.dumps(table, default=decimal_default)
+    return render_template('resultsTable.html', results=table[1], func=func.replace("**", "^"), aprox=[], aproy=[])
 
 @app.route('/multiple', methods=['POST', 'GET'])
 def multiple():
