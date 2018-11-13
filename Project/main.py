@@ -102,6 +102,19 @@ def stephensen():
         return json.dumps(table, default=decimal_default)
     return render_template('resultsTable.html', results=table[2], func=func.replace("**", "^"))
 
+@app.route('/newtonon', methods=['POST', 'GET'])
+def newtonon():
+    func = request.form['function']
+    xn = float(request.form['xn'])
+    iterations = float(request.form['iterations'])
+    tolerance = float(request.form['tolerance'])
+
+    methods = Methods(func)
+    table = methods.stephensen(xn, tolerance,iterations)
+    if request.form.get('prueba', None):
+        return json.dumps(table, default=decimal_default)
+    return render_template('resultsTable.html', results=table[2], func=func.replace("**", "^"))
+
 @app.route('/fixed', methods=['POST', 'GET'])
 def fixed():
 

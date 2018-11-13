@@ -23,6 +23,32 @@ class Methods:
         gx = eval(self.gunction)
         return gx
 
+    def newton(self, x0, tolerance, iterations):
+        table = [['Iteration', 'Xn', 'f(Xn)', 'df(Xn)', 'Error']]
+        fx = self.f(x0)[0]
+        dfx = self.f(x0)[1]
+        cont = 0
+        error = tolerance + 1
+        table.append([cont, x0, fx, dfx, 'Doesnt exist'])
+        while error > tolerance and fx != 0 and dfx != 0 and cont < iterations:
+            x1 = x0 - (fx / dfx)
+            fx = self.f(x1)[0]
+            dfx = self.f(x1)[1]
+            error = abs((x1 - x0) / x1)
+            x0 = x1
+            cont += 1
+            table.append([cont, x1, fx, dfx, '%.2E' % Decimal(str(error))])
+        if fx == 0:
+            root = (x0, '%.2E' % Decimal(str(error)))
+        elif error < tolerance:
+            root = (x1, '%.2E' % Decimal(str(error)))
+        elif dfx == 0:
+            root = (x1, "Multiple root")
+        else:
+            root = None
+        print(table)
+        return 0, root, table, cont
+
     def stephensen(self, xn, tolerance, iterations):
         table = [['Iteration', 'Xn', 'Error Absoluto']]
         fxn = self.f(xn)[0]
