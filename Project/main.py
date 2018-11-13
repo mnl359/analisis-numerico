@@ -542,7 +542,11 @@ def jacoSOR():
 @app.route('/gaussseidel', methods=['POST', 'GET'])
 def gaussseidel():
     tolerance = float(request.form['tolerance'])
-    x0 = float(request.form['x0'])
+    x0 = []
+    xstr = request.form.getlist('x0')
+    # Llenas x0
+    for item in xstr:
+        x0.append(float(item))
     iterations = float(request.form['iterations'])
     A = []
     v = []
