@@ -110,7 +110,7 @@ def newtonon():
     tolerance = float(request.form['tolerance'])
 
     methods = Methods(func)
-    table = methods.stephensen(xn, tolerance,iterations)
+    table = methods.newton(xn, tolerance,iterations)
     if request.form.get('prueba', None):
         return json.dumps(table, default=decimal_default)
     return render_template('resultsTable.html', results=table[2], func=func.replace("**", "^"))
