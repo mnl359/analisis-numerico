@@ -14,8 +14,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="112" column="52" lean-forward="true" selection-start-line="112" selection-start-column="52" selection-end-line="112" selection-end-column="52" />
+            <state relative-caret-position="457">
+              <caret line="499" column="39" lean-forward="true" selection-start-line="499" selection-start-column="39" selection-end-line="499" selection-end-column="39" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -23,11 +23,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="jacobi.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/jacobi.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="409">
+              <caret line="35" column="11" lean-forward="true" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="linear.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/linear.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="324" column="49" selection-start-line="324" selection-start-column="49" selection-end-line="324" selection-end-column="49" />
+            <state relative-caret-position="93">
+              <caret line="113" column="45" selection-start-line="113" selection-start-column="40" selection-end-line="113" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -53,6 +62,11 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="crout.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/crout.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
       <file leaf-file-name="methods.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/methods.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -74,17 +88,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="doolittle.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/doolittle.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="gauss.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/gauss.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -99,15 +102,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
               <caret line="21" column="46" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pivoting.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/pivoting.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -142,7 +136,14 @@
       <find>new</find>
       <find>stephen</find>
       <find>newt</find>
+      <find>chole</find>
+      <find>do</find>
+      <find>crout</find>
+      <find>len(</find>
       <find>LU Pi</find>
+      <find>jaco</find>
+      <find>sor</find>
+      <find>gauss</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -162,6 +163,7 @@
         <option value="$PROJECT_DIR$/methods.py" />
         <option value="$PROJECT_DIR$/templates/nonlinear.html" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/Systems_of_linear_equations/jacobi.py" />
         <option value="$PROJECT_DIR$/templates/linear.html" />
       </list>
     </option>
@@ -315,13 +317,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="43" column="114" selection-start-line="43" selection-start-column="114" selection-end-line="43" selection-end-column="114" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/resultsTable.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
@@ -466,9 +461,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/crout.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/doolittle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -533,10 +525,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/crout.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/jacobi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="35" column="11" lean-forward="true" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="112" column="52" lean-forward="true" selection-start-line="112" selection-start-column="52" selection-end-line="112" selection-end-column="52" />
+        <state relative-caret-position="457">
+          <caret line="499" column="39" lean-forward="true" selection-start-line="499" selection-start-column="39" selection-end-line="499" selection-end-column="39" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -545,8 +547,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/linear.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="324" column="49" selection-start-line="324" selection-start-column="49" selection-end-line="324" selection-end-column="49" />
+        <state relative-caret-position="93">
+          <caret line="113" column="45" selection-start-line="113" selection-start-column="40" selection-end-line="113" selection-end-column="45" />
         </state>
       </provider>
     </entry>

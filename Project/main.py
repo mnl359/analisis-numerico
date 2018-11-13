@@ -500,7 +500,7 @@ def jaco():
             aux.append(float(arstr[j]))
         A.append(aux)
 
-    results = jacobi.jacobi(tolerance, x0, iterations, A, v)
+    results = jacobi.newJacobi(tolerance, x0, iterations, A, v)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
     return render_template('resultsTable.html', results=results[2])
