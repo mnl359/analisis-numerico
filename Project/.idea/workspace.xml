@@ -14,11 +14,20 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="564" column="26" selection-start-line="564" selection-start-column="20" selection-end-line="564" selection-end-column="26" />
+            <state relative-caret-position="323">
+              <caret line="616" column="19" lean-forward="true" selection-start-line="616" selection-start-column="19" selection-end-line="616" selection-end-column="19" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="splines_1.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Splines/splines_1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="5" column="15" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -32,10 +41,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="linear.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="linear.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/linear.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
+            <state relative-caret-position="-117">
               <caret line="432" column="135" selection-start-line="432" selection-start-column="135" selection-end-line="432" selection-end-column="135" />
             </state>
           </provider>
@@ -88,15 +97,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="207">
               <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="48" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gauss.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/gauss.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -324,13 +324,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/resultsTable.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="43" column="114" selection-start-line="43" selection-start-column="114" selection-end-line="43" selection-end-column="114" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Methods/newton.py" />
     <entry file="file://$PROJECT_DIR$/Methods/Output.txt" />
     <entry file="file://$PROJECT_DIR$/Methods/secant.py" />
@@ -546,20 +539,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/linear.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-117">
+          <caret line="432" column="135" selection-start-line="432" selection-start-column="135" selection-end-line="432" selection-end-column="135" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="564" column="26" selection-start-line="564" selection-start-column="20" selection-end-line="564" selection-end-column="26" />
+        <state relative-caret-position="323">
+          <caret line="616" column="19" lean-forward="true" selection-start-line="616" selection-start-column="19" selection-end-line="616" selection-end-column="19" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/linear.html">
+    <entry file="file://$PROJECT_DIR$/Splines/splines_1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="432" column="135" selection-start-line="432" selection-start-column="135" selection-end-line="432" selection-end-column="135" />
+        <state relative-caret-position="60">
+          <caret line="5" column="15" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
         </state>
       </provider>
     </entry>

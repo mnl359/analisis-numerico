@@ -4,6 +4,7 @@ import numpy as np
 from prettytable import PrettyTable
 
 def spline1(X):
+    print(X)
     check = checkData(X)
     if(check[0] == 1):
         return(check)
@@ -13,6 +14,7 @@ def spline1(X):
     A = introBySmoothness(A, X, n)
     A = gaussJordan(A)
     coef = clear(A, len(A))
+    print(orderCoef(coef))
     return (0, orderCoef(coef))
     
     return (np.array(A),coef)
