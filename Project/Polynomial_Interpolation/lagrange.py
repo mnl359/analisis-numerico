@@ -1,5 +1,8 @@
 #!/bin/python3
 
+"""Tubi, lindura holi este método debe devolver el polinomio de la lagrange y el polinomio evaluado
+    evaluado en un valor, así que retorna [0, polinomio, resultado]"""
+
 from sympy import Symbol, expand, simplify, factor, init_printing
 
 def l(value, i, matrix):
@@ -29,10 +32,4 @@ def lagrange(x, matrix):
         ln = l(x, i, matrix)
         pol += ln[1]*matrix[i][1]
         pol1 += ln[0]*matrix[i][1]
-    print("El polinomio resultante es:")
-    print(pol1)
-    return pol, pol1
-
-m = [[0, 0],[1, 1],[2, 1],[3, 0]]
-value = 1
-print("El resultado de p(%s) es igual a %s" % (value, lagrange(value, m)[0]))
+    return [0, pol, pol1]
