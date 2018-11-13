@@ -13,7 +13,7 @@ def f(x):
     #fx = (math.exp(-number)) - math.cos(4*number)
     #fx = math.exp((-(number)**2)+1) - (4*(number**3)) + 25
     #fx = (number**3)+(4*(number**2))-10
-    fx = (x**3) - x - math.exp(-x) - 1
+    fx = x+3-0.004+math.log(5)
     return fx
 
 
@@ -57,4 +57,4 @@ def bisection(xi, xs, tolerance, iterations):
     return root
 
 
-print(bisection(1, 2, 1e-04, 100))
+print(bisection(-5, -4, 1e-04, 100))
