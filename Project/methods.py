@@ -152,7 +152,8 @@ class Methods:
             elif error < tolerance:
                 root = (xm, '%.2E' % Decimal(str(error)))
             else:
-                return(1, "Method failed in %d iterations" %cont)
+                return(1, "Method failed in %d iterations\n\
+                Try with a closest interval or more iterations" %cont)
         else:
             return(1, "There is no change in this interval")
         return (0, root, rows, cont)
