@@ -14,8 +14,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="107" column="31" selection-start-line="107" selection-start-column="31" selection-end-line="107" selection-end-column="31" />
+            <state relative-caret-position="217">
+              <caret line="104" column="17" selection-start-line="104" selection-start-column="13" selection-end-line="104" selection-end-column="17" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -26,8 +26,8 @@
       <file leaf-file-name="nonlinear.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/nonlinear.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="149" column="78" selection-start-line="149" selection-start-column="78" selection-end-line="149" selection-end-column="78" />
+            <state relative-caret-position="245">
+              <caret line="214" column="26" selection-start-line="214" selection-start-column="26" selection-end-line="214" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -156,6 +156,7 @@
         <option value="$PROJECT_DIR$/Systems_of_linear_equations/totalPivoting.py" />
         <option value="$PROJECT_DIR$/methods.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/templates/nonlinear.html" />
       </list>
     </option>
   </component>
@@ -493,13 +494,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Systems_of_non-linear_equations/newton.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="48" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/cholesky.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -520,10 +514,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Systems_of_non-linear_equations/newton.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="48" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="107" column="31" selection-start-line="107" selection-start-column="31" selection-end-line="107" selection-end-column="31" />
+        <state relative-caret-position="217">
+          <caret line="104" column="17" selection-start-line="104" selection-start-column="13" selection-end-line="104" selection-end-column="17" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -532,8 +533,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/nonlinear.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="149" column="78" selection-start-line="149" selection-start-column="78" selection-end-line="149" selection-end-column="78" />
+        <state relative-caret-position="245">
+          <caret line="214" column="26" selection-start-line="214" selection-start-column="26" selection-end-line="214" selection-end-column="26" />
         </state>
       </provider>
     </entry>
