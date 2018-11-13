@@ -105,7 +105,7 @@ def stephensen():
 @app.route('/newtonon', methods=['POST', 'GET'])
 def newtonon():
     func = request.form['function']
-    xn = float(request.form['xn'])
+    xn = float(request.form['xi'])
     iterations = float(request.form['iterations'])
     tolerance = float(request.form['tolerance'])
 

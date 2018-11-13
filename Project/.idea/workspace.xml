@@ -11,11 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="104" column="17" selection-start-line="104" selection-start-column="13" selection-end-line="104" selection-end-column="17" />
+            <state relative-caret-position="262">
+              <caret line="107" column="31" selection-start-line="107" selection-start-column="31" selection-end-line="107" selection-end-column="31" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -23,7 +23,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nonlinear.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="nonlinear.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/nonlinear.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="245">
@@ -136,8 +136,8 @@
       <find>newton</find>
       <find>n</find>
       <find>new</find>
-      <find>stephen</find>
       <find>newt</find>
+      <find>stephen</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -155,8 +155,8 @@
         <option value="$PROJECT_DIR$/Systems_of_linear_equations/pivoting.py" />
         <option value="$PROJECT_DIR$/Systems_of_linear_equations/totalPivoting.py" />
         <option value="$PROJECT_DIR$/methods.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/templates/nonlinear.html" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -521,20 +521,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="104" column="17" selection-start-line="104" selection-start-column="13" selection-end-line="104" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/nonlinear.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
           <caret line="214" column="26" selection-start-line="214" selection-start-column="26" selection-end-line="214" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="107" column="31" selection-start-line="107" selection-start-column="31" selection-end-line="107" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
