@@ -83,8 +83,8 @@
             <h4 class="panel-title">L/U Matrixes</h4>
 
         </div>
-        <div id="matrix">
-            <div class="table-responsive panel-collapse collapse" id="lmatrix">
+        <div id="matrix" class="panel-collapse collapse">
+            <div class="table-responsive" id="lmatrix">
                 <table class="table" id="results">
                     <tbody>
                     {% for row in l_matrix %}
@@ -133,66 +133,67 @@
         </div>
     {% endif %}
 
+    {% if l_steps is defined or u_steps is defined or results_steps is defined %}
+        <div id="mat" class="panel panel-default">
+            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#steps">
+                <h4 class="panel-title">Steps</h4>
 
-    <div id="mat" class="panel panel-default">
-        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#matrix">
-            <h4 class="panel-title">Steps</h4>
+            </div>
+            <div id="steps" class="collapse panel-collapse">
+                {% if l_steps is defined %}
+                    L Steps:
+                    {% for l_matrix in l_steps %}
+                        <div class="table-responsive" id="lmatrixst">
+                            <table class="table" id="results">
+                                <tbody>
+                                {% for row in l_matrix %}
+                                    <tr>
+                                        {% for col in row %}
+                                            <td>{{ col }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% if u_steps is defined %}
+                    U Steps:
+                    {% for u_matrix in u_steps %}
+                        <div class="table-responsive panel-collapse collapse" id="umatrixst">
+                            <table class="table" id="results">
+                                <tbody>
+                                {% for row in u_matrix %}
+                                    <tr>
+                                        {% for col in row %}
+                                            <td>{{ col }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% endfor %}
+                {% endif %}
 
-        </div>
-        <div id="matrix">
-            {% if l_steps is defined %}
-                L Steps:
-                {% for l_matrix in l_steps %}
-                    <div class="table-responsive panel-collapse collapse" id="lmatrixst">
-                        <table class="table" id="results">
+                {% if results_steps is defined %}
+                    <div class="table-responsive collapse panel-collapse" id="uresultsst">
+                        <table class="table" id="uresult">
                             <tbody>
-                            {% for row in l_matrix %}
+                            {% for row in results %}
                                 <tr>
-                                    {% for col in row %}
-                                        <td>{{ col }}</td>
-                                    {% endfor %}
+                                    <th>X{{ loop.index0 }}</th>
+                                    <td>{{ row }}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>
                         </table>
                     </div>
-                {% endfor %}
-            {% endif %}
-            {% if u_steps is defined %}
-                U Steps:
-                {% for u_matrix in u_steps %}
-                    <div class="table-responsive panel-collapse collapse" id="umatrixst">
-                        <table class="table" id="results">
-                            <tbody>
-                            {% for row in u_matrix %}
-                                <tr>
-                                    {% for col in row %}
-                                        <td>{{ col }}</td>
-                                    {% endfor %}
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                {% endfor %}
-            {% endif %}
-
-            {% if results_steps is defined %}
-                <div class="table-responsive collapse panel-collapse" id="uresultsst">
-                    <table class="table" id="uresult">
-                        <tbody>
-                        {% for row in results %}
-                            <tr>
-                                <th>X{{ loop.index0 }}</th>
-                                <td>{{ row }}</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            {% endif %}
+                {% endif %}
+            </div>
         </div>
-    </div>
+    {% endif %}
 </div>
 
 
