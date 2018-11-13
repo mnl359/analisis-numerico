@@ -114,7 +114,7 @@ def newtonon():
     table = methods.newton(xn, tolerance,iterations)
     if request.form.get('prueba', None):
         return json.dumps(table, default=decimal_default)
-    return render_template('resultsTable.html', results=table[2], func=func.replace("**", "^"))
+    return render_template('resultsTable.html', results=table[2], func=func.replace("**", "^"), aprox=[], aproy=[])
 
 @app.route('/fixed', methods=['POST', 'GET'])
 def fixed():
@@ -508,7 +508,7 @@ def jaco():
     results = jacobi.newJacobi(x0, A, v)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
-    return render_template('resultsTable.html', results=results[2])
+    return render_template('resultsTable.html', results=results[2], aprox=[], aproy=[])
 
 @app.route('/jacobiSOR', methods=['POST', 'GET'])
 def jacoSOR():
@@ -537,7 +537,7 @@ def jacoSOR():
     results = jacobiSOR.jacobi_SOR(A, v, x, w, iterations, tolerance)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
-    return render_template('resultsTable.html', results=results[2])
+    return render_template('resultsTable.html', results=results[2], aprox=[], aproy=[])
 
 @app.route('/gaussseidel', methods=['POST', 'GET'])
 def gaussseidel():
@@ -565,7 +565,7 @@ def gaussseidel():
     results = gauss_seidel.gaussSeidel(tolerance, x0, iterations, A, v)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
-    return render_template('resultsTable.html', results=results[2])
+    return render_template('resultsTable.html', results=results[2], aprox=[], aproy=[])
 
 ############POLYNOMIAL INTERPOLATION#################
 
