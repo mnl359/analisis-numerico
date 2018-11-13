@@ -397,7 +397,7 @@ def lupivoting():
     return render_template('resultsLU.html', results=results[3], l_matrix=results[1], u_matrix=results[2])
 
 @app.route('/cholesky', methods=['POST', 'GET'])
-def cholesky():
+def choleskyy():
 
     A = []
     v = []
@@ -418,7 +418,7 @@ def cholesky():
     return render_template('resultsLU.html', l_matrix=results[1], u_matrix=results[2])
 
 @app.route('/doolittle', methods=['POST', 'GET'])
-def doolittle():
+def doolittlee():
 
     A = []
     v = []
@@ -439,7 +439,7 @@ def doolittle():
     return render_template('resultsLU.html', l_matrix=results[1], u_matrix=results[2])
 
 @app.route('/crout', methods=['POST', 'GET'])
-def crout():
+def croutt():
 
     A = []
     v = []
