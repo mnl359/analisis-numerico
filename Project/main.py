@@ -75,6 +75,8 @@ def bisection():
     table = methods.bisection(xi, xs, tolerance, iterations)
     print(list(table))
 
+    if request.form.get('prueba', None):
+        return json.dumps(table, default=decimal_default)
     aproximacionesx = []
     aproximacionesy = []
     for row in table[2]:
@@ -82,10 +84,7 @@ def bisection():
         aproximacionesy.append(row[4])
     aproximacionesx.pop(0)
     aproximacionesy.pop(0)
-    if request.form.get('prueba', None):
-        return json.dumps(table, default=decimal_default)
-    else:
-        return render_template('resultsTable.html', results=table[2], func=func.replace("**", "^"),
+    return render_template('resultsTable.html', results=table[2], func=func.replace("**", "^"),
                                aprox=aproximacionesx, aproy=aproximacionesy)
 
 
@@ -114,7 +113,8 @@ def fixed():
 
     methods = Methods(func, gunc)
     table = methods.fixedPoint(xa, tolerance,iterations)
-
+    if request.form.get('prueba', None):
+        return json.dumps(table, default=decimal_default)
     aproximacionesx = []
     aproximacionesy = []
     for row in table[2]:
@@ -138,7 +138,8 @@ def falseRule():
 
     methods = Methods(func)
     table = methods.falseRule(xi, xs, tolerance,iterations)
-
+    if request.form.get('prueba', None):
+        return json.dumps(table, default=decimal_default)
     aproximacionesx = []
     aproximacionesy = []
     for row in table[2]:
@@ -177,7 +178,8 @@ def multiple():
 
     methods = Methods(func)
     table = methods.multipleRoots(x0, tolerance,iterations)
-
+    if request.form.get('prueba', None):
+        return json.dumps(table, default=decimal_default)
     aproximacionesx = []
     aproximacionesy = []
     for row in table[2]:
@@ -201,7 +203,8 @@ def aitken():
 
     methods = Methods(func)
     table = methods.aitken(x0, tolerance,iterations)
-
+    if request.form.get('prueba', None):
+        return json.dumps(table, default=decimal_default)
 
     return render_template('resultsTable.html', results=table[2], func=func.replace("**", "^"), aprox=[], aproy=[])
 
@@ -249,7 +252,8 @@ def secant():
 
     methods = Methods(func)
     table = methods.secant(xi, xs, tolerance,iterations)
-
+    if request.form.get('prueba', None):
+        return json.dumps(table, default=decimal_default)
     aproximacionesx = []
     aproximacionesy = []
     for row in table[2]:
