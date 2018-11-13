@@ -130,6 +130,8 @@ def checkData(X):
     for i in range(n - 1):
         if(len(X[i]) < 2):
             return(1, "Every dot must have both X and Y components. Problem found at: " + str(i))
+        elif(len(X[i+1]) < 2):
+            return(1, "Every dot must have both X and Y components. Problem found at: " + str(i+1))
         elif(X[i+1][0] < X[i][0]):
             return(1, "The set of dots must be arranged in ascending order with respect to their X component. Problem found at: " + str(i))
         elif(X[i+1][0] == X[i][0]):

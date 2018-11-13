@@ -12,6 +12,7 @@ def spline1(X):
     A = []
     A = introByEval(A, X, n)
     A = introBySmoothness(A, X, n)
+    B = A
     A = gaussJordan(A)
     coef = clear(A, len(A))
     return (0, orderCoef(coef))
@@ -107,6 +108,8 @@ def checkData(X):
     for i in range(n - 1):
         if(len(X[i]) < 2):
             return(1, "Every dot must have both X and Y components. Problem found at: " + str(i))
+        elif(len(X[i+1]) < 2):
+            return(1, "Every dot must have both X and Y components. Problem found at: " + str(i+1))
         elif(X[i+1][0] < X[i][0]):
             return(1, "The set of dots must be arranged in ascending order with respect to their X component. Problem found at: " + str(i))
         elif(X[i+1][0] == X[i][0]):
@@ -120,5 +123,6 @@ def checkData(X):
 #X = [1.0000, 2.0000, 3.0000, 4.0000, 5.0000, 6.0000, 7.0000, 8.0000, 9.0000, 10.0000]
 #Y = [0.5949, 0.2622, 0.6028, 0.7112, 0.2217, 0.1174, 0.2967, 0.3188, 0.4242, 0.5079]
 X = [[1.0000,0.5949], [2.0,0.2622], [3.0, 0.6028], [4.0, 0.7112], [5.0, 0.2217], [6.0, 0.1174], [7.0, 0.2967], [8.0, 0.3188], [9.0, 0.4242], [10.0, 0.5079]]
+X = [[1,2],[2,3],[4,2]]
 
 print(spline1(X))
