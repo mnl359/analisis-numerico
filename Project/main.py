@@ -20,6 +20,7 @@ passw = "contrasena"
 state = None
 
 def decimal_default(obj):
+    print(obj)
     if isinstance(obj, tuple(sympy.core.all_classes)):
         return str(obj)
     raise TypeError
@@ -499,15 +500,12 @@ def jaco():
             aux.append(float(arstr[j]))
         A.append(aux)
 
-    x0=[]
-    # Llenar A
-    for i in range(int(request.form['x0'])):
-        aux = []
-        arstr = request.form.getlist('x' + str(i))
-        for j in range(int(request.form['x0'])):
-            aux.append(float(arstr[j]))
-        x0.append(aux)
-    results = jacobi.newJacobi(tolerance, x0, iterations, A, v)
+    x0 = []
+    xstr = request.form.getlist('x0')
+    # Llenas x0
+    for item in xstr:
+        x0.append(float(item))
+    results = jacobi.jacobi(tolerance, x0, iterations, A, v)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
     return render_template('resultsTable.html', results=results[2])
@@ -521,7 +519,7 @@ def jacoSOR():
     v = []
     x = []
     vstr = request.form.getlist('v')
-    xstr = request.form.getlist('x')
+    xstr = request.form.getlist('x0')
     # Llenas V
     for item in vstr:
         v.append(float(item))
