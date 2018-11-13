@@ -42,11 +42,13 @@ def stephensen(xn, exp, tolerance, iterations):
             if (cont == iterations):
                 print ("The method failed.")
                 root = (None, cont)
+                return(2, "The method could not find a root with the required precision after the selected number of iterations."
+                        + " You may want to choose a different starting value or a bigger number of iterations.")
             else:
                 root = (xn1, '%.2E' % Decimal(str(error)))
 
         print(table)
-    return root
+    return(0, table)
 
 print(stephensen(-0.5, "log((sin(x)*sin(x)) + 1) - 1/2 - x",1e-7, 100))
 

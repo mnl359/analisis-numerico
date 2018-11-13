@@ -62,9 +62,10 @@ def aitken(a, b, exp, tolerance, iterations):
         else:
             print (error)
             root = (None, cont)
-
+            return(2, "The method could not find a root with the required precision after the selected number of iterations."
+                        + " You may want to choose a different starting interval or a bigger number of iterations.")
         print(table)
-    return root
+    return(0, table)
 
 #print(aitken(1.0, "log(x+2)",0.5e-11, 100))
 
