@@ -15,7 +15,7 @@ def spline2(X):
     A = frontier(A, X, n)
     A = gaussJordan(A)
     coef = clear(A, len(A))
-    return orderCoef(coef)
+    return (0, orderCoef(coef))
 
 def introByEval(A, X, n):
     row = list(np.zeros(n))

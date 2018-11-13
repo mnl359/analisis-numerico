@@ -13,7 +13,7 @@ def spline1(X):
     A = introBySmoothness(A, X, n)
     A = gaussJordan(A)
     coef = clear(A, len(A))
-    return orderCoef(coef)
+    return (0, orderCoef(coef))
     
     return (np.array(A),coef)
 
