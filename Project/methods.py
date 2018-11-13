@@ -262,8 +262,7 @@ class Methods:
         dfx2 = self.f(x0)[2]
         cont = 0
         error = tolerance + 1
-        table.append([cont, x0, '%.2E' % Decimal(str(fx)), '%.2E' % Decimal(str(dfx)), '%.2E' % Decimal(str(dfx2)),
-                       'Doesnt exist'])
+        table.append([cont, x0, '%.2E' % Decimal(str(fx)), '%.2E' % Decimal(str(dfx)), '%.2E' % Decimal(str(dfx2)), 'Doesnt exist'])
         while error > tolerance and fx != 0 and dfx != 0 and cont < iterations:
             numerator = fx * dfx
             denominator = (dfx ** 2) - (fx * dfx2)
@@ -274,8 +273,7 @@ class Methods:
             error = abs(x1 - x0)
             x0 = x1
             cont += 1
-            table.append([cont, x1, '%.2E' % Decimal(str(fx)), '%.2E' % Decimal(str(dfx)), '%.2E' % Decimal(str(dfx2)),
-                           '%.2E' % Decimal(str(error))])
+            table.append([cont, x1, '%.2E' % Decimal(str(fx)), '%.2E' % Decimal(str(dfx)), '%.2E' % Decimal(str(dfx2)), '%.2E' % Decimal(str(error))])
 
         if fx == 0:
             root = x0

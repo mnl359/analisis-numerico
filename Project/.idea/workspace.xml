@@ -14,8 +14,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="616" column="19" lean-forward="true" selection-start-line="616" selection-start-column="19" selection-end-line="616" selection-end-column="19" />
+            <state relative-caret-position="1036">
+              <caret line="209" column="17" selection-start-line="209" selection-start-column="13" selection-end-line="209" selection-end-column="17" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -23,11 +23,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="splines_1.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="falseRule.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Systems_of_non-linear_equations/falseRule.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-252">
+              <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1217">
+              <caret line="111" column="16" lean-forward="true" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="splines_1.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Splines/splines_1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="5" column="15" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+            <state relative-caret-position="225">
+              <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -44,8 +62,8 @@
       <file leaf-file-name="linear.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/linear.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-117">
-              <caret line="432" column="135" selection-start-line="432" selection-start-column="135" selection-end-line="432" selection-end-column="135" />
+            <state relative-caret-position="217">
+              <caret line="433" column="31" selection-start-line="433" selection-start-column="31" selection-end-line="433" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -53,10 +71,15 @@
       <file leaf-file-name="nonlinear.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/nonlinear.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="214" column="26" selection-start-line="214" selection-start-column="26" selection-end-line="214" selection-end-column="26" />
+            <state relative-caret-position="448">
+              <caret line="227" column="37" selection-start-line="227" selection-start-column="29" selection-end-line="227" selection-end-column="37" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="aitken.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Systems_of_non-linear_equations/aitken.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="cholesky.py" pinned="false" current-in-tab="false">
@@ -71,41 +94,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crout.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/crout.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="32" column="45" lean-forward="true" selection-start-line="32" selection-start-column="45" selection-end-line="32" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="methods.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/methods.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="49" column="35" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
+            <state relative-caret-position="298">
+              <caret line="275" column="150" lean-forward="true" selection-start-line="275" selection-start-column="150" selection-end-line="275" selection-end-column="150" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="newton.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Systems_of_non-linear_equations/newton.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="48" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="totalPivoting.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/totalPivoting.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="21" column="46" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -121,12 +117,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>fi</find>
-      <find>fals</find>
-      <find>fix</find>
-      <find>increme</find>
       <find>multip</find>
-      <find>aitk</find>
       <find>aitken</find>
       <find>seca</find>
       <find>bisec</find>
@@ -149,8 +140,13 @@
       <find>jaco</find>
       <find>seid</find>
       <find>len(</find>
-      <find>jacobi</find>
       <find>seidel</find>
+      <find>lagr</find>
+      <find>multipler</find>
+      <find>jacobi</find>
+      <find>newtononon</find>
+      <find>newtonon</find>
+      <find>aitk</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -167,11 +163,12 @@
         <option value="$PROJECT_DIR$/Systems_of_linear_equations/gauss.py" />
         <option value="$PROJECT_DIR$/Systems_of_linear_equations/pivoting.py" />
         <option value="$PROJECT_DIR$/Systems_of_linear_equations/totalPivoting.py" />
-        <option value="$PROJECT_DIR$/methods.py" />
         <option value="$PROJECT_DIR$/templates/nonlinear.html" />
         <option value="$PROJECT_DIR$/Systems_of_linear_equations/jacobi.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/templates/linear.html" />
+        <option value="$PROJECT_DIR$/Splines/splines_1.py" />
+        <option value="$PROJECT_DIR$/methods.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -324,8 +321,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Methods/newton.py" />
-    <entry file="file://$PROJECT_DIR$/Methods/Output.txt" />
     <entry file="file://$PROJECT_DIR$/Methods/secant.py" />
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -419,13 +414,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="279" column="24" selection-start-line="279" selection-start-column="24" selection-end-line="279" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/resultsTable.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
@@ -491,27 +479,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/methods.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="49" column="35" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Systems_of_non-linear_equations/newton.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="48" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/nonlinear.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="214" column="26" selection-start-line="214" selection-start-column="26" selection-end-line="214" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -539,27 +510,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/linear.html">
+    <entry file="file://$PROJECT_DIR$/Splines/splines_1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-117">
-          <caret line="432" column="135" selection-start-line="432" selection-start-column="135" selection-end-line="432" selection-end-column="135" />
+        <state relative-caret-position="225">
+          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/methods.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="275" column="150" lean-forward="true" selection-start-line="275" selection-start-column="150" selection-end-line="275" selection-end-column="150" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/linear.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="433" column="31" selection-start-line="433" selection-start-column="31" selection-end-line="433" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/nonlinear.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="227" column="37" selection-start-line="227" selection-start-column="29" selection-end-line="227" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Systems_of_non-linear_equations/aitken.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="616" column="19" lean-forward="true" selection-start-line="616" selection-start-column="19" selection-end-line="616" selection-end-column="19" />
+        <state relative-caret-position="1036">
+          <caret line="209" column="17" selection-start-line="209" selection-start-column="13" selection-end-line="209" selection-end-column="17" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Splines/splines_1.py">
+    <entry file="file://$PROJECT_DIR$/Systems_of_non-linear_equations/falseRule.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="5" column="15" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+        <state relative-caret-position="-252">
+          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1217">
+          <caret line="111" column="16" lean-forward="true" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="16" />
         </state>
       </provider>
     </entry>

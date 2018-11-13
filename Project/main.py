@@ -505,7 +505,7 @@ def jaco():
     # Llenas x0
     for item in xstr:
         x0.append(float(item))
-    results = jacobi.jacobi(tolerance, x0, iterations, A, v)
+    results = jacobi.newJacobi(x0, A, v)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
     return render_template('resultsTable.html', results=results[2])
