@@ -14,12 +14,69 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="196" column="25" selection-start-line="196" selection-start-column="25" selection-end-line="196" selection-end-column="25" />
+            <state relative-caret-position="383">
+              <caret line="669" column="80" selection-start-line="669" selection-start-column="80" selection-end-line="669" selection-end-column="80" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vandermonde.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Polynomial_Interpolation/vandermonde.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="545">
+              <caret line="180" column="46" selection-start-line="180" selection-start-column="46" selection-end-line="180" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="polynomial.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/polynomial.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="210" column="20" selection-start-line="210" selection-start-column="20" selection-end-line="210" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="newton.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Polynomial_Interpolation/newton.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-462" />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="neville.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Polynomial_Interpolation/neville.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-63" />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jacobi.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/jacobi.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gauss_seidelSOR.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/gauss_seidelSOR.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="34" column="59" selection-start-line="34" selection-start-column="59" selection-end-line="34" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jacobiSOR.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/jacobiSOR.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1122" />
           </provider>
         </entry>
       </file>
@@ -32,41 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="methods.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/methods.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="231" column="19" selection-start-line="231" selection-start-column="8" selection-end-line="231" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="falseRule.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Systems_of_non-linear_equations/falseRule.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-252">
-              <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="linear.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/linear.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="92" column="117" selection-start-line="92" selection-start-column="117" selection-end-line="92" selection-end-column="117" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nonlinear.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/nonlinear.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="119" column="117" lean-forward="true" selection-start-line="119" selection-start-column="24" selection-end-line="119" selection-end-column="117" />
+            <state relative-caret-position="-167">
+              <caret line="528" column="87" selection-start-line="528" selection-start-column="87" selection-end-line="528" selection-end-column="87" />
             </state>
           </provider>
         </entry>
@@ -82,18 +109,14 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>crout</find>
       <find>LU Pi</find>
-      <find>sor</find>
       <find>gauss</find>
       <find>cholesky</find>
       <find>splines</find>
       <find>x0</find>
       <find>jacobis</find>
-      <find>jaco</find>
       <find>seid</find>
       <find>len(</find>
-      <find>seidel</find>
       <find>lagr</find>
       <find>multipler</find>
       <find>jacobi</find>
@@ -109,9 +132,13 @@
       <find>multiple</find>
       <find>for row in table[2]</find>
       <find>aproximacionesx.append(</find>
-      <find>results</find>
       <find>increment</find>
+      <find>results</find>
       <find>incremental</find>
+      <find>seidel</find>
+      <find>jac</find>
+      <find>sor</find>
+      <find>jaco</find>
     </findStrings>
     <replaceStrings>
       <replace>for row in table[2][1:]</replace>
@@ -133,9 +160,11 @@
         <option value="$PROJECT_DIR$/Systems_of_linear_equations/jacobi.py" />
         <option value="$PROJECT_DIR$/Splines/splines_1.py" />
         <option value="$PROJECT_DIR$/methods.py" />
-        <option value="$PROJECT_DIR$/templates/linear.html" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/templates/resultsTable.html" />
+        <option value="$PROJECT_DIR$/templates/linear.html" />
+        <option value="$PROJECT_DIR$/Systems_of_linear_equations/gauss_seidelSOR.py" />
+        <option value="$PROJECT_DIR$/templates/polynomial.html" />
         <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
@@ -289,42 +318,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Methods/secant.py" />
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1155">
-          <caret line="80" column="47" selection-start-line="80" selection-start-column="47" selection-end-line="80" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/methods.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2970">
-          <caret line="199" column="28" lean-forward="true" selection-start-line="199" selection-start-column="28" selection-end-line="199" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Methods/fixedPoint.py" />
-    <entry file="file://$PROJECT_DIR$/templates/resultsTable.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1800">
-          <caret line="120" column="10" selection-end-line="139" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Methods/bisection.py" />
     <entry file="file://$PROJECT_DIR$/Methods/newton.py" />
     <entry file="file://$PROJECT_DIR$/Methods/Output.txt" />
@@ -464,13 +457,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/jacobi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="35" column="11" lean-forward="true" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Splines/splines_1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -485,13 +471,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
           <caret line="119" column="117" lean-forward="true" selection-start-line="119" selection-start-column="24" selection-end-line="119" selection-end-column="117" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/linear.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="92" column="117" selection-start-line="92" selection-start-column="117" selection-end-line="92" selection-end-column="117" />
         </state>
       </provider>
     </entry>
@@ -518,18 +497,68 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/methods.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="231" column="19" selection-start-line="231" selection-start-column="8" selection-end-line="231" selection-end-column="19" />
+        <state relative-caret-position="3795">
+          <caret line="253" column="31" lean-forward="true" selection-start-line="253" selection-start-column="31" selection-end-line="253" selection-end-column="31" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/jacobi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/linear.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-167">
+          <caret line="528" column="87" selection-start-line="528" selection-start-column="87" selection-end-line="528" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/jacobiSOR.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1122" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/gauss_seidelSOR.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="34" column="59" selection-start-line="34" selection-start-column="59" selection-end-line="34" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Polynomial_Interpolation/newton.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-462" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Polynomial_Interpolation/neville.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-63" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/polynomial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="210" column="20" selection-start-line="210" selection-start-column="20" selection-end-line="210" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Polynomial_Interpolation/vandermonde.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="545">
+          <caret line="180" column="46" selection-start-line="180" selection-start-column="46" selection-end-line="180" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="196" column="25" selection-start-line="196" selection-start-column="25" selection-end-line="196" selection-end-column="25" />
+        <state relative-caret-position="383">
+          <caret line="669" column="80" selection-start-line="669" selection-start-column="80" selection-end-line="669" selection-end-column="80" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

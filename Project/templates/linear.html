@@ -526,14 +526,75 @@
                         {% for row in dimension %}
                             {% set outer_loop = loop %}
                             <tr>
-                                    <td><input class="form-control" type="text" name="x0"  ></td>
+                                    <td><input class="form-control" type="text" name="x"  ></td>
                             </tr>
                         {% endfor %}
                         </tbody>
                     </table>
                     <div class="form-group">
                         w:
-                        <input class="form-control" type="number" name="W" step="0.00001" placeholder="W" >
+                        <input class="form-control" type="number" name="w" step="0.00001" placeholder="W" >
+                    </div>
+                    <div class="form-group">
+                        Iterations:
+                        <input class="form-control" type="number" step="0.00001" name="iterations" placeholder="iterations" >
+                    </div>
+                    <div class="form-group">
+                        Tolerance:
+                        <input class="form-control" type="text" name="tolerance" placeholder="tolerance" >
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Go</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="gausor" class="panel panel-default">
+            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#gaussor">
+                <h4 class="panel-title">Gauss-Seidel Sor</h4>
+
+            </div>
+            <div class="table-responsive panel-collapse collapse" id="gaussor">
+                <form action="/gausSOR" method="POST">
+                    A:
+                    <input type="hidden" name="dimension" value="{{ dimension|length }}">
+                    <table class="table">
+                        <tbody>
+                        {% for row in dimension %}
+                            {% set outer_loop = loop %}
+                            <tr>
+                                {% for col in dimension %}
+                                    <td><input class="form-control" type="text" name="n{{ outer_loop.index0 }}"  ></td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                    b:
+                    <table class="table">
+                        <tbody>
+                        {% for row in dimension %}
+                            <tr>
+                                <td><input class="form-control" type="text" name="v"  ></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    x0:
+                    <input type="hidden" name="x0" value="{{ dimension|length }}">
+                    <table class="table">
+                        <tbody>
+                        {% for row in dimension %}
+                            {% set outer_loop = loop %}
+                            <tr>
+                                <td><input class="form-control" type="text" name="x"  ></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="form-group">
+                        w:
+                        <input class="form-control" type="number" name="w" step="0.00001" placeholder="W" >
                     </div>
                     <div class="form-group">
                         Iterations:

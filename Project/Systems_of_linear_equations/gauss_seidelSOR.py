@@ -89,6 +89,6 @@ def gaussSeidel(tolerance, x0, iterations, matrix, b, rel):
     
     return 0, x0, result, cont, t_matrix, RE
 
-#m = [[5,3,1],[3,4,-1],[1,-1,4]]
-#b = [24,30,-24]
-#print(gaussSeidel(6e-06, [0,0,0], 40, m, b, 1))
+# m = [[5,3,1],[3,4,-1],[1,-1,4]]
+# b = [24,30,-24]
+# gaussSeidel(6e-063, [0,0,0], 40, m, b, 1)

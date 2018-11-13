@@ -7,7 +7,7 @@ from Systems_of_linear_equations.pivoting import Pivoting
 from Systems_of_linear_equations.totalPivoting import Total_pivoting
 from Systems_of_linear_equations.LUGauss import LU_gauss
 from Systems_of_linear_equations.LUPivoting import LU_pivoting
-from Systems_of_linear_equations import jacobi, jacobiSOR, cholesky, doolittle, crout, gauss_seidel, bandMatrix
+from Systems_of_linear_equations import jacobi, jacobiSOR, cholesky, doolittle, crout, gauss_seidel, bandMatrix, gauss_seidelSOR
 from Polynomial_Interpolation import lagrange, newton, vandermonde
 from Splines import splines_1, splines_2, splines_3
 import json, decimal, sympy
@@ -20,16 +20,16 @@ passw = "contrasena"
 state = None
 
 def decimal_default(obj):
-    print(obj)
+    # print(obj)
     try:
         val = float(obj)
         return val
-    except ValueError:
+    except (ValueError, TypeError) as e:
         print(str(obj), "That's not a float")
         if isinstance(obj, tuple(sympy.core.all_classes)):
             return str(obj)
 
-    raise TypeError
+    # raise TypeError
 
 
 @app.route('/')
@@ -192,6 +192,7 @@ def incremental():
 
     methods = Methods(func)
     table = methods.incremental_searches(x0, delta,iterations)
+    print(table[1])
 
     if request.form.get('prueba', None):
         return json.dumps(table, default=decimal_default)
@@ -523,7 +524,7 @@ def jaco():
     # Llenas x0
     for item in xstr:
         x0.append(float(item))
-    results = jacobi.newJacobi(x0, A, v)
+    results = jacobi.jacobi(tolerance, x0, iterations, A, v)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
     return render_template('resultsTable.html', results=results[2], aprox=[], aproy=[])
@@ -537,7 +538,7 @@ def jacoSOR():
     v = []
     x = []
     vstr = request.form.getlist('v')
-    xstr = request.form.getlist('x0')
+    xstr = request.form.getlist('x')
     # Llenas V
     for item in vstr:
         v.append(float(item))
@@ -553,6 +554,36 @@ def jacoSOR():
         A.append(aux)
 
     results = jacobiSOR.jacobi_SOR(A, v, x, w, iterations, tolerance)
+    if request.form.get('prueba', None):
+        return json.dumps(results, default=decimal_default)
+    return render_template('resultsTable.html', results=results[2], aprox=[], aproy=[])
+
+@app.route('/gausSOR', methods=['POST', 'GET'])
+def gausSOR():
+    tolerance = float(request.form['tolerance'])
+    w = float(request.form['w'])
+    iterations = float(request.form['iterations'])
+    A = []
+    v = []
+    x = []
+    vstr = request.form.getlist('v')
+    xstr = request.form.getlist('x')
+    print(xstr)
+    # Llenas V
+    for item in vstr:
+        v.append(float(item))
+    # Llenas X
+    for item in xstr:
+        x.append(float(item))
+    # Llenar A
+    for i in range(int(request.form['dimension'])):
+        aux = []
+        arstr = request.form.getlist('n' + str(i))
+        for j in range(int(request.form['dimension'])):
+            aux.append(float(arstr[j]))
+        A.append(aux)
+
+    results = gauss_seidelSOR.gaussSeidel(tolerance, x, iterations, A, v, w)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
     return render_template('resultsTable.html', results=results[2], aprox=[], aproy=[])
@@ -620,6 +651,23 @@ def newt():
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
     return render_template('resultsPoly.html', result=results[0], poli=results[1], x=x)
+
+@app.route('/vandermonde', methods=['POST', 'GET'])
+def vandermonda():
+    x = float(request.form['x'])
+    A = []
+    # Llenar A
+    for i in range(int(request.form['dimension'])):
+        aux = []
+        arstr = request.form.getlist('n' + str(i))
+        for j in range(2):
+            aux.append(float(arstr[j]))
+        A.append(aux)
+
+    results = vandermonde.main(A, x)
+    if request.form.get('prueba', None):
+        return json.dumps(results, default=decimal_default)
+    return render_template('resultsPoly.html', result=results[4], poli=results[3], x=x)
 
 @app.route('/spline1', methods=['POST', 'GET'])
 def spline1():
