@@ -21,8 +21,14 @@ state = None
 
 def decimal_default(obj):
     print(obj)
-    if isinstance(obj, tuple(sympy.core.all_classes)):
-        return str(obj)
+    try:
+        val = float(obj)
+        return val
+    except ValueError:
+        print(str(obj), "That's not a float")
+        if isinstance(obj, tuple(sympy.core.all_classes)):
+            return str(obj)
+
     raise TypeError
 
 
@@ -80,9 +86,9 @@ def bisection():
         return json.dumps(table, default=decimal_default)
     aproximacionesx = []
     aproximacionesy = []
-    for row in table[2]:
-        aproximacionesx.append(row[3])
-        aproximacionesy.append(row[4])
+    for row in table[2][1:]:
+        aproximacionesx.append(float(row[3]))
+        aproximacionesy.append(float(row[4]))
     aproximacionesx.pop(0)
     aproximacionesy.pop(0)
     return render_template('resultsTable.html', results=table[2], func=func.replace("**", "^"),
@@ -101,7 +107,8 @@ def stephensen():
     table = methods.stephensen(xn, tolerance,iterations)
     if request.form.get('prueba', None):
         return json.dumps(table, default=decimal_default)
-    return render_template('resultsTable.html', results=table[2], func=func.replace("**", "^"))
+    return render_template('resultsTable.html', results=table[2], func=func.replace("**", "^"),
+                           aprox=aproximacionesx, aproy=aproximacionesy)
 
 @app.route('/newtonon', methods=['POST', 'GET'])
 def newtonon():
@@ -114,7 +121,15 @@ def newtonon():
     table = methods.newton(xn, tolerance,iterations)
     if request.form.get('prueba', None):
         return json.dumps(table, default=decimal_default)
-    return render_template('resultsTable.html', results=table[2], func=func.replace("**", "^"), aprox=[], aproy=[])
+    aproximacionesx = []
+    aproximacionesy = []
+    for row in table[2][1:]:
+        aproximacionesx.append(float(row[1]))
+        aproximacionesy.append(float(row[2]))
+    aproximacionesx.pop(0)
+    aproximacionesy.pop(0)
+    return render_template('resultsTable.html', results=table[2], func=func.replace("**", "^"),
+                           aprox=aproximacionesx, aproy=aproximacionesy)
 
 @app.route('/fixed', methods=['POST', 'GET'])
 def fixed():
@@ -131,9 +146,9 @@ def fixed():
         return json.dumps(table, default=decimal_default)
     aproximacionesx = []
     aproximacionesy = []
-    for row in table[2]:
-        aproximacionesx.append(row[1])
-        aproximacionesy.append(row[2])
+    for row in table[2][1:]:
+        aproximacionesx.append(float(row[1]))
+        aproximacionesy.append(float(row[2]))
     aproximacionesx.pop(0)
     aproximacionesy.pop(0)
 
@@ -156,9 +171,9 @@ def falseRule():
         return json.dumps(table, default=decimal_default)
     aproximacionesx = []
     aproximacionesy = []
-    for row in table[2]:
-        aproximacionesx.append(row[3])
-        aproximacionesy.append(row[4])
+    for row in table[2][1:]:
+        aproximacionesx.append(float(row[3]))
+        aproximacionesy.append(float(row[4]))
     aproximacionesx.pop(0)
     aproximacionesy.pop(0)
 
@@ -180,7 +195,7 @@ def incremental():
 
     if request.form.get('prueba', None):
         return json.dumps(table, default=decimal_default)
-    return render_template('resultsTable.html', results=table, func=func.replace("**", "^"))
+    return render_template('resultsTable.html', results=[table], func=func.replace("**", "^"), aprox=[], aproy=[])
 
 @app.route('/multiple', methods=['POST', 'GET'])
 def multiple():
@@ -196,11 +211,14 @@ def multiple():
         return json.dumps(table, default=decimal_default)
     aproximacionesx = []
     aproximacionesy = []
-    for row in table[2]:
-        aproximacionesx.append(row[1])
-        aproximacionesy.append(row[2])
+    for row in table[2][1:]:
+        aproximacionesx.append(float(row[1]))
+        aproximacionesy.append(float(row[2]))
     aproximacionesx.pop(0)
     aproximacionesy.pop(0)
+    print(func)
+    print(aproximacionesy)
+    # print(aproximacionesx)
 
     if request.form.get('prueba', None):
         return json.dumps(table, default=decimal_default)
@@ -270,9 +288,9 @@ def secant():
         return json.dumps(table, default=decimal_default)
     aproximacionesx = []
     aproximacionesy = []
-    for row in table[2]:
-        aproximacionesx.append(row[1])
-        aproximacionesy.append(row[2])
+    for row in table[2][1:]:
+        aproximacionesx.append(float(row[1]))
+        aproximacionesy.append(float(row[2]))
     aproximacionesx.pop(0)
     aproximacionesy.pop(0)
 

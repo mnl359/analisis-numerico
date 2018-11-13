@@ -11,13 +11,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="567" column="40" selection-start-line="567" selection-start-column="28" selection-end-line="567" selection-end-column="40" />
+            <state relative-caret-position="354">
+              <caret line="197" column="76" selection-start-line="197" selection-start-column="76" selection-end-line="197" selection-end-column="76" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="resultsTable.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/resultsTable.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="81" column="132" selection-start-line="81" selection-start-column="125" selection-end-line="81" selection-end-column="132" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="methods.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/methods.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="159">
+              <caret line="230" column="19" selection-start-line="230" selection-start-column="8" selection-end-line="230" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -28,42 +49,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-252">
               <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="60" column="117" selection-start-line="60" selection-start-column="117" selection-end-line="60" selection-end-column="117" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="resultsTable.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/resultsTable.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1054">
-              <caret line="170" column="30" lean-forward="true" selection-start-line="170" selection-start-column="30" selection-end-line="170" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="splines_1.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Splines/splines_1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jacobi.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/jacobi.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="35" column="11" lean-forward="true" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -86,23 +71,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="aitken.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Systems_of_non-linear_equations/aitken.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="methods.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/methods.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="275" column="150" lean-forward="true" selection-start-line="275" selection-start-column="150" selection-end-line="275" selection-end-column="150" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -114,16 +82,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>seca</find>
-      <find>bisec</find>
-      <find>mull</find>
-      <find>newton</find>
-      <find>n</find>
-      <find>new</find>
-      <find>stephen</find>
-      <find>newt</find>
-      <find>chole</find>
-      <find>do</find>
       <find>crout</find>
       <find>LU Pi</find>
       <find>sor</find>
@@ -141,10 +99,23 @@
       <find>jacobi</find>
       <find>aitk</find>
       <find>newtononon</find>
-      <find>newtonon</find>
-      <find>function</find>
       <find>resultsTable</find>
+      <find>function</find>
+      <find>newt</find>
+      <find>aitken</find>
+      <find>muller</find>
+      <find>secant</find>
+      <find>newtonon</find>
+      <find>multiple</find>
+      <find>for row in table[2]</find>
+      <find>aproximacionesx.append(</find>
+      <find>results</find>
+      <find>increment</find>
+      <find>incremental</find>
     </findStrings>
+    <replaceStrings>
+      <replace>for row in table[2][1:]</replace>
+    </replaceStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -152,7 +123,6 @@
         <option value="$PROJECT_DIR$/Methods/bisection.py" />
         <option value="$PROJECT_DIR$/templates/bisection.html" />
         <option value="$PROJECT_DIR$/Methods/fixedPoint.py" />
-        <option value="$PROJECT_DIR$/templates/resultsTable.html" />
         <option value="$PROJECT_DIR$/templates/resultsLU.html" />
         <option value="$PROJECT_DIR$/Systems_of_linear_equations/LUPivoting.py" />
         <option value="$PROJECT_DIR$/Systems_of_linear_equations/LUGauss.py" />
@@ -165,6 +135,7 @@
         <option value="$PROJECT_DIR$/methods.py" />
         <option value="$PROJECT_DIR$/templates/linear.html" />
         <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/templates/resultsTable.html" />
         <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
@@ -507,25 +478,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/methods.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="275" column="150" lean-forward="true" selection-start-line="275" selection-start-column="150" selection-end-line="275" selection-end-column="150" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Systems_of_non-linear_equations/aitken.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Systems_of_non-linear_equations/falseRule.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-252">
-          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="45" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/nonlinear.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -548,20 +502,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/Systems_of_non-linear_equations/falseRule.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="567" column="40" selection-start-line="567" selection-start-column="28" selection-end-line="567" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-252">
+          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/resultsTable.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="170" column="30" lean-forward="true" selection-start-line="170" selection-start-column="30" selection-end-line="170" selection-end-column="30" />
+        <state relative-caret-position="215">
+          <caret line="81" column="132" selection-start-line="81" selection-start-column="125" selection-end-line="81" selection-end-column="132" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/methods.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="230" column="19" selection-start-line="230" selection-start-column="8" selection-end-line="230" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="197" column="76" selection-start-line="197" selection-start-column="76" selection-end-line="197" selection-end-column="76" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
