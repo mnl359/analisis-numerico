@@ -4,7 +4,10 @@ import numpy as np
 from prettytable import PrettyTable
 from pandas import DataFrame
 np.set_printoptions(threshold=np.nan)
+from copy import copy, deepcopy
 
+#This method returns the status code, the polynomial coeficients
+#and the generated matrix.
 def spline3(X):
     check = checkData(X)
     if(check[0] == 1):
@@ -16,10 +19,13 @@ def spline3(X):
     A = introByFstDerivativeSmoothness(A, X, n)
     A = introBySecDerivativeSmoothness(A, X, n)
     A = frontier(A, X, n)
-    printMatrix("spli3_result", A)
+    gen = deepcopy(A)
+    chkDet = checkDet(A)
+    if(chkDet[0] == 1):
+        return(chkDet)
     A = gaussJordan(A)
     coef = clear(A, len(A))
-    return (0, orderCoef(coef))
+    return (0, orderCoef(coef), gen)
 
 def introByEval(A, X, n):
     row = list(np.zeros(n))
@@ -180,6 +186,13 @@ def checkData(X):
             return(1, "The set of dots must be arranged in ascending order with respect to their X component. Problem found at: " + str(i))
         elif(X[i+1][0] == X[i][0]):
             return(1, "All dots must be different. Problem found at: " + str(i))
+    return(0, "Ok.")
+
+def checkDet(A):
+    n = len(A[0]) - 1
+    square = [x[0:n] for x in A]
+    if(np.linalg.det(square) == 0):
+        return(1, "The generated matrix is not invertible. You may want to select a different set of points")
     return(0, "Ok.")
 
 #X = [1, 3, 4, 5]

@@ -2,9 +2,11 @@
 
 import numpy as np
 from prettytable import PrettyTable
+from copy import copy, deepcopy
 
+#This method returns the status code, the polynomial coeficients
+#and the generated matrix.
 def spline1(X):
-    print(X)
     check = checkData(X)
     if(check[0] == 1):
         return(check)
@@ -12,10 +14,13 @@ def spline1(X):
     A = []
     A = introByEval(A, X, n)
     A = introBySmoothness(A, X, n)
-    B = A
+    gen = deepcopy(A)
+    chkDet = checkDet(A)
+    if(chkDet[0] == 1):
+        return(chkDet)
     A = gaussJordan(A)
     coef = clear(A, len(A))
-    return (0, orderCoef(coef))
+    return (0, orderCoef(coef), gen)
 
 def introByEval(A, X, n):
     row = list(np.zeros(n))
@@ -104,16 +109,23 @@ def orderCoef(coef):
 def checkData(X):
     n = len(X)
     if(n < 2):
-        return(1, "The set of dots must have at least 2 elements.")
+        return(1, "The set of points must have at least 2 elements.")
     for i in range(n - 1):
         if(len(X[i]) < 2):
-            return(1, "Every dot must have both X and Y components. Problem found at: " + str(i))
+            return(1, "Every point must have both X and Y components. Problem found at: " + str(i))
         elif(len(X[i+1]) < 2):
-            return(1, "Every dot must have both X and Y components. Problem found at: " + str(i+1))
+            return(1, "Every point must have both X and Y components. Problem found at: " + str(i+1))
         elif(X[i+1][0] < X[i][0]):
-            return(1, "The set of dots must be arranged in ascending order with respect to their X component. Problem found at: " + str(i))
+            return(1, "The set of points must be arranged in ascending order with respect to their X component. Problem found at: " + str(i))
         elif(X[i+1][0] == X[i][0]):
-            return(1, "All dots must be different. Problem found at: " + str(i))
+            return(1, "All points must be different. Problem found at: " + str(i))
+    return(0, "Ok.")
+
+def checkDet(A):
+    n = len(A[0]) - 1
+    square = [x[0:n] for x in A]
+    if(np.linalg.det(square) == 0):
+        return(1, "The generated matrix is not invertible. You may want to select a different set of points")
     return(0, "Ok.")
 
 #X = [1, 3, 4, 5]
