@@ -20,6 +20,9 @@ def spline1(X):
         return(chkDet)
     A = gaussJordan(A)
     coef = clear(A, len(A))
+    coef = orderCoef(coef)
+    pols = formPolys(coef, X)
+    print("pols", pols)
     return (0, orderCoef(coef), gen)
 
 def introByEval(A, X, n):
@@ -105,6 +108,16 @@ def orderCoef(coef):
         res.append([i, coef[cont], coef[cont+1]])
         cont += 2
     return res
+
+def formPolys(coef, X):
+    polys = []
+    for i in range(len(coef)):
+        poly = "P" + str(i+1) + "= "
+        poly += str(coef[i][1]) + "x + " + str(coef[i][2])
+        ranges = str(X[i][0]) + "<= x <= " + str(X[i+1][0])
+        polys.append([poly, ranges])
+
+    return(polys)
 
 def checkData(X):
     n = len(X)
