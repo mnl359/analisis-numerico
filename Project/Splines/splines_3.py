@@ -25,7 +25,9 @@ def spline3(X):
         return(chkDet)
     A = gaussJordan(A)
     coef = clear(A, len(A))
-    return (0, orderCoef(coef), gen)
+    coef = orderCoef(coef)
+    pols = formPolys(coef, X)
+    return (0, pols, gen)
 
 def introByEval(A, X, n):
     row = list(np.zeros(n))
@@ -173,6 +175,29 @@ def printMatrix(name, A):
             table.add_row(x)
         print(table, file=result)
 
+def formPolys(coef, X):
+    polys = []
+    for i in range(len(coef)):
+        poly = "P" + str(i+1) + "= "
+        poly += str(coef[i][1]) + "x^3 "
+        if(coef[i][2] < 0):
+            poly += str(coef[i][2])
+        else:
+            poly += "+" + str(coef[i][2])
+        poly += "x^2 "
+        if(coef[i][3] < 0):
+            poly += str(coef[i][3])
+        else:
+            poly += "+" + str(coef[i][3])
+        poly += "x "
+        if(coef[i][4] < 0):
+            poly += str(coef[i][4])
+        else:
+            poly += "+" + str(coef[i][4])
+        ranges = str(X[i][0]) + "<= x <= " + str(X[i+1][0])
+        polys.append([poly, ranges])
+    return(polys)
+
 def checkData(X):
     n = len(X)
     if(n < 2):
@@ -202,5 +227,4 @@ def checkDet(A):
 #X = [1.0000, 2.0000, 3.0000, 4.0000, 5.0000, 6.0000, 7.0000, 8.0000, 9.0000, 10.0000]
 #Y = [0.5949, 0.2622, 0.6028, 0.7112, 0.2217, 0.1174, 0.2967, 0.3188, 0.4242, 0.5079]
 X = [[1.0000,0.5949], [2.0,0.2622], [3.0, 0.6028], [4.0, 0.7112], [5.0, 0.2217], [6.0, 0.1174], [7.0, 0.2967], [8.0, 0.3188], [9.0, 0.4242], [10.0, 0.5079]]
-
-print(spline3(X))
+#X = [[1,2],[2,3],[4,2]]
