@@ -20,11 +20,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="692" column="25" lean-forward="true" selection-start-line="692" selection-start-column="25" selection-end-line="692" selection-end-column="25" />
+            <state relative-caret-position="6170">
+              <caret line="509" column="59" lean-forward="true" selection-start-line="509" selection-start-column="59" selection-end-line="509" selection-end-column="59" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -32,11 +32,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="polynomial.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="totalPivoting.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/totalPivoting.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1225">
+              <caret line="21" column="16" lean-forward="true" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="polynomial.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/polynomial.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="477">
               <caret line="250" column="36" selection-start-line="250" selection-start-column="36" selection-end-line="250" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LUPivoting.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/LUPivoting.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1765">
+              <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -75,8 +93,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cholesky</find>
-      <find>splines</find>
       <find>x0</find>
       <find>jacobis</find>
       <find>seid</find>
@@ -105,6 +121,8 @@
       <find>jaco</find>
       <find>matrixes</find>
       <find>gauss</find>
+      <find>lup</find>
+      <find>LU_Pi</find>
     </findStrings>
     <replaceStrings>
       <replace>for row in table[2][1:]</replace>
@@ -134,8 +152,8 @@
         <option value="$PROJECT_DIR$/templates/resultsLU.html" />
         <option value="$PROJECT_DIR$/Systems_of_linear_equations/LUPivoting.py" />
         <option value="$PROJECT_DIR$/templates/lineardimension.html" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/templates/polynomial.html" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -374,13 +392,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/totalPivoting.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="21" column="46" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Systems_of_non-linear_equations/newton.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -498,13 +509,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/LUPivoting.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="142" column="80" selection-start-line="142" selection-start-column="80" selection-end-line="142" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/lineardimension.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="258">
@@ -522,20 +526,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="692" column="25" lean-forward="true" selection-start-line="692" selection-start-column="25" selection-end-line="692" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/polynomial.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="477">
           <caret line="250" column="36" selection-start-line="250" selection-start-column="36" selection-end-line="250" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/LUPivoting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1765">
+          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/totalPivoting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1225">
+          <caret line="21" column="16" lean-forward="true" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6170">
+          <caret line="509" column="59" lean-forward="true" selection-start-line="509" selection-start-column="59" selection-end-line="509" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

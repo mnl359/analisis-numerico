@@ -423,7 +423,7 @@ def lupivoting():
     results = g.lu_pivoting(A, v)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
-    return render_template('resultsLU.html', results=results[4], l_matrix=results[1], u_matrix=results[2])
+    return render_template('resultsLU.html', results=results[4], l_matrix=results[1], u_matrix=results[2], marks=results[3])
 
 @app.route('/cholesky', methods=['POST', 'GET'])
 def choleskyy():
@@ -508,7 +508,7 @@ def totalpivoting():
     results = g.main(A, v)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
-    return render_template('resultsGauss.html', results=results[3], matrix=results[1])
+    return render_template('resultsGauss.html', results=results[3], matrix=results[1], marks=results[2])
 
 @app.route('/jacobi', methods=['POST', 'GET'])
 def jaco():

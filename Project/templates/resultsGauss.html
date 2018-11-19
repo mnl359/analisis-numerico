@@ -118,6 +118,25 @@
             </table>
         </div>
     </div>
+    {% if marks is defined %}
+        <div id="mar" class="panel panel-default">
+            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#marks">
+                <h4 class="panel-title">Marks</h4>
+
+            </div>
+            <div class="table-responsive collapse panel-collapse" id="marks">
+                <table class="table" id="markr">
+                    <tbody>
+                    {% for row in results %}
+                        <tr>
+                            <td>{{ row }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endif %}
 </div>
 
 
