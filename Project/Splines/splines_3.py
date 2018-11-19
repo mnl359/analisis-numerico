@@ -173,7 +173,7 @@ def printMatrix(name, A):
         table = PrettyTable(frow)
         for x in A:
             table.add_row(x)
-        print(table, file=result)
+        print(table)
 
 def formPolys(coef, X):
     polys = []
