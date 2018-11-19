@@ -71,7 +71,7 @@ def newton(value, matrix):
     #print("El polinomio resultante es:\n %s" % pol, file=txt)
     result = pol.evalf(subs={x:value})
     #print("El resultado de p(%s) es igual a %s" % (value, result), file=txt)
-    return 0, result, pol, tableList, iteration
+    return 0, pol, result, tableList, iteration
 
 #X =[
 #    [1.0000, 0.5949],

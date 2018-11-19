@@ -633,7 +633,7 @@ def lag():
     results = lagrange.lagrange(x, A)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
-    return render_template('resultsPoly.html', result=results[0], poli=results[1], x=x)
+    return render_template('resultsPoly.html', result=results[2], poli=results[1], x=x)
 
 @app.route('/newton', methods=['POST', 'GET'])
 def newt():
@@ -650,7 +650,7 @@ def newt():
     results = newton.newton(x, A)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
-    return render_template('resultsPoly.html', result=results[0], poli=results[1], x=x)
+    return render_template('resultsPoly.html', result=results[2], poli=results[1], x=x)
 
 @app.route('/vandermonde', methods=['POST', 'GET'])
 def vandermonda():
