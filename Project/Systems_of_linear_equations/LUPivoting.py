@@ -134,11 +134,6 @@ class LU_pivoting:
 
     def lu_pivoting(self, A, vector):
         u_matrix = self.upper_triangular(A)
-<<<<<<< HEAD
-        print("The U matrix is:", "\n", DataFrame(u_matrix), "\n")
-        l_matrix = mults
-        print("The L matrix is:", "\n", DataFrame(l_matrix), "\n")
-=======
         if u_matrix == -1:
             return 1, "The matrix is not invertible"
         elif u_matrix == 1:
@@ -146,7 +141,6 @@ class LU_pivoting:
         #print("The U matrix is:", "\n", DataFrame(u_matrix), "\n", file=toPrint)
         l_matrix = mults
         #print("The L matrix is:", "\n", DataFrame(l_matrix), "\n", file=toPrint)
->>>>>>> fdc108c4143c1a28cd4b225e199489a246fcb1e1
         aux = self.multiply(marks, vector)
         helper = [aux[i][0] for i in range(len(aux))]
         Lz = self.aumMatrix(l_matrix, helper)
