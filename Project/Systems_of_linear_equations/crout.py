@@ -5,6 +5,10 @@ from copy import deepcopy
 import numpy as np
 
 def crout(matrix, vector):
+    try:
+        np.linalg.inv(matrix)
+    except np.linalg.LinAlgError:
+        return 1, "Matrix is not invertible"
     l = []
     u = []
     ucont = 0
@@ -33,7 +37,7 @@ def crout(matrix, vector):
             for k in range(j):
                 sum = sum + l[j][k] * u[k][i]
             if l[j][j] == 0:
-                return(1, "Divided by 0")
+                return(1, "Division by 0")
             u[j][i] = (matrix[j][i] - sum)/ l[j][j]
     Lz = aumMatrix(l, vector)
     vector_z = progressive_substitution(Lz)

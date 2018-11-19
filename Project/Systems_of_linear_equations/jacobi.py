@@ -7,9 +7,6 @@ from copy import copy
 from numpy import linalg
 
 def newJacobi(x0, matrix, b):
-    if len(x0) != len(matrix[0]) or len(matrix[0]) != len(b) or len(x0) != len(b):
-        return(1, "Length of matrix, initial vector or vector b are different\n \
-        Please check and try again")
     aux = []
     for i in range(len(matrix)):
         suma = 0
@@ -22,7 +19,7 @@ def newJacobi(x0, matrix, b):
 
 def norma(x0, x1):
     sum = 0
-    for x in range(len(x0)):
+    for x in range(len(x0)): #El problema está aquí... x0 y x1 tienen tamaños diferente (4 y 3 respectivamente)
         sum += (x1[x]-x0[x])**2
     error = sqrt(sum)
     return error
@@ -31,6 +28,10 @@ def jacobi(tolerance, x0, iterations, matrix, b):
     det = linalg.det(matrix)
     if det == 0:
         return(1, "The system does not have an unique solution. Determinant is ZERO")
+    try:
+        linalg.inv(matrix)
+    except linalg.LinAlgError:
+        return 1, "Matrix is not invertible"
     
     title = ['n']
     aux = 0

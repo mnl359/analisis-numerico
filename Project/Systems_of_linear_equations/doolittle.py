@@ -3,33 +3,40 @@ import numpy as np
 from pandas import DataFrame
 
 def doolittle(A, vector):
-  L = np.zeros_like(A).tolist()
-  U = np.zeros_like(A).tolist()
+    L = np.zeros_like(A).tolist()
+    U = np.zeros_like(A).tolist()
+    try:
+        np.linalg.inv(A)
+    except np.linalg.LinAlgError:
+        return(1, "The matrix is not invertible")   
+    
+    try:
+        for i in range(len(A)):
+            # Calcular U
+            for k in range(i, len(A)):
+                sum = 0
+                for j in range(i):
+                    sum = sum + (L[i][j] * U[j][k])
+                    U[i][k] = A[i][k] - sum
 
-  for i in range(len(A)):
-
-    # Calcular U
-    for k in range(i, len(A)):
-      sum = 0
-      for j in range(i):
-        sum = sum + (L[i][j] * U[j][k])
-      U[i][k] = A[i][k] - sum
-
-    # Calcular L
-    for k in range(i, len(A)):
-      if i==k:
-        L[i][i] = 1
-      else:
-        sum = 0
-        for j in range(i):
-          sum = sum + (L[k][j] * U[j][i])
-        L[k][i] = (A[k][i] - sum) / U[i][i]
-  Lz = aumMatrix(L, vector)
-  vector_z = progressive_substitution(Lz)
-  Ux = aumMatrix(U, vector_z)
-  result = regressive_substitution(Ux)
-  result = list(np.linalg.solve(A,vector))    
-  return 0, L, U, result
+            # Calcular L
+            for k in range(i, len(A)):
+                if i==k:
+                    L[i][i] = 1
+                else:
+                    sum = 0
+                    for j in range(i):
+                        sum = sum + (L[k][j] * U[j][i])
+                        L[k][i] = (A[k][i] - sum) / U[i][i]
+    except ZeroDivisionError:
+        return 1, "Division by zero"
+    Lz = aumMatrix(L, vector)
+    vector_z = progressive_substitution(Lz)
+    Ux = aumMatrix(U, vector_z)
+    print(DataFrame(Ux)) #U queda con un 0 en la diagonal
+    result = regressive_substitution(Ux)
+    result = list(np.linalg.solve(A,vector))    
+    return 0, L, U, result
 
 def progressive_substitution(stepMat):
     vector = []

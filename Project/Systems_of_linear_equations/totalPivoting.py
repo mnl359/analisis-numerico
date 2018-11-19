@@ -2,6 +2,7 @@
 
 from copy import deepcopy, copy
 from pandas import DataFrame
+from numpy import linalg as LA
 
 # La función principal es main
 # Esta función retorna 0 (exitoso), la matriz escalonada, el vector de marcas y el vector resultado
@@ -10,11 +11,14 @@ class Total_pivoting:
     marks = []
 
     def stepped(self, A, b):
-        global marks
+        try:
+            LA.inv(A)
+        except LA.LinAlgError:
+            return -1, -1
+        marks = []
         aux = deepcopy(A)
         Ab = self.aumMatrix(A, b)
         n = len(Ab)
-        marks = []
         cont = 0
         for x in range(1, len(aux[0]) + 1):
             marks.append(x)
@@ -46,7 +50,7 @@ class Total_pivoting:
                         w += 1
                         helper = i - w
             cont += 1
-        return Ab
+        return Ab, marks
 
     def biggestNumber(self, A, row_min, col_min):
         biggest = 0
@@ -114,17 +118,21 @@ class Total_pivoting:
                 p -= 1
             vector[i] = (stepMat[i][n] - result) / stepMat[i][i]
             i -= 1
-
+        print(vector)
+        print(marks)
         helper = [0 for i in range(len(vector))]  
         for i in range(len(marks)):
             helper[marks[i] - 1] = vector[i]
 
         return helper
 
-    def main(self, A, b, marks):
-        matrix = self.stepped(A, b)
+    def main(self, A, b):
+        matrix, marks = self.stepped(A, b)
+        if matrix == -1:
+            return 1, "The matrix is not invertible"
         vector = self.clear(matrix, marks)
-        return 0, matrix, marks, vector
+        print(vector)
+        return 0, matrix, self.marks, vector
 
 
 #totalpiv = Total_pivoting()

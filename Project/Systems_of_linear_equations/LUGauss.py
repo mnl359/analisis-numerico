@@ -2,8 +2,9 @@
 
 from pandas import DataFrame
 from copy import deepcopy, copy
+from numpy import linalg as LA
 
-# El método principal es lu_pivoting.
+# El método principal es lu_gauss.
 # Retorna 0 (exitoso), la matriz L, la matriz U, el vector resultado y los pasos
 # Los pasos son: matriz Lz, vector Z y matriz Ux (de la cual sale el vector resultado)
 
@@ -16,6 +17,10 @@ class LU_gauss:
 
     def upper_triangular(self, A):
         global mults
+        try:
+            LA.inv(A)
+        except LA.LinAlgError:
+            return -1
         n = len(A)
         self.create_matrix_L(n)
         for i in range(0, n):
@@ -34,8 +39,7 @@ class LU_gauss:
 
                     helper = A[i][i]
                     if helper == 0:
-                        print("WARNING! It's not possible to step the matrix. Error in row", i)
-                        exit(1)
+                        return 1
 
                 else:
                     helper = A[j][i]
@@ -91,6 +95,10 @@ class LU_gauss:
 
     def lu_gauss(self, A, vector):
         u_matrix = self.upper_triangular(A)
+        if u_matrix == -1:
+            return 1, "The matrix is not invertible"
+        elif u_matrix == 1:
+            return 1, "It's not possible to step the matrix"
         l_matrix = mults
         Lz = self.aumMatrix(l_matrix, vector)
         vector_z = self.progressive_substitution(Lz)

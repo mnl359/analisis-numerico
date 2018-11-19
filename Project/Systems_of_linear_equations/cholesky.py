@@ -3,46 +3,64 @@ import numpy as np
 from pandas import DataFrame
 
 def cholesky_simon(A, vector):
+  try:
+    np.linalg.inv(A)
+  except np.linalg.LinAlgError:
+    return 1, "Matrix is not invertible"
   L = np.zeros_like(A).tolist()
-  for i in range(len(A)):
-    for j in range(i+1):
-      s = sum(L[i][k] * L[j][k] for k in range(j))
-      if i == j:
-        L[i][j] = sqrt(A[i][i] - s) #Diagonales
-      else:
-        L[i][j] = (1.0 / L[j][j] * (A[i][j] - s)) #No diagonales
-  U = list(np.transpose(L))
-  Lz = aumMatrix(L, vector)
-  vector_z = progressive_substitution(Lz)
-  Ux = aumMatrix(U, vector_z)
-  result = regressive_substitution(Ux)
-  result = list(np.linalg.solve(A,vector))
-  return 0, L, U, result
-
-def cholesky(A, vector):
-  L = np.zeros_like(A)
-  U = np.zeros_like(A)
-  for k in range(len(A)):
-    contk = 0
-    for p in range(k):
-      contk += L[k][p] * U[p][k]
-    L[k][k] = float(np.sqrt(A[k][k] - contk))
-    U[k][k] = float(np.sqrt(A[k][k] - contk))
-    for i in range(k + 1, len(A)):
-      conti = 0
-      for p in range(k):
-        conti += L[i][p] * U[p][k]
-      L[i][k] = float(A[i][k] - conti) / U[k][k]
-    for j in range(k + 1, len(A)):
-      contj = 0
-      for p in range(k):
-        contj += L[k][p] * U[p][j]
-      U[k][j] = float(A[k][j] - contj) / L[k][k]
+  try:
+    for i in range(len(A)):
+      for j in range(i+1):
+        s = sum(L[i][k] * L[j][k] for k in range(j))
+        if i == j:
+          helper = A[i][i] - s
+          if helper > 0:
+            L[i][j] = sqrt(helper) #Diagonales
+          else:
+            return 1, "Algorithm is trying to calculate a negative matrix. Try with some other matrix"
+        else:
+          L[i][j] = (1.0 / L[j][j] * (A[i][j] - s)) #No diagonales
+    U = list(np.transpose(L))
     Lz = aumMatrix(L, vector)
     vector_z = progressive_substitution(Lz)
     Ux = aumMatrix(U, vector_z)
     result = regressive_substitution(Ux)
+    result = list(np.linalg.solve(A,vector))
     return 0, L, U, result
+  except ZeroDivisionError:
+    return 1, "Division by zero"
+
+def cholesky(A, vector):
+  try:
+    np.linalg.inv(A)
+  except np.linalg.LinAlgError:
+    return 1, "Matrix is not invertible"
+  L = np.zeros_like(A)
+  U = np.zeros_like(A)
+  try:
+    for k in range(len(A)):
+      contk = 0
+      for p in range(k):
+        contk += L[k][p] * U[p][k]
+      L[k][k] = float(np.sqrt(A[k][k] - contk))
+      U[k][k] = float(np.sqrt(A[k][k] - contk))
+      for i in range(k + 1, len(A)):
+        conti = 0
+        for p in range(k):
+          conti += L[i][p] * U[p][k]
+        L[i][k] = float(A[i][k] - conti) / U[k][k]
+      for j in range(k + 1, len(A)):
+        contj = 0
+        for p in range(k):
+          contj += L[k][p] * U[p][j]
+        U[k][j] = float(A[k][j] - contj) / L[k][k]
+      Lz = aumMatrix(L, vector)
+      vector_z = progressive_substitution(Lz)
+      Ux = aumMatrix(U, vector_z)
+      result = regressive_substitution(Ux)
+      return 0, L, U, result
+  except ZeroDivisionError:
+    return 1, "Division by zero"
 
 def progressive_substitution(stepMat):
     vector = []
@@ -90,7 +108,7 @@ def aumMatrix(A, b):
 
 def checkDet(A):
     if(np.linalg.det(A) == 0):
-        return(1, "The generated matrix is not invertible. You may want to select a different set of points")
+        return(1, "The generated matrix is not invertible.")
     return(0, "Ok.")
 
 #m = [[60.0, 30.0, 20.0],
