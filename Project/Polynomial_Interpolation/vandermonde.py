@@ -188,7 +188,7 @@ def main(A, value):
             str_res += str(vector[i]) + "x^" + str(cont) + " "
             pol += (vector[i] * (value**cont))
         cont -= 1
-    return 0, augMatrix, resMatrix, str_res, pol 
+    return 0, str_res, pol, augMatrix, resMatrix
 
 
 # name = input("Enter the name of the file you want the answer to be saved. It's going to have '.txt' extension: ")

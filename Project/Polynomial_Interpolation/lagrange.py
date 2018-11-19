@@ -35,7 +35,7 @@ def lagrange(x, matrix):
         ln = l(x, i, matrix)
         pol += ln[1]*matrix[i][1]
         pol1 += ln[0]*matrix[i][1]
-    return [0, pol, pol1]
+    return 0, pol1, pol
 
 def checkData(X):
     n = len(X)
