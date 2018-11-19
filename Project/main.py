@@ -683,7 +683,7 @@ def spline1():
     results = splines_1.spline1(A)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
-    return render_template('resultsTable.html', results=results[1])
+    return render_template('resultsTable.html', results=results[1], matrix=results[2])
 
 @app.route('/spline2', methods=['POST', 'GET'])
 def spline2():
@@ -699,7 +699,7 @@ def spline2():
     results = splines_2.spline2(A)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
-    return render_template('resultsTable.html', results=results[1])
+    return render_template('resultsTable.html', results=results[1], matrix=results[2])
 
 @app.route('/spline3', methods=['POST', 'GET'])
 def spline3():
@@ -715,7 +715,7 @@ def spline3():
     results = splines_3.spline3(A)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
-    return render_template('resultsTable.html', results=results[1])
+    return render_template('resultsTable.html', results=results[1], matrix=results[2])
 
 
 if __name__ == "__main__":
