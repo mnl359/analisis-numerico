@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e682d5b1-bbd4-4a94-8eea-84a67adb4ce8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/Systems_of_linear_equations/cholesky.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project/Systems_of_linear_equations/cholesky.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Project/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/templates/linear.html" beforeDir="false" afterPath="$PROJECT_DIR$/Project/templates/linear.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,25 +39,25 @@
         <counts>
           <entry key="dummy" value="1" />
           <entry key="html" value="5381" />
-          <entry key="py" value="2989" />
+          <entry key="py" value="2992" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="5381" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="2989" />
+          <entry key="Python" value="2992" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Project/templates/linear.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-170">
-              <caret line="406" column="50" lean-forward="true" selection-start-line="406" selection-start-column="50" selection-end-line="406" selection-end-column="50" />
+            <state relative-caret-position="17">
+              <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -68,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Project/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="474" column="22" lean-forward="true" selection-start-line="474" selection-start-column="22" selection-end-line="474" selection-end-column="22" />
+            <state relative-caret-position="476">
+              <caret line="669" column="63" selection-start-line="669" selection-start-column="63" selection-end-line="669" selection-end-column="63" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -89,8 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Project/templates/polynomial.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3247">
-              <caret line="191" column="78" selection-start-line="191" selection-start-column="78" selection-end-line="191" selection-end-column="78" />
+            <state relative-caret-position="17">
+              <caret line="32" column="3" selection-start-line="32" selection-start-column="3" selection-end-line="32" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -127,10 +124,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Project/Polynomial_Interpolation/vandermonde.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="-24">
               <caret line="160" column="4" selection-start-line="160" selection-start-column="4" selection-end-line="160" selection-end-column="4" />
             </state>
           </provider>
@@ -149,7 +146,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>inpu</find>
       <find>linear</find>
       <find>form</find>
       <find>collapse</find>
@@ -178,6 +174,8 @@
       <find>.htm</find>
       <find>crout</find>
       <find>choles</find>
+      <find>cholesky</find>
+      <find>vandermon</find>
     </findStrings>
     <replaceStrings>
       <replace>if request.form.get('prueba', None):</replace>
@@ -214,8 +212,8 @@
         <option value="$PROJECT_DIR$/Project/templates/nonlinear.html" />
         <option value="$PROJECT_DIR$/Project/templates/resultsLU.html" />
         <option value="$PROJECT_DIR$/Project/Systems_of_linear_equations/cholesky.py" />
-        <option value="$PROJECT_DIR$/Project/main.py" />
         <option value="$PROJECT_DIR$/Project/templates/linear.html" />
+        <option value="$PROJECT_DIR$/Project/main.py" />
       </list>
     </option>
   </component>
@@ -551,13 +549,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Project/templates/polynomial.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3247">
-          <caret line="191" column="78" selection-start-line="191" selection-start-column="78" selection-end-line="191" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Project/templates/resultsLU.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2414">
@@ -582,13 +573,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Project/Polynomial_Interpolation/vandermonde.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="160" column="4" selection-start-line="160" selection-start-column="4" selection-end-line="160" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Project/Splines/splines_1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1241">
@@ -598,8 +582,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Project/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="474" column="22" lean-forward="true" selection-start-line="474" selection-start-column="22" selection-end-line="474" selection-end-column="22" />
+        <state relative-caret-position="476">
+          <caret line="669" column="63" selection-start-line="669" selection-start-column="63" selection-end-line="669" selection-end-column="63" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -608,8 +592,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Project/templates/linear.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-170">
-          <caret line="406" column="50" lean-forward="true" selection-start-line="406" selection-start-column="50" selection-end-line="406" selection-end-column="50" />
+        <state relative-caret-position="17">
+          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/templates/polynomial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="32" column="3" selection-start-line="32" selection-start-column="3" selection-end-line="32" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project/Polynomial_Interpolation/vandermonde.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-24">
+          <caret line="160" column="4" selection-start-line="160" selection-start-column="4" selection-end-line="160" selection-end-column="4" />
         </state>
       </provider>
     </entry>
