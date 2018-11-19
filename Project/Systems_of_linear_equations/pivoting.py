@@ -8,6 +8,8 @@ from numpy import linalg as LA
 
 class Pivoting:
     def stepped(self, A, b):
+        if LA.det(A) == 0:
+            return 0
         try:
             LA.inv(A)
         except LA.LinAlgError:
@@ -73,6 +75,8 @@ class Pivoting:
             return 1, "It's not possible to step the matrix"
         elif matrix == -1:
             return 1, "Matrix is not invertible"
+        elif matrix == 0:
+            return 1, "The matrix is not well conditioned. Determinant is ZERO"
         vector = self.clear(matrix, len(matrix))
         return 0, matrix, vector
 

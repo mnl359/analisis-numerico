@@ -11,6 +11,8 @@ class Total_pivoting:
     marks = []
 
     def stepped(self, A, b):
+        if LA.det(A) == 0:
+            return 0, 0
         try:
             LA.inv(A)
         except LA.LinAlgError:
@@ -130,6 +132,8 @@ class Total_pivoting:
         matrix, marks = self.stepped(A, b)
         if matrix == -1:
             return 1, "The matrix is not invertible"
+        elif matrix == 0:
+            return 1, "The matrix is not well conditioned. Determinant is ZERO"
         vector = self.clear(matrix, marks)
         print(vector)
         return 0, matrix, marks, vector

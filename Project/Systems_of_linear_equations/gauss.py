@@ -9,6 +9,8 @@ from numpy import linalg as LA
 
 class Gauss:
     def stepped(self, A, b):
+        if LA.det(A) == 0:
+            return 0
         try:
             LA.inv(A)
         except LA.LinAlgError:
@@ -71,6 +73,8 @@ class Gauss:
             return 1, "Matrix is not invertible"
         elif matrix == 1:
             return 1, "It's not possible to step the matrix"
+        elif matrix == 0:
+            return 1, "The matrix is not well conditioned. Determinant is ZERO"
         n = len(matrix)
         vector = self.clear(matrix, n)
         return 0, matrix, vector

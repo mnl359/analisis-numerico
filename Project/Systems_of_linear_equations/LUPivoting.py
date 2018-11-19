@@ -51,6 +51,8 @@ class LU_pivoting:
     def upper_triangular(self, A):
         global mults
         global marks
+        if LA.det(A) == 0:
+            return 0, 0, 0
         try:
             LA.inv(A)
         except LA.LinAlgError:
@@ -138,6 +140,8 @@ class LU_pivoting:
             return 1, "The matrix is not invertible"
         elif u_matrix == 1:
             return 1, "It's not possible to step the matrix"
+        elif u_matrix == 0:
+            return 1, "The matrix is not well conditioned. Determinant is ZERO"
         #print("The U matrix is:", "\n", DataFrame(u_matrix), "\n", file=toPrint)
         l_matrix = mults
         #print("The L matrix is:", "\n", DataFrame(l_matrix), "\n", file=toPrint)

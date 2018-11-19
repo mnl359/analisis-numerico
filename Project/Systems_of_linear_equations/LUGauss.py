@@ -17,6 +17,8 @@ class LU_gauss:
 
     def upper_triangular(self, A):
         global mults
+        if LA.det(A) == 0:
+            return 0        
         try:
             LA.inv(A)
         except LA.LinAlgError:
@@ -99,6 +101,8 @@ class LU_gauss:
             return 1, "The matrix is not invertible"
         elif u_matrix == 1:
             return 1, "It's not possible to step the matrix"
+        elif u_matrix == 0:
+            return 1, "The matrix is not well conditioned. Determinant is ZERO"
         l_matrix = mults
         Lz = self.aumMatrix(l_matrix, vector)
         vector_z = self.progressive_substitution(Lz)
