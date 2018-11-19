@@ -20,8 +20,6 @@ def newJacobi(x0, matrix, b):
 def norma(x0, x1):
     sum = 0
     n = len(x0)
-    if len(x0) != len(x1):
-        print("Mierda")
     for x in range(len(x0)): #El problema está aquí... x0 y x1 tienen tamaños diferente (4 y 3 respectivamente)
         sum += round((round(x1[x])-round(x0[x]))**2)
     try:
