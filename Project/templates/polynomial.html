@@ -219,6 +219,38 @@
                 {{ onsubmit("vandermondeform", "divvan", "subvan") }}
             </div>
         </div>
+
+        <div id="nev" class="panel panel-default">
+            <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#neville">
+                <h4 class="panel-title">Neville</h4>
+
+            </div>
+            <div class="table-responsive panel-collapse collapse" id="neville">
+                <form action="/neville" method="POST" id="nevilleform">
+                    Points:
+                    <input type="hidden" name="dimension" value="{{ dimension|length }}">
+                    <table class="table">
+                        <tbody>
+                        {% for row in dimension %}
+                            {% set outer_loop = loop %}
+                            <tr>
+                                <td><input class="form-control" type="text" name="n{{ loop.index0 }}"  placeholder="X{{ loop.index }}"></td>
+                                <td><input class="form-control" type="text" name="n{{ loop.index0 }}"  placeholder="Y{{ loop.index }}"></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    x:
+                    <input class="form-control" type="number" name="x" step="0.00001" placeholder="X" >
+                    <div class="form-group row" id="divnev">
+                        <div class="col-xs-3">
+                            <button id="subnev" type="submit" class="btn btn-secondary" style="min-width: 70px">Go</button>
+                        </div>
+                    </div>
+                </form>
+                {{ onsubmit("nevilleform", "divnev", "subnev") }}
+            </div>
+        </div>
     </div>
 </div>
 

@@ -8,7 +8,7 @@ from Systems_of_linear_equations.totalPivoting import Total_pivoting
 from Systems_of_linear_equations.LUGauss import LU_gauss
 from Systems_of_linear_equations.LUPivoting import LU_pivoting
 from Systems_of_linear_equations import jacobi, jacobiSOR, cholesky, doolittle, crout, gauss_seidel, bandMatrix, gauss_seidelSOR
-from Polynomial_Interpolation import lagrange, newton, vandermonde
+from Polynomial_Interpolation import lagrange, newton, vandermonde, neville
 from Splines import splines_1, splines_2, splines_3
 import json, sympy
 app = Flask(__name__)
@@ -674,6 +674,23 @@ def vandermonda():
         A.append(aux)
 
     results = vandermonde.main(A, x)
+    if request.form.get('prueba', None):
+        return json.dumps(results, default=decimal_default)
+    return render_template('resultsPoly.html', result=results[2], poli=results[1], x=x)
+
+@app.route('/neville', methods=['POST', 'GET'])
+def nevillu():
+    x = float(request.form['x'])
+    A = []
+    # Llenar A
+    for i in range(int(request.form['dimension'])):
+        aux = []
+        arstr = request.form.getlist('n' + str(i))
+        for j in range(2):
+            aux.append(float(arstr[j]))
+        A.append(aux)
+
+    results = neville.neville(x, A)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
     return render_template('resultsPoly.html', result=results[2], poli=results[1], x=x)
