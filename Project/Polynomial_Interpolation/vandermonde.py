@@ -60,8 +60,7 @@ def lower_triangular(A):
                 helper = A[i][j]
                 if helper != 1: 
                     if helper == 0:
-                        print("WARNING! It's not possible to step the matrix. Error in row", i)
-                        exit(1)
+                        return None
                     row = A[i]             
                     for k in range(len(row)):
                         row[k] = row[k] / helper
@@ -95,8 +94,7 @@ def upper_triangular(A):
                 helper = A[i][j]
                 if helper != 1: 
                     if helper == 0:
-                        print("WARNING! It's not possible to step the matrix. Error in row", i)
-                        exit(1)
+                        return None
                     row = A[i]             
                     for k in range(len(row)):
                         row[k] = row[k] / helper
@@ -152,13 +150,25 @@ def vandermonde(A):
     
     augmented = aumMatrix(V, y_points)
     res = upper_triangular(augmented)
+    if res is None:
+        return None, None
     res = lower_triangular(res)
+    if res is None:
+        return None, None
 
     return res, augmented
     
 def main(A, value):
+    n = len(A) - 1
+    for i in range(n):
+        if(A[i+1][0] < A[i][0]):
+            return(1, "The set of dots must be arranged in ascending order with respect to their X component. Problem found at: " + str(i)) 
+        elif(A[i+1][0] == A[i][0]):
+            return(1, "All dots must be different. Problem found at: " + str(i) + " and " + str(i + 1))
     augMatrix = vandermonde(A)[1]
     resMatrix = vandermonde(A)[0]
+    if augMatrix is None or resMatrix is None:
+        return 1, "Augmented matrix cannot be stepped"
     vector = clear(resMatrix, len(resMatrix))
     cont = len(vector) - 1
     str_res = "p(x) = "
@@ -172,13 +182,13 @@ def main(A, value):
                 str_res += str(vector[i])
                 pol += vector[i]
         elif vector[i] > 0:
-            str_res += "+" + str(vector[i]) + "x**" + str(cont) + " "
+            str_res += "+" + str(vector[i]) + "x^" + str(cont) + " "
             pol += (vector[i] * (value**cont))
         else:
-            str_res += str(vector[i]) + "x**" + str(cont) + " "
+            str_res += str(vector[i]) + "x^" + str(cont) + " "
             pol += (vector[i] * (value**cont))
         cont -= 1
-    return 0, augMatrix, resMatrix, str_res, pol 
+    return 0, str_res, pol, augMatrix, resMatrix
 
 
 # name = input("Enter the name of the file you want the answer to be saved. It's going to have '.txt' extension: ")
