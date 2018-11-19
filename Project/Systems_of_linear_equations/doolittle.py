@@ -5,6 +5,8 @@ from pandas import DataFrame
 def doolittle(A, vector):
     L = np.zeros_like(A).tolist()
     U = np.zeros_like(A).tolist()
+    if np.linalg.det(A) == 0:
+        return 1, "The matrix is not well conditioned. Determinant is ZERO"
     try:
         np.linalg.inv(A)
     except np.linalg.LinAlgError:
