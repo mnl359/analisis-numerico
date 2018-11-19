@@ -432,10 +432,10 @@ def choleskyy():
         for j in range(int(request.form['dimension'])):
             aux.append(float(arstr[j]))
         A.append(aux)
-    results = cholesky.cholesky(A)
+    results = cholesky.cholesky_simon(A, v)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
-    return render_template('resultsLU.html', l_matrix=results[1], u_matrix=results[2])
+    return render_template('resultsLU.html', results=results[3], l_matrix=results[1], u_matrix=results[2])
 
 @app.route('/doolittle', methods=['POST', 'GET'])
 def doolittlee():
@@ -474,7 +474,7 @@ def croutt():
         for j in range(int(request.form['dimension'])):
             aux.append(float(arstr[j]))
         A.append(aux)
-    results = crout.crout(A)
+    results = crout.crout(A, v)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
     return render_template('resultsLU.html', l_matrix=results[1], u_matrix=results[2])

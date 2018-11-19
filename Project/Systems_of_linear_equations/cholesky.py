@@ -17,7 +17,7 @@ def cholesky_simon(A, vector):
   Ux = aumMatrix(U, vector_z)
   result = regressive_substitution(Ux)
   result = list(np.linalg.solve(A,vector))
-  return L, U, result
+  return 0, L, U, result
 
 def cholesky(A, vector):
   L = np.zeros_like(A)
