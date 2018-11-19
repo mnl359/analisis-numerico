@@ -2,44 +2,121 @@ from math import sqrt
 import numpy as np
 from pandas import DataFrame
 
-def cholesky_simon(A):
+def cholesky_simon(A, vector):
+  try:
+    np.linalg.inv(A)
+  except np.linalg.LinAlgError:
+    return 1, "Matrix is not invertible"
   L = np.zeros_like(A).tolist()
-  for i in range(len(A)):
-    for j in range(i+1):
-      s = sum(L[i][k] * L[j][k] for k in range(j))
-      if i == j:
-        L[i][j] = sqrt(A[i][i] - s) #Diagonales
-      else:
-        L[i][j] = (1.0 / L[j][j] * (A[i][j] - s)) #No diagonales
-  return L
+  try:
+    for i in range(len(A)):
+      for j in range(i+1):
+        s = sum(L[i][k] * L[j][k] for k in range(j))
+        if i == j:
+          helper = A[i][i] - s
+          if helper > 0:
+            L[i][j] = sqrt(helper) #Diagonales
+          else:
+            return 1, "Algorithm is trying to calculate a negative matrix. Try with some other matrix"
+        else:
+          L[i][j] = (1.0 / L[j][j] * (A[i][j] - s)) #No diagonales
+    U = list(np.transpose(L))
+    Lz = aumMatrix(L, vector)
+    vector_z = progressive_substitution(Lz)
+    Ux = aumMatrix(U, vector_z)
+    result = regressive_substitution(Ux)
+    result = list(np.linalg.solve(A,vector))
+    return 0, L, U, result
+  except ZeroDivisionError:
+    return 1, "Division by zero"
 
-
-def cholesky(A):
+def cholesky(A, vector):
+  try:
+    np.linalg.inv(A)
+  except np.linalg.LinAlgError:
+    return 1, "Matrix is not invertible"
   L = np.zeros_like(A)
   U = np.zeros_like(A)
-  for k in range(len(A)):
-    contk = 0
-    for p in range(k):
-      contk += L[k][p] * U[p][k]
-    L[k][k] = np.sqrt(A[k][k] - contk)
-    U[k][k] = np.sqrt(A[k][k] - contk)
-    for i in range(k + 1, len(A)):
-      conti = 0
+  try:
+    for k in range(len(A)):
+      contk = 0
       for p in range(k):
-        conti += L[i][p] * U[p][k]
-      L[i][k] = float(A[i][k] - conti) / U[k][k]
-    for j in range(k + 1, len(A)):
-      contj = 0
-      for p in range(k):
-        contj += L[k][p] * U[p][j]
-      U[k][j] = float(A[k][j] - contj) / L[k][k]
-  return 0, L, U
-  
+        contk += L[k][p] * U[p][k]
+      L[k][k] = float(np.sqrt(A[k][k] - contk))
+      U[k][k] = float(np.sqrt(A[k][k] - contk))
+      for i in range(k + 1, len(A)):
+        conti = 0
+        for p in range(k):
+          conti += L[i][p] * U[p][k]
+        L[i][k] = float(A[i][k] - conti) / U[k][k]
+      for j in range(k + 1, len(A)):
+        contj = 0
+        for p in range(k):
+          contj += L[k][p] * U[p][j]
+        U[k][j] = float(A[k][j] - contj) / L[k][k]
+      Lz = aumMatrix(L, vector)
+      vector_z = progressive_substitution(Lz)
+      Ux = aumMatrix(U, vector_z)
+      result = regressive_substitution(Ux)
+      return 0, L, U, result
+  except ZeroDivisionError:
+    return 1, "Division by zero"
 
-#m1 = [[25, 15, -5],
-#      [15, 18,  0],
-#      [-5,  0, 11]]
-#
+def progressive_substitution(stepMat):
+    vector = []
+    n = len(stepMat)
+    for x in range(n):
+        vector.append(0)
+    vector[0] = stepMat[0][n] / stepMat[0][0]
+    i = 1
+    while i <= n - 1:
+        result = 0
+        p = 0
+        while p <= len(vector) - 1:
+            result += (stepMat[i][p] * vector[p])
+            p += 1
+        vector[i] = stepMat[i][n] - result / stepMat[i][i]
+        i += 1
+    return vector
+  
+def regressive_substitution(stepMat):
+    n = len(stepMat)
+    vector = []
+    for x in range(n):
+        vector.append(0)
+    vector[n - 1] = stepMat[n - 1][n] / stepMat[n - 1][n - 1]
+    i = n - 2
+    while i >= 0:
+        result = 0
+        p = len(vector) - 1
+        while p >= 0:
+            result += (stepMat[i][p] * vector[p])
+            p -= 1
+        vector[i] = (stepMat[i][n] - result) / stepMat[i][i]
+        i -= 1
+    return vector
+
+def aumMatrix(A, b):
+    cont = 0
+    aux = []
+    for i in range(len(A)):
+        row = list(A[i])
+        row.append(b[cont])
+        aux.append(row)
+        cont += 1
+    return aux
+
+def checkDet(A):
+    if(np.linalg.det(A) == 0):
+        return(1, "The generated matrix is not invertible.")
+    return(0, "Ok.")
+
+#m = [[60.0, 30.0, 20.0],
+#      [30.0, 20.0, 15.0],
+#      [20.0, 15.0, 12.0]]
+#print("choleskynpm", np.linalg.cholesky(m))
+#print(cholesky(m,[1.0,1.0,1.0]))
+#print("Simon", cholesky_simon(m, [1.0,1.0,1.0]))
 #m1 = [[6, 3, 4, 8], [3, 6, 5, 1], [4, 5, 10, 7], [8, 1, 7, 25]]
 #A = [
 #    [9.1622,    0.4505,    0.1067,    0.4314,    0.8530,    0.4173,    0.7803,    0.2348,    0.5470,    0.5470],

@@ -4,7 +4,10 @@ import numpy as np
 from prettytable import PrettyTable
 from pandas import DataFrame
 np.set_printoptions(threshold=np.nan)
+from copy import copy, deepcopy
 
+#This method returns the status code, the polynomial coeficients
+#and the generated matrix.
 def spline3(X):
     check = checkData(X)
     if(check[0] == 1):
@@ -16,10 +19,15 @@ def spline3(X):
     A = introByFstDerivativeSmoothness(A, X, n)
     A = introBySecDerivativeSmoothness(A, X, n)
     A = frontier(A, X, n)
-    printMatrix("spli3_result", A)
+    gen = deepcopy(A)
+    chkDet = checkDet(A)
+    if(chkDet[0] == 1):
+        return(chkDet)
     A = gaussJordan(A)
     coef = clear(A, len(A))
-    return (0, orderCoef(coef))
+    coef = orderCoef(coef)
+    pols = formPolys(coef, X)
+    return (0, pols, gen)
 
 def introByEval(A, X, n):
     row = list(np.zeros(n))
@@ -167,6 +175,30 @@ def printMatrix(name, A):
             table.add_row(x)
         print(table, file=result)
 
+def formPolys(coef, X):
+    polys = []
+    polys.append(["Polynomials", "Ranges"])
+    for i in range(len(coef)):
+        poly = "P" + str(i+1) + "= "
+        poly += str(coef[i][1]) + "x^3 "
+        if(coef[i][2] < 0):
+            poly += str(coef[i][2])
+        else:
+            poly += "+" + str(coef[i][2])
+        poly += "x^2 "
+        if(coef[i][3] < 0):
+            poly += str(coef[i][3])
+        else:
+            poly += "+" + str(coef[i][3])
+        poly += "x "
+        if(coef[i][4] < 0):
+            poly += str(coef[i][4])
+        else:
+            poly += "+" + str(coef[i][4])
+        ranges = str(X[i][0]) + "<= x <= " + str(X[i+1][0])
+        polys.append([poly, ranges])
+    return(polys)
+
 def checkData(X):
     n = len(X)
     if(n < 2):
@@ -182,6 +214,13 @@ def checkData(X):
             return(1, "All dots must be different. Problem found at: " + str(i))
     return(0, "Ok.")
 
+def checkDet(A):
+    n = len(A[0]) - 1
+    square = [x[0:n] for x in A]
+    if(np.linalg.det(square) == 0):
+        return(1, "The generated matrix is not invertible. You may want to select a different set of points")
+    return(0, "Ok.")
+
 #X = [1, 3, 4, 5]
 #Y = [3, 1, 3.5, 2]
 #X = [1, 3, 4, 5, 7]
@@ -189,5 +228,4 @@ def checkData(X):
 #X = [1.0000, 2.0000, 3.0000, 4.0000, 5.0000, 6.0000, 7.0000, 8.0000, 9.0000, 10.0000]
 #Y = [0.5949, 0.2622, 0.6028, 0.7112, 0.2217, 0.1174, 0.2967, 0.3188, 0.4242, 0.5079]
 X = [[1.0000,0.5949], [2.0,0.2622], [3.0, 0.6028], [4.0, 0.7112], [5.0, 0.2217], [6.0, 0.1174], [7.0, 0.2967], [8.0, 0.3188], [9.0, 0.4242], [10.0, 0.5079]]
-
-print(spline3(X))
+#X = [[1,2],[2,3],[4,2]]

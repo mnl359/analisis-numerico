@@ -423,7 +423,7 @@ def lupivoting():
     results = g.lu_pivoting(A, v)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
-    return render_template('resultsLU.html', results=results[3], l_matrix=results[1], u_matrix=results[2])
+    return render_template('resultsLU.html', results=results[4], l_matrix=results[1], u_matrix=results[2])
 
 @app.route('/cholesky', methods=['POST', 'GET'])
 def choleskyy():
@@ -441,10 +441,10 @@ def choleskyy():
         for j in range(int(request.form['dimension'])):
             aux.append(float(arstr[j]))
         A.append(aux)
-    results = cholesky.cholesky(A)
+    results = cholesky.cholesky(A, v)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
-    return render_template('resultsLU.html', l_matrix=results[1], u_matrix=results[2])
+    return render_template('resultsLU.html', results=results[3], l_matrix=results[1], u_matrix=results[2])
 
 @app.route('/doolittle', methods=['POST', 'GET'])
 def doolittlee():
@@ -462,7 +462,7 @@ def doolittlee():
         for j in range(int(request.form['dimension'])):
             aux.append(float(arstr[j]))
         A.append(aux)
-    results = doolittle.doolittle(A)
+    results = doolittle.doolittle(A, v)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
     return render_template('resultsLU.html', l_matrix=results[1], u_matrix=results[2])
@@ -483,7 +483,7 @@ def croutt():
         for j in range(int(request.form['dimension'])):
             aux.append(float(arstr[j]))
         A.append(aux)
-    results = crout.crout(A)
+    results = crout.crout(A, v)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
     return render_template('resultsLU.html', l_matrix=results[1], u_matrix=results[2])
@@ -505,10 +505,10 @@ def totalpivoting():
         for j in range(int(request.form['dimension'])):
             aux.append(float(arstr[j]))
         A.append(aux)
-    results = g.main(A, v, [])
+    results = g.main(A, v)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
-    return render_template('resultsGauss.html', results=results[2], matrix=results[1])
+    return render_template('resultsGauss.html', results=results[3], matrix=results[1])
 
 @app.route('/jacobi', methods=['POST', 'GET'])
 def jaco():
@@ -642,7 +642,7 @@ def lag():
     results = lagrange.lagrange(x, A)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
-    return render_template('resultsPoly.html', result=results[0], poli=results[1], x=x)
+    return render_template('resultsPoly.html', result=results[2], poli=results[1], x=x)
 
 @app.route('/newton', methods=['POST', 'GET'])
 def newt():
@@ -659,7 +659,7 @@ def newt():
     results = newton.newton(x, A)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
-    return render_template('resultsPoly.html', result=results[0], poli=results[1], x=x)
+    return render_template('resultsPoly.html', result=results[2], poli=results[1], x=x)
 
 @app.route('/vandermonde', methods=['POST', 'GET'])
 def vandermonda():
@@ -676,7 +676,7 @@ def vandermonda():
     results = vandermonde.main(A, x)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
-    return render_template('resultsPoly.html', result=results[4], poli=results[3], x=x)
+    return render_template('resultsPoly.html', result=results[2], poli=results[1], x=x)
 
 @app.route('/spline1', methods=['POST', 'GET'])
 def spline1():
@@ -692,7 +692,7 @@ def spline1():
     results = splines_1.spline1(A)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
-    return render_template('resultsTable.html', results=results[1])
+    return render_template('resultsTable.html', results=results[1], matrix=results[2])
 
 @app.route('/spline2', methods=['POST', 'GET'])
 def spline2():
@@ -708,7 +708,7 @@ def spline2():
     results = splines_2.spline2(A)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
-    return render_template('resultsTable.html', results=results[1])
+    return render_template('resultsTable.html', results=results[1], matrix=results[2])
 
 @app.route('/spline3', methods=['POST', 'GET'])
 def spline3():
@@ -724,7 +724,7 @@ def spline3():
     results = splines_3.spline3(A)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
-    return render_template('resultsTable.html', results=results[1])
+    return render_template('resultsTable.html', results=results[1], matrix=results[2])
 
 
 if __name__ == "__main__":

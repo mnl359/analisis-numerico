@@ -8,20 +8,28 @@ class Methods:
             self.gunction = gunction
 
     def f(self, number):
-        init_printing(use_unicode=True)
-        x = symbols('x')
-        fx = eval(self.func)
-        function = fx.evalf(subs={x: number})
-        dfx = Derivative(fx, x).doit()
-        derivative = dfx.evalf(subs={x: number})
-        dfx2 = Derivative(dfx, x).doit()
-        derivative2 = dfx2.evalf(subs={x: number})
-        return (function, derivative, derivative2)
+        try:
+            init_printing(use_unicode=True)
+            x = symbols('x')
+            fx = eval(self.func)
+            function = fx.evalf(subs={x: number})
+            dfx = Derivative(fx, x).doit()
+            derivative = dfx.evalf(subs={x: number})
+            dfx2 = Derivative(dfx, x).doit()
+            derivative2 = dfx2.evalf(subs={x: number})
+            return (function, derivative, derivative2)
+        except ZeroDivisionError:
+            return None, None, None
 
     def g(self, number):
-        x = symbols('x')
-        gx = eval(self.gunction)
-        return gx
+        try:
+            init_printing(use_unicode=True)
+            x = symbols('x')
+            gx = eval(self.gunction)
+            gfunc = gx.evalf(subs={x:number})
+            return gfunc
+        except ZeroDivisionError:
+            return None
 
     def newton(self, x0, tolerance, iterations):
         table = [['Iteration', 'Xn', 'f(Xn)', 'df(Xn)', 'Error']]
@@ -37,6 +45,9 @@ class Methods:
             error = abs((x1 - x0) / x1)
             x0 = x1
             cont += 1
+            strerr = str(error)
+            if self.verifyComplex(strerr) > 0:
+                return 1, "Error: I cannot work with complex numbers"
             table.append([cont, x1, fx, dfx, '%.2E' % Decimal(str(error))])
         if fx == 0:
             root = (x0, '%.2E' % Decimal(str(error)))
@@ -65,12 +76,13 @@ class Methods:
                 fxn = self.f(xn)[0]
                 den = self.f(xn + fxn)[0] - fxn  # Denominator
                 if den == 0:
-                    print ("The denominator became 0.")
-                    break
+                    return 1, "Denominator became 0"
                 xn1 = xn - (fxn ** 2) / den
 
                 error = abs((xn1 - xn))  # Abs error
                 cont += 1
+                if self.verifyComplex(error) > 0:
+                    return 1, "Error: I cannot work with complex numbers"
                 table.append([cont, xn1, '%.2E' % Decimal(str(error))])
                 xn = xn1
                 # prev = aux
@@ -79,12 +91,14 @@ class Methods:
                 root = (xn1, '%.2E' % Decimal(str(error)))
             else:
                 if (cont == iterations):
-                    return(1, "Method failed in %d iterations" %cont)
+                    return(1, "Method failed in %d iterations. Try more iterations or some other method" %cont)
                 else:
                     root = (xn1, '%.2E' % Decimal(str(error)))
         return 0, root, table, cont
 
     def secant(self, x0, x1, tolerance, iterations):
+        if x1 < x0:
+            return 1, "x1 must be larger than x0"
         fx0 = self.f(x0)[0]
         root = 0
         if fx0 == 0:
@@ -94,10 +108,14 @@ class Methods:
             cont = 0
             error = tolerance + 1
             den = fx1 - fx0
+            if self.verifyComplex(str(fx1)) == 1 or self.verifyComplex(str(fx0)) == 1:
+                return 1, "Error: I cannot work with complex numbers"
             table = [[cont, x0, '%.2E' % Decimal(str(fx0)), 'Doesnt exist']]
             cont += 1
             table.append([cont, x1, '%.2E' % Decimal(str(fx1)), 'Doesnt exist'])
             while error > tolerance and fx1 != 0 and den != 0 and cont < iterations:
+                if den == 0:
+                    return 1, "Denominator became 0"
                 cont += 1
                 x2 = x1 - ((fx1 * (x1 - x0)) / den)
                 error = abs((x2 - x1))
@@ -106,6 +124,9 @@ class Methods:
                 x1 = x2
                 fx1 = self.f(x1)[0]
                 den = fx1 - fx0
+                strerr = str(error)
+                if self.verifyComplex(strerr) > 0:
+                    return 1, "Error: I cannot work with complex numbers"
                 table.append([cont, x1, '%.2E' % Decimal(str(fx1)), '%.2E' % Decimal(str(error))])
             if fx1 == 0:
                 root = x1
@@ -118,14 +139,21 @@ class Methods:
         return (0, root, table, cont)
 
     def bisection(self, xi, xs, tolerance, iterations):
+        if xi > xs:
+            return 1, "xs has to be larger than xi"
         fxi = self.f(xi)[0]
         fxs = self.f(xs)[0]
         root = 0
+        err = fxi * fxs
         rows = [['Iteration', 'Xinf', 'Xsup', 'Xmi', 'f(Xmi)', 'Error']]
         if fxi == 0:
             root = xi
         elif fxs == 0:
             root = xs
+        elif self.verifyComplex(str(err)) > 0:
+            print(str(err), "--------------------------------------------------")
+            strerr = "Error: f(xi) and f(xs) are complex numbers and I cannot work with them. Try any other method"
+            return(1, strerr)
         elif fxi * fxs < 0:
             xm = (xi + xs) / 2
             fxm = self.f(xm)[0]
@@ -159,6 +187,8 @@ class Methods:
         return (0, root, rows, cont)
 
     def falseRule(self, xi, xs, tolerance, iterations):
+        if xi > xs:
+            return 1, "xs has to be larger than xi"
         fxi = self.f(xi)[0]
         fxs = self.f(xs)[0]
         si = xi - xs
@@ -169,6 +199,9 @@ class Methods:
             root = xi
         elif fxs == 0:
             root = xs
+        elif self.verifyComplex(str(fxi * fxs)) > 0:
+            strerr = "Error: f(xi) and f(xs) are complex numbers and I cannot work with them. Try any other method"
+            return(1, strerr)
         elif fxi * fxs < 0:
             if helper != 0:
                 xm = xi - ((fxi * si) / helper)
@@ -187,7 +220,7 @@ class Methods:
                     si = xi - xs
                     helper = fxi - fxs
                     if helper == 0:
-                        break
+                        return(1, "Denominator became 0")
                     xm = xi - ((fxi * si) / helper)
                     fxm = self.f(xm)[0]
                     error = abs(xm - aux)
@@ -209,26 +242,35 @@ class Methods:
     def fixedPoint(self, xa, tolerance, iterations):
         table = [['Iteration', 'Xn', 'f(Xn)', 'Error']]
         fx = self.f(xa)[0]
-        cont = 0
-        error = tolerance + 1
-        table.append([cont, xa, fx, 'Doesnt exist'])
-        while fx != 0 and error > tolerance and cont < iterations:
-            xn = self.g(xa)
-            fx = self.f(xn)[0]
-            error = abs(xn - xa)
-            xa = xn
-            cont += 1
-            table.append([cont, xn, fx, '%.2E' % Decimal(str(error))])
-        if fx == 0:
-            root = xa
-        elif error < tolerance:
-            root = (xa, '%.2E' % Decimal(str(error)))
+        if fx is None:
+            return 1, "Division by zero in f function"
         else:
-            return(1, "Method failed in %d iterations" %cont)
+            cont = 0
+            error = tolerance + 1
+            table.append([cont, xa, fx, 'Doesnt exist'])
+            while fx != 0 and error > tolerance and cont < iterations:  
+                xn = self.g(xa)
+                if xn is None:
+                    return 1, "Division by zero in g function"
+                else:       
+                                 
+                    fx = self.f(xn)[0]
+                    error = abs(xn - xa)
+                    xa = xn
+                    cont += 1
+                    strerr = str(error)
+                    if self.verifyComplex(strerr) > 0:
+                        return 1, "Error: I cannot work with complex numbers"
+                    table.append([cont, xn, fx, '%.2E' % Decimal(str(error))])
+            if fx == 0:
+                root = xa
+            elif error < tolerance:
+                root = (xa, '%.2E' % Decimal(str(error)))
+            else:
+                return(1, "Method failed in %d iterations" %cont)
         return (0, root, table, cont)
 
-    # Este método no retorna tabla. 
-    # Retorna 0 (exitoso), 
+     
     def incremental_searches(self, x0, delta, iterations):
         fx = self.f(x0)[0]
         root = 0
@@ -244,6 +286,9 @@ class Methods:
                 if fx1 == 0:
                     root = x1
                     roots.append(x1)
+                elif self.verifyComplex(str(fx * fx1)) > 0:
+                    strerr = "Error: f(xi) and f(xs) are complex numbers and I cannot work with them. Try any other method"
+                    return(1, strerr)
                 elif fx * fx1 < 0:
                     root = (x0, x1)
                     roots.append(root)
@@ -263,10 +308,14 @@ class Methods:
         dfx2 = self.f(x0)[2]
         cont = 0
         error = tolerance + 1
+        if self.verifyComplex(str(fx)) == 1 or self.verifyComplex(str(dfx)) == 1 or self.verifyComplex(str(dfx2)) == 1:
+            return 1, "Error: I cannot work with complex numbers"
         table.append([cont, x0, '%.2E' % Decimal(str(fx)), '%.2E' % Decimal(str(dfx)), '%.2E' % Decimal(str(dfx2)), 'Doesnt exist'])
         while error > tolerance and fx != 0 and dfx != 0 and cont < iterations:
             numerator = fx * dfx
             denominator = (dfx ** 2) - (fx * dfx2)
+            if denominator == 0:
+                return 1, "Denominator became 0"
             x1 = x0 - (numerator / denominator)
             fx = self.f(x1)[0]
             dfx = self.f(x1)[1]
@@ -274,6 +323,9 @@ class Methods:
             error = abs(x1 - x0)
             x0 = x1
             cont += 1
+            strerr = str(error)
+            if self.verifyComplex(strerr) > 0:
+                return 1, "Error: I cannot work with complex numbers"
             table.append([cont, x1, '%.2E' % Decimal(str(fx)), '%.2E' % Decimal(str(dfx)), '%.2E' % Decimal(str(dfx2)), '%.2E' % Decimal(str(error))])
 
         if fx == 0:
@@ -304,12 +356,15 @@ class Methods:
                 x2 = self.f(x1)[0]
 
                 if (x2 - x1) - (x1 - x0) == 0:
-                    break
+                    return 1, "Denominator became 0"
                 aux = x2 - (((x2 - x1) ** 2) / ((x2 - x1) - (x1 - x0)))
                 if aux == 0:
                     break
                 error = abs((aux - prev))  # Error absoluto
                 cont += 1
+                strerr = str(error)
+                if self.verifyComplex(strerr) > 0:
+                    return(1, "Error: I cannot work with complex numbers")
                 table.append([cont, aux, '%.2E' % Decimal(str(error))])
                 x0 = x1
                 prev = aux
@@ -322,11 +377,13 @@ class Methods:
             #print(table)
         return (0, root, table, cont)
 
-    def bis(self, a, b):
+    def bis(self, a, b, error):
         fa = self.f(a)[0]
         x = (a + b) / 2.0
         fx = self.f(x)[0]
-        if (fa * fx) < 0:
+        if self.verifyComplex(str(error)) > 0:
+            return 1
+        elif (fa * fx) < 0:
             b = x
         else:
             a = x
@@ -353,12 +410,16 @@ class Methods:
             prev = x0
 
             while cont < iterations and (error > tolerance or error == 0):
-                a1, b1, x1 = self.bis(a, b)
-                a2, b2, x2 = self.bis(a1, b1)
+                if self.bis(a, b, error) == 1:
+                    return 1, "Error: I cannot work with complex numbers"
+                
+                a1, b1, x1 = self.bis(a, b, error)
+                if self.bis(a1, b1, error) == 1:
+                    return 1, "Error: I cannot work with complex numbers"
+                x2 = self.bis(a1, b1, error)[2]
                 den = (x2 - x1) - (x1 - x0)
                 if den == 0:
-                    print("The denominator became 0.")
-                    break
+                    return(1, "Denominator became 0")
                 xn = x2 - (((x2 - x1) ** 2) / den)
                 if xn == prev:
                     a, b, x0 = a1, b1, x1
@@ -366,6 +427,9 @@ class Methods:
                     continue
                 error = abs(xn - prev)  # Error absoluto
                 cont += 1
+                strerr = str(error)
+                if self.verifyComplex(strerr) > 0:
+                    return 1, "Error: I cannot work with complex numbers"
                 table.append([cont, xn, '%.2E' % Decimal(str(error))])
                 a, b, x0 = a1, b1, x1
                 prev = xn
@@ -400,14 +464,14 @@ class Methods:
             while cont < iterations and error > tolerance:
                 h0 = x1 - x0
                 h1 = x2 - x1
-                if (h0 == 0) | (h1 == 0):
-                    print ("h0 or h1 became 0.")
-                    break
+                if (h0 == 0) :
+                    return 1, "h0 (as denominator) became 0"
+                elif (h1 == 0):
+                    return 1, "h1 (as denominator) became 0"
                 delta0 = (fx1 - fx0) / h0
                 delta1 = (fx2 - fx1) / h1
                 if h1 - h0 == 0:
-                    print ("h1 - h0 became 0.")
-                    break
+                    return 1, "Denominator became 0"
                 a = (delta1 - delta0) / (h1 - h0)
                 b = a * h1 + delta1
                 c = fx2
@@ -421,6 +485,8 @@ class Methods:
 
                 error = abs(x3 - x2)  # Abs error
                 cont += 1
+                if self.verifyComplex(str(error)) > 0:
+                    return 1, "Error: I cannot work with complex numbers"
                 table.append([cont, x1, x2, x3, '%.2E' % Decimal(str(error))])
                 x0 = x1
                 x1 = x2
@@ -440,3 +506,8 @@ class Methods:
 
             #print(table)
         return (0, root, table, cont)
+
+    def verifyComplex(self, error):
+        if 'I' in error:
+            return 1
+        return 0

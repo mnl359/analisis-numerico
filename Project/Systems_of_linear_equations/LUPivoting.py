@@ -2,6 +2,7 @@
 
 from copy import deepcopy, copy
 from pandas import DataFrame
+from numpy import linalg as LA
 
 # El método principal es lu_pivoting.
 # Retorna 0 (exitoso), la matriz L, la matriz U, el vector de marcas, el vector resultado y los pasos
@@ -50,10 +51,14 @@ class LU_pivoting:
     def upper_triangular(self, A):
         global mults
         global marks
+        try:
+            LA.inv(A)
+        except LA.LinAlgError:
+            return -1
 
         n = len(A)
-        mults = self.create_matrix(mults, n)
-        marks = self.create_matrix(marks, n)
+        mults = self.create_matrix(self.mults, n)
+        marks = self.create_matrix(self.marks, n)
 
         for i in range(n):
             marks[i][i] = 1
@@ -75,7 +80,7 @@ class LU_pivoting:
                     mults = self.exchange_rows(i, cont, mults)
 
                     if A[i][i] == 0:
-                        return(1, "WARNING! It's not possible to step the matrix. Error in row " + str(i))
+                        return 1
 
                 else:
                     helper = A[j][i]
@@ -129,9 +134,19 @@ class LU_pivoting:
 
     def lu_pivoting(self, A, vector):
         u_matrix = self.upper_triangular(A)
+<<<<<<< HEAD
         print("The U matrix is:", "\n", DataFrame(u_matrix), "\n")
         l_matrix = mults
         print("The L matrix is:", "\n", DataFrame(l_matrix), "\n")
+=======
+        if u_matrix == -1:
+            return 1, "The matrix is not invertible"
+        elif u_matrix == 1:
+            return 1, "It's not possible to step the matrix"
+        #print("The U matrix is:", "\n", DataFrame(u_matrix), "\n", file=toPrint)
+        l_matrix = mults
+        #print("The L matrix is:", "\n", DataFrame(l_matrix), "\n", file=toPrint)
+>>>>>>> fdc108c4143c1a28cd4b225e199489a246fcb1e1
         aux = self.multiply(marks, vector)
         helper = [aux[i][0] for i in range(len(aux))]
         Lz = self.aumMatrix(l_matrix, helper)

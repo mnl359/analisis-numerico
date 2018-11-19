@@ -316,6 +316,16 @@
                         {% endfor %}
                         </tbody>
                     </table>
+                    b:
+                    <table class="table">
+                        <tbody>
+                        {% for row in dimension %}
+                            <tr>
+                                <td><input class="form-control" type="text" name="v"  ></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
                     <button type="submit" class="btn btn-secondary">Go</button>
                 </form>
             </div>
@@ -342,6 +352,17 @@
                         {% endfor %}
                         </tbody>
                     </table>
+                    b:
+                    <table class="table">
+                        <tbody>
+                        {% for row in dimension %}
+                            <tr>
+                                <td><input class="form-control" type="text" name="v"  ></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
                     <button type="submit" class="btn btn-secondary">Go</button>
                 </form>
             </div>
@@ -364,6 +385,16 @@
                                 {% for col in dimension %}
                                     <td><input class="form-control" type="text" name="n{{ outer_loop.index0 }}"  ></td>
                                 {% endfor %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    b:
+                    <table class="table">
+                        <tbody>
+                        {% for row in dimension %}
+                            <tr>
+                                <td><input class="form-control" type="text" name="v"  ></td>
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -405,14 +436,14 @@
                         {% endfor %}
                         </tbody>
                     </table>
-                   x0:
+                    x0:
                     <input type="hidden" name="x0" value="{{ dimension|length }}">
                     <table class="table">
                         <tbody>
                         {% for row in dimension %}
                             {% set outer_loop = loop %}
                             <tr>
-                                    <td><input class="form-control" type="text" name="x0"  ></td>
+                                <td><input class="form-control" type="text" name="x0"  ></td>
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -462,14 +493,14 @@
                         {% endfor %}
                         </tbody>
                     </table>
-                   x0:
+                    x0:
                     <input type="hidden" name="x0" value="{{ dimension|length }}">
                     <table class="table">
                         <tbody>
                         {% for row in dimension %}
                             {% set outer_loop = loop %}
                             <tr>
-                                    <td><input class="form-control" type="text" name="x0"  ></td>
+                                <td><input class="form-control" type="text" name="x0"  ></td>
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -526,7 +557,7 @@
                         {% for row in dimension %}
                             {% set outer_loop = loop %}
                             <tr>
-                                    <td><input class="form-control" type="text" name="x"  ></td>
+                                <td><input class="form-control" type="text" name="x"  ></td>
                             </tr>
                         {% endfor %}
                         </tbody>

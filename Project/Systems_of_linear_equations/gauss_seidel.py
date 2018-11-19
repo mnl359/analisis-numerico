@@ -7,9 +7,6 @@ from copy import copy
 from numpy import linalg
 
 def newGaussSeidel(x0, matrix, b):
-    if len(x0) != len(matrix[0]) or len(matrix[0]) != len(b) or len(x0) != len(b):
-        return(1, "Length of matrix, initial vector or vector b are different\n \
-        Please check and try again")
     aux = []
     newX0 = copy(x0)
     for i in range(len(matrix)):
@@ -33,6 +30,11 @@ def gaussSeidel(tolerance, x0, iterations, matrix, b):
     det = linalg.det(matrix)
     if det == 0:
         return(1, "The system does not have an unique solution. Determinant is ZERO")
+
+    try:
+        linalg.inv(matrix)
+    except linalg.LinAlgError:
+        return(1, "The matrix is not invertible")
     
     title = ['n']
     aux = 0

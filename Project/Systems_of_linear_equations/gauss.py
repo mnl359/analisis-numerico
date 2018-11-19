@@ -2,12 +2,17 @@
 
 from copy import deepcopy, copy
 from pandas import DataFrame
+from numpy import linalg as LA
 
 # Retorna 0 (exitoso), matriz escalonada y vector resultado. 
 # El metodo que retorna lo anterior es 'main'
 
 class Gauss:
     def stepped(self, A, b):
+        try:
+            LA.inv(A)
+        except LA.LinAlgError:
+            return -1
         Ab = self.aumMatrix(A, b)
         n = len(Ab)
         for i in range(0, n):
@@ -25,8 +30,7 @@ class Gauss:
 
                     helper = Ab[i][i]
                     if helper == 0:
-                        return(1, "WARNING! It's not possible to step the matrix. \
-                               Error in row" + str(i))
+                        return 1
 
                 else:
                     helper = Ab[j][i]
@@ -63,6 +67,10 @@ class Gauss:
 
     def main(self, A, b):
         matrix = self.stepped(A, b)
+        if matrix == -1:
+            return 1, "Matrix is not invertible"
+        elif matrix == 1:
+            return 1, "It's not possible to step the matrix"
         n = len(matrix)
         vector = self.clear(matrix, n)
         return 0, matrix, vector

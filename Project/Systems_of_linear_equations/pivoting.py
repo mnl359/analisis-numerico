@@ -2,12 +2,16 @@
 
 from copy import deepcopy, copy
 from pandas import DataFrame
-
+from numpy import linalg as LA
 # La función principal es main
 # Esta función retorna 0 (exitoso), la matriz escalonada y el vector resultado
 
 class Pivoting:
     def stepped(self, A, b):
+        try:
+            LA.inv(A)
+        except LA.LinAlgError:
+            return -1
         Ab = self.aumMatrix(A, b)
         n = len(Ab)
         for i in range(0, n):
@@ -26,8 +30,7 @@ class Pivoting:
                     Ab[cont] = aux
 
                     if Ab[i][i] == 0:
-                        return(1, "WARNING! It's not possible to step the matrix. Error in row " + str(i))
-
+                        return 1
                 else:
                     helper = Ab[j][i]
                     mult = helper / Ab[i][i]
@@ -51,6 +54,7 @@ class Pivoting:
         vector = []
         for x in range(n):
             vector.append(0)
+        print(n - 1)
         vector[n - 1] = stepMat[n - 1][n] / stepMat[n - 1][n - 1]
         i = n - 2
         while i >= 0:
@@ -65,6 +69,10 @@ class Pivoting:
 
     def main(self, A, b):
         matrix = self.stepped(A, b)
+        if matrix == 1:
+            return 1, "It's not possible to step the matrix"
+        elif matrix == -1:
+            return 1, "Matrix is not invertible"
         vector = self.clear(matrix, len(matrix))
         return 0, matrix, vector
 
