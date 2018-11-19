@@ -34,9 +34,13 @@ def doolittle(A, vector):
         return 1, "Division by zero"
     Lz = aumMatrix(L, vector)
     vector_z = progressive_substitution(Lz)
+    if vector_z == 1:
+        return 1, "System does not have a solution with this method. Try antoher"
     Ux = aumMatrix(U, vector_z)
     print(DataFrame(Ux)) #U queda con un 0 en la diagonal
     result = regressive_substitution(Ux)
+    if result == 1:
+        return 1, "System does not have a solution with this method. Try antoher"
     result = list(np.linalg.solve(A,vector))    
     return 0, L, U, result
 
@@ -47,14 +51,17 @@ def progressive_substitution(stepMat):
         vector.append(0)
     vector[0] = stepMat[0][n] / stepMat[0][0]
     i = 1
-    while i <= n - 1:
-        result = 0
-        p = 0
-        while p <= len(vector) - 1:
-            result += (stepMat[i][p] * vector[p])
-            p += 1
-        vector[i] = stepMat[i][n] - result / stepMat[i][i]
-        i += 1
+    try:
+        while i <= n - 1:
+            result = 0
+            p = 0
+            while p <= len(vector) - 1:
+                result += (stepMat[i][p] * vector[p])
+                p += 1
+            vector[i] = stepMat[i][n] - result / stepMat[i][i]
+            i += 1
+    except ZeroDivisionError:
+        return 1
     return vector
   
 def regressive_substitution(stepMat):
@@ -64,14 +71,17 @@ def regressive_substitution(stepMat):
         vector.append(0)
     vector[n - 1] = stepMat[n - 1][n] / stepMat[n - 1][n - 1]
     i = n - 2
-    while i >= 0:
-        result = 0
-        p = len(vector) - 1
-        while p >= 0:
-            result += (stepMat[i][p] * vector[p])
-            p -= 1
-        vector[i] = (stepMat[i][n] - result) / stepMat[i][i]
-        i -= 1
+    try:
+        while i >= 0:
+            result = 0
+            p = len(vector) - 1
+            while p >= 0:
+                result += (stepMat[i][p] * vector[p])
+                p -= 1
+            vector[i] = (stepMat[i][n] - result) / stepMat[i][i]
+            i -= 1
+    except ZeroDivisionError:
+        return 1
     return vector
 
 def aumMatrix(A, b):
