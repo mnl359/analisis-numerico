@@ -14,8 +14,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-345">
-              <caret line="461" column="40" selection-start-line="461" selection-start-column="40" selection-end-line="461" selection-end-column="40" />
+            <state relative-caret-position="197">
+              <caret line="408" column="12" selection-start-line="408" selection-start-column="8" selection-end-line="408" selection-end-column="12" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -26,8 +26,41 @@
       <file leaf-file-name="resultsLU.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/resultsLU.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="147" column="39" selection-start-line="147" selection-start-column="39" selection-end-line="147" selection-end-column="39" />
+            <state relative-caret-position="108">
+              <caret line="141" column="50" selection-start-line="141" selection-start-column="50" selection-end-line="141" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="polynomial.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/polynomial.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="265" column="28" selection-end-line="286" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cholesky.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/cholesky.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="183">
+              <caret line="77" column="16" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="doolittle.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/doolittle.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="38" column="26" lean-forward="true" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -35,17 +68,17 @@
       <file leaf-file-name="resultsGauss.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/resultsGauss.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
+            <state relative-caret-position="336">
               <caret line="129" column="39" selection-start-line="129" selection-start-column="39" selection-end-line="129" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nonlinear.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="nonlinear.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/nonlinear.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="494" column="22" selection-start-line="494" selection-start-column="22" selection-end-line="494" selection-end-column="22" />
+            <state relative-caret-position="233">
+              <caret line="221" column="241" lean-forward="true" selection-start-line="221" selection-start-column="16" selection-end-line="221" selection-end-column="241" />
             </state>
           </provider>
         </entry>
@@ -68,34 +101,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="polynomial.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/polynomial.html">
+      <file leaf-file-name="linear.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/linear.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="250" column="36" selection-start-line="250" selection-start-column="36" selection-end-line="250" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LUPivoting.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/LUPivoting.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1765">
-              <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="newton.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Polynomial_Interpolation/newton.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="neville.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Polynomial_Interpolation/neville.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="5" column="19" lean-forward="true" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+            <state relative-caret-position="240">
+              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="41" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -121,7 +131,6 @@
       <find>newtononon</find>
       <find>resultsTable</find>
       <find>function</find>
-      <find>newt</find>
       <find>aitken</find>
       <find>muller</find>
       <find>secant</find>
@@ -141,6 +150,7 @@
       <find>lup</find>
       <find>LU_Pi</find>
       <find>LU_P</find>
+      <find>newt</find>
     </findStrings>
     <replaceStrings>
       <replace>for row in table[2][1:]</replace>
@@ -164,16 +174,16 @@
         <option value="$PROJECT_DIR$/methods.py" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/templates/resultsTable.html" />
-        <option value="$PROJECT_DIR$/templates/linear.html" />
         <option value="$PROJECT_DIR$/Systems_of_linear_equations/gauss_seidelSOR.py" />
         <option value="$PROJECT_DIR$/Systems_of_linear_equations/LUPivoting.py" />
         <option value="$PROJECT_DIR$/templates/lineardimension.html" />
-        <option value="$PROJECT_DIR$/templates/polynomial.html" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/Splines/splines_3.py" />
-        <option value="$PROJECT_DIR$/templates/resultsLU.html" />
         <option value="$PROJECT_DIR$/templates/resultsGauss.html" />
+        <option value="$PROJECT_DIR$/templates/resultsLU.html" />
         <option value="$PROJECT_DIR$/templates/nonlinear.html" />
+        <option value="$PROJECT_DIR$/templates/linear.html" />
+        <option value="$PROJECT_DIR$/templates/polynomial.html" />
       </list>
     </option>
   </component>
@@ -392,15 +402,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/doolittle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/pivoting.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -426,16 +427,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="32" column="45" lean-forward="true" selection-start-line="32" selection-start-column="45" selection-end-line="32" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/cholesky.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -487,13 +478,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/linear.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7920">
-          <caret line="528" column="87" selection-start-line="528" selection-start-column="87" selection-end-line="528" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/jacobiSOR.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -535,13 +519,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/polynomial.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="250" column="36" selection-start-line="250" selection-start-column="36" selection-end-line="250" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/LUPivoting.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1765">
@@ -565,32 +542,66 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-345">
-          <caret line="461" column="40" selection-start-line="461" selection-start-column="40" selection-end-line="461" selection-end-column="40" />
+        <state relative-caret-position="197">
+          <caret line="408" column="12" selection-start-line="408" selection-start-column="8" selection-end-line="408" selection-end-column="12" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/resultsLU.html">
+    <entry file="file://$PROJECT_DIR$/templates/resultsGauss.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="147" column="39" selection-start-line="147" selection-start-column="39" selection-end-line="147" selection-end-column="39" />
+        <state relative-caret-position="336">
+          <caret line="129" column="39" selection-start-line="129" selection-start-column="39" selection-end-line="129" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/resultsGauss.html">
+    <entry file="file://$PROJECT_DIR$/templates/resultsLU.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="129" column="39" selection-start-line="129" selection-start-column="39" selection-end-line="129" selection-end-column="39" />
+        <state relative-caret-position="108">
+          <caret line="141" column="50" selection-start-line="141" selection-start-column="50" selection-end-line="141" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/cholesky.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="77" column="16" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/doolittle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="38" column="26" lean-forward="true" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/linear.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="41" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/nonlinear.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="494" column="22" selection-start-line="494" selection-start-column="22" selection-end-line="494" selection-end-column="22" />
+        <state relative-caret-position="233">
+          <caret line="221" column="241" lean-forward="true" selection-start-line="221" selection-start-column="16" selection-end-line="221" selection-end-column="241" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/polynomial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="265" column="28" selection-end-line="286" selection-end-column="16" />
         </state>
       </provider>
     </entry>

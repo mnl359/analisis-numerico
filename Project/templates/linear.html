@@ -30,6 +30,17 @@
     <script src="http://malsup.github.com/jquery.form.js"></script>
 </head>
 
+{% macro help(funcname, helpu) -%}
+    <script>
+        function {{ funcname }}() {
+            alert("{{ helpu }}");
+        }
+    </script>
+    <button onclick="{{ funcname }}()">Help</button>
+
+
+{%- endmacro %}
+
 <body>
 <script>
 
@@ -144,6 +155,7 @@
                     </table>
                     <button type="submit" class="btn btn-secondary">Go</button>
                 </form>
+            {{ help("gausshelp", "1. This method may be efficient if there is few equations, but has a high propagation error. 2. The matrix must be invertible. 3. The matrix must be well conditioned") }}
             </div>
         </div>
 
@@ -181,6 +193,7 @@
                     </table>
                     <button type="submit" class="btn btn-secondary">Go</button>
                 </form>
+            {{ help("lugausshelp", "1. Propagation error is high. 2. The matrix must be well conditioned.") }}
             </div>
         </div>
 
@@ -218,12 +231,13 @@
                     </table>
                     <button type="submit" class="btn btn-secondary">Go</button>
                 </form>
+            {{ help("lupivhelp", "1. Propagation error is high. 2. The matrix must be well conditioned and be invertible.") }}
             </div>
         </div>
 
         <div id="piv" class="panel panel-default">
             <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#pivoting">
-                <h4 class="panel-title">Pivoting</h4>
+                <h4 class="panel-title">Partial Pivoting</h4>
 
             </div>
             <div class="table-responsive panel-collapse collapse" id="pivoting">
@@ -255,6 +269,7 @@
                     </table>
                     <button type="submit" class="btn btn-secondary">Go</button>
                 </form>
+            {{ help("pivhelp", "1. This method reduces propagation error. 2. Faster than total pivoting, but propagation error is higher") }}
             </div>
         </div>
 
@@ -292,6 +307,7 @@
                     </table>
                     <button type="submit" class="btn btn-secondary">Go</button>
                 </form>
+            {{ help("totalhelp", "1. As this method uses row substitution, there is a marks vector with the result vector order. 2. This method is slower than partial pivoting but propagation error is way lower") }}
             </div>
         </div>
 
@@ -328,6 +344,7 @@
                     </table>
                     <button type="submit" class="btn btn-secondary">Go</button>
                 </form>
+            {{ help("cholehelp", "1. Propagation error is high. 2. The matrix must be well conditioned.") }}
             </div>
         </div>
 
@@ -365,6 +382,7 @@
 
                     <button type="submit" class="btn btn-secondary">Go</button>
                 </form>
+            {{ help("doolihelp", "1. Propagation error is high. 2. The matrix must be well conditioned.") }}
             </div>
         </div>
 
@@ -401,6 +419,7 @@
                     </table>
                     <button type="submit" class="btn btn-secondary">Go</button>
                 </form>
+            {{ help("crouthelp", "1. Propagation error is high. 2. The matrix must be well conditioned.") }}
             </div>
         </div>
 
@@ -458,6 +477,7 @@
                     </div>
                     <button type="submit" class="btn btn-secondary">Go</button>
                 </form>
+            {{ help("jacobihelp", "1. Truncation error is high. 2. The matrix must be well conditioned. 3. This is faster than Gauss-Seidel") }}
             </div>
         </div>
 
@@ -515,6 +535,7 @@
                     </div>
                     <button type="submit" class="btn btn-secondary">Go</button>
                 </form>
+            {{ help("gausseidelhelp", "1. Truncation error is high. 2. The matrix must be well conditioned.") }}
             </div>
         </div>
 
@@ -576,12 +597,13 @@
                     </div>
                     <button type="submit" class="btn btn-secondary">Go</button>
                 </form>
+            {{ help("jacobisorhelp", "1. Truncation error is high. 2. The matrix must be well conditioned.") }}
             </div>
         </div>
 
         <div id="gausor" class="panel panel-default">
             <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#gaussor">
-                <h4 class="panel-title">Gauss-Seidel Sor</h4>
+                <h4 class="panel-title">Gauss-Seidel SOR</h4>
 
             </div>
             <div class="table-responsive panel-collapse collapse" id="gaussor">
@@ -637,6 +659,7 @@
                     </div>
                     <button type="submit" class="btn btn-secondary">Go</button>
                 </form>
+            {{ help("gausorhelp", "1. Truncation error is high. 2. The matrix must be well conditioned.") }}
             </div>
         </div>
 
@@ -664,6 +687,7 @@
                     </table>
                     <button type="submit" class="btn btn-secondary">Go</button>
                 </form>
+            {{ help("bandhelp", "1. Band Matrix is a special type of matrix. 2. Propagation error is high") }}
             </div>
         </div>
     </div>

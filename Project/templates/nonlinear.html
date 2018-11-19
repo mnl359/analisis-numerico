@@ -69,7 +69,6 @@
     <link href={{ url_for('static', filename="css/font-helvetica.css") }} rel="stylesheet" type="text/css">
 
 
-    <script src="https://www.youtube.com/iframe_api"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src={{ url_for('static', filename="js/jquery.plugin.min.js") }}></script>
     <script src={{ url_for('static', filename="js/bootstrap.min.js") }}></script>
@@ -88,6 +87,17 @@
 
 
 </head>
+
+{% macro help(funcname, helpu) -%}
+    <script>
+        function {{ funcname }}() {
+            alert("{{ helpu }}");
+        }
+    </script>
+    <button onclick="{{ funcname }}()">Help</button>
+
+
+{%- endmacro %}
 
 {% macro onsubmit(formname, divname, subname) -%}
     <script>
@@ -209,6 +219,7 @@
                     </div>
                 </form>
                 {{ onsubmit("bisectionform", "divbis", "subbis") }}
+                {{ help("bishelp", "1. xs must be larger than xi 2. If the method doesnt converge, it could be because the number of iterations is not enough or the interval is too big. 3. The function must be continuous in the interval") }}
             </div>
         </div>
 
@@ -241,6 +252,7 @@
                     </div>
                 </form>
                 {{ onsubmit("aitbisform", "divaitbis", "subaitbis") }}
+                {{ help("aitbishelp", "1. xs must be larger than xi 2. If the method doesnt converge, it could be because the number of iterations is not enough or the interval is too big") }}
             </div>
         </div>
 
@@ -270,6 +282,7 @@
                     </div>
                 </form>
                 {{ onsubmit("newtononform", "divnew", "subnew") }}
+                {{ help("newthelp", "1. The better the initial approximation, the faster this method will converge 2. If the function derivative is close to 0, the method loses efficiency. Try the multiple roots method") }}
             </div>
         </div>
 
@@ -302,6 +315,7 @@
                     </div>
                 </form>
                 {{ onsubmit("mullerform", "divmul", "submul") }}
+                {{ help("mullerhelp", "1. xs must be larger than xi.") }}
             </div>
         </div>
 
@@ -331,6 +345,7 @@
                     </div>
                 </form>
                 {{ onsubmit("incrementalform", "divinc", "subinc") }}
+                {{ help("incrementalhelp", "1. The better the initial approximation, the faster this method converges. 2. The delta size is proportional to convergence speed, and inversely proportional to precission") }}
             </div>
         </div>
 
@@ -363,6 +378,7 @@
                     </div>
                 </form>
                 {{ onsubmit("falseruleform", "divfal", "subfal") }}
+                {{ help("falsehelp", "1. xs must be larger than xi. 2. This method is going to be faster than bisection. 3. The function must be continuous in the interval") }}
             </div>
         </div>
 
@@ -395,6 +411,7 @@
                     </div>
                 </form>
                 {{ onsubmit("fixedform", "divfix", "subfix") }}
+                {{ help("fixedhelp", "1. g(x) must be f(x)=0. 2. g(x) must exist and be continuous in (a, b). 3. be sure that f(x) is continuous and smooth") }}
             </div>
         </div>
 
@@ -424,6 +441,7 @@
                     </div>
                 </form>
                 {{ onsubmit("multipleform", "divmult", "submult") }}
+                {{ help("multiplehelp", "1. At least the first derivative of f(x) must be 0") }}
             </div>
         </div>
 
@@ -453,6 +471,7 @@
                     </div>
                 </form>
                 {{ onsubmit("aitkenform", "divaitk", "subaitk") }}
+                {{ help("aitkkkhelp", "1. This method will converge linearly. 2. Initial approximation must be as accurate as posible") }}
             </div>
         </div>
 
@@ -485,6 +504,7 @@
                     </div>
                 </form>
                 {{ onsubmit("secantform", "divsec", "subsec") }}
+                {{ help("secahelp", "1. The better the initial approximation, the faster this method will converge 2. If the function derivative is close to 0, the method loses efficiency. 3. xs must be larger than xi. 4. There must be a root between xi and xs. 5. Convergence will be superlinear, a little slower than newton") }}
             </div>
         </div>
     </div>
