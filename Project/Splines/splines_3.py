@@ -177,6 +177,7 @@ def printMatrix(name, A):
 
 def formPolys(coef, X):
     polys = []
+    polys.append(["Polynomials", "Ranges"])
     for i in range(len(coef)):
         poly = "P" + str(i+1) + "= "
         poly += str(coef[i][1]) + "x^3 "
