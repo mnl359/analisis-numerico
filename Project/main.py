@@ -667,7 +667,7 @@ def vandermonda():
     results = vandermonde.main(A, x)
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
-    return render_template('resultsPoly.html', result=results[4], poli=results[3], x=x)
+    return render_template('resultsPoly.html', result=results[3], poli=results[4], x=x)
 
 @app.route('/spline1', methods=['POST', 'GET'])
 def spline1():
