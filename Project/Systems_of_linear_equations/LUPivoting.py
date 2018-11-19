@@ -54,7 +54,7 @@ class LU_pivoting:
         try:
             LA.inv(A)
         except LA.LinAlgError:
-            return -1
+            return -1, -1, -1
 
         n = len(A)
         mults = self.create_matrix(self.mults, n)
@@ -80,7 +80,7 @@ class LU_pivoting:
                     mults = self.exchange_rows(i, cont, mults)
 
                     if A[i][i] == 0:
-                        return 1
+                        return 1, 1, 1
 
                 else:
                     helper = A[j][i]
@@ -96,7 +96,7 @@ class LU_pivoting:
         for i in range(n):
             mults[i][i] = 1
 
-        return A
+        return A, mults, marks
 
     def progressive_substitution(self, stepMat):
         vector = []
@@ -133,7 +133,7 @@ class LU_pivoting:
         return vector
 
     def lu_pivoting(self, A, vector):
-        u_matrix = self.upper_triangular(A)
+        u_matrix, mults, marks = self.upper_triangular(A)
         if u_matrix == -1:
             return 1, "The matrix is not invertible"
         elif u_matrix == 1:

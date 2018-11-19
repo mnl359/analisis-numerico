@@ -132,7 +132,7 @@ class Total_pivoting:
             return 1, "The matrix is not invertible"
         vector = self.clear(matrix, marks)
         print(vector)
-        return 0, matrix, self.marks, vector
+        return 0, matrix, marks, vector
 
 
 #totalpiv = Total_pivoting()

@@ -21,10 +21,15 @@ def newGaussSeidel(x0, matrix, b):
 
 def norma(x0, x1):
     sum = 0
-    for x in range(len(x0)):
-        sum += (x1[x]-x0[x])**2
-    error = sqrt(sum)
-    return error
+    n = len(x0)
+    for x in range(len(x0)): 
+        sum += round((round(x1[x])-round(x0[x]))**2)
+    try:
+        if round(sqrt(round(sum))):
+            error = round(sqrt(round(sum)))
+            return error, 0
+    except OverflowError as err:
+        return 0, 1
 
 def gaussSeidel(tolerance, x0, iterations, matrix, b):
     det = linalg.det(matrix)
