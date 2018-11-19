@@ -143,11 +143,13 @@
 
             </div>
             <div class="table-responsive collapse panel-collapse" id="marks">
-                <table class="table" id="markr">
+                <table class="table" id="marksu">
                     <tbody>
                     {% for row in marks %}
                         <tr>
-                            <td>{{ row }}</td>
+                            {% for col in row %}
+                                <td>{{ col }}</td>
+                            {% endfor %}
                         </tr>
                     {% endfor %}
                     </tbody>

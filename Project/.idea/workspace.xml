@@ -11,19 +11,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LUGauss.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Systems_of_linear_equations/LUGauss.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="95" column="8" selection-start-line="95" selection-start-column="8" selection-end-line="95" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
+            <state relative-caret-position="-345">
               <caret line="461" column="40" selection-start-line="461" selection-start-column="40" selection-end-line="461" selection-end-column="40" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -41,11 +32,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="resultsGauss.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="resultsGauss.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/resultsGauss.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
+            <state relative-caret-position="414">
               <caret line="129" column="39" selection-start-line="129" selection-start-column="39" selection-end-line="129" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nonlinear.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/nonlinear.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="588">
+              <caret line="494" column="22" selection-start-line="494" selection-start-column="22" selection-end-line="494" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -159,7 +159,6 @@
         <option value="$PROJECT_DIR$/Systems_of_linear_equations/gauss.py" />
         <option value="$PROJECT_DIR$/Systems_of_linear_equations/pivoting.py" />
         <option value="$PROJECT_DIR$/Systems_of_linear_equations/totalPivoting.py" />
-        <option value="$PROJECT_DIR$/templates/nonlinear.html" />
         <option value="$PROJECT_DIR$/Systems_of_linear_equations/jacobi.py" />
         <option value="$PROJECT_DIR$/Splines/splines_1.py" />
         <option value="$PROJECT_DIR$/methods.py" />
@@ -174,6 +173,7 @@
         <option value="$PROJECT_DIR$/Splines/splines_3.py" />
         <option value="$PROJECT_DIR$/templates/resultsLU.html" />
         <option value="$PROJECT_DIR$/templates/resultsGauss.html" />
+        <option value="$PROJECT_DIR$/templates/nonlinear.html" />
       </list>
     </option>
   </component>
@@ -449,13 +449,6 @@
     <entry file="file://$PROJECT_DIR$/Systems_of_non-linear_equations/aitken.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/nonlinear.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="119" column="117" lean-forward="true" selection-start-line="119" selection-start-column="24" selection-end-line="119" selection-end-column="117" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="446">
@@ -563,20 +556,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="461" column="40" selection-start-line="461" selection-start-column="40" selection-end-line="461" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Splines/splines_3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
           <caret line="175" column="19" selection-start-line="175" selection-start-column="19" selection-end-line="175" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-345">
+          <caret line="461" column="40" selection-start-line="461" selection-start-column="40" selection-end-line="461" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -589,8 +582,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/resultsGauss.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
+        <state relative-caret-position="414">
           <caret line="129" column="39" selection-start-line="129" selection-start-column="39" selection-end-line="129" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/nonlinear.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="494" column="22" selection-start-line="494" selection-start-column="22" selection-end-line="494" selection-end-column="22" />
         </state>
       </provider>
     </entry>
