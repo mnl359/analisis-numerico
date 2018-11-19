@@ -42,7 +42,7 @@ def checkData(X):
         elif(X[i+1][0] < X[i][0]):
             return(1, "The set of points must be arranged in ascending order with respect to their X component. Problem found at: " + str(i))
         elif(X[i+1][0] == X[i][0]):
-            return(1, "All points must be different. Problem found at: " + str(i))
+            return(1, "All points must be different. Problem found at: " + str(i) + " and " + str(i + 1)) 
     return(0, "Ok.")
 
 #xy = [[0, 0],[1, 1],[2, 1],[3, 0]]
