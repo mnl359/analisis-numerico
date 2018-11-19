@@ -2,7 +2,7 @@
 
 from prettytable import PrettyTable
 from sympy import Symbol, expand, simplify, factor, init_printing
-
+from numpy import linalg as LA 
 
 # El método principal es Newton
 # Retorna 0 (exitoso), el resultado del polinomio en el número que se quiere evaluar, 
@@ -10,17 +10,35 @@ from sympy import Symbol, expand, simplify, factor, init_printing
 
 
 res = []
+zero = 0
 
 def bn(iterations):
     global res
+    global zero
     aux = iterations + 1
     y = iterations - 1
     for x in range(1, aux):
-        res[iterations][x+1] = (res[iterations-1][x] - res[iterations][x])/(res[y][0] - res[iterations][0])
+        den = res[y][0] - res[iterations][0]
+        if den == 0:
+            print(den, x)
+            zero = -1
+            break
+        res[iterations][x+1] = (res[iterations-1][x] - res[iterations][x])/den
         y -= 1
 
 def newton(value, matrix):
+    #try:
+    #    LA.inv(matrix)
+    #except LA.LinAlgError:
+    #    return 1, "Matrix is not invertible"
     global res
+    global zero
+    n = len(matrix) - 1
+    for i in range(n):
+        if(matrix[i+1][0] < matrix[i][0]):
+            return(1, "The set of dots must be arranged in ascending order with respect to their X component. Problem found at: " + str(i)) 
+        elif(matrix[i+1][0] == matrix[i][0]):
+            return(1, "All dots must be different. Problem found at: " + str(i) + " and " + str(i + 1))
     init_printing(use_unicode=True)
     x = Symbol("x")
     title = ['Xi','F[x]']
@@ -40,6 +58,8 @@ def newton(value, matrix):
     table.add_row(res[0])
     tableList.append(res[0])
     for iteration in range(1,n):
+        if zero == -1:
+            return 1, "Division by zero"
         bn(iteration)
         b = res[iteration][iteration+1]
         #print(mult * (x - matrix[iteration-1][0]))
