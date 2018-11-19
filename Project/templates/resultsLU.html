@@ -80,12 +80,12 @@
 <div class="main-container d-flex justify-content-center">
     <div id="mat" class="panel panel-default">
         <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" data-target="#matrix">
-            <h4 class="panel-title">L/U Matrixes</h4>
-
+            <h4 class="panel-title">L/U Matrices</h4>
         </div>
         <div id="matrix" class="panel-collapse collapse">
+            L:
             <div class="table-responsive" id="lmatrix">
-                <table class="table" id="results">
+                <table class="table" id="resultsl">
                     <tbody>
                     {% for row in l_matrix %}
                         <tr>
@@ -97,19 +97,22 @@
                     </tbody>
                 </table>
             </div>
-            <div class="table-responsive panel-collapse collapse" id="umatrix">
-                <table class="table" id="results">
-                    <tbody>
-                    {% for row in u_matrix %}
-                        <tr>
-                            {% for col in row %}
-                                <td>{{ col }}</td>
-                            {% endfor %}
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+            {% if u_matrix is defined %}
+                U:
+                <div class="table-responsive" id="umatrix">
+                    <table class="table" id="resultsu">
+                        <tbody>
+                        {% for row in u_matrix %}
+                            <tr>
+                                {% for col in row %}
+                                    <td>{{ col }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endif %}
         </div>
     </div>
     {% if results is defined %}

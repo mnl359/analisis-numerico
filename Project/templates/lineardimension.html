@@ -81,6 +81,7 @@
     {% if section=="splines" %}
         Enter point quantity
     {% endif %}
+    Make sure it's a positive integer
     <form action="/{{ section }}" method="POST">
         <input class="form-control" type="number" name="n" placeholder="n" >
         <button type="submit" class="btn btn-secondary">Go</button>

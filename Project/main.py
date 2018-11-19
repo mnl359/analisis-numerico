@@ -10,12 +10,14 @@ from Systems_of_linear_equations.LUPivoting import LU_pivoting
 from Systems_of_linear_equations import jacobi, jacobiSOR, cholesky, doolittle, crout, gauss_seidel, bandMatrix, gauss_seidelSOR
 from Polynomial_Interpolation import lagrange, newton, vandermonde
 from Splines import splines_1, splines_2, splines_3
-import json, decimal, sympy
+import json, sympy
 app = Flask(__name__)
 
 
 user = "userdeprueba20172804"
 passw = "contrasena"
+
+errorn = "Please enter a positive integer"
 
 state = None
 
@@ -43,6 +45,8 @@ def lineardimension():
 @app.route('/linear', methods=['POST'])
 def linear():
     n = int(request.form['n'])
+    if n < 0:
+        return render_template('lineardimension.html', section="linear")
     narray = [None]*n
     return render_template('linear.html', dimension=narray)
 
@@ -57,6 +61,8 @@ def polynomialdim():
 @app.route('/polynomial', methods=['POST'])
 def polynomial():
     n = int(request.form['n'])
+    if n < 0:
+        return render_template('lineardimension.html', section="polynomial")
     narray = [None]*n
     return render_template('polynomial.html', dimension=narray)
 
@@ -67,6 +73,8 @@ def splinesdimension():
 @app.route('/splines', methods=['POST'])
 def splines():
     n = int(request.form['n'])
+    if n < 0:
+        return render_template('lineardimension.html', section="splines")
     narray = [None]*n
     return render_template('splines.html', dimension=narray)
 
@@ -390,6 +398,7 @@ def lugauss():
             aux.append(float(arstr[j]))
         A.append(aux)
     results = g.lu_gauss(A, v)
+    print(results[2])
     if request.form.get('prueba', None):
         return json.dumps(results, default=decimal_default)
     return render_template('resultsLU.html', results=results[3], l_matrix=results[1], u_matrix=results[2])

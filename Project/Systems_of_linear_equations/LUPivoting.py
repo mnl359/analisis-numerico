@@ -127,11 +127,11 @@ class LU_pivoting:
             i -= 1
         return vector
 
-    def lu_pivoting(self, A, vector, toPrint):
+    def lu_pivoting(self, A, vector):
         u_matrix = self.upper_triangular(A)
-        print("The U matrix is:", "\n", DataFrame(u_matrix), "\n", file=toPrint)
+        print("The U matrix is:", "\n", DataFrame(u_matrix), "\n")
         l_matrix = mults
-        print("The L matrix is:", "\n", DataFrame(l_matrix), "\n", file=toPrint)
+        print("The L matrix is:", "\n", DataFrame(l_matrix), "\n")
         aux = self.multiply(marks, vector)
         helper = [aux[i][0] for i in range(len(aux))]
         Lz = self.aumMatrix(l_matrix, helper)
